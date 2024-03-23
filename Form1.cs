@@ -1,4 +1,5 @@
-﻿using CrudOperationUsingEF.Model;
+﻿using CrudOperationUsingEF.EntityFramework;
+using CrudOperationUsingEF.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,7 @@ namespace CrudOperationUsingEF
         }
 
         //create object of contex and table model
-        TutorialEntities db = new TutorialEntities();
+        TutorialContext db = new TutorialContext();
         Employee Employee = new Employee();
         int EmpId = 0;
         /// <summary>

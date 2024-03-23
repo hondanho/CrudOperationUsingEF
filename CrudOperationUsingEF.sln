@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudOperationUsingEF", "CrudOperationUsingEF.csproj", "{2A0948D8-8F29-499B-942E-8B543F9B3DCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudOperation", "..\WinFormsApp1\CrudOperation.csproj", "{2A89FD67-2EE9-4980-B888-B4DDFEFAB28B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2A0948D8-8F29-499B-942E-8B543F9B3DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A0948D8-8F29-499B-942E-8B543F9B3DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A0948D8-8F29-499B-942E-8B543F9B3DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A0948D8-8F29-499B-942E-8B543F9B3DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A89FD67-2EE9-4980-B888-B4DDFEFAB28B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A89FD67-2EE9-4980-B888-B4DDFEFAB28B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A89FD67-2EE9-4980-B888-B4DDFEFAB28B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A89FD67-2EE9-4980-B888-B4DDFEFAB28B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
