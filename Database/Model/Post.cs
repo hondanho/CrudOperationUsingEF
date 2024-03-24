@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public int SiteID { get; set; }
+        public string PostFormat { get; set; }
         public string PostTitleSelector { get; set; }
         /// <summary>
         /// Đoạn trích
@@ -21,10 +22,11 @@
         public string SaveMetaKeywords { get; set; }
         public bool AddMetaKeywordsAsTag { get; set; }
         public bool SaveMetaDescription { get; set; }
+        public bool SaveFeaturedImages { get; set; }
         public string FeaturedImageSelector { get; set; }
         public bool PaginatePosts { get; set; }
         public string PostNextPageURLSelector { get; set; }
-        public string FindDndReplaceRawHTML { get; set; }
+        public string FindAndReplaceRawHTML { get; set; }
         public string RemoveElementAttributes { get; set; }
         public string UnnecessaryElements { get; set; }
     }

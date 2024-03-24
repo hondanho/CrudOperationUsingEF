@@ -13,7 +13,7 @@ namespace XAutoLeech.Database.Model
         public string CategoryNextPageURLSelector { get; set; }
         public bool SaveFeaturedImages { get; set; }
         public string FeaturedImageSelector { get; set; }
-        public string FindDndReplaceRawHTML { get; set; }
+        public string FindAndReplaceRawHTML { get; set; }
         public string RemoveElementAttributes { get; set; }
         public string UnnecessaryElements { get; set; }
     }

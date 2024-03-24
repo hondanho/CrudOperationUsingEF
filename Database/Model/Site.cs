@@ -27,7 +27,7 @@ namespace XAutoLeech.Database.Model
         public int ProxyRetryLimit { get; set; }
         public bool RandomizeProxies { get; set; }
         public int TimeInterval { get; set; }
-        public DateTime LatestRun { get; set; }
+        public DateTime? LatestRun { get; set; }
         public string LastUrlCollection { get; set; }
         public string LastPostCrawl { get; set; }
         public string Notes { get; set; }
