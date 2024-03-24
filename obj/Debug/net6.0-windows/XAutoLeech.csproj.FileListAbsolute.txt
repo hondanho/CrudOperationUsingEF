@@ -48,3 +48,6 @@ E:\ex\CrudOperationUsingEF\obj\Debug\net6.0-windows\XAutoLeech.pdb
 E:\ex\CrudOperationUsingEF\obj\Debug\net6.0-windows\XAutoLeech.genruntimeconfig.cache
 E:\ex\CrudOperationUsingEF\obj\Debug\net6.0-windows\ref\XAutoLeech.dll
 E:\ex\CrudOperationUsingEF\obj\Debug\net6.0-windows\XAutoLeech.AllSite.resources
+E:\ex\CrudOperationUsingEF\obj\Debug\net6.0-windows\XAutoLeech.AddNew.resources
+E:\ex\CrudOperationUsingEF\obj\Debug\net6.0-windows\XAutoLeech.Dashboard.resources
+E:\ex\CrudOperationUsingEF\obj\Debug\net6.0-windows\XAutoLeech.GeneralSettings.resources

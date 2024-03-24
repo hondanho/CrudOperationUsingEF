@@ -1,7 +1,9 @@
-﻿using XAutoLeech.EntityFramework;
-using XAutoLeech.Model;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Data;
+using XAutoLeech.Database.Model;
+using XAutoLeech.Database.EntityFramework;
+using XAutoLeech.Model;
+using System.Windows.Forms;
 
 namespace XAutoLeech
 {
@@ -27,14 +29,38 @@ namespace XAutoLeech
         {
             ClearData();
             SetDataInGridView();
-            SetPanelFirstLoad();
+            SetPanelView(TypeSiteEnum.AllSite);
         }
 
-        private void SetPanelFirstLoad()
+        private void SetPanelView(TypeSiteEnum typeSiteEnum)
         {
-            AllSite allSiteForm = new AllSite();
-            this.PanelMain.Controls.Add(allSiteForm);
-            allSiteForm.Show();
+            var childMain = new UserControl();
+            switch (typeSiteEnum)
+            {
+                case TypeSiteEnum.AllSite:
+                    childMain = new AllSite(_dbContext);
+                    break;
+
+                case TypeSiteEnum.AddNew:
+                    childMain = new AddNew();
+                    break;
+
+                case TypeSiteEnum.Dashboard:
+                    childMain = new Dashboard();
+                    break;
+
+                case TypeSiteEnum.GeneralSettings:
+                    childMain = new GeneralSettings();
+                    break;
+
+                default:
+                    break;
+            }
+
+            childMain.Dock = DockStyle.Fill;
+            this.PanelMain.Controls.Clear();
+            this.PanelMain.Controls.Add(childMain);
+            childMain.Show();
         }
 
         /// <summary>
@@ -124,12 +150,32 @@ namespace XAutoLeech
         {
             if (MessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                _dbContext.Sites.Remove(Employee);
+                //_dbContext.Sites.Remove(Employee);
                 _dbContext.SaveChanges();
                 ClearData();
                 SetDataInGridView();
                 MessageBox.Show("Record Deleted Successfully");
             }
+        }
+
+        private void allSitesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetPanelView(TypeSiteEnum.AllSite);
+        }
+
+        private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetPanelView(TypeSiteEnum.AddNew);
+        }
+
+        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetPanelView(TypeSiteEnum.Dashboard);
+        }
+
+        private void generalSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetPanelView(TypeSiteEnum.GeneralSettings);
         }
     }
 }

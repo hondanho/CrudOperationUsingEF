@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XAutoLeech.EntityFramework
+namespace XAutoLeech.Database.EntityFramework
 {
     public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {

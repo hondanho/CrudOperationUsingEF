@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace XAutoLeech
 {
-    public partial class AllSite : UserControl
+    public partial class GeneralSettings : UserControl
     {
-        public AllSite()
+        public GeneralSettings()
         {
             InitializeComponent();
         }

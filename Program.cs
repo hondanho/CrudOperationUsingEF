@@ -1,6 +1,6 @@
-﻿using XAutoLeech.EntityFramework;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using XAutoLeech.Database.EntityFramework;
 
 namespace XAutoLeech
 {

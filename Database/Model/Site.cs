@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace XAutoLeech.Model
+namespace XAutoLeech.Database.Model
 {
     public class Site
     {
@@ -11,8 +11,8 @@ namespace XAutoLeech.Model
         public bool CheckDuplicatePostViaUrl { get; set; }
         public bool CheckDuplicatePostViaTitle { get; set; }
         public bool CheckDuplicatePostViaContent { get; set; }
-        public Nullable<int> MaximumPagesCrawlPerCategory { get; set; }
-        public Nullable<int> MaximumPagesCrawlPerPost { get; set; }
+        public int? MaximumPagesCrawlPerCategory { get; set; }
+        public int? MaximumPagesCrawlPerPost { get; set; }
         public bool AllowComment { get; set; }
         public string PostStatus { get; set; }
         public string PostType { get; set; }

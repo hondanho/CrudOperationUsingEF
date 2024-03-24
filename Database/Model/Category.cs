@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace XAutoLeech.Model
+namespace XAutoLeech.Database.Model
 {
     public class Category
     {

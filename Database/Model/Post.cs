@@ -1,4 +1,4 @@
-﻿namespace XAutoLeech.Model
+﻿namespace XAutoLeech.Database.Model
 {
     public class Post
     {

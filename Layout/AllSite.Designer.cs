@@ -44,6 +44,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SiteTitle,
@@ -61,7 +64,7 @@
             // 
             // SiteTitle
             // 
-            this.SiteTitle.DataPropertyName = "SiteTitle";
+            this.SiteTitle.DataPropertyName = "Title";
             this.SiteTitle.HeaderText = "Title";
             this.SiteTitle.MinimumWidth = 6;
             this.SiteTitle.Name = "SiteTitle";
@@ -97,6 +100,7 @@
             // 
             // TimeInterval
             // 
+            this.TimeInterval.DataPropertyName = "TimeInterval";
             this.TimeInterval.HeaderText = "Time Interval";
             this.TimeInterval.Name = "TimeInterval";
             this.TimeInterval.ReadOnly = true;

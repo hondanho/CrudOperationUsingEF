@@ -1,7 +1,7 @@
-﻿using XAutoLeech.Model;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using XAutoLeech.Database.Model;
 
-namespace XAutoLeech.EntityFramework
+namespace XAutoLeech.Database.EntityFramework
 {
     public class AppDbContext : DbContext
     {
