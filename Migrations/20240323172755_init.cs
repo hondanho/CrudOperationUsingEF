@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace CrudOperation.Migrations
+namespace XAutoLeech.Migrations
 {
     public partial class init : Migration
     {

@@ -1,4 +1,4 @@
-﻿namespace CrudOperation.Model
+﻿namespace XAutoLeech.Model
 {
     public class Post
     {

@@ -6,14 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrudOperation.EntityFramework
+namespace XAutoLeech.EntityFramework
 {
     public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
+        private string ConnectionString = "Data Source=.;Initial Catalog=AutoCrawler;Integrated Security=True;Pooling=False";
+
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=AutoCrawler;Integrated Security=True;Pooling=False");
+            optionsBuilder.UseSqlServer(ConnectionString);
 
             return new AppDbContext(optionsBuilder.Options);
         }

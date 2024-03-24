@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yfDTKzzoRpIipfvkYmByT6d5Ywi38x60ipcTaQ+65BsnT17RwYnukxx3oYRiajOVYDMtw3W1EZfF5dpIg0XCBw==",
+  "dgSpecHash": "hniGjR7u9NsdwZJXugbNohM2ifLNfXohIKO65sDFAkgfvhVJhbd3T7c32tTK4yqgjXx09aNisb3Ijg8X2CQ2dw==",
   "success": true,
-  "projectFilePath": "E:\\ex\\CrudOperationUsingEF\\CrudOperation.csproj",
+  "projectFilePath": "E:\\ex\\CrudOperationUsingEF\\XAutoLeech.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pro\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\pro\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

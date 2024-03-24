@@ -1,8 +1,8 @@
-﻿using CrudOperation.EntityFramework;
+﻿using XAutoLeech.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CrudOperation
+namespace XAutoLeech
 {
     static class Program
     {

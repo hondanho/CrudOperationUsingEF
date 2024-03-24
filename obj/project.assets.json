@@ -2015,9 +2015,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ex\\CrudOperationUsingEF\\CrudOperation.csproj",
-      "projectName": "CrudOperation",
-      "projectPath": "E:\\ex\\CrudOperationUsingEF\\CrudOperation.csproj",
+      "projectUniqueName": "E:\\ex\\CrudOperationUsingEF\\XAutoLeech.csproj",
+      "projectName": "XAutoLeech",
+      "projectPath": "E:\\ex\\CrudOperationUsingEF\\XAutoLeech.csproj",
       "packagesPath": "C:\\Users\\pro\\.nuget\\packages\\",
       "outputPath": "E:\\ex\\CrudOperationUsingEF\\obj\\",
       "projectStyle": "PackageReference",

@@ -1,9 +1,9 @@
-﻿using CrudOperation.EntityFramework;
-using CrudOperation.Model;
+﻿using XAutoLeech.EntityFramework;
+using XAutoLeech.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
-namespace CrudOperation
+namespace XAutoLeech
 {
     public partial class Main : Form
     {
@@ -27,6 +27,14 @@ namespace CrudOperation
         {
             ClearData();
             SetDataInGridView();
+            SetPanelFirstLoad();
+        }
+
+        private void SetPanelFirstLoad()
+        {
+            AllSite allSiteForm = new AllSite();
+            this.PanelMain.Controls.Add(allSiteForm);
+            allSiteForm.Show();
         }
 
         /// <summary>
@@ -34,9 +42,9 @@ namespace CrudOperation
         /// </summary>
         public void ClearData()
         {
-            txtEmpAdd.Text = txtEmpAge.Text = txtEmpCity.Text = txtEmpName.Text = txtEmpSalary.Text = string.Empty;
-            btnDelete.Enabled = false;
-            btnSave.Text = "Save";
+            //txtEmpAdd.Text = txtEmpAge.Text = txtEmpCity.Text = txtEmpName.Text = txtEmpSalary.Text = string.Empty;
+            //btnDelete.Enabled = false;
+            //btnSave.Text = "Save";
             EmpId = 0;
         }
 
@@ -45,9 +53,9 @@ namespace CrudOperation
         /// </summary>
         public void SetDataInGridView()
         {
-            dataGridView.AutoGenerateColumns = false;
-            var data = _dbContext.Sites.ToList<Site>();
-            dataGridView.DataSource = _dbContext.Sites.ToList<Site>();
+            //dataGridView.AutoGenerateColumns = false;
+            //var data = _dbContext.Sites.ToList<Site>();
+            //dataGridView.DataSource = _dbContext.Sites.ToList<Site>();
         }
 
         /// <summary>
@@ -82,19 +90,19 @@ namespace CrudOperation
         /// <param name="e"></param>
         private void dataGridView_DoubleClick(object sender, EventArgs e)
         {
-            if (dataGridView.CurrentCell.RowIndex != -1)
-            {
-                //EmpId = Convert.ToInt32(dataGridView.CurrentRow.Cells["EmployeeId"].Value);
-                //Employee = _dbContext.Sites.Where(x => x.EmployeeId == EmpId).FirstOrDefault();
-                //txtEmpName.Text = Employee.EmployeeName;
-                //txtEmpAdd.Text = Employee.EmployeeAddress;
-                //txtEmpAge.Text = Employee.EmployeeAge.ToString();
-                //txtEmpSalary.Text = Employee.EmployeeSalary.ToString();
-                //txtEmpAge.Text = Employee.EmployeeAge.ToString();
-                //txtEmpCity.Text = Employee.EmployeeCity;
-            }
-            btnSave.Text = "Update";
-            btnDelete.Enabled = true;
+            //if (dataGridView.CurrentCell.RowIndex != -1)
+            //{
+            //    //EmpId = Convert.ToInt32(dataGridView.CurrentRow.Cells["EmployeeId"].Value);
+            //    //Employee = _dbContext.Sites.Where(x => x.EmployeeId == EmpId).FirstOrDefault();
+            //    //txtEmpName.Text = Employee.EmployeeName;
+            //    //txtEmpAdd.Text = Employee.EmployeeAddress;
+            //    //txtEmpAge.Text = Employee.EmployeeAge.ToString();
+            //    //txtEmpSalary.Text = Employee.EmployeeSalary.ToString();
+            //    //txtEmpAge.Text = Employee.EmployeeAge.ToString();
+            //    //txtEmpCity.Text = Employee.EmployeeCity;
+            //}
+            ////btnSave.Text = "Update";
+            ////btnDelete.Enabled = true;
         }
 
         /// <summary>
