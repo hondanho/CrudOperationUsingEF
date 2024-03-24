@@ -50,6 +50,7 @@ namespace XAutoLeech
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Menu;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.allSitesToolStripMenuItem,
             this.addNewToolStripMenuItem,
@@ -59,6 +60,7 @@ namespace XAutoLeech
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(572, 24);
             this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.TabStop = true;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // allSitesToolStripMenuItem
