@@ -148,6 +148,7 @@
             this.cancleBtn.TabIndex = 4;
             this.cancleBtn.Text = "Cancle";
             this.cancleBtn.UseVisualStyleBackColor = true;
+            this.cancleBtn.Click += new System.EventHandler(this.cancleBtn_Click);
             // 
             // postTab
             // 

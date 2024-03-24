@@ -9,10 +9,7 @@ namespace XAutoLeech
 {
     public partial class Main : Form
     {
-        //create object of contex and table model
         private readonly AppDbContext _dbContext;
-        private Site Employee = new Site();
-        private int EmpId = 0;
 
         public Main(AppDbContext dbContext)
         {
@@ -32,7 +29,7 @@ namespace XAutoLeech
             SetPanelView(TypeSiteEnum.AllSite);
         }
 
-        private void SetPanelView(TypeSiteEnum typeSiteEnum)
+        public void SetPanelView(TypeSiteEnum typeSiteEnum)
         {
             var childMain = new UserControl();
             switch (typeSiteEnum)
@@ -71,7 +68,7 @@ namespace XAutoLeech
             //txtEmpAdd.Text = txtEmpAge.Text = txtEmpCity.Text = txtEmpName.Text = txtEmpSalary.Text = string.Empty;
             //btnDelete.Enabled = false;
             //btnSave.Text = "Save";
-            EmpId = 0;
+            //EmpId = 0;
         }
 
         /// <summary>
