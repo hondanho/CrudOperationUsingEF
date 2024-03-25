@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using XAutoLeech.Database.EntityFramework;
+using XAutoLeech.Database.Model;
+using XAutoLeech.Repository;
 
 namespace XAutoLeech
 {
@@ -34,7 +36,9 @@ namespace XAutoLeech
                 options.UseSqlServer(ConnectionString);
             });
 
-            // Add other services here
+            services.AddScoped<Repository<Category>>();
+            services.AddScoped<Repository<Site>>();
+            services.AddScoped<Repository<Post>>();
 
             // Add your main form
             services.AddScoped<Main>();

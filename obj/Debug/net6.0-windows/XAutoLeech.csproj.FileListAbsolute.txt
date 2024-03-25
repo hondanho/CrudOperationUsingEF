@@ -51,3 +51,14 @@ E:\ex\CrudOperationUsingEF\obj\Debug\net6.0-windows\XAutoLeech.AllSite.resources
 E:\ex\CrudOperationUsingEF\obj\Debug\net6.0-windows\XAutoLeech.AddNew.resources
 E:\ex\CrudOperationUsingEF\obj\Debug\net6.0-windows\XAutoLeech.Dashboard.resources
 E:\ex\CrudOperationUsingEF\obj\Debug\net6.0-windows\XAutoLeech.GeneralSettings.resources
+E:\ex\CrudOperationUsingEF\bin\Debug\net6.0-windows\Abot2.dll
+E:\ex\CrudOperationUsingEF\bin\Debug\net6.0-windows\AbotX2.dll
+E:\ex\CrudOperationUsingEF\bin\Debug\net6.0-windows\AngleSharp.dll
+E:\ex\CrudOperationUsingEF\bin\Debug\net6.0-windows\CoreCompat.Portable.Licensing.dll
+E:\ex\CrudOperationUsingEF\bin\Debug\net6.0-windows\MathNet.Numerics.dll
+E:\ex\CrudOperationUsingEF\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+E:\ex\CrudOperationUsingEF\bin\Debug\net6.0-windows\NReco.PhantomJS.dll
+E:\ex\CrudOperationUsingEF\bin\Debug\net6.0-windows\NRobotsCore.dll
+E:\ex\CrudOperationUsingEF\bin\Debug\net6.0-windows\Serilog.dll
+E:\ex\CrudOperationUsingEF\bin\Debug\net6.0-windows\Serilog.Enrichers.Thread.dll
+E:\ex\CrudOperationUsingEF\bin\Debug\net6.0-windows\Serilog.Sinks.Console.dll

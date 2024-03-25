@@ -8,27 +8,90 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using XAutoLeech.Database.EntityFramework;
+using XAutoLeech.Database.Model;
+using XAutoLeech.Repository;
 
 namespace XAutoLeech
 {
     public partial class AddNew : UserControl
     {
         private AppDbContext _dbContext;
+        private Repository<Site> _siteRepository;
+        private Repository<Category> _categoryRepository;
+        private Repository<Post> _postRepository;
 
         public AddNew()
         {
             InitializeComponent();
         }
 
-        public AddNew(AppDbContext dbContext)
+        public AddNew(AppDbContext dbContext, 
+            Repository<Site> siteRepository,
+            Repository<Category> categoryRepository,
+            Repository<Post> postRepository
+            )
         {
             InitializeComponent();
             this._dbContext = dbContext;
+            this._siteRepository = siteRepository;
+            this._categoryRepository = categoryRepository;
+            this._postRepository = postRepository;
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        private async void saveBtn_Click(object sender, EventArgs e)
         {
+            var site = new Site()
+            {
+                Title = this.SiteUrlTxt.Text,
+                ActiveForScheduling = this.ActiveForSchedulingCb.Checked,
+                CheckDuplicatePostViaContent = this.CheckDuplicatePostViaContentCb.Checked,
+                CheckDuplicatePostViaTitle = this.CheckDuplicatePostViaTitleCb.Checked,
+                CheckDuplicatePostViaUrl = this.CheckDuplicatePostViaUrlCb.Checked,
+                MaximumPagesCrawlPerCategory = (int)this.MaximumPagesCrawlPerCategoryNumeric.Value,
+                MaximumPagesCrawlPerPost = (int)this.MaximumPagesCrawlPerPostNumeric.Value,
+                HTTPUserAgent = this.HTTPUserAgentTb.Text,
+                Notes = this.NoteTb.Text
+            };
+            await this._siteRepository.AddAsync(site);
 
+            var category = new Category()
+            {
+                CategoryListPageURL = this.CategoryListPageURLTb.Text,
+                CategoryListURLSelector = this.CategoryListURLSelectorTb.Text,
+                CategoryMap = this.CategoryMapTb.Text,
+                CategoryPostURLSelector = this.CategoryPostURLSelectorTb.Text,
+                CategoryNextPageURLSelector = this.CategoryNextPageURLSelectorTb.Text,
+                SaveFeaturedImages = this.SaveFeaturedImagesCb.Checked,
+                FeaturedImageSelector = this.FeaturedImageSelectorTb.Text,
+                FindAndReplaceRawHTML = this.FindAndReplaceRawHTMLTb.Text,
+                RemoveElementAttributes = this.RemoveElementAttributesTb.Text,
+                UnnecessaryElements = this.UnnecessaryElementsTb.Text
+            };
+            await this._categoryRepository.AddAsync(category);
+
+            var post = new Post()
+            {
+                PostFormat = this.PostFormatCb.Text,
+                PostTitleSelector = this.PostTitleSelectorTb.Text,
+                PostExcerptSelector = this.PostExcerptSelectorTb.Text,
+                PostContentSelector = this.PostContentSelectorTb.Text,
+                PostTagSelector = this.PostTagSelectorTb.Text,
+                PostSlugSelector = this.PostSlugSelectorTb.Text,
+                CategoryNameSelector = this.CategoryNameSelectorTb.Text,
+                CategoryNameSeparatorSelector = this.CategoryNameSeparatorSelectorTb.Text,
+                PostDateSelector = this.PostDateSelectorTb.Text,
+                SaveMetaKeywords = this.SaveMetaKeywordsCb.Checked,
+                AddMetaKeywordsAsTag = this.AddMetaKeywordsAsTagCb.Checked,
+                SaveMetaDescription = this.SaveMetaDescriptionCb.Checked,
+                SaveFeaturedImages = this.SaveFeaturedImagesCb.Checked,
+                FeaturedImageSelector = this.FeaturedImageSelectorTb.Text,
+                PaginatePosts = this.PaginatePostsCb.Checked,
+                PostNextPageURLSelector = this.PostNextPageURLSelectorTb.Text,
+                FindAndReplaceRawHTML = this.PostFindAndReplaceRawHTMLTb.Text,
+                RemoveElementAttributes = this.PostRemoveElementAttributesTb.Text,
+                UnnecessaryElements = this.PostUnnecessaryElementsTb.Text
+            };
+            await this._postRepository.AddAsync(post);
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)

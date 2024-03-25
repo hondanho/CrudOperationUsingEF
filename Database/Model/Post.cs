@@ -19,7 +19,7 @@
         /// </summary>
         public string CategoryNameSeparatorSelector { get; set; }
         public string PostDateSelector { get; set; }
-        public string SaveMetaKeywords { get; set; }
+        public bool SaveMetaKeywords { get; set; }
         public bool AddMetaKeywordsAsTag { get; set; }
         public bool SaveMetaDescription { get; set; }
         public bool SaveFeaturedImages { get; set; }

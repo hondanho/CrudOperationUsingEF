@@ -4,17 +4,29 @@ using XAutoLeech.Database.Model;
 using XAutoLeech.Database.EntityFramework;
 using XAutoLeech.Model;
 using System.Windows.Forms;
+using XAutoLeech.Service;
+using XAutoLeech.Repository;
 
 namespace XAutoLeech
 {
     public partial class Main : Form
     {
         private readonly AppDbContext _dbContext;
+        private Repository<Site> _siteRepository;
+        private Repository<Category> _categoryRepository;
+        private Repository<Post> _postRepository;
 
-        public Main(AppDbContext dbContext)
+        public Main(AppDbContext dbContext,
+            Repository<Site> siteRepository,
+            Repository<Category> categoryRepository,
+            Repository<Post> postRepository
+            )
         {
             InitializeComponent();
             _dbContext = dbContext;
+            this._siteRepository = siteRepository;
+            this._categoryRepository = categoryRepository;
+            this._postRepository = postRepository;
         }
 
         /// <summary>
@@ -27,6 +39,7 @@ namespace XAutoLeech
             ClearData();
             SetDataInGridView();
             SetPanelView(TypeSiteEnum.AllSite);
+            //Crawler crawler = new Crawler();
         }
 
         public void SetPanelView(TypeSiteEnum typeSiteEnum)
@@ -39,7 +52,7 @@ namespace XAutoLeech
                     break;
 
                 case TypeSiteEnum.AddNew:
-                    childMain = new AddNew();
+                    childMain = new AddNew(_dbContext, this._siteRepository, this._categoryRepository, this._postRepository);
                     break;
 
                 case TypeSiteEnum.Dashboard:
