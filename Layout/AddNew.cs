@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using XAutoLeech.Database.EntityFramework;
+﻿using XAutoLeech.Database.EntityFramework;
 using XAutoLeech.Database.Model;
 using XAutoLeech.Repository;
 
@@ -25,7 +16,7 @@ namespace XAutoLeech
             InitializeComponent();
         }
 
-        public AddNew(AppDbContext dbContext, 
+        public AddNew(AppDbContext dbContext,
             Repository<Site> siteRepository,
             Repository<Category> categoryRepository,
             Repository<Post> postRepository
@@ -110,12 +101,10 @@ namespace XAutoLeech
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-
         }
 
         private void cancleBtn_Click(object sender, EventArgs e)

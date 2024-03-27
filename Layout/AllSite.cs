@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using XAutoLeech.Database.EntityFramework;
+﻿using XAutoLeech.Database.EntityFramework;
 using XAutoLeech.Database.Model;
 
 namespace XAutoLeech
@@ -27,7 +18,7 @@ namespace XAutoLeech
         {
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            dataGridView.Dock= DockStyle.Fill;
+            dataGridView.Dock = DockStyle.Fill;
             dataGridView.AutoGenerateColumns = false;
             dataGridView.DataSource = this._dbContext.Sites.ToList<Site>();
         }

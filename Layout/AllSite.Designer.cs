@@ -43,10 +43,9 @@
             this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SiteTitle,
@@ -75,10 +74,10 @@
             // 
             this.ActiveForScheduling.DataPropertyName = "ActiveForScheduling";
             this.ActiveForScheduling.HeaderText = "Active For Scheduling";
-            this.ActiveForScheduling.MinimumWidth = 8;
+            this.ActiveForScheduling.MinimumWidth = 200;
             this.ActiveForScheduling.Name = "ActiveForScheduling";
             this.ActiveForScheduling.ReadOnly = true;
-            this.ActiveForScheduling.Width = 125;
+            this.ActiveForScheduling.Width = 200;
             // 
             // UseProxy
             // 
