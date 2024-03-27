@@ -45,12 +45,15 @@ namespace XAutoLeech
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelMain.Location = new System.Drawing.Point(12, 37);
             this.PanelMain.Name = "PanelMain";
-            this.PanelMain.Size = new System.Drawing.Size(548, 286);
+            this.PanelMain.Size = new System.Drawing.Size(760, 516);
             this.PanelMain.TabIndex = 1;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.Menu;
+            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.allSitesToolStripMenuItem,
             this.addNewToolStripMenuItem,
@@ -58,10 +61,11 @@ namespace XAutoLeech
             this.generalSettingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(572, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(315, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.TabStop = true;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // allSitesToolStripMenuItem
             // 
@@ -95,7 +99,9 @@ namespace XAutoLeech
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(572, 331);
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.PanelMain);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -117,6 +123,30 @@ namespace XAutoLeech
         private ToolStripMenuItem addNewToolStripMenuItem;
         private ToolStripMenuItem dashboardToolStripMenuItem;
         private ToolStripMenuItem generalSettingsToolStripMenuItem;
+
+    }
+
+    public class MyRenderer : ToolStripProfessionalRenderer
+    {
+        public MyRenderer() : base(new MyColorTable())
+        {
+        }
+    }
+
+    public class MyColorTable : ProfessionalColorTable
+    {
+        public override Color ButtonCheckedGradientBegin
+        {
+            get { return ButtonPressedGradientBegin; }
+        }
+        public override Color ButtonCheckedGradientEnd
+        {
+            get { return ButtonPressedGradientEnd; }
+        }
+        public override Color ButtonCheckedGradientMiddle
+        {
+            get { return ButtonPressedGradientMiddle; }
+        }
     }
 }
 

@@ -50,12 +50,22 @@ namespace XAutoLeech
                 MaximumPagesCrawlPerCategory = (int)this.MaximumPagesCrawlPerCategoryNumeric.Value,
                 MaximumPagesCrawlPerPost = (int)this.MaximumPagesCrawlPerPostNumeric.Value,
                 HTTPUserAgent = this.HTTPUserAgentTb.Text,
-                Notes = this.NoteTb.Text
+                ConnectionTimeout = (int)this.connectionTimeoutNumeric.Value,
+                UseProxy = this.UseProxyCb.Checked,
+                Proxies = this.ProxiesTb.Text,
+                RandomizeProxies = this.RandomizeProxiesCb.Checked,
+                TimeInterval = (int)this.TimeIntervalNumeric.Value,
+                Notes = this.NoteTb.Text,
+                Cookie = this.CookieCb.Text,
+                ProxyRetryLimit = (int)this.ProxyRetryLimitNumeric.Value,
+                LastModified = DateTime.Now,
+                CreateTime = DateTime.Now
             };
             await this._siteRepository.AddAsync(site);
 
             var category = new Category()
             {
+                SiteID = site.Id,
                 CategoryListPageURL = this.CategoryListPageURLTb.Text,
                 CategoryListURLSelector = this.CategoryListURLSelectorTb.Text,
                 CategoryMap = this.CategoryMapTb.Text,
@@ -71,7 +81,11 @@ namespace XAutoLeech
 
             var post = new Post()
             {
+                SiteID = site.Id,
                 PostFormat = this.PostFormatCb.Text,
+                PostType = this.PostTypeCb.Text,
+                PostAuthor = this.PostAuthorTb.Text,
+                PostStatus = this.PostStatusCb.Text,
                 PostTitleSelector = this.PostTitleSelectorTb.Text,
                 PostExcerptSelector = this.PostExcerptSelectorTb.Text,
                 PostContentSelector = this.PostContentSelectorTb.Text,

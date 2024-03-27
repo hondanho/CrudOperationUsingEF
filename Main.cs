@@ -39,6 +39,8 @@ namespace XAutoLeech
             ClearData();
             SetDataInGridView();
             SetPanelView(TypeSiteEnum.AllSite);
+            //this.menuStrip1.Renderer = new MyRenderer();
+
             //Crawler crawler = new Crawler();
         }
 
@@ -186,6 +188,17 @@ namespace XAutoLeech
         private void generalSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SetPanelView(TypeSiteEnum.GeneralSettings);
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            foreach (ToolStripMenuItem item in ((ToolStrip)sender).Items)
+            {
+                if (item != e.ClickedItem)
+                    item.BackColor = Color.WhiteSmoke;
+                else
+                    item.BackColor = Color.LightGray;
+            }
         }
     }
 }

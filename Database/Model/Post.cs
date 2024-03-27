@@ -5,6 +5,9 @@
         public int Id { get; set; }
         public int SiteID { get; set; }
         public string PostFormat { get; set; }
+        public string PostStatus { get; set; }
+        public string PostType { get; set; }
+        public string PostAuthor { get; set; }
         public string PostTitleSelector { get; set; }
         /// <summary>
         /// Đoạn trích
