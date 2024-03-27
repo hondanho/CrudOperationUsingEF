@@ -918,7 +918,8 @@
             // 
             // ProxyRetryLimitNumeric
             // 
-            this.ProxyRetryLimitNumeric.Location = new System.Drawing.Point(216, 517);
+            this.ProxyRetryLimitNumeric.Location = new System.Drawing.Point(214, 619);
+            this.ProxyRetryLimitNumeric.Margin = new System.Windows.Forms.Padding(3, 3, 20, 20);
             this.ProxyRetryLimitNumeric.Name = "ProxyRetryLimitNumeric";
             this.ProxyRetryLimitNumeric.Size = new System.Drawing.Size(50, 23);
             this.ProxyRetryLimitNumeric.TabIndex = 39;
@@ -926,7 +927,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(15, 519);
+            this.label46.Location = new System.Drawing.Point(13, 621);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(97, 15);
             this.label46.TabIndex = 38;
@@ -947,8 +948,10 @@
             this.CookieCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CookieCb.Location = new System.Drawing.Point(216, 365);
+            this.CookieCb.Multiline = true;
             this.CookieCb.Name = "CookieCb";
-            this.CookieCb.Size = new System.Drawing.Size(665, 23);
+            this.CookieCb.PlaceholderText = "Parse cookies from string as: name1=value1; name2=value2;...";
+            this.CookieCb.Size = new System.Drawing.Size(665, 73);
             this.CookieCb.TabIndex = 30;
             // 
             // label43
@@ -981,7 +984,7 @@
             this.RandomizeProxiesCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RandomizeProxiesCb.AutoSize = true;
-            this.RandomizeProxiesCb.Location = new System.Drawing.Point(216, 486);
+            this.RandomizeProxiesCb.Location = new System.Drawing.Point(214, 585);
             this.RandomizeProxiesCb.Name = "RandomizeProxiesCb";
             this.RandomizeProxiesCb.Size = new System.Drawing.Size(15, 14);
             this.RandomizeProxiesCb.TabIndex = 23;
@@ -990,7 +993,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(15, 486);
+            this.label39.Location = new System.Drawing.Point(13, 584);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(107, 15);
             this.label39.TabIndex = 22;
@@ -1000,15 +1003,17 @@
             // 
             this.ProxiesTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProxiesTb.Location = new System.Drawing.Point(216, 444);
+            this.ProxiesTb.Location = new System.Drawing.Point(214, 491);
+            this.ProxiesTb.Multiline = true;
             this.ProxiesTb.Name = "ProxiesTb";
-            this.ProxiesTb.Size = new System.Drawing.Size(665, 23);
+            this.ProxiesTb.PlaceholderText = "New line-separated proxies...";
+            this.ProxiesTb.Size = new System.Drawing.Size(665, 75);
             this.ProxiesTb.TabIndex = 21;
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(15, 447);
+            this.label38.Location = new System.Drawing.Point(13, 494);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(45, 15);
             this.label38.TabIndex = 20;
@@ -1019,7 +1024,7 @@
             this.UseProxyCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.UseProxyCb.AutoSize = true;
-            this.UseProxyCb.Location = new System.Drawing.Point(216, 410);
+            this.UseProxyCb.Location = new System.Drawing.Point(214, 457);
             this.UseProxyCb.Name = "UseProxyCb";
             this.UseProxyCb.Size = new System.Drawing.Size(15, 14);
             this.UseProxyCb.TabIndex = 19;
@@ -1028,7 +1033,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(15, 409);
+            this.label37.Location = new System.Drawing.Point(13, 456);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(59, 15);
             this.label37.TabIndex = 18;
@@ -1070,6 +1075,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HTTPUserAgentTb.Location = new System.Drawing.Point(216, 324);
             this.HTTPUserAgentTb.Name = "HTTPUserAgentTb";
+            this.HTTPUserAgentTb.PlaceholderText = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
             this.HTTPUserAgentTb.Size = new System.Drawing.Size(665, 23);
             this.HTTPUserAgentTb.TabIndex = 13;
             // 
@@ -1155,6 +1161,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SiteUrlTxt.Location = new System.Drawing.Point(216, 14);
             this.SiteUrlTxt.Name = "SiteUrlTxt";
+            this.SiteUrlTxt.PlaceholderText = "https://truyenfull.vn";
             this.SiteUrlTxt.Size = new System.Drawing.Size(665, 23);
             this.SiteUrlTxt.TabIndex = 3;
             // 
