@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Abot2;
@@ -32,8 +33,8 @@ namespace XAutoLeech.Service
             //await DemoCrawlerX_PauseResumeStop(siteToCrawl);
             //await DemoCrawlerX_JavascriptRendering(siteToCrawl);
             //await DemoCrawlerX_AutoTuning(siteToCrawl);
-            await DemoCrawlerX_Throttling(siteToCrawl);
-            //await DemoParallelCrawlerEngine();
+            //await DemoCrawlerX_Throttling(siteToCrawl);
+            await DemoParallelCrawlerEngine();
         }
 
         private static async Task DemoCrawlerX_PauseResumeStop(Uri siteToCrawl)
@@ -123,8 +124,7 @@ namespace XAutoLeech.Service
             config.Accelerator = new AcceleratorConfig();
             config.Decelerator = new DeceleratorConfig();
 
-            //Now the crawl is able to "Throttle" itself if the site being crawled
-            //is showing signs of stress.
+            
             using (var crawler = new CrawlerX(config))
             {
                 crawler.PageCrawlCompleted += (sender, args) =>
@@ -140,11 +140,11 @@ namespace XAutoLeech.Service
             var siteToCrawlProvider = new SiteToCrawlProvider();
             siteToCrawlProvider.AddSitesToCrawl(new List<SiteToCrawl>
             {
-                new SiteToCrawl{ Uri = new Uri("YOURSITE1") },
-                new SiteToCrawl{ Uri = new Uri("YOURSITE2") },
-                new SiteToCrawl{ Uri = new Uri("YOURSITE3") },
-                new SiteToCrawl{ Uri = new Uri("YOURSITE4") },
-                new SiteToCrawl{ Uri = new Uri("YOURSITE5") }
+                new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/12-nu-than/") },
+                new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/chinh-phuc-gai-dep/") },
+                new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/con-duong-ba-chu/") },
+                new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/co-giao-mon-van/") },
+                new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/soi-san-moi-quyen-1/") }
             });
 
             var config = GetSafeConfig();
@@ -167,6 +167,11 @@ namespace XAutoLeech.Service
             {
                 var crawlId = Guid.NewGuid();
                 eventArgs.Crawler.CrawlBag.CrawlId = crawlId;
+                
+                eventArgs.Crawler.PageCrawlCompleted += (abotSender, abotEventArgs) =>
+                {
+                    Console.WriteLine("You have the crawled page here in abotEventArgs.CrawledPage..." + abotEventArgs.CrawledPage.Content.Text);
+                };
             };
             crawlEngine.SiteCrawlStarting += (sender, args) =>
             {
