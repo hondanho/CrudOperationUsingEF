@@ -911,7 +911,7 @@
             this.mainTab.Location = new System.Drawing.Point(4, 24);
             this.mainTab.Name = "mainTab";
             this.mainTab.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.mainTab.Size = new System.Drawing.Size(920, 923);
+            this.mainTab.Size = new System.Drawing.Size(920, 987);
             this.mainTab.TabIndex = 1;
             this.mainTab.Text = "Main";
             this.mainTab.UseVisualStyleBackColor = true;
@@ -920,7 +920,7 @@
             // 
             this.ProxyRetryLimitNumeric.Location = new System.Drawing.Point(216, 517);
             this.ProxyRetryLimitNumeric.Name = "ProxyRetryLimitNumeric";
-            this.ProxyRetryLimitNumeric.Size = new System.Drawing.Size(120, 23);
+            this.ProxyRetryLimitNumeric.Size = new System.Drawing.Size(50, 23);
             this.ProxyRetryLimitNumeric.TabIndex = 39;
             // 
             // label46
@@ -964,7 +964,7 @@
             // 
             this.TimeIntervalNumeric.Location = new System.Drawing.Point(216, 247);
             this.TimeIntervalNumeric.Name = "TimeIntervalNumeric";
-            this.TimeIntervalNumeric.Size = new System.Drawing.Size(120, 23);
+            this.TimeIntervalNumeric.Size = new System.Drawing.Size(50, 23);
             this.TimeIntervalNumeric.TabIndex = 25;
             // 
             // label40
@@ -1038,7 +1038,7 @@
             // 
             this.connectionTimeoutNumeric.Location = new System.Drawing.Point(216, 207);
             this.connectionTimeoutNumeric.Name = "connectionTimeoutNumeric";
-            this.connectionTimeoutNumeric.Size = new System.Drawing.Size(120, 23);
+            this.connectionTimeoutNumeric.Size = new System.Drawing.Size(50, 23);
             this.connectionTimeoutNumeric.TabIndex = 17;
             // 
             // label20
@@ -1054,14 +1054,14 @@
             // 
             this.MaximumPagesCrawlPerPostNumeric.Location = new System.Drawing.Point(216, 162);
             this.MaximumPagesCrawlPerPostNumeric.Name = "MaximumPagesCrawlPerPostNumeric";
-            this.MaximumPagesCrawlPerPostNumeric.Size = new System.Drawing.Size(120, 23);
+            this.MaximumPagesCrawlPerPostNumeric.Size = new System.Drawing.Size(50, 23);
             this.MaximumPagesCrawlPerPostNumeric.TabIndex = 15;
             // 
             // MaximumPagesCrawlPerCategoryNumeric
             // 
             this.MaximumPagesCrawlPerCategoryNumeric.Location = new System.Drawing.Point(216, 124);
             this.MaximumPagesCrawlPerCategoryNumeric.Name = "MaximumPagesCrawlPerCategoryNumeric";
-            this.MaximumPagesCrawlPerCategoryNumeric.Size = new System.Drawing.Size(120, 23);
+            this.MaximumPagesCrawlPerCategoryNumeric.Size = new System.Drawing.Size(50, 23);
             this.MaximumPagesCrawlPerCategoryNumeric.TabIndex = 14;
             // 
             // HTTPUserAgentTb
