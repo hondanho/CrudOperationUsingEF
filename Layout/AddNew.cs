@@ -27,6 +27,64 @@ namespace XAutoLeech
             this._siteRepository = siteRepository;
             this._categoryRepository = categoryRepository;
             this._postRepository = postRepository;
+            setShowTypeCrawler();
+        }
+
+        private void setShowTypeCrawler()
+        {
+            if (this.ListUrlRb.Checked && !this.CategorypageRb.Checked)
+            {
+                showCategoryPage(false);
+                showCrawlerUrls(true);
+            }
+            else
+            {
+                showCategoryPage(true);
+                showCrawlerUrls(false);
+            }
+        }
+
+        private void showCrawlerUrls(bool isShow)
+        {
+            if (isShow)
+            {
+                this.CrawlerUrlsTb.Show();
+                this.CrawlerUrlsLb.Show();
+            }
+            else
+            {
+                this.CrawlerUrlsTb.Hide();
+                this.CrawlerUrlsLb.Hide();
+            }
+
+        }
+
+
+        private void showCategoryPage(bool isShow)
+        {
+            if (isShow)
+            {
+                this.CategoryListPageURLLb.Show();
+                this.CategoryListPageURLTb.Show();
+                this.CategoryListURLSelectorLb.Show();
+                this.CategoryListURLSelectorTb.Show();
+                this.CategoryPostURLSelectorLb.Show();
+                this.CategoryPostURLSelectorTb.Show();
+                this.CategoryNextPageURLSelectorLb.Show();
+                this.CategoryNextPageURLSelectorTb.Show();
+            }
+            else
+            {
+                this.CategoryListPageURLLb.Hide();
+                this.CategoryListPageURLTb.Hide();
+                this.CategoryListURLSelectorLb.Hide();
+                this.CategoryListURLSelectorTb.Hide();
+                this.CategoryPostURLSelectorLb.Hide();
+                this.CategoryPostURLSelectorTb.Hide();
+                this.CategoryNextPageURLSelectorLb.Hide();
+                this.CategoryNextPageURLSelectorTb.Hide();
+            }
+
         }
 
         private async void saveBtn_Click(object sender, EventArgs e)
@@ -126,6 +184,16 @@ namespace XAutoLeech
             //newChildForm.Dock = DockStyle.Fill;
             //panel.Controls.Add(newChildForm);
             //newChildForm.Show();
+        }
+
+        private void ListUrlRb_CheckedChanged(object sender, EventArgs e)
+        {
+            setShowTypeCrawler();
+        }
+
+        private void CategorypageRb_CheckedChanged(object sender, EventArgs e)
+        {
+            setShowTypeCrawler();
         }
     }
 }

@@ -77,6 +77,8 @@
             this.PostTitleSelectorTb = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.categoryTab = new System.Windows.Forms.TabPage();
+            this.CrawlerUrlsTb = new System.Windows.Forms.RichTextBox();
+            this.CrawlerUrlsLb = new System.Windows.Forms.Label();
             this.UnnecessaryElementsTb = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.RemoveElementAttributesTb = new System.Windows.Forms.TextBox();
@@ -88,19 +90,21 @@
             this.SaveFeaturedImagesCb = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.CategoryNextPageURLSelectorTb = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.CategoryNextPageURLSelectorLb = new System.Windows.Forms.Label();
             this.CategoryPostURLSelectorTb = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.CategoryPostURLSelectorLb = new System.Windows.Forms.Label();
             this.CategoryMapTb = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.CategoryListURLSelectorTb = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.CategoryListURLSelectorLb = new System.Windows.Forms.Label();
             this.CategoryListPageURLTb = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.CategoryListPageURLLb = new System.Windows.Forms.Label();
             this.mainTab = new System.Windows.Forms.TabPage();
+            this.CategorypageRb = new System.Windows.Forms.RadioButton();
+            this.ListUrlRb = new System.Windows.Forms.RadioButton();
+            this.label48 = new System.Windows.Forms.Label();
             this.ProxyRetryLimitNumeric = new System.Windows.Forms.NumericUpDown();
             this.label46 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
             this.CookieCb = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.TimeIntervalNumeric = new System.Windows.Forms.NumericUpDown();
@@ -155,12 +159,13 @@
             // saveBtn
             // 
             this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveBtn.BackColor = System.Drawing.SystemColors.Control;
             this.saveBtn.Location = new System.Drawing.Point(749, 1054);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(85, 23);
             this.saveBtn.TabIndex = 3;
             this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.UseVisualStyleBackColor = false;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // cancleBtn
@@ -664,6 +669,8 @@
             // categoryTab
             // 
             this.categoryTab.AutoScroll = true;
+            this.categoryTab.Controls.Add(this.CrawlerUrlsTb);
+            this.categoryTab.Controls.Add(this.CrawlerUrlsLb);
             this.categoryTab.Controls.Add(this.UnnecessaryElementsTb);
             this.categoryTab.Controls.Add(this.label16);
             this.categoryTab.Controls.Add(this.RemoveElementAttributesTb);
@@ -675,15 +682,15 @@
             this.categoryTab.Controls.Add(this.SaveFeaturedImagesCb);
             this.categoryTab.Controls.Add(this.label12);
             this.categoryTab.Controls.Add(this.CategoryNextPageURLSelectorTb);
-            this.categoryTab.Controls.Add(this.label11);
+            this.categoryTab.Controls.Add(this.CategoryNextPageURLSelectorLb);
             this.categoryTab.Controls.Add(this.CategoryPostURLSelectorTb);
-            this.categoryTab.Controls.Add(this.label10);
+            this.categoryTab.Controls.Add(this.CategoryPostURLSelectorLb);
             this.categoryTab.Controls.Add(this.CategoryMapTb);
             this.categoryTab.Controls.Add(this.label9);
             this.categoryTab.Controls.Add(this.CategoryListURLSelectorTb);
-            this.categoryTab.Controls.Add(this.label8);
+            this.categoryTab.Controls.Add(this.CategoryListURLSelectorLb);
             this.categoryTab.Controls.Add(this.CategoryListPageURLTb);
-            this.categoryTab.Controls.Add(this.label7);
+            this.categoryTab.Controls.Add(this.CategoryListPageURLLb);
             this.categoryTab.Location = new System.Drawing.Point(4, 24);
             this.categoryTab.Name = "categoryTab";
             this.categoryTab.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
@@ -692,19 +699,38 @@
             this.categoryTab.Text = "Category";
             this.categoryTab.UseVisualStyleBackColor = true;
             // 
+            // CrawlerUrlsTb
+            // 
+            this.CrawlerUrlsTb.Location = new System.Drawing.Point(223, 15);
+            this.CrawlerUrlsTb.Name = "CrawlerUrlsTb";
+            this.CrawlerUrlsTb.Size = new System.Drawing.Size(497, 147);
+            this.CrawlerUrlsTb.TabIndex = 25;
+            this.CrawlerUrlsTb.Text = "";
+            // 
+            // CrawlerUrlsLb
+            // 
+            this.CrawlerUrlsLb.AutoSize = true;
+            this.CrawlerUrlsLb.Location = new System.Drawing.Point(13, 17);
+            this.CrawlerUrlsLb.Name = "CrawlerUrlsLb";
+            this.CrawlerUrlsLb.Size = new System.Drawing.Size(70, 15);
+            this.CrawlerUrlsLb.TabIndex = 24;
+            this.CrawlerUrlsLb.Text = "Crawler Urls";
+            // 
             // UnnecessaryElementsTb
             // 
             this.UnnecessaryElementsTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.UnnecessaryElementsTb.Location = new System.Drawing.Point(224, 383);
+            this.UnnecessaryElementsTb.Location = new System.Drawing.Point(224, 394);
             this.UnnecessaryElementsTb.Name = "UnnecessaryElementsTb";
             this.UnnecessaryElementsTb.Size = new System.Drawing.Size(665, 23);
             this.UnnecessaryElementsTb.TabIndex = 22;
             // 
             // label16
             // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(13, 386);
+            this.label16.Location = new System.Drawing.Point(13, 397);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(169, 15);
             this.label16.TabIndex = 21;
@@ -714,15 +740,17 @@
             // 
             this.RemoveElementAttributesTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveElementAttributesTb.Location = new System.Drawing.Point(224, 339);
+            this.RemoveElementAttributesTb.Location = new System.Drawing.Point(224, 350);
             this.RemoveElementAttributesTb.Name = "RemoveElementAttributesTb";
             this.RemoveElementAttributesTb.Size = new System.Drawing.Size(665, 23);
             this.RemoveElementAttributesTb.TabIndex = 20;
             // 
             // label15
             // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(13, 342);
+            this.label15.Location = new System.Drawing.Point(13, 353);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(145, 15);
             this.label15.TabIndex = 19;
@@ -732,15 +760,17 @@
             // 
             this.FindAndReplaceRawHTMLTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FindAndReplaceRawHTMLTb.Location = new System.Drawing.Point(224, 298);
+            this.FindAndReplaceRawHTMLTb.Location = new System.Drawing.Point(224, 309);
             this.FindAndReplaceRawHTMLTb.Name = "FindAndReplaceRawHTMLTb";
             this.FindAndReplaceRawHTMLTb.Size = new System.Drawing.Size(665, 23);
             this.FindAndReplaceRawHTMLTb.TabIndex = 18;
             // 
             // label14
             // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 301);
+            this.label14.Location = new System.Drawing.Point(13, 312);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(164, 15);
             this.label14.TabIndex = 17;
@@ -750,15 +780,17 @@
             // 
             this.FeaturedImageSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FeaturedImageSelectorTb.Location = new System.Drawing.Point(224, 256);
+            this.FeaturedImageSelectorTb.Location = new System.Drawing.Point(224, 267);
             this.FeaturedImageSelectorTb.Name = "FeaturedImageSelectorTb";
             this.FeaturedImageSelectorTb.Size = new System.Drawing.Size(665, 23);
             this.FeaturedImageSelectorTb.TabIndex = 16;
             // 
             // label13
             // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 259);
+            this.label13.Location = new System.Drawing.Point(13, 270);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(128, 15);
             this.label13.TabIndex = 15;
@@ -771,7 +803,7 @@
             this.SaveFeaturedImagesCb.AutoSize = true;
             this.SaveFeaturedImagesCb.Checked = true;
             this.SaveFeaturedImagesCb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SaveFeaturedImagesCb.Location = new System.Drawing.Point(224, 220);
+            this.SaveFeaturedImagesCb.Location = new System.Drawing.Point(224, 231);
             this.SaveFeaturedImagesCb.Name = "SaveFeaturedImagesCb";
             this.SaveFeaturedImagesCb.Size = new System.Drawing.Size(15, 14);
             this.SaveFeaturedImagesCb.TabIndex = 14;
@@ -779,8 +811,10 @@
             // 
             // label12
             // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 219);
+            this.label12.Location = new System.Drawing.Point(13, 230);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(124, 15);
             this.label12.TabIndex = 13;
@@ -790,51 +824,53 @@
             // 
             this.CategoryNextPageURLSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryNextPageURLSelectorTb.Location = new System.Drawing.Point(224, 175);
+            this.CategoryNextPageURLSelectorTb.Location = new System.Drawing.Point(224, 139);
             this.CategoryNextPageURLSelectorTb.Name = "CategoryNextPageURLSelectorTb";
             this.CategoryNextPageURLSelectorTb.Size = new System.Drawing.Size(665, 23);
             this.CategoryNextPageURLSelectorTb.TabIndex = 12;
             // 
-            // label11
+            // CategoryNextPageURLSelectorLb
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(13, 178);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(186, 15);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "Category Next Page URL Selectors";
+            this.CategoryNextPageURLSelectorLb.AutoSize = true;
+            this.CategoryNextPageURLSelectorLb.Location = new System.Drawing.Point(13, 142);
+            this.CategoryNextPageURLSelectorLb.Name = "CategoryNextPageURLSelectorLb";
+            this.CategoryNextPageURLSelectorLb.Size = new System.Drawing.Size(186, 15);
+            this.CategoryNextPageURLSelectorLb.TabIndex = 11;
+            this.CategoryNextPageURLSelectorLb.Text = "Category Next Page URL Selectors";
             // 
             // CategoryPostURLSelectorTb
             // 
             this.CategoryPostURLSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryPostURLSelectorTb.Location = new System.Drawing.Point(224, 134);
+            this.CategoryPostURLSelectorTb.Location = new System.Drawing.Point(224, 98);
             this.CategoryPostURLSelectorTb.Name = "CategoryPostURLSelectorTb";
             this.CategoryPostURLSelectorTb.Size = new System.Drawing.Size(665, 23);
             this.CategoryPostURLSelectorTb.TabIndex = 10;
             // 
-            // label10
+            // CategoryPostURLSelectorLb
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 137);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(155, 15);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Category Post URL Selectors";
+            this.CategoryPostURLSelectorLb.AutoSize = true;
+            this.CategoryPostURLSelectorLb.Location = new System.Drawing.Point(13, 101);
+            this.CategoryPostURLSelectorLb.Name = "CategoryPostURLSelectorLb";
+            this.CategoryPostURLSelectorLb.Size = new System.Drawing.Size(155, 15);
+            this.CategoryPostURLSelectorLb.TabIndex = 9;
+            this.CategoryPostURLSelectorLb.Text = "Category Post URL Selectors";
             // 
             // CategoryMapTb
             // 
             this.CategoryMapTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryMapTb.Location = new System.Drawing.Point(224, 92);
+            this.CategoryMapTb.Location = new System.Drawing.Point(224, 184);
             this.CategoryMapTb.Name = "CategoryMapTb";
             this.CategoryMapTb.Size = new System.Drawing.Size(665, 23);
             this.CategoryMapTb.TabIndex = 8;
             // 
             // label9
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 95);
+            this.label9.Location = new System.Drawing.Point(13, 187);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 15);
             this.label9.TabIndex = 7;
@@ -849,14 +885,14 @@
             this.CategoryListURLSelectorTb.Size = new System.Drawing.Size(665, 23);
             this.CategoryListURLSelectorTb.TabIndex = 6;
             // 
-            // label8
+            // CategoryListURLSelectorLb
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 55);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(150, 15);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Category List URL Selectors";
+            this.CategoryListURLSelectorLb.AutoSize = true;
+            this.CategoryListURLSelectorLb.Location = new System.Drawing.Point(13, 55);
+            this.CategoryListURLSelectorLb.Name = "CategoryListURLSelectorLb";
+            this.CategoryListURLSelectorLb.Size = new System.Drawing.Size(150, 15);
+            this.CategoryListURLSelectorLb.TabIndex = 5;
+            this.CategoryListURLSelectorLb.Text = "Category List URL Selectors";
             // 
             // CategoryListPageURLTb
             // 
@@ -867,21 +903,23 @@
             this.CategoryListPageURLTb.Size = new System.Drawing.Size(665, 23);
             this.CategoryListPageURLTb.TabIndex = 4;
             // 
-            // label7
+            // CategoryListPageURLLb
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 17);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(129, 15);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Category List Page URL";
+            this.CategoryListPageURLLb.AutoSize = true;
+            this.CategoryListPageURLLb.Location = new System.Drawing.Point(13, 17);
+            this.CategoryListPageURLLb.Name = "CategoryListPageURLLb";
+            this.CategoryListPageURLLb.Size = new System.Drawing.Size(129, 15);
+            this.CategoryListPageURLLb.TabIndex = 1;
+            this.CategoryListPageURLLb.Text = "Category List Page URL";
             // 
             // mainTab
             // 
             this.mainTab.AutoScroll = true;
+            this.mainTab.Controls.Add(this.CategorypageRb);
+            this.mainTab.Controls.Add(this.ListUrlRb);
+            this.mainTab.Controls.Add(this.label48);
             this.mainTab.Controls.Add(this.ProxyRetryLimitNumeric);
             this.mainTab.Controls.Add(this.label46);
-            this.mainTab.Controls.Add(this.label45);
             this.mainTab.Controls.Add(this.CookieCb);
             this.mainTab.Controls.Add(this.label43);
             this.mainTab.Controls.Add(this.TimeIntervalNumeric);
@@ -916,9 +954,42 @@
             this.mainTab.Text = "Main";
             this.mainTab.UseVisualStyleBackColor = true;
             // 
+            // CategorypageRb
+            // 
+            this.CategorypageRb.AutoSize = true;
+            this.CategorypageRb.Checked = true;
+            this.CategorypageRb.Location = new System.Drawing.Point(323, 85);
+            this.CategorypageRb.Name = "CategorypageRb";
+            this.CategorypageRb.Size = new System.Drawing.Size(102, 19);
+            this.CategorypageRb.TabIndex = 43;
+            this.CategorypageRb.TabStop = true;
+            this.CategorypageRb.Text = "Category Page";
+            this.CategorypageRb.UseVisualStyleBackColor = true;
+            this.CategorypageRb.CheckedChanged += new System.EventHandler(this.CategorypageRb_CheckedChanged);
+            // 
+            // ListUrlRb
+            // 
+            this.ListUrlRb.AutoSize = true;
+            this.ListUrlRb.Location = new System.Drawing.Point(214, 87);
+            this.ListUrlRb.Name = "ListUrlRb";
+            this.ListUrlRb.Size = new System.Drawing.Size(61, 19);
+            this.ListUrlRb.TabIndex = 42;
+            this.ListUrlRb.Text = "List Url";
+            this.ListUrlRb.UseVisualStyleBackColor = true;
+            this.ListUrlRb.CheckedChanged += new System.EventHandler(this.ListUrlRb_CheckedChanged);
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(13, 89);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(74, 15);
+            this.label48.TabIndex = 40;
+            this.label48.Text = "Type Crawler";
+            // 
             // ProxyRetryLimitNumeric
             // 
-            this.ProxyRetryLimitNumeric.Location = new System.Drawing.Point(214, 619);
+            this.ProxyRetryLimitNumeric.Location = new System.Drawing.Point(214, 625);
             this.ProxyRetryLimitNumeric.Margin = new System.Windows.Forms.Padding(3, 3, 20, 20);
             this.ProxyRetryLimitNumeric.Name = "ProxyRetryLimitNumeric";
             this.ProxyRetryLimitNumeric.Size = new System.Drawing.Size(50, 23);
@@ -927,27 +998,17 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(13, 621);
+            this.label46.Location = new System.Drawing.Point(13, 627);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(97, 15);
             this.label46.TabIndex = 38;
             this.label46.Text = "Proxy Retry Limit";
             // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label45.Location = new System.Drawing.Point(13, 296);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(34, 15);
-            this.label45.TabIndex = 37;
-            this.label45.Text = "FAKE";
-            // 
             // CookieCb
             // 
             this.CookieCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CookieCb.Location = new System.Drawing.Point(216, 365);
+            this.CookieCb.Location = new System.Drawing.Point(216, 371);
             this.CookieCb.Multiline = true;
             this.CookieCb.Name = "CookieCb";
             this.CookieCb.PlaceholderText = "Parse cookies from string as: name1=value1; name2=value2;...";
@@ -957,7 +1018,7 @@
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(13, 368);
+            this.label43.Location = new System.Drawing.Point(13, 374);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(44, 15);
             this.label43.TabIndex = 29;
@@ -965,7 +1026,7 @@
             // 
             // TimeIntervalNumeric
             // 
-            this.TimeIntervalNumeric.Location = new System.Drawing.Point(216, 247);
+            this.TimeIntervalNumeric.Location = new System.Drawing.Point(216, 289);
             this.TimeIntervalNumeric.Name = "TimeIntervalNumeric";
             this.TimeIntervalNumeric.Size = new System.Drawing.Size(50, 23);
             this.TimeIntervalNumeric.TabIndex = 25;
@@ -973,7 +1034,7 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(13, 247);
+            this.label40.Location = new System.Drawing.Point(13, 289);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(75, 15);
             this.label40.TabIndex = 24;
@@ -984,7 +1045,7 @@
             this.RandomizeProxiesCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RandomizeProxiesCb.AutoSize = true;
-            this.RandomizeProxiesCb.Location = new System.Drawing.Point(214, 585);
+            this.RandomizeProxiesCb.Location = new System.Drawing.Point(214, 591);
             this.RandomizeProxiesCb.Name = "RandomizeProxiesCb";
             this.RandomizeProxiesCb.Size = new System.Drawing.Size(15, 14);
             this.RandomizeProxiesCb.TabIndex = 23;
@@ -993,7 +1054,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(13, 584);
+            this.label39.Location = new System.Drawing.Point(13, 590);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(107, 15);
             this.label39.TabIndex = 22;
@@ -1003,7 +1064,7 @@
             // 
             this.ProxiesTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProxiesTb.Location = new System.Drawing.Point(214, 491);
+            this.ProxiesTb.Location = new System.Drawing.Point(214, 497);
             this.ProxiesTb.Multiline = true;
             this.ProxiesTb.Name = "ProxiesTb";
             this.ProxiesTb.PlaceholderText = "New line-separated proxies...";
@@ -1013,7 +1074,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(13, 494);
+            this.label38.Location = new System.Drawing.Point(13, 500);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(45, 15);
             this.label38.TabIndex = 20;
@@ -1024,7 +1085,7 @@
             this.UseProxyCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.UseProxyCb.AutoSize = true;
-            this.UseProxyCb.Location = new System.Drawing.Point(214, 457);
+            this.UseProxyCb.Location = new System.Drawing.Point(214, 463);
             this.UseProxyCb.Name = "UseProxyCb";
             this.UseProxyCb.Size = new System.Drawing.Size(15, 14);
             this.UseProxyCb.TabIndex = 19;
@@ -1033,7 +1094,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(13, 456);
+            this.label37.Location = new System.Drawing.Point(13, 462);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(59, 15);
             this.label37.TabIndex = 18;
@@ -1041,7 +1102,7 @@
             // 
             // connectionTimeoutNumeric
             // 
-            this.connectionTimeoutNumeric.Location = new System.Drawing.Point(216, 207);
+            this.connectionTimeoutNumeric.Location = new System.Drawing.Point(216, 249);
             this.connectionTimeoutNumeric.Name = "connectionTimeoutNumeric";
             this.connectionTimeoutNumeric.Size = new System.Drawing.Size(50, 23);
             this.connectionTimeoutNumeric.TabIndex = 17;
@@ -1049,7 +1110,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(13, 209);
+            this.label20.Location = new System.Drawing.Point(13, 251);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(116, 15);
             this.label20.TabIndex = 16;
@@ -1057,14 +1118,14 @@
             // 
             // MaximumPagesCrawlPerPostNumeric
             // 
-            this.MaximumPagesCrawlPerPostNumeric.Location = new System.Drawing.Point(216, 162);
+            this.MaximumPagesCrawlPerPostNumeric.Location = new System.Drawing.Point(216, 204);
             this.MaximumPagesCrawlPerPostNumeric.Name = "MaximumPagesCrawlPerPostNumeric";
             this.MaximumPagesCrawlPerPostNumeric.Size = new System.Drawing.Size(50, 23);
             this.MaximumPagesCrawlPerPostNumeric.TabIndex = 15;
             // 
             // MaximumPagesCrawlPerCategoryNumeric
             // 
-            this.MaximumPagesCrawlPerCategoryNumeric.Location = new System.Drawing.Point(216, 124);
+            this.MaximumPagesCrawlPerCategoryNumeric.Location = new System.Drawing.Point(216, 161);
             this.MaximumPagesCrawlPerCategoryNumeric.Name = "MaximumPagesCrawlPerCategoryNumeric";
             this.MaximumPagesCrawlPerCategoryNumeric.Size = new System.Drawing.Size(50, 23);
             this.MaximumPagesCrawlPerCategoryNumeric.TabIndex = 14;
@@ -1073,7 +1134,7 @@
             // 
             this.HTTPUserAgentTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.HTTPUserAgentTb.Location = new System.Drawing.Point(216, 324);
+            this.HTTPUserAgentTb.Location = new System.Drawing.Point(216, 330);
             this.HTTPUserAgentTb.Name = "HTTPUserAgentTb";
             this.HTTPUserAgentTb.PlaceholderText = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
             this.HTTPUserAgentTb.Size = new System.Drawing.Size(665, 23);
@@ -1082,7 +1143,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 327);
+            this.label6.Location = new System.Drawing.Point(13, 333);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 15);
             this.label6.TabIndex = 12;
@@ -1091,7 +1152,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 162);
+            this.label5.Location = new System.Drawing.Point(13, 204);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(172, 30);
             this.label5.TabIndex = 10;
@@ -1100,7 +1161,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 117);
+            this.label4.Location = new System.Drawing.Point(13, 154);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(172, 30);
             this.label4.TabIndex = 8;
@@ -1112,7 +1173,7 @@
             this.CheckDuplicatePostViaContentCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckDuplicatePostViaContentCb.AutoSize = true;
-            this.CheckDuplicatePostViaContentCb.Location = new System.Drawing.Point(354, 86);
+            this.CheckDuplicatePostViaContentCb.Location = new System.Drawing.Point(432, 124);
             this.CheckDuplicatePostViaContentCb.Name = "CheckDuplicatePostViaContentCb";
             this.CheckDuplicatePostViaContentCb.Size = new System.Drawing.Size(69, 19);
             this.CheckDuplicatePostViaContentCb.TabIndex = 7;
@@ -1125,7 +1186,7 @@
             this.CheckDuplicatePostViaTitleCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckDuplicatePostViaTitleCb.AutoSize = true;
-            this.CheckDuplicatePostViaTitleCb.Location = new System.Drawing.Point(284, 86);
+            this.CheckDuplicatePostViaTitleCb.Location = new System.Drawing.Point(323, 124);
             this.CheckDuplicatePostViaTitleCb.Name = "CheckDuplicatePostViaTitleCb";
             this.CheckDuplicatePostViaTitleCb.Size = new System.Drawing.Size(48, 19);
             this.CheckDuplicatePostViaTitleCb.TabIndex = 6;
@@ -1137,7 +1198,7 @@
             this.CheckDuplicatePostViaUrlCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CheckDuplicatePostViaUrlCb.AutoSize = true;
-            this.CheckDuplicatePostViaUrlCb.Location = new System.Drawing.Point(216, 86);
+            this.CheckDuplicatePostViaUrlCb.Location = new System.Drawing.Point(216, 124);
             this.CheckDuplicatePostViaUrlCb.Name = "CheckDuplicatePostViaUrlCb";
             this.CheckDuplicatePostViaUrlCb.Size = new System.Drawing.Size(41, 19);
             this.CheckDuplicatePostViaUrlCb.TabIndex = 5;
@@ -1149,7 +1210,7 @@
             this.ActiveForSchedulingCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ActiveForSchedulingCb.AutoSize = true;
-            this.ActiveForSchedulingCb.Location = new System.Drawing.Point(216, 54);
+            this.ActiveForSchedulingCb.Location = new System.Drawing.Point(216, 57);
             this.ActiveForSchedulingCb.Name = "ActiveForSchedulingCb";
             this.ActiveForSchedulingCb.Size = new System.Drawing.Size(15, 14);
             this.ActiveForSchedulingCb.TabIndex = 4;
@@ -1168,7 +1229,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 85);
+            this.label3.Location = new System.Drawing.Point(13, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(141, 15);
             this.label3.TabIndex = 2;
@@ -1177,7 +1238,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 53);
+            this.label2.Location = new System.Drawing.Point(13, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 15);
             this.label2.TabIndex = 1;
@@ -1277,14 +1338,14 @@
         private Label label6;
         private TextBox HTTPUserAgentTb;
         private TextBox CategoryListPageURLTb;
-        private Label label7;
-        private Label label8;
+        private Label CategoryListPageURLLb;
+        private Label CategoryListURLSelectorLb;
         private Label label9;
         private TextBox CategoryListURLSelectorTb;
-        private Label label10;
+        private Label CategoryPostURLSelectorLb;
         private TextBox CategoryMapTb;
         private TextBox CategoryPostURLSelectorTb;
-        private Label label11;
+        private Label CategoryNextPageURLSelectorLb;
         private TextBox CategoryNextPageURLSelectorTb;
         private Label label12;
         private CheckBox SaveFeaturedImagesCb;
@@ -1349,7 +1410,6 @@
         private Label label40;
         private TextBox CookieCb;
         private Label label43;
-        private Label label45;
         private Label label46;
         private NumericUpDown ProxyRetryLimitNumeric;
         private ComboBox PostStatusCb;
@@ -1358,5 +1418,10 @@
         private Label label42;
         private ComboBox PostTypeCb;
         private Label label41;
+        private Label CrawlerUrlsLb;
+        private Label label48;
+        private RadioButton CategorypageRb;
+        private RadioButton ListUrlRb;
+        private RichTextBox CrawlerUrlsTb;
     }
 }

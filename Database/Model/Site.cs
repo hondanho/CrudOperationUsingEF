@@ -8,6 +8,7 @@ namespace XAutoLeech.Database.Model
 
         public string Title { get; set; }
         public string? Url { get; set; }
+        public bool IsUrl {get;set;}
         public bool ActiveForScheduling { get; set; }
         public bool CheckDuplicatePostViaUrl { get; set; }
         public bool CheckDuplicatePostViaTitle { get; set; }
