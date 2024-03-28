@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
+using XLeech.Service;
 
 namespace XLeech
 {
@@ -45,6 +46,7 @@ namespace XLeech
             services.AddScoped<Repository<Category>>();
             services.AddScoped<Repository<Data.Entity.Site>>();
             services.AddScoped<Repository<Post>>();
+            services.AddScoped<CrawlerService>();
 
             // Add your main form
             services.AddScoped<Main>();

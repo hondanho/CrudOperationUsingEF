@@ -27,5 +27,7 @@ namespace XLeech.Data.Entity
         public string? LastUrlCollection { get; set; }
         public string? LastPostCrawl { get; set; }
         public string? Notes { get; set; }
+        public Category Category { get; set; }
+        public Post Post { get; set; }
     }
 }

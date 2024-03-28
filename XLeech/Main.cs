@@ -12,11 +12,13 @@ namespace XLeech
         private Repository<Site> _siteRepository;
         private Repository<Category> _categoryRepository;
         private Repository<Post> _postRepository;
+        private CrawlerService _crawlerService;
 
         public Main(AppDbContext dbContext,
             Repository<Site> siteRepository,
             Repository<Category> categoryRepository,
-            Repository<Post> postRepository
+            Repository<Post> postRepository,
+            CrawlerService crawlerService
             )
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace XLeech
             this._siteRepository = siteRepository;
             this._categoryRepository = categoryRepository;
             this._postRepository = postRepository;
+            this._crawlerService = crawlerService;
         }
 
         /// <summary>
@@ -197,7 +200,7 @@ namespace XLeech
 
         private void crawleNowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CrawlerService crawler = new CrawlerService();
+            _crawlerService.CrawlerAsync();
         }
     }
 }

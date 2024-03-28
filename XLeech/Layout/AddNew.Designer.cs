@@ -1136,7 +1136,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HTTPUserAgentTb.Location = new System.Drawing.Point(216, 330);
             this.HTTPUserAgentTb.Name = "HTTPUserAgentTb";
-            this.HTTPUserAgentTb.PlaceholderText = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0";
+            this.HTTPUserAgentTb.PlaceholderText = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) " +
+    "Chrome/60.0.3112.113 Safari/537.36";
             this.HTTPUserAgentTb.Size = new System.Drawing.Size(665, 23);
             this.HTTPUserAgentTb.TabIndex = 13;
             // 

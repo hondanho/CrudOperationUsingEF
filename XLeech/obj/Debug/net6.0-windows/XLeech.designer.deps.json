@@ -62,6 +62,14 @@
           }
         }
       },
+      "HtmlAgilityPack/1.11.60": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.60.0",
+            "fileVersion": "1.11.60.0"
+          }
+        }
+      },
       "MathNet.Numerics/4.15.0": {
         "runtime": {
           "lib/netstandard2.0/MathNet.Numerics.dll": {
@@ -1854,6 +1862,13 @@
       "sha512": "sha512-v5XC78yCMqaWZWDXxA48Lw5WmFASbxN5yKTPevmrEzjxCoXKpEGsQSzNYJWbBN8sweTjBlh9bLmEZuFzy//iIQ==",
       "path": "corecompat.portable.licensing/1.2.12",
       "hashPath": "corecompat.portable.licensing.1.2.12.nupkg.sha512"
+    },
+    "HtmlAgilityPack/1.11.60": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7Uzaf1Mxeuxne33LpTZfSsuRW4sRRX6FWMolOSxXcaAwcKvFevH2E+P6tb4dMWhdyUdBfi0N0yyPZ8hqodfEYg==",
+      "path": "htmlagilitypack/1.11.60",
+      "hashPath": "htmlagilitypack.1.11.60.nupkg.sha512"
     },
     "MathNet.Numerics/4.15.0": {
       "type": "package",

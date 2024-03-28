@@ -3,15 +3,24 @@ using AbotX2.Crawler;
 using AbotX2.Parallel;
 using AbotX2.Poco;
 using Serilog;
+using AngleSharp;
+using XLeech.Data.EntityFramework;
+using System.Net.Http.Headers;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using XLeech.Data.Entity;
+using AngleSharp.Dom;
 
 namespace XLeech.Service
 {
 
-    public class CrawlerService
+    public class CrawlerService: ICrawlerService
     {
-        public CrawlerService()
+        private AppDbContext _dbContext;
+
+        public CrawlerService(AppDbContext dbContext)
         {
-            CrawlerAsync();
+            this._dbContext = dbContext;
         }
 
         public async Task CrawlerAsync()
@@ -26,11 +35,11 @@ namespace XLeech.Service
             var siteToCrawl = new Uri("https://truyensextv.pro/");
 
             //Uncomment to demo major features
-            await DemoCrawlerX_PauseResumeStop(siteToCrawl);
+            //await DemoCrawlerX_PauseResumeStop(siteToCrawl);
             //await DemoCrawlerX_JavascriptRendering(siteToCrawl);
             //await DemoCrawlerX_AutoTuning(siteToCrawl);
             //await DemoCrawlerX_Throttling(siteToCrawl);
-            //await DemoParallelCrawlerEngine();
+            await DemoParallelCrawlerEngine();
         }
 
         private static async Task DemoCrawlerX_PauseResumeStop(Uri siteToCrawl)
@@ -40,7 +49,7 @@ namespace XLeech.Service
                 crawler.PageCrawlCompleted += (sender, args) =>
                 {
                     var crawlerPage = args.CrawledPage;
-                    Console.WriteLine(crawlerPage);
+                    Console.WriteLine(crawlerPage.Content.Text);
                     //Check out args.CrawledPage for any info you need
                 };
                 var crawlTask = crawler.CrawlAsync(siteToCrawl);
@@ -133,17 +142,27 @@ namespace XLeech.Service
             }
         }
 
-        private static async Task DemoParallelCrawlerEngine()
+        private async Task DemoParallelCrawlerEngine()
         {
-            var siteToCrawlProvider = new SiteToCrawlProvider();
-            siteToCrawlProvider.AddSitesToCrawl(new List<SiteToCrawl>
+            var sites = _dbContext.Sites
+                        .Include(x => x.Category)
+                        .Include(y => y.Post)
+                        .ToList();
+            List<SiteToCrawl> siteToCrawls = sites.Select(y => new SiteToCrawl
             {
-                new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/12-nu-than/") },
-                new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/chinh-phuc-gai-dep/") },
-                new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/con-duong-ba-chu/") },
-                new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/co-giao-mon-van/") },
-                new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/soi-san-moi-quyen-1/") }
-            });
+                Uri = new Uri(y.Category.Urls),
+                SiteBag = y
+            }).ToList();
+            var siteToCrawlProvider = new SiteToCrawlProvider();
+            siteToCrawlProvider.AddSitesToCrawl(siteToCrawls);
+            //siteToCrawlProvider.AddSitesToCrawl(new List<SiteToCrawl>
+            //{
+            //    new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/12-nu-than/") },
+            //    new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/chinh-phuc-gai-dep/") },
+            //    new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/con-duong-ba-chu/") },
+            //    new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/co-giao-mon-van/") },
+            //    new SiteToCrawl{ Uri = new Uri("https://truyensextv.pro/soi-san-moi-quyen-1/") }
+            //});
 
             var config = GetSafeConfig();
             config.MaxConcurrentSiteCrawls = 3;
@@ -165,9 +184,11 @@ namespace XLeech.Service
             {
                 var crawlId = Guid.NewGuid();
                 eventArgs.Crawler.CrawlBag.CrawlId = crawlId;
-
                 eventArgs.Crawler.PageCrawlCompleted += (abotSender, abotEventArgs) =>
                 {
+                    var crawledPage = abotEventArgs.CrawledPage;
+                    var siteBag = eventArgs.SiteToCrawl.SiteBag as Site;
+                    var tagTitle = crawledPage.AngleSharpHtmlDocument.QuerySelector(siteBag.Post.PostTitleSelector);
                     Console.WriteLine("You have the crawled page here in abotEventArgs.CrawledPage..." + abotEventArgs.CrawledPage.Content.Text);
                 };
             };

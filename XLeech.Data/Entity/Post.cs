@@ -32,5 +32,6 @@ namespace XLeech.Data.Entity
         public string? FindAndReplaceRawHTML { get; set; }
         public string? RemoveElementAttributes { get; set; }
         public string? UnnecessaryElements { get; set; }
+        public Site Site { get; set; }
     }
 }
