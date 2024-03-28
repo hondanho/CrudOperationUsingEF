@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "jRkzinCqOh7fixFS8XnJQa83HyfxffJ372MKR3L7Ha9eUxb3usE9vOIOGBZmXiAR8sbUT2KgD+SxaIsNghDOhQ==",
+  "success": true,
+  "projectFilePath": "E:\\ex\\CrudOperationUsingEF\\XLeech.Core\\XLeech.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\pro\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.24\\microsoft.windowsdesktop.app.ref.6.0.24.nupkg.sha512",
+    "C:\\Users\\pro\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.24\\microsoft.netcore.app.ref.6.0.24.nupkg.sha512",
+    "C:\\Users\\pro\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.24\\microsoft.aspnetcore.app.ref.6.0.24.nupkg.sha512"
+  ],
+  "logs": []
+}
