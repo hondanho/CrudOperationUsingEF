@@ -289,7 +289,7 @@
             this.PostTypeCb.Name = "PostTypeCb";
             this.PostTypeCb.Size = new System.Drawing.Size(115, 23);
             this.PostTypeCb.TabIndex = 47;
-            this.PostTypeCb.Text = "standard";
+            this.PostTypeCb.Text = "post";
             // 
             // label41
             // 

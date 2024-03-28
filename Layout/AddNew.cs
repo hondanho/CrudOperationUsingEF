@@ -32,16 +32,21 @@ namespace XAutoLeech
 
         private void setShowTypeCrawler()
         {
-            if (this.ListUrlRb.Checked && !this.CategorypageRb.Checked)
+            if (IsCrawleUrls())
             {
-                showCategoryPage(false);
                 showCrawlerUrls(true);
+                showCategoryPage(false);
             }
             else
             {
-                showCategoryPage(true);
                 showCrawlerUrls(false);
+                showCategoryPage(true);
             }
+        }
+
+        private bool IsCrawleUrls()
+        {
+            return this.ListUrlRb.Checked && !this.CategorypageRb.Checked;
         }
 
         private void showCrawlerUrls(bool isShow)
@@ -58,7 +63,6 @@ namespace XAutoLeech
             }
 
         }
-
 
         private void showCategoryPage(bool isShow)
         {
@@ -115,17 +119,26 @@ namespace XAutoLeech
             var category = new Category()
             {
                 SiteID = site.Id,
-                CategoryListPageURL = this.CategoryListPageURLTb.Text,
-                CategoryListURLSelector = this.CategoryListURLSelectorTb.Text,
+                
                 CategoryMap = this.CategoryMapTb.Text,
-                CategoryPostURLSelector = this.CategoryPostURLSelectorTb.Text,
-                CategoryNextPageURLSelector = this.CategoryNextPageURLSelectorTb.Text,
                 SaveFeaturedImages = this.SaveFeaturedImagesCb.Checked,
                 FeaturedImageSelector = this.FeaturedImageSelectorTb.Text,
                 FindAndReplaceRawHTML = this.FindAndReplaceRawHTMLTb.Text,
                 RemoveElementAttributes = this.RemoveElementAttributesTb.Text,
                 UnnecessaryElements = this.UnnecessaryElementsTb.Text
             };
+            if (IsCrawleUrls())
+            {
+                category.Urls = this.CrawlerUrlsTb.Text;
+            }
+            else
+            {
+                category.CategoryListPageURL = this.CategoryListPageURLTb.Text;
+                category.CategoryListURLSelector = this.CategoryListURLSelectorTb.Text;
+                category.CategoryPostURLSelector = this.CategoryPostURLSelectorTb.Text;
+                category.CategoryNextPageURLSelector = this.CategoryNextPageURLSelectorTb.Text;
+            }
+
             await this._categoryRepository.AddAsync(category);
 
             var post = new Post()
