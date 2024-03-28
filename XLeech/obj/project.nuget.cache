@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MzEEzhxWIC421Fd77oHR4gyj7dM5vaJ5Pktq34l+SbUcn+GCUYKYb8cPGS77ESNA0828sILj97QskdTttsnnfQ==",
+  "dgSpecHash": "9bEFAQ8Raals1JlwtzzIsvHdmwtNcYd9/lsJp9mbKh8CWcPnZJK2mvGTZVDRbzU1D5unMNd+H1HkK1ODXaTi+Q==",
   "success": true,
   "projectFilePath": "E:\\ex\\CrudOperationUsingEF\\XLeech\\XLeech.csproj",
   "expectedPackageFiles": [
@@ -44,7 +44,7 @@
     "C:\\Users\\pro\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\pro\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\pro\\.nuget\\packages\\netstandard.library\\1.6.0\\netstandard.library.1.6.0.nupkg.sha512",
-    "C:\\Users\\pro\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\pro\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\pro\\.nuget\\packages\\nreco.phantomjs\\1.0.4\\nreco.phantomjs.1.0.4.nupkg.sha512",
     "C:\\Users\\pro\\.nuget\\packages\\nrobotscore\\1.1.2\\nrobotscore.1.1.2.nupkg.sha512",
     "C:\\Users\\pro\\.nuget\\packages\\phantomjs\\2.1.1\\phantomjs.2.1.1.nupkg.sha512",
@@ -130,6 +130,7 @@
     "C:\\Users\\pro\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512",
     "C:\\Users\\pro\\.nuget\\packages\\system.xml.readerwriter\\4.0.11\\system.xml.readerwriter.4.0.11.nupkg.sha512",
     "C:\\Users\\pro\\.nuget\\packages\\system.xml.xdocument\\4.0.11\\system.xml.xdocument.4.0.11.nupkg.sha512",
+    "C:\\Users\\pro\\.nuget\\packages\\wordpresspcl\\2.0.2\\wordpresspcl.2.0.2.nupkg.sha512",
     "C:\\Users\\pro\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.24\\microsoft.windowsdesktop.app.ref.6.0.24.nupkg.sha512",
     "C:\\Users\\pro\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.24\\microsoft.netcore.app.ref.6.0.24.nupkg.sha512",
     "C:\\Users\\pro\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.24\\microsoft.aspnetcore.app.ref.6.0.24.nupkg.sha512",

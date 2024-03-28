@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.60" />
+    <PackageReference Include="AbotX" Version="2.1.12" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Extension\" />
+    <ProjectReference Include="..\XLeech.Data\XLeech.Data.csproj" />
   </ItemGroup>
 
 </Project>

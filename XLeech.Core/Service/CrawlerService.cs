@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using XLeech.Data.Entity;
 using AngleSharp.Dom;
 
-namespace XLeech.Service
+namespace XLeech.Core.Service
 {
 
     public class CrawlerService: ICrawlerService

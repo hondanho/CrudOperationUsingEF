@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XLeech.Service
+namespace XLeech.Core
 {
-    interface ICrawlerService
+    internal class Class1
     {
-        Task CrawlerAsync();
     }
 }

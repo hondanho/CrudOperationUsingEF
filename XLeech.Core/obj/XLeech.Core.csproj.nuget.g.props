@@ -13,4 +13,7 @@
     <SourceRoot Include="C:\Users\pro\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgPhantomJS Condition=" '$(PkgPhantomJS)' == '' ">C:\Users\pro\.nuget\packages\phantomjs\2.1.1</PkgPhantomJS>
+  </PropertyGroup>
 </Project>
