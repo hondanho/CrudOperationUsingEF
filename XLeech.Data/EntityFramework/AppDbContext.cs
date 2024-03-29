@@ -10,21 +10,21 @@ namespace XLeech.Data.EntityFramework
         {
         }
 
-        public virtual DbSet<Site> Sites { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<SiteConfig> Sites { get; set; }
+        public virtual DbSet<CategoryConfig> Categories { get; set; }
+        public virtual DbSet<PostConfig> Posts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Site>()
+            modelBuilder.Entity<SiteConfig>()
                 .HasOne(u => u.Category)
                 .WithOne(up => up.Site)
-                .HasForeignKey<Category>(up => up.SiteID);
+                .HasForeignKey<CategoryConfig>(up => up.SiteID);
 
-            modelBuilder.Entity<Site>()
+            modelBuilder.Entity<SiteConfig>()
                 .HasOne(u => u.Post)
                 .WithOne(up => up.Site)
-                .HasForeignKey<Post>(up => up.SiteID);
+                .HasForeignKey<PostConfig>(up => up.SiteID);
         }
     }
 }

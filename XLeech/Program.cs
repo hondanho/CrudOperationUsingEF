@@ -4,8 +4,7 @@ using XLeech.Data.EntityFramework;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using XLeech.Service;
+using XLeech.Core.Service;
 
 namespace XLeech
 {
@@ -43,9 +42,9 @@ namespace XLeech
                 options.UseSqlServer(connectionString);
             });
 
-            services.AddScoped<Repository<Category>>();
-            services.AddScoped<Repository<Data.Entity.Site>>();
-            services.AddScoped<Repository<Post>>();
+            services.AddScoped<Repository<CategoryConfig>>();
+            services.AddScoped<Repository<Data.Entity.SiteConfig>>();
+            services.AddScoped<Repository<PostConfig>>();
             services.AddScoped<CrawlerService>();
 
             // Add your main form

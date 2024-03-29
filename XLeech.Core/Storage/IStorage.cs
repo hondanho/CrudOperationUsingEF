@@ -1,12 +1,12 @@
 ﻿
-using DotnetCrawler.Data.ModelDb;
-using System.Threading.Tasks;
-using WordPressPCL;
+
+using XLeech.Core.Model;
 
 namespace XLeech.Core
 {
     public interface IStorage
     {
-        Task SyncDataBySite(SiteConfigDb siteConfig);
+        Task<bool> SavePost(PostModel post);
+        Task<bool> SaveCategory(CategoryModel category);
     }
 }

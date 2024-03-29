@@ -1,11 +1,11 @@
 ﻿
 namespace XLeech.Data.Entity
 {
-    public class Site: BaseEntity
+    public class SiteConfig: BaseEntity
     {
         public string? Title { get; set; }
         public string? Url { get; set; }
-        public bool IsUrl {get;set;}
+        public bool IsPageUrl {get;set;}
         public bool ActiveForScheduling { get; set; }
         public bool CheckDuplicatePostViaUrl { get; set; }
         public bool CheckDuplicatePostViaTitle { get; set; }
@@ -27,7 +27,7 @@ namespace XLeech.Data.Entity
         public string? LastUrlCollection { get; set; }
         public string? LastPostCrawl { get; set; }
         public string? Notes { get; set; }
-        public Category Category { get; set; }
-        public Post Post { get; set; }
+        public CategoryConfig Category { get; set; }
+        public PostConfig Post { get; set; }
     }
 }

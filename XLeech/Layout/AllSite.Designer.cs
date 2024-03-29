@@ -28,97 +28,105 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.SiteTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ActiveForScheduling = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UseProxy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LatestRun = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeInterval = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            this.SuspendLayout();
+            dataGridView = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            SiteTitle = new DataGridViewTextBoxColumn();
+            ActiveForScheduling = new DataGridViewTextBoxColumn();
+            UseProxy = new DataGridViewTextBoxColumn();
+            LatestRun = new DataGridViewTextBoxColumn();
+            TimeInterval = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+            SuspendLayout();
             // 
             // dataGridView
             // 
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SiteTitle,
-            this.ActiveForScheduling,
-            this.UseProxy,
-            this.LatestRun,
-            this.TimeInterval});
-            this.dataGridView.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
-            this.dataGridView.RowHeadersWidth = 51;
-            this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(655, 426);
-            this.dataGridView.TabIndex = 12;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView.BackgroundColor = Color.White;
+            dataGridView.BorderStyle = BorderStyle.None;
+            dataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { Id, SiteTitle, ActiveForScheduling, UseProxy, LatestRun, TimeInterval });
+            dataGridView.Location = new Point(0, 0);
+            dataGridView.Margin = new Padding(3, 4, 3, 4);
+            dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
+            dataGridView.RowHeadersWidth = 51;
+            dataGridView.RowTemplate.Height = 24;
+            dataGridView.Size = new Size(749, 568);
+            dataGridView.TabIndex = 12;
+            dataGridView.CellDoubleClick += dataGridView_CellDoubleClick;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Width = 125;
             // 
             // SiteTitle
             // 
-            this.SiteTitle.DataPropertyName = "Title";
-            this.SiteTitle.HeaderText = "Title";
-            this.SiteTitle.MinimumWidth = 6;
-            this.SiteTitle.Name = "SiteTitle";
-            this.SiteTitle.ReadOnly = true;
-            this.SiteTitle.Width = 125;
+            SiteTitle.DataPropertyName = "Title";
+            SiteTitle.HeaderText = "Title";
+            SiteTitle.MinimumWidth = 6;
+            SiteTitle.Name = "SiteTitle";
+            SiteTitle.ReadOnly = true;
+            SiteTitle.Width = 125;
             // 
             // ActiveForScheduling
             // 
-            this.ActiveForScheduling.DataPropertyName = "ActiveForScheduling";
-            this.ActiveForScheduling.HeaderText = "Active For Scheduling";
-            this.ActiveForScheduling.MinimumWidth = 200;
-            this.ActiveForScheduling.Name = "ActiveForScheduling";
-            this.ActiveForScheduling.ReadOnly = true;
-            this.ActiveForScheduling.Width = 200;
+            ActiveForScheduling.DataPropertyName = "ActiveForScheduling";
+            ActiveForScheduling.HeaderText = "Active For Scheduling";
+            ActiveForScheduling.MinimumWidth = 200;
+            ActiveForScheduling.Name = "ActiveForScheduling";
+            ActiveForScheduling.ReadOnly = true;
+            ActiveForScheduling.Width = 200;
             // 
             // UseProxy
             // 
-            this.UseProxy.DataPropertyName = "UseProxy";
-            this.UseProxy.HeaderText = "Use Proxy";
-            this.UseProxy.MinimumWidth = 6;
-            this.UseProxy.Name = "UseProxy";
-            this.UseProxy.ReadOnly = true;
-            this.UseProxy.Width = 125;
+            UseProxy.DataPropertyName = "UseProxy";
+            UseProxy.HeaderText = "Use Proxy";
+            UseProxy.MinimumWidth = 6;
+            UseProxy.Name = "UseProxy";
+            UseProxy.ReadOnly = true;
+            UseProxy.Width = 125;
             // 
             // LatestRun
             // 
-            this.LatestRun.DataPropertyName = "LatestRun";
-            this.LatestRun.HeaderText = "Latest Run";
-            this.LatestRun.MinimumWidth = 6;
-            this.LatestRun.Name = "LatestRun";
-            this.LatestRun.ReadOnly = true;
-            this.LatestRun.Width = 125;
+            LatestRun.DataPropertyName = "LatestRun";
+            LatestRun.HeaderText = "Latest Run";
+            LatestRun.MinimumWidth = 6;
+            LatestRun.Name = "LatestRun";
+            LatestRun.ReadOnly = true;
+            LatestRun.Width = 125;
             // 
             // TimeInterval
             // 
-            this.TimeInterval.DataPropertyName = "TimeInterval";
-            this.TimeInterval.HeaderText = "Time Interval";
-            this.TimeInterval.Name = "TimeInterval";
-            this.TimeInterval.ReadOnly = true;
+            TimeInterval.DataPropertyName = "TimeInterval";
+            TimeInterval.HeaderText = "Time Interval";
+            TimeInterval.MinimumWidth = 6;
+            TimeInterval.Name = "TimeInterval";
+            TimeInterval.ReadOnly = true;
+            TimeInterval.Width = 125;
             // 
             // AllSite
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView);
-            this.Name = "AllSite";
-            this.Size = new System.Drawing.Size(655, 426);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(dataGridView);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "AllSite";
+            Size = new Size(749, 568);
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
 
         private DataGridView dataGridView;
+        private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn SiteTitle;
         private DataGridViewTextBoxColumn ActiveForScheduling;
         private DataGridViewTextBoxColumn UseProxy;

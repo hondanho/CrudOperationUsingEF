@@ -1,7 +1,7 @@
 ﻿
 namespace XLeech.Data.Entity
 {
-    public class Post: BaseEntity
+    public class PostConfig: BaseEntity
     {
         public int SiteID { get; set; }
         public string? PostFormat { get; set; }
@@ -18,7 +18,7 @@ namespace XLeech.Data.Entity
         public string? PostSlugSelector { get; set; }
         public string? CategoryNameSelector { get; set; }
         /// <summary>
-        /// ngăn cách category
+        /// ngăn cách category ;
         /// </summary>
         public string? CategoryNameSeparatorSelector { get; set; }
         public string? PostDateSelector { get; set; }
@@ -32,6 +32,6 @@ namespace XLeech.Data.Entity
         public string? FindAndReplaceRawHTML { get; set; }
         public string? RemoveElementAttributes { get; set; }
         public string? UnnecessaryElements { get; set; }
-        public Site Site { get; set; }
+        public SiteConfig Site { get; set; }
     }
 }

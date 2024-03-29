@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="AbotX" Version="2.1.12" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>

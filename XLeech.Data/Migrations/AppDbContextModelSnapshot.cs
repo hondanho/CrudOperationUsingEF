@@ -22,7 +22,7 @@ namespace XLeech.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("XLeech.Data.Entity.Category", b =>
+            modelBuilder.Entity("XLeech.Data.Entity.CategoryConfig", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -74,10 +74,13 @@ namespace XLeech.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SiteID")
+                        .IsUnique();
+
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("XLeech.Data.Entity.Post", b =>
+            modelBuilder.Entity("XLeech.Data.Entity.PostConfig", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -162,10 +165,13 @@ namespace XLeech.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SiteID")
+                        .IsUnique();
+
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("XLeech.Data.Entity.Site", b =>
+            modelBuilder.Entity("XLeech.Data.Entity.SiteConfig", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -197,7 +203,7 @@ namespace XLeech.Data.Migrations
                     b.Property<string>("HTTPUserAgent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsUrl")
+                    b.Property<bool>("IsPageUrl")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastPostCrawl")
@@ -245,6 +251,37 @@ namespace XLeech.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sites");
+                });
+
+            modelBuilder.Entity("XLeech.Data.Entity.CategoryConfig", b =>
+                {
+                    b.HasOne("XLeech.Data.Entity.SiteConfig", "Site")
+                        .WithOne("Category")
+                        .HasForeignKey("XLeech.Data.Entity.CategoryConfig", "SiteID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Site");
+                });
+
+            modelBuilder.Entity("XLeech.Data.Entity.PostConfig", b =>
+                {
+                    b.HasOne("XLeech.Data.Entity.SiteConfig", "Site")
+                        .WithOne("Post")
+                        .HasForeignKey("XLeech.Data.Entity.PostConfig", "SiteID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Site");
+                });
+
+            modelBuilder.Entity("XLeech.Data.Entity.SiteConfig", b =>
+                {
+                    b.Navigation("Category")
+                        .IsRequired();
+
+                    b.Navigation("Post")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

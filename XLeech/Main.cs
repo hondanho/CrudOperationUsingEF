@@ -1,23 +1,25 @@
-﻿using XLeech.Data.Entity;
+﻿using System.Runtime.CompilerServices;
+using System.Security.Policy;
+using XLeech.Core.Service;
+using XLeech.Data.Entity;
 using XLeech.Data.EntityFramework;
 using XLeech.Data.Repository;
 using XLeech.Model;
-using XLeech.Service;
 
 namespace XLeech
 {
     public partial class Main : Form
     {
         private readonly AppDbContext _dbContext;
-        private Repository<Site> _siteRepository;
-        private Repository<Category> _categoryRepository;
-        private Repository<Post> _postRepository;
+        private Repository<SiteConfig> _siteRepository;
+        private Repository<CategoryConfig> _categoryRepository;
+        private Repository<PostConfig> _postRepository;
         private CrawlerService _crawlerService;
 
         public Main(AppDbContext dbContext,
-            Repository<Site> siteRepository,
-            Repository<Category> categoryRepository,
-            Repository<Post> postRepository,
+            Repository<SiteConfig> siteRepository,
+            Repository<CategoryConfig> categoryRepository,
+            Repository<PostConfig> postRepository,
             CrawlerService crawlerService
             )
         {
@@ -38,38 +40,52 @@ namespace XLeech
         {
             ClearData();
             SetDataInGridView();
-            SetPanelView(TypeSiteEnum.AllSite);
+            SetPanelView(PageTypeEnum.ListSite);
         }
 
-        public void SetPanelView(TypeSiteEnum typeSiteEnum)
+        public void SetPanelView(PageTypeEnum pageType, int siteId = 0)
         {
             var childMain = new UserControl();
-            switch (typeSiteEnum)
+
+            if (pageType == PageTypeEnum.ListSite)
             {
-                case TypeSiteEnum.AllSite:
-                    childMain = new AllSite(_dbContext);
-                    break;
-
-                case TypeSiteEnum.AddNew:
-                    childMain = new AddNew(_dbContext, this._siteRepository, this._categoryRepository, this._postRepository);
-                    break;
-
-                case TypeSiteEnum.Dashboard:
-                    childMain = new Dashboard();
-                    break;
-
-                case TypeSiteEnum.GeneralSettings:
-                    childMain = new GeneralSettings();
-                    break;
-
-                default:
-                    break;
+                var allSite = new AllSite(_dbContext);
+                allSite.SetCallback(ViewSiteDetail);
+                childMain = allSite;
             }
 
-            childMain.Dock = DockStyle.Fill;
+            if (pageType == PageTypeEnum.AddNewSite || pageType == PageTypeEnum.EditSite)
+            {
+                var siteDetail = new SiteDetail(
+                        _dbContext, 
+                        this._siteRepository, 
+                        this._categoryRepository, 
+                        this._postRepository
+                    );
+                siteDetail.setViewEditSite(siteId);
+                siteDetail.SetCallback(BackToListSite);
+                childMain = siteDetail;
+            }
+
+            if (pageType == PageTypeEnum.Dashboard)
+            {
+                childMain = new Dashboard();
+            }
+
+            if (pageType == PageTypeEnum.GeneralSettings)
+            {
+                childMain = new GeneralSettings();
+            }
+
+            AddUserControlToPanelView(childMain);
+        }
+
+        private void AddUserControlToPanelView(UserControl userControl)
+        {
+            userControl.Dock = DockStyle.Fill;
             this.PanelMain.Controls.Clear();
-            this.PanelMain.Controls.Add(childMain);
-            childMain.Show();
+            this.PanelMain.Controls.Add(userControl);
+            userControl.Show();
         }
 
         /// <summary>
@@ -169,22 +185,22 @@ namespace XLeech
 
         private void allSitesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SetPanelView(TypeSiteEnum.AllSite);
+            SetPanelView(PageTypeEnum.ListSite);
         }
 
         private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SetPanelView(TypeSiteEnum.AddNew);
+            SetPanelView(PageTypeEnum.AddNewSite);
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SetPanelView(TypeSiteEnum.Dashboard);
+            SetPanelView(PageTypeEnum.Dashboard);
         }
 
         private void generalSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SetPanelView(TypeSiteEnum.GeneralSettings);
+            SetPanelView(PageTypeEnum.GeneralSettings);
         }
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -202,5 +218,18 @@ namespace XLeech
         {
             _crawlerService.CrawlerAsync();
         }
+
+        private void ViewSiteDetail(int siteId)
+        {
+            SetPanelView(PageTypeEnum.EditSite, siteId);
+        }
+
+        private void BackToListSite()
+        {
+            SetPanelView(PageTypeEnum.ListSite);
+        }
     }
+
+    public delegate void ShowDetailDelegate(int siteId);
+    public delegate void BackDelegate();
 }

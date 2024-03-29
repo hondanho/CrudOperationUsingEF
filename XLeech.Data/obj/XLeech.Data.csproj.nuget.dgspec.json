@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ex\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj": {}
+    "D:\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj": {}
   },
   "projects": {
-    "E:\\ex\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj": {
+    "D:\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ex\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj",
+        "projectUniqueName": "D:\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj",
         "projectName": "XLeech.Data",
-        "projectPath": "E:\\ex\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj",
-        "packagesPath": "C:\\Users\\pro\\.nuget\\packages\\",
-        "outputPath": "E:\\ex\\CrudOperationUsingEF\\XLeech.Data\\obj\\",
+        "projectPath": "D:\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj",
+        "packagesPath": "C:\\Users\\iONAH\\.nuget\\packages\\",
+        "outputPath": "D:\\CrudOperationUsingEF\\XLeech.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\pro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\iONAH\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -79,26 +79,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.24, 6.0.24]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.24, 6.0.24]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.24, 6.0.24]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

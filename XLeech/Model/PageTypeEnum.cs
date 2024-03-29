@@ -2,10 +2,11 @@
 
 namespace XLeech.Model
 {
-    public enum TypeSiteEnum
+    public enum PageTypeEnum
     {
-        AllSite,
-        AddNew,
+        ListSite,
+        AddNewSite,
+        EditSite,
         Dashboard,
         GeneralSettings,
         Run

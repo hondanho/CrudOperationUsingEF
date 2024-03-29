@@ -187,7 +187,7 @@ namespace XLeech.Core.Service
                 eventArgs.Crawler.PageCrawlCompleted += (abotSender, abotEventArgs) =>
                 {
                     var crawledPage = abotEventArgs.CrawledPage;
-                    var siteBag = eventArgs.SiteToCrawl.SiteBag as Site;
+                    var siteBag = eventArgs.SiteToCrawl.SiteBag as SiteConfig;
                     var tagTitle = crawledPage.AngleSharpHtmlDocument.QuerySelector(siteBag.Post.PostTitleSelector);
                     Console.WriteLine("You have the crawled page here in abotEventArgs.CrawledPage..." + abotEventArgs.CrawledPage.Content.Text);
                 };

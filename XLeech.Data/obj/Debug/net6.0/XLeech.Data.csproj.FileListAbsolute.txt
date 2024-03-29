@@ -26,3 +26,17 @@ E:\ex\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\refint\XLeech.Data.dll
 E:\ex\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\XLeech.Data.pdb
 E:\ex\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\XLeech.Data.genruntimeconfig.cache
 E:\ex\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\ref\XLeech.Data.dll
+D:\CrudOperationUsingEF\XLeech.Data\bin\Debug\net6.0\XLeech.Data.deps.json
+D:\CrudOperationUsingEF\XLeech.Data\bin\Debug\net6.0\XLeech.Data.runtimeconfig.json
+D:\CrudOperationUsingEF\XLeech.Data\bin\Debug\net6.0\XLeech.Data.dll
+D:\CrudOperationUsingEF\XLeech.Data\bin\Debug\net6.0\XLeech.Data.pdb
+D:\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\XLeech.Data.csproj.AssemblyReference.cache
+D:\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\XLeech.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\XLeech.Data.AssemblyInfoInputs.cache
+D:\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\XLeech.Data.AssemblyInfo.cs
+D:\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\XLeech.Data.csproj.CoreCompileInputs.cache
+D:\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\XLeech.Data.dll
+D:\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\refint\XLeech.Data.dll
+D:\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\XLeech.Data.pdb
+D:\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\XLeech.Data.genruntimeconfig.cache
+D:\CrudOperationUsingEF\XLeech.Data\obj\Debug\net6.0\ref\XLeech.Data.dll

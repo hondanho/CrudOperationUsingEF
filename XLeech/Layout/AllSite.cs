@@ -6,6 +6,7 @@ namespace XLeech
     public partial class AllSite : UserControl
     {
         private readonly AppDbContext _dbContext;
+        public ShowDetailDelegate _showDetailDelegate;
 
         public AllSite(AppDbContext dbContext)
         {
@@ -20,7 +21,22 @@ namespace XLeech
             dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             dataGridView.Dock = DockStyle.Fill;
             dataGridView.AutoGenerateColumns = false;
-            dataGridView.DataSource = this._dbContext.Sites.ToList<Site>();
+            dataGridView.DataSource = this._dbContext.Sites.ToList<SiteConfig>();
         }
+
+        public void SetCallback(ShowDetailDelegate showDetailDelegate)
+        {
+            _showDetailDelegate = showDetailDelegate;
+        }
+
+        private void dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var siteId = Convert.ToInt32(dataGridView.CurrentRow.Cells["Id"].Value);
+            _showDetailDelegate(siteId);
+        }
+
+
     }
+
 }
+

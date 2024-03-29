@@ -1,7 +1,7 @@
 ﻿
 namespace XLeech.Data.Entity
 {
-    public class Category: BaseEntity
+    public class CategoryConfig: BaseEntity
     {
         public int SiteID { get; set; }
         public string? CategoryListPageURL { get; set; }
@@ -15,6 +15,6 @@ namespace XLeech.Data.Entity
         public string? FindAndReplaceRawHTML { get; set; }
         public string? RemoveElementAttributes { get; set; }
         public string? UnnecessaryElements { get; set; }
-        public Site Site { get; set; }
+        public SiteConfig Site { get; set; }
     }
 }

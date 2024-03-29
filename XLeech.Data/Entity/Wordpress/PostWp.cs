@@ -6,7 +6,7 @@ using WordPressPCL.Models;
 
 namespace XLeech.Data.Entity.Wordpress
 {
-    public class PostWp : Post
+    public class PostWp : PostConfig
     {
         //public List<string> Author { get; set; }
         //public List<string> AlternativeName { get; set; }
