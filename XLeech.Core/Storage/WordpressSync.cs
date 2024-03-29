@@ -10,7 +10,7 @@ using WordPressPCL.Models;
 
 namespace XLeech.Core
 {
-    public class WordpressSync : IWordpressSync
+    public class WordpressSync : IStorage
     {
         private string wordpressUriApi { get; set; }
         private string wordpressUserName { get; set; }

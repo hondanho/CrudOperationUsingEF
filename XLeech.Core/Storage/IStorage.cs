@@ -5,7 +5,7 @@ using WordPressPCL;
 
 namespace XLeech.Core
 {
-    public interface IWordpressSync
+    public interface IStorage
     {
         Task SyncDataBySite(SiteConfigDb siteConfig);
     }
