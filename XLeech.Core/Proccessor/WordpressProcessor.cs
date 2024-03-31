@@ -12,22 +12,20 @@ using XLeech.Core.Model;
 
 namespace XLeech.Core
 {
-    public class Wordpress : IStorage
+    public class WordpressProcessor : IProccessor
     {
         private WordPressClient _wordPressClient { get; set; }
 
-        public Wordpress(string uriApi, string userName, string password)
+        public WordpressProcessor(string uriApi, string userName, string password)
         {
             _wordPressClient = new WordPressClient(uriApi);
             _wordPressClient.Auth.UseBasicAuth(userName, password);
         }
 
-        public Task<bool> SavePost(PostModel post)
-        {
-            return Task.FromResult(true);
-        }
+        Task<CategoryModel> GetCategory(IHtmlDocument document, SiteConfig siteConfig);
+        public
 
-        public Task<bool> SaveCategory(CategoryModel post)
+        public Task<bool> IsExistCategory(CategoryModel post)
         {
             return Task.FromResult(true);
         }
@@ -38,6 +36,16 @@ namespace XLeech.Core
         }
 
         public Task<bool> IsExistCategory(CategoryModel post)
+        {
+            return Task.FromResult(true);
+        }
+
+        public Task<bool> SavePost(PostModel post)
+        {
+            return Task.FromResult(true);
+        }
+
+        public Task<bool> SaveCategory(CategoryModel post)
         {
             return Task.FromResult(true);
         }
