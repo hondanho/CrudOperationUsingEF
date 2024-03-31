@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            siteNamTxb = new TextBox();
+            NameTb = new TextBox();
             saveBtn = new Button();
             cancleBtn = new Button();
             postTab = new TabPage();
@@ -100,7 +100,7 @@
             CategoryListPageURLTb = new TextBox();
             CategoryListPageURLLb = new Label();
             mainTab = new TabPage();
-            CategorypageRb = new RadioButton();
+            CategoryPageRb = new RadioButton();
             ListUrlRb = new RadioButton();
             label48 = new Label();
             ProxyRetryLimitNumeric = new NumericUpDown();
@@ -127,7 +127,7 @@
             CheckDuplicatePostViaTitleCb = new CheckBox();
             CheckDuplicatePostViaUrlCb = new CheckBox();
             ActiveForSchedulingCb = new CheckBox();
-            SiteUrlTxt = new TextBox();
+            UrlTxt = new TextBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -146,15 +146,15 @@
             noteTab.SuspendLayout();
             SuspendLayout();
             // 
-            // siteNamTxb
+            // NameTb
             // 
-            siteNamTxb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            siteNamTxb.Location = new Point(1, 4);
-            siteNamTxb.Margin = new Padding(3, 4, 3, 4);
-            siteNamTxb.Name = "siteNamTxb";
-            siteNamTxb.PlaceholderText = "Enter site name here";
-            siteNamTxb.Size = new Size(1055, 27);
-            siteNamTxb.TabIndex = 2;
+            NameTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            NameTb.Location = new Point(1, 4);
+            NameTb.Margin = new Padding(3, 4, 3, 4);
+            NameTb.Name = "NameTb";
+            NameTb.PlaceholderText = "Enter site name here";
+            NameTb.Size = new Size(1055, 27);
+            NameTb.TabIndex = 2;
             // 
             // saveBtn
             // 
@@ -167,7 +167,6 @@
             saveBtn.TabIndex = 3;
             saveBtn.Text = "Save";
             saveBtn.UseVisualStyleBackColor = false;
-            saveBtn.Click += editBtn_Click;
             // 
             // cancleBtn
             // 
@@ -255,9 +254,9 @@
             label44.AutoSize = true;
             label44.Location = new Point(15, 184);
             label44.Name = "label44";
-            label44.Size = new Size(80, 20);
+            label44.Size = new Size(49, 20);
             label44.TabIndex = 50;
-            label44.Text = "Post Status";
+            label44.Text = "Status";
             // 
             // PostAuthorTb
             // 
@@ -274,9 +273,9 @@
             label42.AutoSize = true;
             label42.Location = new Point(15, 129);
             label42.Name = "label42";
-            label42.Size = new Size(85, 20);
+            label42.Size = new Size(54, 20);
             label42.TabIndex = 48;
-            label42.Text = "Post Author";
+            label42.Text = "Author";
             // 
             // PostTypeCb
             // 
@@ -296,9 +295,9 @@
             label41.AutoSize = true;
             label41.Location = new Point(15, 73);
             label41.Name = "label41";
-            label41.Size = new Size(71, 20);
+            label41.Size = new Size(40, 20);
             label41.TabIndex = 46;
-            label41.Text = "Post Type";
+            label41.Text = "Type";
             // 
             // PaginatePostsCb
             // 
@@ -557,9 +556,9 @@
             label23.AutoSize = true;
             label23.Location = new Point(15, 461);
             label23.Name = "label23";
-            label23.Size = new Size(211, 20);
+            label23.Size = new Size(180, 20);
             label23.TabIndex = 18;
-            label23.Text = "Post Slug (Permalink) Selectors";
+            label23.Text = "Slug (Permalink) Selectors";
             // 
             // PostSlugSelectorTb
             // 
@@ -575,9 +574,9 @@
             label22.AutoSize = true;
             label22.Location = new Point(15, 412);
             label22.Name = "label22";
-            label22.Size = new Size(127, 20);
+            label22.Size = new Size(96, 20);
             label22.TabIndex = 16;
-            label22.Text = "Post Tag Selectors";
+            label22.Text = "Tag Selectors";
             // 
             // PostTagSelectorTb
             // 
@@ -593,9 +592,9 @@
             label21.AutoSize = true;
             label21.Location = new Point(15, 351);
             label21.Name = "label21";
-            label21.Size = new Size(156, 20);
+            label21.Size = new Size(125, 20);
             label21.TabIndex = 14;
-            label21.Text = "Post Content Selectors";
+            label21.Text = "Content Selectors";
             // 
             // PostContentSelectorTb
             // 
@@ -611,9 +610,9 @@
             label19.AutoSize = true;
             label19.Location = new Point(15, 296);
             label19.Name = "label19";
-            label19.Size = new Size(153, 20);
+            label19.Size = new Size(122, 20);
             label19.TabIndex = 10;
-            label19.Text = "Post Excerpt Selectors";
+            label19.Text = "Excerpt Selectors";
             // 
             // PostExcerptSelectorTb
             // 
@@ -629,9 +628,9 @@
             label18.AutoSize = true;
             label18.Location = new Point(15, 240);
             label18.Name = "label18";
-            label18.Size = new Size(133, 20);
+            label18.Size = new Size(102, 20);
             label18.TabIndex = 8;
-            label18.Text = "Post Title Selectors";
+            label18.Text = "Title Selectors";
             // 
             // PostFormatCb
             // 
@@ -660,9 +659,9 @@
             label17.AutoSize = true;
             label17.Location = new Point(15, 21);
             label17.Name = "label17";
-            label17.Size = new Size(87, 20);
+            label17.Size = new Size(56, 20);
             label17.TabIndex = 2;
-            label17.Text = "Post Format";
+            label17.Text = "Format";
             // 
             // categoryTab
             // 
@@ -909,7 +908,7 @@
             // mainTab
             // 
             mainTab.AutoScroll = true;
-            mainTab.Controls.Add(CategorypageRb);
+            mainTab.Controls.Add(CategoryPageRb);
             mainTab.Controls.Add(ListUrlRb);
             mainTab.Controls.Add(label48);
             mainTab.Controls.Add(ProxyRetryLimitNumeric);
@@ -936,7 +935,7 @@
             mainTab.Controls.Add(CheckDuplicatePostViaTitleCb);
             mainTab.Controls.Add(CheckDuplicatePostViaUrlCb);
             mainTab.Controls.Add(ActiveForSchedulingCb);
-            mainTab.Controls.Add(SiteUrlTxt);
+            mainTab.Controls.Add(UrlTxt);
             mainTab.Controls.Add(label3);
             mainTab.Controls.Add(label2);
             mainTab.Controls.Add(label1);
@@ -949,19 +948,19 @@
             mainTab.Text = "Main";
             mainTab.UseVisualStyleBackColor = true;
             // 
-            // CategorypageRb
+            // CategoryPageRb
             // 
-            CategorypageRb.AutoSize = true;
-            CategorypageRb.Checked = true;
-            CategorypageRb.Location = new Point(369, 113);
-            CategorypageRb.Margin = new Padding(3, 4, 3, 4);
-            CategorypageRb.Name = "CategorypageRb";
-            CategorypageRb.Size = new Size(126, 24);
-            CategorypageRb.TabIndex = 43;
-            CategorypageRb.TabStop = true;
-            CategorypageRb.Text = "Category Page";
-            CategorypageRb.UseVisualStyleBackColor = true;
-            CategorypageRb.CheckedChanged += CategorypageRb_CheckedChanged;
+            CategoryPageRb.AutoSize = true;
+            CategoryPageRb.Checked = true;
+            CategoryPageRb.Location = new Point(369, 113);
+            CategoryPageRb.Margin = new Padding(3, 4, 3, 4);
+            CategoryPageRb.Name = "CategoryPageRb";
+            CategoryPageRb.Size = new Size(126, 24);
+            CategoryPageRb.TabIndex = 43;
+            CategoryPageRb.TabStop = true;
+            CategoryPageRb.Text = "Category Page";
+            CategoryPageRb.UseVisualStyleBackColor = true;
+            CategoryPageRb.CheckedChanged += CategoryPageRb_CheckedChanged;
             // 
             // ListUrlRb
             // 
@@ -1215,15 +1214,15 @@
             ActiveForSchedulingCb.TabIndex = 4;
             ActiveForSchedulingCb.UseVisualStyleBackColor = true;
             // 
-            // SiteUrlTxt
+            // UrlTxt
             // 
-            SiteUrlTxt.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            SiteUrlTxt.Location = new Point(247, 19);
-            SiteUrlTxt.Margin = new Padding(3, 4, 3, 4);
-            SiteUrlTxt.Name = "SiteUrlTxt";
-            SiteUrlTxt.PlaceholderText = "https://truyenfull.vn";
-            SiteUrlTxt.Size = new Size(759, 27);
-            SiteUrlTxt.TabIndex = 3;
+            UrlTxt.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            UrlTxt.Location = new Point(247, 19);
+            UrlTxt.Margin = new Padding(3, 4, 3, 4);
+            UrlTxt.Name = "UrlTxt";
+            UrlTxt.PlaceholderText = "https://truyenfull.vn";
+            UrlTxt.Size = new Size(759, 27);
+            UrlTxt.TabIndex = 3;
             // 
             // label3
             // 
@@ -1248,9 +1247,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(15, 23);
             label1.Name = "label1";
-            label1.Size = new Size(57, 20);
+            label1.Size = new Size(28, 20);
             label1.TabIndex = 0;
-            label1.Text = "Site Url";
+            label1.Text = "Url";
             // 
             // addnewTab
             // 
@@ -1294,7 +1293,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(cancleBtn);
             Controls.Add(saveBtn);
-            Controls.Add(siteNamTxb);
+            Controls.Add(NameTb);
             Controls.Add(addnewTab);
             Margin = new Padding(3, 4, 3, 4);
             Name = "SiteDetail";
@@ -1420,8 +1419,12 @@
         private Label label41;
         private Label CrawlerUrlsLb;
         private Label label48;
-        private RadioButton CategorypageRb;
+        private RadioButton CategoryPageRb;
         private RadioButton ListUrlRb;
         private RichTextBox CrawlerUrlsTb;
+        private TextBox UrlTxt;
+        private TextBox NamTxb;
+        private TextBox NamTb;
+        private TextBox NameTb;
     }
 }

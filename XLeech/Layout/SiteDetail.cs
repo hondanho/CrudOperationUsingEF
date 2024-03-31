@@ -28,7 +28,7 @@ namespace XLeech
             this._postRepository = postRepository;
 
             // default create site
-            setViewCreateSite();
+            //setViewCreateSite();
         }
 
         public void SetCallback(Action backToListSite)
@@ -36,7 +36,7 @@ namespace XLeech
             _backToListSite = backToListSite;
         }
 
-        private void setViewCreateSite()
+        public void setViewCreateSite()
         {
             this.saveBtn.Text = ButtonNameConsts.Create;
             this.saveBtn.Click += createBtn_Click;
@@ -47,7 +47,6 @@ namespace XLeech
         public void setViewEditSite(int siteId)
         {
             this.saveBtn.Text = ButtonNameConsts.Edit;
-            this.saveBtn.Click -= createBtn_Click;
             this.saveBtn.Click += editBtn_Click;
 
             var site = _dbContext.Sites
@@ -59,8 +58,11 @@ namespace XLeech
             if (site != null)
             {
                 // site
-                this.SiteUrlTxt.Text = site.Title;
+                this.NameTb.Text = site.Name;
+                this.UrlTxt.Text = site.Url;
                 this.ActiveForSchedulingCb.Checked = site.ActiveForScheduling;
+                this.CategoryPageRb.Checked = !site.IsPageUrl;
+                this.ListUrlRb.Checked = site.IsPageUrl;
                 this.CheckDuplicatePostViaContentCb.Checked = site.CheckDuplicatePostViaContent;
                 this.CheckDuplicatePostViaTitleCb.Checked = site.CheckDuplicatePostViaTitle;
                 this.CheckDuplicatePostViaUrlCb.Checked = site.CheckDuplicatePostViaUrl;
@@ -75,8 +77,6 @@ namespace XLeech
                 this.NoteTb.Text = site.Notes;
                 this.CookieCb.Text = site.Cookie;
                 this.ProxyRetryLimitNumeric.Value = site.ProxyRetryLimit;
-                this.CategorypageRb.Checked = !site.IsPageUrl;
-                this.ListUrlRb.Checked = site.IsPageUrl;
 
                 // category
                 this.CategoryMapTb.Text = site.Category.CategoryMap;
@@ -107,8 +107,8 @@ namespace XLeech
                 this.SaveMetaKeywordsCb.Checked = site.Post.SaveMetaKeywords;
                 this.AddMetaKeywordsAsTagCb.Checked = site.Post.AddMetaKeywordsAsTag;
                 this.SaveMetaDescriptionCb.Checked = site.Post.SaveMetaDescription;
-                this.SaveFeaturedImagesCb.Checked = site.Post.SaveFeaturedImages;
-                this.FeaturedImageSelectorTb.Text = site.Post.FeaturedImageSelector;
+                this.SaveFeaturedImagesPostCb.Checked = site.Post.SaveFeaturedImages;
+                this.PostFeaturedImageSelectorTb.Text = site.Post.FeaturedImageSelector;
                 this.PaginatePostsCb.Checked = site.Post.PaginatePosts;
                 this.PostNextPageURLSelectorTb.Text = site.Post.PostNextPageURLSelector;
                 this.PostFindAndReplaceRawHTMLTb.Text = site.Post.FindAndReplaceRawHTML;
@@ -135,7 +135,7 @@ namespace XLeech
 
         private bool IsCrawleUrls()
         {
-            return this.ListUrlRb.Checked && !this.CategorypageRb.Checked;
+            return this.ListUrlRb.Checked && !this.CategoryPageRb.Checked;
         }
 
         private void showCrawlerUrls(bool isShow)
@@ -236,15 +236,17 @@ namespace XLeech
             setShowTypeCrawler();
         }
 
-        private void CategorypageRb_CheckedChanged(object sender, EventArgs e)
+        private void CategoryPageRb_CheckedChanged(object sender, EventArgs e)
         {
             setShowTypeCrawler();
         }
 
         private SiteConfig SetSiteConfig(SiteConfig siteConfig)
         {
-            siteConfig.Title = this.SiteUrlTxt.Text;
+            siteConfig.Name = this.NameTb.Text;
+            siteConfig.Url = this.UrlTxt.Text;
             siteConfig.ActiveForScheduling = this.ActiveForSchedulingCb.Checked;
+            siteConfig.IsPageUrl = IsCrawleUrls();
             siteConfig.CheckDuplicatePostViaContent = this.CheckDuplicatePostViaContentCb.Checked;
             siteConfig.CheckDuplicatePostViaTitle = this.CheckDuplicatePostViaTitleCb.Checked;
             siteConfig.CheckDuplicatePostViaUrl = this.CheckDuplicatePostViaUrlCb.Checked;
@@ -270,7 +272,7 @@ namespace XLeech
             categoryConfig.FindAndReplaceRawHTML = this.FindAndReplaceRawHTMLTb.Text;
             categoryConfig.RemoveElementAttributes = this.RemoveElementAttributesTb.Text;
             categoryConfig.UnnecessaryElements = this.UnnecessaryElementsTb.Text;
-            
+
             if (IsCrawleUrls())
             {
                 categoryConfig.Urls = this.CrawlerUrlsTb.Text;
@@ -303,8 +305,8 @@ namespace XLeech
             postConfig.SaveMetaKeywords = this.SaveMetaKeywordsCb.Checked;
             postConfig.AddMetaKeywordsAsTag = this.AddMetaKeywordsAsTagCb.Checked;
             postConfig.SaveMetaDescription = this.SaveMetaDescriptionCb.Checked;
-            postConfig.SaveFeaturedImages = this.SaveFeaturedImagesCb.Checked;
-            postConfig.FeaturedImageSelector = this.FeaturedImageSelectorTb.Text;
+            postConfig.SaveFeaturedImages = this.SaveFeaturedImagesPostCb.Checked;
+            postConfig.FeaturedImageSelector = this.PostFeaturedImageSelectorTb.Text;
             postConfig.PaginatePosts = this.PaginatePostsCb.Checked;
             postConfig.PostNextPageURLSelector = this.PostNextPageURLSelectorTb.Text;
             postConfig.FindAndReplaceRawHTML = this.PostFindAndReplaceRawHTMLTb.Text;

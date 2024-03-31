@@ -62,7 +62,15 @@ namespace XLeech
                         this._categoryRepository, 
                         this._postRepository
                     );
-                siteDetail.setViewEditSite(siteId);
+                if (pageType == PageTypeEnum.AddNewSite)
+                {
+                    siteDetail.setViewCreateSite();
+                }
+                if ( pageType == PageTypeEnum.EditSite)
+                {
+                    siteDetail.setViewEditSite(siteId);
+                }
+
                 siteDetail.SetCallback(BackToListSite);
                 childMain = siteDetail;
             }
