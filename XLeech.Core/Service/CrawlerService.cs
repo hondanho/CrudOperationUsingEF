@@ -2,19 +2,14 @@
 using AbotX2.Crawler;
 using AbotX2.Parallel;
 using AbotX2.Poco;
-using Serilog;
-using AngleSharp;
-using XLeech.Data.EntityFramework;
-using System.Net.Http.Headers;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using XLeech.Data.Entity;
-using AngleSharp.Dom;
+using XLeech.Data.EntityFramework;
 
 namespace XLeech.Core.Service
 {
-
-    public class CrawlerService: ICrawlerService
+    public class CrawlerService : ICrawlerService
     {
         private AppDbContext _dbContext;
 
@@ -131,7 +126,6 @@ namespace XLeech.Core.Service
             config.Accelerator = new AcceleratorConfig();
             config.Decelerator = new DeceleratorConfig();
 
-
             using (var crawler = new CrawlerX(config))
             {
                 crawler.PageCrawlCompleted += (sender, args) =>
@@ -224,5 +218,4 @@ namespace XLeech.Core.Service
             };
         }
     }
-
 }

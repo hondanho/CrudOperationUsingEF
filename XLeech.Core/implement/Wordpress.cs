@@ -12,11 +12,11 @@ using XLeech.Core.Model;
 
 namespace XLeech.Core
 {
-    public class WordpressStorage : IStorage
+    public class Wordpress : IStorage
     {
         private WordPressClient _wordPressClient { get; set; }
 
-        public WordpressStorage(string uriApi, string userName, string password)
+        public Wordpress(string uriApi, string userName, string password)
         {
             _wordPressClient = new WordPressClient(uriApi);
             _wordPressClient.Auth.UseBasicAuth(userName, password);
