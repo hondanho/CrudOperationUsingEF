@@ -1,4 +1,7 @@
-﻿using AngleSharp.Io;
+﻿using Abot2.Poco;
+using AngleSharp.Dom;
+using AngleSharp.Html.Dom;
+using AngleSharp.Io;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -9,33 +12,65 @@ using System.Threading.Tasks;
 using WordPressPCL;
 using WordPressPCL.Models;
 using XLeech.Core.Model;
+using XLeech.Data.Entity;
 
 namespace XLeech.Core
 {
     public class WordpressProcessor : IProccessor
     {
         private WordPressClient _wordPressClient { get; set; }
+        private const string UriApi = "";
+        private const string UserName = "";
+        private const string Password = "";
 
-        public WordpressProcessor(string uriApi, string userName, string password)
+        public WordpressProcessor(SiteConfig siteConfig)
         {
-            _wordPressClient = new WordPressClient(uriApi);
-            _wordPressClient.Auth.UseBasicAuth(userName, password);
+            _wordPressClient = new WordPressClient(UriApi);
+            _wordPressClient.Auth.UseBasicAuth(UserName, Password);
         }
 
-        Task<CategoryModel> GetCategory(IHtmlDocument document, SiteConfig siteConfig);
-        public
+        public Task<CategoryModel> GetCategory(IHtmlDocument document, SiteConfig siteConfig)
+        {
+            var categoryModel = new CategoryModel()
+            {
+                Slug = siteConfig.Category.CategoryMap,
+                Title = siteConfig.Category.CategoryMap,
+                Description = document.QuerySelector(siteConfig.Category.FeaturedImageSelector)?.Text(),
+            };
 
-        public Task<bool> IsExistCategory(CategoryModel post)
+            // feature image
+            if (siteConfig.Post.SaveFeaturedImages)
+            {
+                var imageEle = document.QuerySelector(siteConfig.Category.FeaturedImageSelector);
+                var featureImage = imageEle.GetAttribute("href") ?? imageEle.GetAttribute("src");
+                categoryModel.FeatureImage = featureImage;
+            }
+
+            return Task.FromResult(categoryModel);
+        }
+
+        public Task<PostModel> GetPost(IHtmlDocument document, SiteConfig siteConfig)
+        {
+            var postModel = new PostModel()
+            {
+                Title = document.QuerySelector(siteConfig.Post.FeaturedImageSelector)?.Text(),
+                Author = siteConfig.Post.PostAuthor,
+                Format = siteConfig.Post.PostFormat,
+                Status = siteConfig.Post.PostStatus,
+                Type = siteConfig.Post.PostType,
+
+            };
+
+
+            return Task.FromResult(postModel);
+        }
+
+        public Task<bool> IsExistCategory(CategoryModel post, SiteConfig siteConfig)
         {
             return Task.FromResult(true);
         }
 
-        public Task<bool> IsExistPost(CategoryModel post)
-        {
-            return Task.FromResult(true);
-        }
-
-        public Task<bool> IsExistCategory(CategoryModel post)
+        public Task<bool> IsExistPost(PostModel post, SiteConfig siteConfig)
         {
             return Task.FromResult(true);
         }

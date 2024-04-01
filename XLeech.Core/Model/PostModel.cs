@@ -5,7 +5,7 @@ namespace XLeech.Core.Model
     public class PostModel
     {
         [Required]
-        public string Titlte { get; set; }
+        public string Title { get; set; }
 
         /// <summary>
         /// Đoạn trích

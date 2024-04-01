@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using XLeech.Core.Service;
+using XLeech.Core;
 
 namespace XLeech
 {
