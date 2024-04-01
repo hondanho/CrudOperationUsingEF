@@ -18,7 +18,7 @@ namespace XLeech.Core.Model
         [Required]
         public string Slug { get; set; }
 
-        public string? FeaturedImage { get; set; }
+        public string? FeatureImage { get; set; }
 
         [Required]
         /// <summary>

@@ -10,6 +10,7 @@ namespace XLeech.Data.Entity
         public string? CategoryNextPageURLSelector { get; set; }
         public string? Urls { get; set; }
         public string? CategoryMap { get; set; }
+        public string? Description { get; set; }
         public bool SaveFeaturedImages { get; set; }
         public string? FeaturedImageSelector { get; set; }
         public string? FindAndReplaceRawHTML { get; set; }

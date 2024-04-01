@@ -90,6 +90,7 @@ namespace XLeech
                 this.CategoryListURLSelectorTb.Text = site.Category.CategoryListURLSelector;
                 this.CategoryPostURLSelectorTb.Text = site.Category.CategoryPostURLSelector;
                 this.CategoryNextPageURLSelectorTb.Text = site.Category.CategoryNextPageURLSelector;
+                this.CategoryDescriptionTb.Text = site.Category.Description;
 
                 //post
                 this.PostFormatCb.Text = site.Post.PostFormat;
@@ -272,6 +273,7 @@ namespace XLeech
             categoryConfig.FindAndReplaceRawHTML = this.FindAndReplaceRawHTMLTb.Text;
             categoryConfig.RemoveElementAttributes = this.RemoveElementAttributesTb.Text;
             categoryConfig.UnnecessaryElements = this.UnnecessaryElementsTb.Text;
+            categoryConfig.Description = this.CategoryDescriptionTb.Text;
 
             if (IsCrawleUrls())
             {

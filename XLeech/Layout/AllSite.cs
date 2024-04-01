@@ -34,8 +34,6 @@ namespace XLeech
             var siteId = Convert.ToInt32(dataGridView.CurrentRow.Cells["Id"].Value);
             _showDetailDelegate(siteId);
         }
-
-
     }
 
 }

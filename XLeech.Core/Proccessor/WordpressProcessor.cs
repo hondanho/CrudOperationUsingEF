@@ -19,9 +19,9 @@ namespace XLeech.Core
     public class WordpressProcessor : IProccessor
     {
         private WordPressClient _wordPressClient { get; set; }
-        private const string UriApi = "";
-        private const string UserName = "";
-        private const string Password = "";
+        private const string UriApi = "https://bepxinhhanoi.com/wp-json/wp/v2";
+        private const string UserName = "admin";
+        private const string Password = "Zk%N86#{(+I7kq-d";
 
         public WordpressProcessor(SiteConfig siteConfig)
         {
@@ -29,17 +29,29 @@ namespace XLeech.Core
             _wordPressClient.Auth.UseBasicAuth(UserName, Password);
         }
 
+        //public Task<IProccessor> GetProccessor(SiteConfig siteConfig)
+        //{
+        //    _wordPressClient = new WordPressClient(UriApi);
+        //    _wordPressClient.Auth.UseBasicAuth(UserName, Password);
+        //    return Task.FromResult(categoryModel);
+        //}
+
         public Task<CategoryModel> GetCategory(IHtmlDocument document, SiteConfig siteConfig)
         {
             var categoryModel = new CategoryModel()
             {
                 Slug = siteConfig.Category.CategoryMap,
-                Title = siteConfig.Category.CategoryMap,
-                Description = document.QuerySelector(siteConfig.Category.FeaturedImageSelector)?.Text(),
+                Title = siteConfig.Category.CategoryMap
             };
 
+            // description
+            if (!string.IsNullOrEmpty(siteConfig.Category.Description))
+            {
+                categoryModel.Description = document.QuerySelector(siteConfig.Category.Description)?.Text();
+            }
+
             // feature image
-            if (siteConfig.Post.SaveFeaturedImages)
+            if (siteConfig.Post.SaveFeaturedImages && !string.IsNullOrEmpty(siteConfig.Category.FeaturedImageSelector))
             {
                 var imageEle = document.QuerySelector(siteConfig.Category.FeaturedImageSelector);
                 var featureImage = imageEle.GetAttribute("href") ?? imageEle.GetAttribute("src");
@@ -53,14 +65,22 @@ namespace XLeech.Core
         {
             var postModel = new PostModel()
             {
-                Title = document.QuerySelector(siteConfig.Post.FeaturedImageSelector)?.Text(),
+                Title = document.QuerySelector(siteConfig.Post.PostTitleSelector)?.Text(),
                 Author = siteConfig.Post.PostAuthor,
                 Format = siteConfig.Post.PostFormat,
                 Status = siteConfig.Post.PostStatus,
                 Type = siteConfig.Post.PostType,
-
+                Slug = document.QuerySelector(siteConfig.Post.PostSlugSelector)?.GetAttribute("href"),
+                Content = document.QuerySelector(siteConfig.Post.PostSlugSelector)?.TextContent
             };
 
+            // feature image
+            if (siteConfig.Post.SaveFeaturedImages)
+            {
+                var imageEle = document.QuerySelector(siteConfig.Category.FeaturedImageSelector);
+                var featureImage = imageEle.GetAttribute("href") ?? imageEle.GetAttribute("src");
+                postModel.FeatureImage = featureImage;
+            }
 
             return Task.FromResult(postModel);
         }

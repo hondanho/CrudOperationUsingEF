@@ -138,6 +138,7 @@ namespace XLeech.Core.Service
         private async Task ParallelCrawlerEngine()
         {
             var sites = _dbContext.Sites
+                        .Where(x => x.ActiveForScheduling)
                         .Include(x => x.Category)
                         .Include(y => y.Post)
                         .ToList();

@@ -44,9 +44,9 @@ namespace XLeech
             this.PanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelMain.Location = new System.Drawing.Point(12, 37);
+            this.PanelMain.Location = new System.Drawing.Point(12, 42);
             this.PanelMain.Name = "PanelMain";
-            this.PanelMain.Size = new System.Drawing.Size(760, 516);
+            this.PanelMain.Size = new System.Drawing.Size(760, 506);
             this.PanelMain.TabIndex = 1;
             // 
             // menuStrip1
@@ -61,9 +61,10 @@ namespace XLeech
             this.dashboardToolStripMenuItem,
             this.generalSettingsToolStripMenuItem,
             this.crawleNowToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(12, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(12, 5);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(518, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(398, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.TabStop = true;
             this.menuStrip1.Text = "menuStrip1";
@@ -115,6 +116,7 @@ namespace XLeech
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
+            this.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "X Auto Leech";
             this.Load += new System.EventHandler(this.Form1_Load);
