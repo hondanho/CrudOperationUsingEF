@@ -1,16 +1,7 @@
-﻿using Abot2.Poco;
-using AngleSharp.Dom;
+﻿using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
-using AngleSharp.Io;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using WordPressPCL;
-using WordPressPCL.Models;
+using WordPressPCL.Utility;
 using XLeech.Core.Model;
 using XLeech.Data.Entity;
 
@@ -28,13 +19,6 @@ namespace XLeech.Core
             _wordPressClient = new WordPressClient(UriApi);
             _wordPressClient.Auth.UseBasicAuth(UserName, Password);
         }
-
-        //public Task<IProccessor> GetProccessor(SiteConfig siteConfig)
-        //{
-        //    _wordPressClient = new WordPressClient(UriApi);
-        //    _wordPressClient.Auth.UseBasicAuth(UserName, Password);
-        //    return Task.FromResult(categoryModel);
-        //}
 
         public Task<CategoryModel> GetCategory(IHtmlDocument document, SiteConfig siteConfig)
         {
@@ -85,14 +69,40 @@ namespace XLeech.Core
             return Task.FromResult(postModel);
         }
 
-        public Task<bool> IsExistCategory(CategoryModel post, SiteConfig siteConfig)
+        public async Task<bool> IsExistCategory(CategoryModel categoryModel, SiteConfig siteConfig)
         {
-            return Task.FromResult(true);
+            var query = new CategoriesQueryBuilder();
+
+            if (siteConfig.CheckDuplicatePostViaUrl)
+            {
+                query.Slugs = new List<string> { categoryModel.Slug };
+            }
+            if (siteConfig.CheckDuplicatePostViaTitle)
+            {
+                query.Search = categoryModel.Title;
+            }
+
+            var categories = await _wordPressClient.Categories.QueryAsync(query);
+
+            return await Task.FromResult(categories.Any());
         }
 
-        public Task<bool> IsExistPost(PostModel post, SiteConfig siteConfig)
+        public async Task<bool> IsExistPost(PostModel postModel, SiteConfig siteConfig)
         {
-            return Task.FromResult(true);
+            var query = new PostsQueryBuilder();
+
+            if (siteConfig.CheckDuplicatePostViaUrl)
+            {
+                query.Slugs = new List<string> { postModel.Slug };
+            }
+            if (siteConfig.CheckDuplicatePostViaTitle)
+            {
+                query.Search = postModel.Title;
+            }
+
+            var posts = await _wordPressClient.Posts.QueryAsync(query);
+
+            return await Task.FromResult(posts.Any());
         }
 
         public Task<bool> SavePost(PostModel post)
@@ -161,7 +171,6 @@ namespace XLeech.Core
         //                if (!tacGiaWps.Any(twp => twp.Name == tacgiaTxt || twp.Slug == slug) &&
         //                    !listTacGiaNews.Any(tacgia => tacgia.Name == tacgiaTxt || tacgia.Slug == slug))
         //                {
-
         //                    listTacGiaNews.Add(new TacGiaWp
         //                    {
         //                        Slug = slug,
@@ -377,6 +386,5 @@ namespace XLeech.Core
         //        }
         //    }
         //}
-
     }
 }
