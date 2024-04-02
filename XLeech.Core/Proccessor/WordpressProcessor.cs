@@ -23,12 +23,13 @@ namespace XLeech.Core
             _wordPressClient.Auth.UseBasicAuth(UserName, Password);
         }
 
-        public Task<List<string>> GetPostUrls(IHtmlDocument document, SiteConfig siteConfig)
-        {
-            return Task.FromResult(document.QuerySelectorAll(siteConfig.Category.CategoryPostURLSelector)
-                .Select(ele => ele.GetAttribute("href") ?? ele.GetAttribute("src"))
-                .ToList());
-        }
+        //public Task<List<string>> GetPostUrls(IHtmlDocument document, SiteConfig siteConfig)
+        //{
+        //    var postUrls = document.QuerySelectorAll(siteConfig.Category.CategoryPostURLSelector)
+        //        .Select(ele => ele.GetAttribute("href") ?? ele.GetAttribute("src"))
+        //        .ToList();
+        //    return Task.FromResult(postUrls.Where(x => !string.IsNullOrEmpty(x)).ToList());
+        //}
 
         public Task<CategoryModel> GetCategory(IHtmlDocument document, SiteConfig siteConfig)
         {
@@ -65,7 +66,7 @@ namespace XLeech.Core
                 Status = siteConfig.Post.PostStatus,
                 Type = siteConfig.Post.PostType,
                 Slug = document.QuerySelector(siteConfig.Post.PostSlugSelector)?.GetAttribute("href")?.GetAbsolutePath(),
-                Content = document.QuerySelector(siteConfig.Post.PostContentSelector)?.TextContent
+                Content = document.QuerySelector(siteConfig.Post.PostContentSelector)?.InnerHtml
             };
 
             // feature image

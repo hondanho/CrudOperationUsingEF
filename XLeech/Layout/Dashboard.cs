@@ -1,12 +1,9 @@
 ﻿using Abot2;
-using Abot2.Crawler;
-using AbotX2.Crawler;
 using AbotX2.Parallel;
 using AbotX2.Poco;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using WordPressPCL.Models;
-using XLeech.Core;
+using XLeech.Core.Service;
 using XLeech.Data.Entity;
 using XLeech.Data.EntityFramework;
 using XLeech.Data.Repository;
@@ -17,7 +14,8 @@ namespace XLeech
     public partial class Dashboard : UserControl
     {
         private readonly AppDbContext _dbContext;
-        private readonly Repository<CategoryConfig> _categoryRepository;
+        private readonly Repository<SiteConfig> _siteConfigRepository;
+        private readonly CrawlerService _crawlerService;
 
         public Dashboard()
         {
@@ -26,9 +24,13 @@ namespace XLeech
             {
                 _dbContext = Main.AppWindow?.AppDbContext;
             }
-            if (Main.AppWindow?.CategoryRepository != null)
+            if (Main.AppWindow?.SiteConfigRepository != null)
             {
-                _categoryRepository = Main.AppWindow?.CategoryRepository;
+                _siteConfigRepository = Main.AppWindow?.SiteConfigRepository;
+            }
+            if (Main.AppWindow?.CrawlerService != null)
+            {
+                _crawlerService = Main.AppWindow?.CrawlerService;
             }
 
             CrawlerAsync();
@@ -44,24 +46,20 @@ namespace XLeech
                 .CreateLogger();
 
             var sites = _dbContext.Sites
-                       .Where(x => x.ActiveForScheduling)
+                       .Where(x => x.ActiveForScheduling && !x.IsDoneCrawle)
                        .Include(x => x.Category)
                        .Include(y => y.Post)
                        .ToList();
-            await ParallelCrawlerEngineUrls();
+            await ParallelCrawlerEngineUrls(sites);
         }
 
-        private async Task ParallelCrawlerEngineUrls()
+        private async Task ParallelCrawlerEngineUrls(List<SiteConfig> siteConfigs)
         {
-            var sites = _dbContext.Sites
-                        .Where(x => x.ActiveForScheduling)
-                        .Include(x => x.Category)
-                        .Include(y => y.Post)
-                        .ToList();
             var siteToCrawlUrls = new List<SiteToCrawl>();
+            var siteConfigOrigins = new List<SiteConfig>();
 
-            // site crawle urls
-            foreach (var siteConfig in sites.Where(x => x.IsPageUrl))
+            // get urls from url list
+            foreach (var siteConfig in siteConfigs.Where(x => x.IsPageUrl))
             {
                 string[] postUrls = siteConfig.Category.Urls.Split(new string[] { "\n" }, StringSplitOptions.None);
                 siteToCrawlUrls.AddRange(postUrls.Select(x => new SiteToCrawl
@@ -72,31 +70,25 @@ namespace XLeech
                 );
             }
 
-            // site crawle category page to urls
-            foreach (var siteConfig in sites.Where(x => !x.IsPageUrl))
+            // get urls from category page
+            foreach (var siteConfig in siteConfigs.Where(x => !x.IsPageUrl))
             {
-                using (var crawler = new CrawlerX(GetSafeConfig()))
+                var categoryNextPageInfo = await _crawlerService.GetCategoryNextPageInfo(siteConfig, GetSafeConfig());
+                if (categoryNextPageInfo != null && categoryNextPageInfo.PostUrls.Any())
                 {
-                    crawler.PageCrawlCompleted += async (sender, args) =>
+                    siteToCrawlUrls.AddRange(categoryNextPageInfo.PostUrls.Select(x => new SiteToCrawl
                     {
-                        var wordpressProcessor = new WordpressProcessor(siteConfig);
-
-                        var crawlerPage = args.CrawledPage;
-                        var postUrls = await wordpressProcessor.GetPostUrls(crawlerPage.AngleSharpHtmlDocument, siteConfig);
-                        siteToCrawlUrls.AddRange(postUrls.Select(x => new SiteToCrawl
-                        {
-                            Uri = new Uri(x),
-                            SiteBag = siteConfig
-                        }));
-                    };
-                    await crawler.CrawlAsync(new Uri(siteConfig.LastCategoryPostURL ?? siteConfig.Category.CategoryPostURL));
+                        Uri = new Uri(x),
+                        SiteBag = siteConfig
+                    }));
                 }
-            }           
+                siteConfig.CategoryNextPageURL = categoryNextPageInfo.CategoryNextPageURL;
+                siteConfigOrigins.Add(siteConfig);
+            }
 
             var siteToCrawlProvider = new SiteToCrawlProvider();
             siteToCrawlProvider.AddSitesToCrawl(siteToCrawlUrls);
             var config = GetSafeConfig();
-            config.MaxConcurrentSiteCrawls = 1;
 
             var crawlEngine = new ParallelCrawlerEngine(
                 config,
@@ -121,11 +113,11 @@ namespace XLeech
                     var siteBag = eventArgs.SiteToCrawl.SiteBag as SiteConfig;
                     if (siteBag.IsPageUrl)
                     {
-                        PageCrawlCompletedUrl(abotSender, abotEventArgs, siteBag);
+                        _crawlerService.PageCrawlCompletedUrl(abotSender, abotEventArgs, siteBag);
                     }
                     else
                     {
-                        PageCrawlCompletedCategoryPage(abotSender, abotEventArgs, siteBag);
+                        _crawlerService.PageCrawlCompletedCategoryPage(abotSender, abotEventArgs, siteBag);
                     }
                 };
             };
@@ -145,61 +137,30 @@ namespace XLeech
                 ShowLog(string.Format("{0} Completed", args.CrawledSite.SiteToCrawl.Uri));
             };
 
-            crawlEngine.AllCrawlsCompleted += (sender, eventArgs) =>
+            crawlEngine.AllCrawlsCompleted += async (sender, eventArgs) =>
             {
                 Interlocked.Increment(ref allSitesCompletedEvents);
-                ShowLog("All Url Completed");
+                ShowLog(string.Format("All Url Completed: {0} url, ", crawlCounts.Count()));
+                foreach (var siteConfig in siteConfigOrigins)
+                {
+                    await _siteConfigRepository.UpdateAsync(siteConfig);
+                }
+
+                var siteConfigNexts = siteConfigOrigins.Where(x => !string.IsNullOrEmpty(x.CategoryNextPageURL)).ToList();
+                if (siteConfigNexts.Any())
+                {
+                    ParallelCrawlerEngineUrls(siteConfigNexts);
+                }
+
+                var siteConfigsCrawleDone = siteConfigOrigins.Where(x => string.IsNullOrEmpty(x.CategoryNextPageURL)).ToList();
+                foreach (var siteConfig in siteConfigsCrawleDone)
+                {
+                    siteConfig.IsDoneCrawle = true;
+                    await _siteConfigRepository.UpdateAsync(siteConfig);
+                }
             };
 
             await crawlEngine.StartAsync();
-        }
-
-        private async void PageCrawlCompletedCategoryPage(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
-        {
-            var crawledPage = abotEventArgs.CrawledPage;
-            var wordpressProcessor = new WordpressProcessor(siteConfig);
-
-            var categoryModel = await wordpressProcessor.GetCategory(crawledPage.AngleSharpHtmlDocument, siteConfig);
-            var existCategory = await wordpressProcessor.IsExistCategory(categoryModel, siteConfig);
-            var category = new Category()
-            {
-                Id = existCategory?.Id ?? 0
-            };
-            if (existCategory == null)
-            {
-                category = await wordpressProcessor.SaveCategory(categoryModel);
-            }
-
-            var postModel = await wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteConfig);
-            var existPost = await wordpressProcessor.IsExistPost(postModel, siteConfig);
-            if (existPost == null)
-            {
-                await wordpressProcessor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
-            }
-        }
-
-        private async void PageCrawlCompletedUrl(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
-        {
-            var crawledPage = abotEventArgs.CrawledPage;
-            var wordpressProcessor = new WordpressProcessor(siteConfig);
-
-            var categoryModel = await wordpressProcessor.GetCategory(crawledPage.AngleSharpHtmlDocument, siteConfig);
-            var existCategory = await wordpressProcessor.IsExistCategory(categoryModel, siteConfig);
-            var category = new Category()
-            {
-                Id = existCategory?.Id ?? 0
-            };
-            if (existCategory == null)
-            {
-                category = await wordpressProcessor.SaveCategory(categoryModel);
-            }
-
-            var postModel = await wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteConfig);
-            var existPost = await wordpressProcessor.IsExistPost(postModel, siteConfig);
-            if (existPost == null)
-            {
-                await wordpressProcessor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
-            }
         }
 
         private void ShowLog(string log)
@@ -219,7 +180,8 @@ namespace XLeech
             return new CrawlConfigurationX
             {
                 MaxPagesToCrawl = 1,
-                MinCrawlDelayPerDomainMilliSeconds = 2000
+                MinCrawlDelayPerDomainMilliSeconds = 5000,
+                MaxConcurrentSiteCrawls = 1
             };
         }
     }

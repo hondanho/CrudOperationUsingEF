@@ -11,23 +11,24 @@ namespace XLeech
         public static Main AppWindow;
         public readonly CrawlerService CrawlerService;
         public readonly AppDbContext AppDbContext;
+        public readonly Repository<SiteConfig> SiteConfigRepository;
         public readonly Repository<CategoryConfig> CategoryRepository;
-
-        private Repository<SiteConfig> _siteRepository;
-        private Repository<PostConfig> _postRepository;
+        public readonly Repository<PostConfig> PostRepository;
 
         public Main(AppDbContext dbContext,
-            Repository<SiteConfig> siteRepository,
             Repository<CategoryConfig> categoryRepository,
-            Repository<PostConfig> postRepository
+            Repository<SiteConfig> siteConfigRepository,
+            Repository<PostConfig> postRepository,
+            CrawlerService crawlerService
             )
         {
             AppWindow = this;
             InitializeComponent();
-            AppDbContext = dbContext;
-            this._siteRepository = siteRepository;
+            this.AppDbContext = dbContext;
+            this.CrawlerService = crawlerService;
             this.CategoryRepository = categoryRepository;
-            this._postRepository = postRepository;
+            this.SiteConfigRepository = siteConfigRepository;
+            this.PostRepository = postRepository;
         }
 
         /// <summary>
@@ -55,12 +56,7 @@ namespace XLeech
 
             if (pageType == PageTypeEnum.AddNewSite || pageType == PageTypeEnum.EditSite)
             {
-                var siteDetail = new SiteDetail(
-                        AppDbContext,
-                        this._siteRepository,
-                        this.CategoryRepository,
-                        this._postRepository
-                    );
+                var siteDetail = new SiteDetail();
                 if (pageType == PageTypeEnum.AddNewSite)
                 {
                     siteDetail.setViewCreateSite();

@@ -8,27 +8,33 @@ namespace XLeech
 {
     public partial class SiteDetail : UserControl
     {
-        private AppDbContext _dbContext;
-        private Repository<SiteConfig> _siteRepository;
-        private Repository<CategoryConfig> _categoryRepository;
-        private Repository<PostConfig> _postRepository;
+        private readonly AppDbContext _dbContext;
+        private readonly Repository<SiteConfig> _siteRepository;
+        private readonly Repository<CategoryConfig> _categoryRepository;
+        private readonly Repository<PostConfig> _postRepository;
+
         private SiteConfig _siteConfig;
         public Action _backToListSite;
 
-        public SiteDetail(AppDbContext dbContext,
-            Repository<SiteConfig> siteRepository,
-            Repository<CategoryConfig> categoryRepository,
-            Repository<PostConfig> postRepository
-            )
+        public SiteDetail()
         {
             InitializeComponent();
-            this._dbContext = dbContext;
-            this._siteRepository = siteRepository;
-            this._categoryRepository = categoryRepository;
-            this._postRepository = postRepository;
-
-            // default create site
-            //setViewCreateSite();
+            if (Main.AppWindow?.AppDbContext != null)
+            {
+                _dbContext = Main.AppWindow?.AppDbContext;
+            }
+            if (Main.AppWindow?.CategoryRepository != null)
+            {
+                _siteRepository = Main.AppWindow?.SiteConfigRepository;
+            }
+            if (Main.AppWindow?.CategoryRepository != null)
+            {
+                _categoryRepository = Main.AppWindow?.CategoryRepository;
+            }
+            if (Main.AppWindow?.PostRepository != null)
+            {
+                _postRepository = Main.AppWindow?.PostRepository;
+            }
         }
 
         public void SetCallback(Action backToListSite)

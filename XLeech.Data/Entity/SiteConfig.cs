@@ -4,6 +4,7 @@ namespace XLeech.Data.Entity
     public class SiteConfig: BaseEntity
     {
         public string? Name { get; set; }
+        public bool IsDoneCrawle { get; set; }
         public string? Url { get; set; }
         public bool IsPageUrl {get;set;}
         public bool ActiveForScheduling { get; set; }
@@ -24,7 +25,7 @@ namespace XLeech.Data.Entity
         public bool RandomizeProxies { get; set; }
         public int TimeInterval { get; set; }
         public DateTime? LatestRun { get; set; }
-        public string? LastCategoryPostURL { get; set; }
+        public string? CategoryNextPageURL { get; set; }
         public string? LastPostCrawl { get; set; }
         public string? Notes { get; set; }
         public CategoryConfig Category { get; set; }
