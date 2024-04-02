@@ -9,12 +9,12 @@ namespace XLeech
     public partial class Main : Form
     {
         public static Main AppWindow;
-        private readonly AppDbContext _dbContext;
-        private Repository<SiteConfig> _siteRepository;
-        private Repository<CategoryConfig> _categoryRepository;
-        private Repository<PostConfig> _postRepository;
         public readonly CrawlerService CrawlerService;
         public readonly AppDbContext AppDbContext;
+        public readonly Repository<CategoryConfig> CategoryRepository;
+
+        private Repository<SiteConfig> _siteRepository;
+        private Repository<PostConfig> _postRepository;
 
         public Main(AppDbContext dbContext,
             Repository<SiteConfig> siteRepository,
@@ -24,10 +24,9 @@ namespace XLeech
         {
             AppWindow = this;
             InitializeComponent();
-            _dbContext = dbContext;
             AppDbContext = dbContext;
             this._siteRepository = siteRepository;
-            this._categoryRepository = categoryRepository;
+            this.CategoryRepository = categoryRepository;
             this._postRepository = postRepository;
         }
 
@@ -49,7 +48,7 @@ namespace XLeech
 
             if (pageType == PageTypeEnum.ListSite)
             {
-                var allSite = new AllSite(_dbContext);
+                var allSite = new AllSite(AppDbContext);
                 allSite.SetCallback(ViewSiteDetail);
                 childMain = allSite;
             }
@@ -57,9 +56,9 @@ namespace XLeech
             if (pageType == PageTypeEnum.AddNewSite || pageType == PageTypeEnum.EditSite)
             {
                 var siteDetail = new SiteDetail(
-                        _dbContext,
+                        AppDbContext,
                         this._siteRepository,
-                        this._categoryRepository,
+                        this.CategoryRepository,
                         this._postRepository
                     );
                 if (pageType == PageTypeEnum.AddNewSite)
@@ -136,7 +135,7 @@ namespace XLeech
             //    Employee.EmployeeId = 0;
             //    _dbContext.Sites.Add(Employee);
             //}
-            _dbContext.SaveChanges();
+            AppDbContext.SaveChanges();
             ClearData();
             SetDataInGridView();
             MessageBox.Show("Record Save Successfully");
@@ -184,7 +183,7 @@ namespace XLeech
             if (MessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //_dbContext.Sites.Remove(Employee);
-                _dbContext.SaveChanges();
+                AppDbContext.SaveChanges();
                 ClearData();
                 SetDataInGridView();
                 MessageBox.Show("Record Deleted Successfully");

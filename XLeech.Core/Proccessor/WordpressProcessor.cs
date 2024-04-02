@@ -23,13 +23,19 @@ namespace XLeech.Core
             _wordPressClient.Auth.UseBasicAuth(UserName, Password);
         }
 
+        public Task<List<string>> GetPostUrls(IHtmlDocument document, SiteConfig siteConfig)
+        {
+            return Task.FromResult(document.QuerySelectorAll(siteConfig.Category.CategoryPostURLSelector)
+                .Select(ele => ele.GetAttribute("href") ?? ele.GetAttribute("src"))
+                .ToList());
+        }
+
         public Task<CategoryModel> GetCategory(IHtmlDocument document, SiteConfig siteConfig)
         {
             var categoryModel = new CategoryModel()
             {
                 Name = siteConfig.Category.CategoryMap,
                 Slug = siteConfig.Category.CategoryMap.GenerateSlug()
-
             };
 
             // description

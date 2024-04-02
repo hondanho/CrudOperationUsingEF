@@ -24,7 +24,7 @@ namespace XLeech.Data.Entity
         public bool RandomizeProxies { get; set; }
         public int TimeInterval { get; set; }
         public DateTime? LatestRun { get; set; }
-        public string? LastUrlCollection { get; set; }
+        public string? LastCategoryPostURL { get; set; }
         public string? LastPostCrawl { get; set; }
         public string? Notes { get; set; }
         public CategoryConfig Category { get; set; }

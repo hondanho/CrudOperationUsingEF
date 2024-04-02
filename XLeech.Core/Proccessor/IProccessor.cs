@@ -8,7 +8,7 @@ namespace XLeech.Core
 {
     public interface IProccessor
     {
-
+        Task<List<string>> GetPostUrls(IHtmlDocument document, SiteConfig siteConfig);
 
         Task<CategoryModel> GetCategory(IHtmlDocument document, SiteConfig siteConfig);
         Task<CategoryModel> IsExistCategory(CategoryModel post, SiteConfig siteConfig);
