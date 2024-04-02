@@ -10,11 +10,13 @@ namespace XLeech
 {
     public partial class Main : Form
     {
+        public static Main AppWindow;
         private readonly AppDbContext _dbContext;
         private Repository<SiteConfig> _siteRepository;
         private Repository<CategoryConfig> _categoryRepository;
         private Repository<PostConfig> _postRepository;
-        private CrawlerService _crawlerService;
+        public readonly CrawlerService CrawlerService;
+        public readonly AppDbContext AppDbContext;
 
         public Main(AppDbContext dbContext,
             Repository<SiteConfig> siteRepository,
@@ -23,12 +25,14 @@ namespace XLeech
             CrawlerService crawlerService
             )
         {
+            AppWindow = this;
             InitializeComponent();
             _dbContext = dbContext;
+            AppDbContext = dbContext;
             this._siteRepository = siteRepository;
             this._categoryRepository = categoryRepository;
             this._postRepository = postRepository;
-            this._crawlerService = crawlerService;
+            this.CrawlerService = crawlerService;
         }
 
         /// <summary>
@@ -224,7 +228,7 @@ namespace XLeech
 
         private void crawleNowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _crawlerService.CrawlerAsync();
+            SetPanelView(PageTypeEnum.Dashboard);
         }
 
         private void ViewSiteDetail(int siteId)

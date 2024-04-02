@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            StatusTb = new RichTextBox();
+            SuspendLayout();
             // 
-            // label1
+            // StatusTb
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Dashboard";
+            StatusTb.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            StatusTb.Location = new Point(3, 3);
+            StatusTb.Name = "StatusTb";
+            StatusTb.Size = new Size(960, 567);
+            StatusTb.TabIndex = 2;
+            StatusTb.Text = "";
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
-            this.Name = "Dashboard";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(StatusTb);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "Dashboard";
+            Size = new Size(966, 573);
+            ResumeLayout(false);
         }
 
         #endregion
 
-        private Label label1;
+        private RichTextBox StatusTb;
     }
 }

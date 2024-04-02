@@ -1,7 +1,10 @@
 ﻿using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 using WordPressPCL;
+using WordPressPCL.Client;
+using WordPressPCL.Models;
 using WordPressPCL.Utility;
+using XLeech.Core.Extensions;
 using XLeech.Core.Model;
 using XLeech.Data.Entity;
 
@@ -10,9 +13,9 @@ namespace XLeech.Core
     public class WordpressProcessor : IProccessor
     {
         private WordPressClient _wordPressClient { get; set; }
-        private const string UriApi = "https://bepxinhhanoi.com/wp-json/wp/v2";
+        private const string UriApi = "https://bepxinhhanoi.com/wp-json/";
         private const string UserName = "admin";
-        private const string Password = "Zk%N86#{(+I7kq-d";
+        private const string Password = "b3sR lCNw aPla aMZ9 XvKt qi0j";
 
         public WordpressProcessor(SiteConfig siteConfig)
         {
@@ -24,8 +27,9 @@ namespace XLeech.Core
         {
             var categoryModel = new CategoryModel()
             {
-                Slug = siteConfig.Category.CategoryMap,
-                Title = siteConfig.Category.CategoryMap
+                Name = siteConfig.Category.CategoryMap,
+                Slug = siteConfig.Category.CategoryMap.GenerateSlug()
+
             };
 
             // description
@@ -54,8 +58,8 @@ namespace XLeech.Core
                 Format = siteConfig.Post.PostFormat,
                 Status = siteConfig.Post.PostStatus,
                 Type = siteConfig.Post.PostType,
-                Slug = document.QuerySelector(siteConfig.Post.PostSlugSelector)?.GetAttribute("href"),
-                Content = document.QuerySelector(siteConfig.Post.PostSlugSelector)?.TextContent
+                Slug = document.QuerySelector(siteConfig.Post.PostSlugSelector)?.GetAttribute("href")?.GetAbsolutePath(),
+                Content = document.QuerySelector(siteConfig.Post.PostContentSelector)?.TextContent
             };
 
             // feature image
@@ -69,7 +73,7 @@ namespace XLeech.Core
             return Task.FromResult(postModel);
         }
 
-        public async Task<bool> IsExistCategory(CategoryModel categoryModel, SiteConfig siteConfig)
+        public async Task<CategoryModel> IsExistCategory(CategoryModel categoryModel, SiteConfig siteConfig)
         {
             var query = new CategoriesQueryBuilder();
 
@@ -77,17 +81,17 @@ namespace XLeech.Core
             {
                 query.Slugs = new List<string> { categoryModel.Slug };
             }
-            if (siteConfig.CheckDuplicatePostViaTitle)
-            {
-                query.Search = categoryModel.Title;
-            }
-
-            var categories = await _wordPressClient.Categories.QueryAsync(query);
-
-            return await Task.FromResult(categories.Any());
+            //if (siteConfig.CheckDuplicatePostViaTitle)
+            //{
+            //    query.Search = categoryModel.Name;
+            //}
+            
+            var categorie = (await _wordPressClient.Categories.QueryAsync(query))?.FirstOrDefault();
+            categoryModel.Id = categorie?.Id ?? 0;
+            return categorie != null ? await Task.FromResult(categoryModel) : null;
         }
 
-        public async Task<bool> IsExistPost(PostModel postModel, SiteConfig siteConfig)
+        public async Task<PostModel> IsExistPost(PostModel postModel, SiteConfig siteConfig)
         {
             var query = new PostsQueryBuilder();
 
@@ -100,19 +104,68 @@ namespace XLeech.Core
                 query.Search = postModel.Title;
             }
 
-            var posts = await _wordPressClient.Posts.QueryAsync(query);
-
-            return await Task.FromResult(posts.Any());
+            var post = (await _wordPressClient.Posts.QueryAsync(query))?.FirstOrDefault();
+            postModel.Id = post?.Id ?? 0;
+            return post != null ? await Task.FromResult(postModel) : null;
         }
 
-        public Task<bool> SavePost(PostModel post)
+        public async Task<bool> SavePost(PostModel postModel, List<int>? cateogoryIds)
         {
-            return Task.FromResult(true);
+            try
+            {
+                int? featureId = 0;
+                if (!string.IsNullOrEmpty(postModel.FeatureImage))
+                {
+                    try
+                    {
+                        var fileFeatureName = Path.GetFileName(postModel.FeatureImage);
+                        var feature = await _wordPressClient.Media.CreateAsync(postModel.FeatureImage, fileFeatureName);
+                        featureId = feature.Id;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex?.Message);
+                    }
+                }
+
+                var status = Status.Publish;
+                if (postModel.Status == "pending") status = Status.Pending;
+                if (postModel.Status == "draft") status = Status.Draft;
+
+                var postWp = await _wordPressClient.Posts.CreateAsync(new Post
+                {
+                    Title = new Title(postModel.Title),
+                    Slug = postModel.Slug,
+                    Categories = cateogoryIds,
+                    Content = new Content(postModel.Content),
+                    Status = status,
+                    FeaturedMedia = featureId > 0 ? featureId : null,
+                    Meta = new
+                    {
+                        postModel.Status,
+                        postModel.Slug
+                    }
+                });
+                return await Task.FromResult(true);
+            }
+            catch
+            {
+                return await Task.FromResult(false);
+            }
         }
 
-        public Task<bool> SaveCategory(CategoryModel post)
+        public async Task<Category> SaveCategory(CategoryModel categoryModel)
         {
-            return Task.FromResult(true);
+            var categoryWp = await _wordPressClient.Categories.CreateAsync(new Category
+            {
+                Slug = categoryModel.Slug,
+                Description = categoryModel.Description,
+                Name = categoryModel.Name,
+                Meta = categoryModel.Meta,
+                Taxonomy = "category"
+            });
+
+            return await Task.FromResult(categoryWp);
         }
 
         //public async Task SyncDataBySite(SiteConfigDb request)

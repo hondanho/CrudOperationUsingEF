@@ -4,6 +4,8 @@ namespace XLeech.Core.Model
 {
     public class PostModel
     {
+        public int Id { get; set; }
+
         [Required]
         public string Title { get; set; }
 

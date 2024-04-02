@@ -316,5 +316,15 @@ namespace XLeech
             postConfig.UnnecessaryElements = this.PostUnnecessaryElementsTb.Text;
             return postConfig;
         }
+
+        private void ListUrlRb_CheckedChanged_1(object sender, EventArgs e)
+        {
+            setShowTypeCrawler();
+        }
+
+        private void CategoryPageRb_CheckedChanged_1(object sender, EventArgs e)
+        {
+            setShowTypeCrawler();
+        }
     }
 }

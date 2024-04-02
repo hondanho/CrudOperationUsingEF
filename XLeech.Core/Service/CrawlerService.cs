@@ -4,8 +4,10 @@ using AbotX2.Parallel;
 using AbotX2.Poco;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using WordPressPCL.Models;
 using XLeech.Data.Entity;
 using XLeech.Data.EntityFramework;
+using Guid = System.Guid;
 
 namespace XLeech.Core.Service
 {
@@ -150,7 +152,7 @@ namespace XLeech.Core.Service
             var siteToCrawlProvider = new SiteToCrawlProvider();
             siteToCrawlProvider.AddSitesToCrawl(siteToCrawls);
             var config = GetSafeConfig();
-            config.MaxConcurrentSiteCrawls = 3;
+            config.MaxConcurrentSiteCrawls = 1;
 
             var crawlEngine = new ParallelCrawlerEngine(
                 config,
@@ -175,18 +177,22 @@ namespace XLeech.Core.Service
                     var siteBag = eventArgs.SiteToCrawl.SiteBag as SiteConfig;
                     var wordpressProcessor = new WordpressProcessor(siteBag);
 
-                    var category = await wordpressProcessor.GetCategory(crawledPage.AngleSharpHtmlDocument, siteBag);
-                    var existCategory = await wordpressProcessor.IsExistCategory(category, siteBag);
-                    if (!existCategory)
+                    var categoryModel = await wordpressProcessor.GetCategory(crawledPage.AngleSharpHtmlDocument, siteBag);
+                    var existCategory = await wordpressProcessor.IsExistCategory(categoryModel, siteBag);
+                    var category = new Category()
                     {
-                        await wordpressProcessor.SaveCategory(category);
+                        Id = existCategory?.Id ?? 0
+                    };
+                    if (existCategory == null)
+                    {
+                        category = await wordpressProcessor.SaveCategory(categoryModel);
                     }
 
-                    var post = await wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteBag);
-                    var existPost = await wordpressProcessor.IsExistPost(post, siteBag);
-                    if (!existPost)
+                    var postModel = await wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteBag);
+                    var existPost = await wordpressProcessor.IsExistPost(postModel, siteBag);
+                    if (existPost == null)
                     {
-                        await wordpressProcessor.SavePost(post);
+                        await wordpressProcessor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
                     }
                 };
             };
@@ -216,7 +222,7 @@ namespace XLeech.Core.Service
         {
             return new CrawlConfigurationX
             {
-                MaxPagesToCrawl = 10,
+                MaxPagesToCrawl = 1,
                 MinCrawlDelayPerDomainMilliSeconds = 2000
             };
         }

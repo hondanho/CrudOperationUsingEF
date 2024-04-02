@@ -28,1311 +28,1313 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.NameTb = new System.Windows.Forms.TextBox();
-            this.saveBtn = new System.Windows.Forms.Button();
-            this.cancleBtn = new System.Windows.Forms.Button();
-            this.postTab = new System.Windows.Forms.TabPage();
-            this.PostStatusCb = new System.Windows.Forms.ComboBox();
-            this.label44 = new System.Windows.Forms.Label();
-            this.PostAuthorTb = new System.Windows.Forms.TextBox();
-            this.label42 = new System.Windows.Forms.Label();
-            this.PostTypeCb = new System.Windows.Forms.ComboBox();
-            this.label41 = new System.Windows.Forms.Label();
-            this.PaginatePostsCb = new System.Windows.Forms.CheckBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.PostUnnecessaryElementsTb = new System.Windows.Forms.TextBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.PostRemoveElementAttributesTb = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.PostFindAndReplaceRawHTMLTb = new System.Windows.Forms.TextBox();
-            this.SaveMetaDescriptionCb = new System.Windows.Forms.CheckBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.SaveFeaturedImagesPostCb = new System.Windows.Forms.CheckBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.AddMetaKeywordsAsTagCb = new System.Windows.Forms.CheckBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.SaveMetaKeywordsCb = new System.Windows.Forms.CheckBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.PostNextPageURLSelectorTb = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.PostFeaturedImageSelectorTb = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.PostDateSelectorTb = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.CategoryNameSeparatorSelectorTb = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.CategoryNameSelectorTb = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.PostSlugSelectorTb = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.PostTagSelectorTb = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.PostContentSelectorTb = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.PostExcerptSelectorTb = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.PostFormatCb = new System.Windows.Forms.ComboBox();
-            this.PostTitleSelectorTb = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.categoryTab = new System.Windows.Forms.TabPage();
-            this.CategoryDescriptionTb = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.CrawlerUrlsTb = new System.Windows.Forms.RichTextBox();
-            this.CrawlerUrlsLb = new System.Windows.Forms.Label();
-            this.UnnecessaryElementsTb = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.RemoveElementAttributesTb = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.FindAndReplaceRawHTMLTb = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.FeaturedImageSelectorTb = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.SaveFeaturedImagesCb = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.CategoryNextPageURLSelectorTb = new System.Windows.Forms.TextBox();
-            this.CategoryNextPageURLSelectorLb = new System.Windows.Forms.Label();
-            this.CategoryPostURLSelectorTb = new System.Windows.Forms.TextBox();
-            this.CategoryPostURLSelectorLb = new System.Windows.Forms.Label();
-            this.CategoryMapTb = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.CategoryListURLSelectorTb = new System.Windows.Forms.TextBox();
-            this.CategoryListURLSelectorLb = new System.Windows.Forms.Label();
-            this.CategoryListPageURLTb = new System.Windows.Forms.TextBox();
-            this.CategoryListPageURLLb = new System.Windows.Forms.Label();
-            this.mainTab = new System.Windows.Forms.TabPage();
-            this.CategoryPageRb = new System.Windows.Forms.RadioButton();
-            this.ListUrlRb = new System.Windows.Forms.RadioButton();
-            this.label48 = new System.Windows.Forms.Label();
-            this.ProxyRetryLimitNumeric = new System.Windows.Forms.NumericUpDown();
-            this.label46 = new System.Windows.Forms.Label();
-            this.CookieCb = new System.Windows.Forms.TextBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.TimeIntervalNumeric = new System.Windows.Forms.NumericUpDown();
-            this.label40 = new System.Windows.Forms.Label();
-            this.RandomizeProxiesCb = new System.Windows.Forms.CheckBox();
-            this.label39 = new System.Windows.Forms.Label();
-            this.ProxiesTb = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.UseProxyCb = new System.Windows.Forms.CheckBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.connectionTimeoutNumeric = new System.Windows.Forms.NumericUpDown();
-            this.label20 = new System.Windows.Forms.Label();
-            this.MaximumPagesCrawlPerPostNumeric = new System.Windows.Forms.NumericUpDown();
-            this.MaximumPagesCrawlPerCategoryNumeric = new System.Windows.Forms.NumericUpDown();
-            this.HTTPUserAgentTb = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.CheckDuplicatePostViaContentCb = new System.Windows.Forms.CheckBox();
-            this.CheckDuplicatePostViaTitleCb = new System.Windows.Forms.CheckBox();
-            this.CheckDuplicatePostViaUrlCb = new System.Windows.Forms.CheckBox();
-            this.ActiveForSchedulingCb = new System.Windows.Forms.CheckBox();
-            this.UrlTxt = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.addnewTab = new System.Windows.Forms.TabControl();
-            this.noteTab = new System.Windows.Forms.TabPage();
-            this.NoteTb = new System.Windows.Forms.RichTextBox();
-            this.postTab.SuspendLayout();
-            this.categoryTab.SuspendLayout();
-            this.mainTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProxyRetryLimitNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TimeIntervalNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.connectionTimeoutNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaximumPagesCrawlPerPostNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaximumPagesCrawlPerCategoryNumeric)).BeginInit();
-            this.addnewTab.SuspendLayout();
-            this.noteTab.SuspendLayout();
-            this.SuspendLayout();
+            NameTb = new TextBox();
+            saveBtn = new Button();
+            cancleBtn = new Button();
+            postTab = new TabPage();
+            PostStatusCb = new ComboBox();
+            label44 = new Label();
+            PostAuthorTb = new TextBox();
+            label42 = new Label();
+            PostTypeCb = new ComboBox();
+            label41 = new Label();
+            PaginatePostsCb = new CheckBox();
+            label36 = new Label();
+            PostUnnecessaryElementsTb = new TextBox();
+            label35 = new Label();
+            PostRemoveElementAttributesTb = new TextBox();
+            label34 = new Label();
+            PostFindAndReplaceRawHTMLTb = new TextBox();
+            SaveMetaDescriptionCb = new CheckBox();
+            label33 = new Label();
+            SaveFeaturedImagesPostCb = new CheckBox();
+            label32 = new Label();
+            AddMetaKeywordsAsTagCb = new CheckBox();
+            label31 = new Label();
+            SaveMetaKeywordsCb = new CheckBox();
+            label30 = new Label();
+            label29 = new Label();
+            PostNextPageURLSelectorTb = new TextBox();
+            label28 = new Label();
+            label27 = new Label();
+            PostFeaturedImageSelectorTb = new TextBox();
+            label26 = new Label();
+            PostDateSelectorTb = new TextBox();
+            label25 = new Label();
+            CategoryNameSeparatorSelectorTb = new TextBox();
+            label24 = new Label();
+            CategoryNameSelectorTb = new TextBox();
+            label23 = new Label();
+            PostSlugSelectorTb = new TextBox();
+            label22 = new Label();
+            PostTagSelectorTb = new TextBox();
+            label21 = new Label();
+            PostContentSelectorTb = new TextBox();
+            label19 = new Label();
+            PostExcerptSelectorTb = new TextBox();
+            label18 = new Label();
+            PostFormatCb = new ComboBox();
+            PostTitleSelectorTb = new TextBox();
+            label17 = new Label();
+            categoryTab = new TabPage();
+            CategoryDescriptionTb = new TextBox();
+            label7 = new Label();
+            CrawlerUrlsTb = new RichTextBox();
+            CrawlerUrlsLb = new Label();
+            UnnecessaryElementsTb = new TextBox();
+            label16 = new Label();
+            RemoveElementAttributesTb = new TextBox();
+            label15 = new Label();
+            FindAndReplaceRawHTMLTb = new TextBox();
+            label14 = new Label();
+            FeaturedImageSelectorTb = new TextBox();
+            label13 = new Label();
+            SaveFeaturedImagesCb = new CheckBox();
+            label12 = new Label();
+            CategoryNextPageURLSelectorTb = new TextBox();
+            CategoryNextPageURLSelectorLb = new Label();
+            CategoryPostURLSelectorTb = new TextBox();
+            CategoryPostURLSelectorLb = new Label();
+            CategoryMapTb = new TextBox();
+            label9 = new Label();
+            CategoryListURLSelectorTb = new TextBox();
+            CategoryListURLSelectorLb = new Label();
+            CategoryListPageURLTb = new TextBox();
+            CategoryListPageURLLb = new Label();
+            mainTab = new TabPage();
+            CategoryPageRb = new RadioButton();
+            ListUrlRb = new RadioButton();
+            label48 = new Label();
+            ProxyRetryLimitNumeric = new NumericUpDown();
+            label46 = new Label();
+            CookieCb = new TextBox();
+            label43 = new Label();
+            TimeIntervalNumeric = new NumericUpDown();
+            label40 = new Label();
+            RandomizeProxiesCb = new CheckBox();
+            label39 = new Label();
+            ProxiesTb = new TextBox();
+            label38 = new Label();
+            UseProxyCb = new CheckBox();
+            label37 = new Label();
+            connectionTimeoutNumeric = new NumericUpDown();
+            label20 = new Label();
+            MaximumPagesCrawlPerPostNumeric = new NumericUpDown();
+            MaximumPagesCrawlPerCategoryNumeric = new NumericUpDown();
+            HTTPUserAgentTb = new TextBox();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            CheckDuplicatePostViaContentCb = new CheckBox();
+            CheckDuplicatePostViaTitleCb = new CheckBox();
+            CheckDuplicatePostViaUrlCb = new CheckBox();
+            ActiveForSchedulingCb = new CheckBox();
+            UrlTxt = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            addnewTab = new TabControl();
+            noteTab = new TabPage();
+            NoteTb = new RichTextBox();
+            postTab.SuspendLayout();
+            categoryTab.SuspendLayout();
+            mainTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ProxyRetryLimitNumeric).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TimeIntervalNumeric).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)connectionTimeoutNumeric).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)MaximumPagesCrawlPerPostNumeric).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)MaximumPagesCrawlPerCategoryNumeric).BeginInit();
+            addnewTab.SuspendLayout();
+            noteTab.SuspendLayout();
+            SuspendLayout();
             // 
             // NameTb
             // 
-            this.NameTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NameTb.Location = new System.Drawing.Point(1, 3);
-            this.NameTb.Name = "NameTb";
-            this.NameTb.PlaceholderText = "Enter site name here";
-            this.NameTb.Size = new System.Drawing.Size(924, 23);
-            this.NameTb.TabIndex = 2;
+            NameTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            NameTb.Location = new Point(1, 4);
+            NameTb.Margin = new Padding(3, 4, 3, 4);
+            NameTb.Name = "NameTb";
+            NameTb.PlaceholderText = "Enter site name here";
+            NameTb.Size = new Size(1055, 27);
+            NameTb.TabIndex = 2;
             // 
             // saveBtn
             // 
-            this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.saveBtn.Location = new System.Drawing.Point(749, 1054);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(85, 23);
-            this.saveBtn.TabIndex = 3;
-            this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = false;
+            saveBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            saveBtn.BackColor = SystemColors.Control;
+            saveBtn.Location = new Point(856, 1405);
+            saveBtn.Margin = new Padding(3, 4, 3, 4);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(97, 31);
+            saveBtn.TabIndex = 3;
+            saveBtn.Text = "Save";
+            saveBtn.UseVisualStyleBackColor = false;
             // 
             // cancleBtn
             // 
-            this.cancleBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancleBtn.Location = new System.Drawing.Point(840, 1054);
-            this.cancleBtn.Name = "cancleBtn";
-            this.cancleBtn.Size = new System.Drawing.Size(85, 23);
-            this.cancleBtn.TabIndex = 4;
-            this.cancleBtn.Text = "Cancle";
-            this.cancleBtn.UseVisualStyleBackColor = true;
+            cancleBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            cancleBtn.Location = new Point(960, 1405);
+            cancleBtn.Margin = new Padding(3, 4, 3, 4);
+            cancleBtn.Name = "cancleBtn";
+            cancleBtn.Size = new Size(97, 31);
+            cancleBtn.TabIndex = 4;
+            cancleBtn.Text = "Cancle";
+            cancleBtn.UseVisualStyleBackColor = true;
             // 
             // postTab
             // 
-            this.postTab.AutoScroll = true;
-            this.postTab.Controls.Add(this.PostStatusCb);
-            this.postTab.Controls.Add(this.label44);
-            this.postTab.Controls.Add(this.PostAuthorTb);
-            this.postTab.Controls.Add(this.label42);
-            this.postTab.Controls.Add(this.PostTypeCb);
-            this.postTab.Controls.Add(this.label41);
-            this.postTab.Controls.Add(this.PaginatePostsCb);
-            this.postTab.Controls.Add(this.label36);
-            this.postTab.Controls.Add(this.PostUnnecessaryElementsTb);
-            this.postTab.Controls.Add(this.label35);
-            this.postTab.Controls.Add(this.PostRemoveElementAttributesTb);
-            this.postTab.Controls.Add(this.label34);
-            this.postTab.Controls.Add(this.PostFindAndReplaceRawHTMLTb);
-            this.postTab.Controls.Add(this.SaveMetaDescriptionCb);
-            this.postTab.Controls.Add(this.label33);
-            this.postTab.Controls.Add(this.SaveFeaturedImagesPostCb);
-            this.postTab.Controls.Add(this.label32);
-            this.postTab.Controls.Add(this.AddMetaKeywordsAsTagCb);
-            this.postTab.Controls.Add(this.label31);
-            this.postTab.Controls.Add(this.SaveMetaKeywordsCb);
-            this.postTab.Controls.Add(this.label30);
-            this.postTab.Controls.Add(this.label29);
-            this.postTab.Controls.Add(this.PostNextPageURLSelectorTb);
-            this.postTab.Controls.Add(this.label28);
-            this.postTab.Controls.Add(this.label27);
-            this.postTab.Controls.Add(this.PostFeaturedImageSelectorTb);
-            this.postTab.Controls.Add(this.label26);
-            this.postTab.Controls.Add(this.PostDateSelectorTb);
-            this.postTab.Controls.Add(this.label25);
-            this.postTab.Controls.Add(this.CategoryNameSeparatorSelectorTb);
-            this.postTab.Controls.Add(this.label24);
-            this.postTab.Controls.Add(this.CategoryNameSelectorTb);
-            this.postTab.Controls.Add(this.label23);
-            this.postTab.Controls.Add(this.PostSlugSelectorTb);
-            this.postTab.Controls.Add(this.label22);
-            this.postTab.Controls.Add(this.PostTagSelectorTb);
-            this.postTab.Controls.Add(this.label21);
-            this.postTab.Controls.Add(this.PostContentSelectorTb);
-            this.postTab.Controls.Add(this.label19);
-            this.postTab.Controls.Add(this.PostExcerptSelectorTb);
-            this.postTab.Controls.Add(this.label18);
-            this.postTab.Controls.Add(this.PostFormatCb);
-            this.postTab.Controls.Add(this.PostTitleSelectorTb);
-            this.postTab.Controls.Add(this.label17);
-            this.postTab.Location = new System.Drawing.Point(4, 24);
-            this.postTab.Name = "postTab";
-            this.postTab.Padding = new System.Windows.Forms.Padding(10);
-            this.postTab.Size = new System.Drawing.Size(920, 987);
-            this.postTab.TabIndex = 3;
-            this.postTab.Text = "Post";
-            this.postTab.UseVisualStyleBackColor = true;
+            postTab.AutoScroll = true;
+            postTab.Controls.Add(PostStatusCb);
+            postTab.Controls.Add(label44);
+            postTab.Controls.Add(PostAuthorTb);
+            postTab.Controls.Add(label42);
+            postTab.Controls.Add(PostTypeCb);
+            postTab.Controls.Add(label41);
+            postTab.Controls.Add(PaginatePostsCb);
+            postTab.Controls.Add(label36);
+            postTab.Controls.Add(PostUnnecessaryElementsTb);
+            postTab.Controls.Add(label35);
+            postTab.Controls.Add(PostRemoveElementAttributesTb);
+            postTab.Controls.Add(label34);
+            postTab.Controls.Add(PostFindAndReplaceRawHTMLTb);
+            postTab.Controls.Add(SaveMetaDescriptionCb);
+            postTab.Controls.Add(label33);
+            postTab.Controls.Add(SaveFeaturedImagesPostCb);
+            postTab.Controls.Add(label32);
+            postTab.Controls.Add(AddMetaKeywordsAsTagCb);
+            postTab.Controls.Add(label31);
+            postTab.Controls.Add(SaveMetaKeywordsCb);
+            postTab.Controls.Add(label30);
+            postTab.Controls.Add(label29);
+            postTab.Controls.Add(PostNextPageURLSelectorTb);
+            postTab.Controls.Add(label28);
+            postTab.Controls.Add(label27);
+            postTab.Controls.Add(PostFeaturedImageSelectorTb);
+            postTab.Controls.Add(label26);
+            postTab.Controls.Add(PostDateSelectorTb);
+            postTab.Controls.Add(label25);
+            postTab.Controls.Add(CategoryNameSeparatorSelectorTb);
+            postTab.Controls.Add(label24);
+            postTab.Controls.Add(CategoryNameSelectorTb);
+            postTab.Controls.Add(label23);
+            postTab.Controls.Add(PostSlugSelectorTb);
+            postTab.Controls.Add(label22);
+            postTab.Controls.Add(PostTagSelectorTb);
+            postTab.Controls.Add(label21);
+            postTab.Controls.Add(PostContentSelectorTb);
+            postTab.Controls.Add(label19);
+            postTab.Controls.Add(PostExcerptSelectorTb);
+            postTab.Controls.Add(label18);
+            postTab.Controls.Add(PostFormatCb);
+            postTab.Controls.Add(PostTitleSelectorTb);
+            postTab.Controls.Add(label17);
+            postTab.Location = new Point(4, 29);
+            postTab.Margin = new Padding(3, 4, 3, 4);
+            postTab.Name = "postTab";
+            postTab.Padding = new Padding(11, 13, 11, 13);
+            postTab.Size = new Size(1053, 1320);
+            postTab.TabIndex = 3;
+            postTab.Text = "Post";
+            postTab.UseVisualStyleBackColor = true;
             // 
             // PostStatusCb
             // 
-            this.PostStatusCb.AllowDrop = true;
-            this.PostStatusCb.DisplayMember = "post";
-            this.PostStatusCb.FormattingEnabled = true;
-            this.PostStatusCb.Items.AddRange(new object[] {
-            "publish",
-            "draft"});
-            this.PostStatusCb.Location = new System.Drawing.Point(230, 135);
-            this.PostStatusCb.Name = "PostStatusCb";
-            this.PostStatusCb.Size = new System.Drawing.Size(115, 23);
-            this.PostStatusCb.TabIndex = 51;
-            this.PostStatusCb.Text = "publish";
+            PostStatusCb.AllowDrop = true;
+            PostStatusCb.DisplayMember = "post";
+            PostStatusCb.FormattingEnabled = true;
+            PostStatusCb.Items.AddRange(new object[] { "publish", "draft", "pending" });
+            PostStatusCb.Location = new Point(263, 180);
+            PostStatusCb.Margin = new Padding(3, 4, 3, 4);
+            PostStatusCb.Name = "PostStatusCb";
+            PostStatusCb.Size = new Size(131, 28);
+            PostStatusCb.TabIndex = 51;
+            PostStatusCb.Text = "publish";
             // 
             // label44
             // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(13, 138);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(39, 15);
-            this.label44.TabIndex = 50;
-            this.label44.Text = "Status";
+            label44.AutoSize = true;
+            label44.Location = new Point(15, 184);
+            label44.Name = "label44";
+            label44.Size = new Size(49, 20);
+            label44.TabIndex = 50;
+            label44.Text = "Status";
             // 
             // PostAuthorTb
             // 
-            this.PostAuthorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostAuthorTb.Location = new System.Drawing.Point(230, 94);
-            this.PostAuthorTb.Name = "PostAuthorTb";
-            this.PostAuthorTb.Size = new System.Drawing.Size(665, 23);
-            this.PostAuthorTb.TabIndex = 49;
-            this.PostAuthorTb.Text = "admin";
+            PostAuthorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PostAuthorTb.Location = new Point(263, 125);
+            PostAuthorTb.Margin = new Padding(3, 4, 3, 4);
+            PostAuthorTb.Name = "PostAuthorTb";
+            PostAuthorTb.Size = new Size(759, 27);
+            PostAuthorTb.TabIndex = 49;
+            PostAuthorTb.Text = "admin";
             // 
             // label42
             // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(13, 97);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(44, 15);
-            this.label42.TabIndex = 48;
-            this.label42.Text = "Author";
+            label42.AutoSize = true;
+            label42.Location = new Point(15, 129);
+            label42.Name = "label42";
+            label42.Size = new Size(54, 20);
+            label42.TabIndex = 48;
+            label42.Text = "Author";
             // 
             // PostTypeCb
             // 
-            this.PostTypeCb.AllowDrop = true;
-            this.PostTypeCb.DisplayMember = "post";
-            this.PostTypeCb.FormattingEnabled = true;
-            this.PostTypeCb.Items.AddRange(new object[] {
-            "post",
-            "page",
-            "attachment"});
-            this.PostTypeCb.Location = new System.Drawing.Point(230, 52);
-            this.PostTypeCb.Name = "PostTypeCb";
-            this.PostTypeCb.Size = new System.Drawing.Size(115, 23);
-            this.PostTypeCb.TabIndex = 47;
-            this.PostTypeCb.Text = "post";
+            PostTypeCb.AllowDrop = true;
+            PostTypeCb.DisplayMember = "post";
+            PostTypeCb.FormattingEnabled = true;
+            PostTypeCb.Items.AddRange(new object[] { "post", "page", "attachment" });
+            PostTypeCb.Location = new Point(263, 69);
+            PostTypeCb.Margin = new Padding(3, 4, 3, 4);
+            PostTypeCb.Name = "PostTypeCb";
+            PostTypeCb.Size = new Size(131, 28);
+            PostTypeCb.TabIndex = 47;
+            PostTypeCb.Text = "post";
             // 
             // label41
             // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(13, 55);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(31, 15);
-            this.label41.TabIndex = 46;
-            this.label41.Text = "Type";
+            label41.AutoSize = true;
+            label41.Location = new Point(15, 73);
+            label41.Name = "label41";
+            label41.Size = new Size(40, 20);
+            label41.TabIndex = 46;
+            label41.Text = "Type";
             // 
             // PaginatePostsCb
             // 
-            this.PaginatePostsCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PaginatePostsCb.AutoSize = true;
-            this.PaginatePostsCb.Location = new System.Drawing.Point(230, 710);
-            this.PaginatePostsCb.Name = "PaginatePostsCb";
-            this.PaginatePostsCb.Size = new System.Drawing.Size(15, 14);
-            this.PaginatePostsCb.TabIndex = 45;
-            this.PaginatePostsCb.UseVisualStyleBackColor = true;
+            PaginatePostsCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PaginatePostsCb.AutoSize = true;
+            PaginatePostsCb.Location = new Point(263, 947);
+            PaginatePostsCb.Margin = new Padding(3, 4, 3, 4);
+            PaginatePostsCb.Name = "PaginatePostsCb";
+            PaginatePostsCb.Size = new Size(18, 17);
+            PaginatePostsCb.TabIndex = 45;
+            PaginatePostsCb.UseVisualStyleBackColor = true;
             // 
             // label36
             // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(13, 889);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(169, 15);
-            this.label36.TabIndex = 44;
-            this.label36.Text = "Unnecessary Element Selectors";
+            label36.AutoSize = true;
+            label36.Location = new Point(15, 1185);
+            label36.Name = "label36";
+            label36.Size = new Size(212, 20);
+            label36.TabIndex = 44;
+            label36.Text = "Unnecessary Element Selectors";
             // 
             // PostUnnecessaryElementsTb
             // 
-            this.PostUnnecessaryElementsTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostUnnecessaryElementsTb.Location = new System.Drawing.Point(230, 886);
-            this.PostUnnecessaryElementsTb.Name = "PostUnnecessaryElementsTb";
-            this.PostUnnecessaryElementsTb.Size = new System.Drawing.Size(659, 23);
-            this.PostUnnecessaryElementsTb.TabIndex = 43;
+            PostUnnecessaryElementsTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PostUnnecessaryElementsTb.Location = new Point(263, 1181);
+            PostUnnecessaryElementsTb.Margin = new Padding(3, 4, 3, 4);
+            PostUnnecessaryElementsTb.Name = "PostUnnecessaryElementsTb";
+            PostUnnecessaryElementsTb.Size = new Size(753, 27);
+            PostUnnecessaryElementsTb.TabIndex = 43;
             // 
             // label35
             // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(13, 843);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(149, 15);
-            this.label35.TabIndex = 42;
-            this.label35.Text = "Remove element attributes";
+            label35.AutoSize = true;
+            label35.Location = new Point(15, 1124);
+            label35.Name = "label35";
+            label35.Size = new Size(188, 20);
+            label35.TabIndex = 42;
+            label35.Text = "Remove element attributes";
             // 
             // PostRemoveElementAttributesTb
             // 
-            this.PostRemoveElementAttributesTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostRemoveElementAttributesTb.Location = new System.Drawing.Point(230, 840);
-            this.PostRemoveElementAttributesTb.Name = "PostRemoveElementAttributesTb";
-            this.PostRemoveElementAttributesTb.Size = new System.Drawing.Size(659, 23);
-            this.PostRemoveElementAttributesTb.TabIndex = 41;
+            PostRemoveElementAttributesTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PostRemoveElementAttributesTb.Location = new Point(263, 1120);
+            PostRemoveElementAttributesTb.Margin = new Padding(3, 4, 3, 4);
+            PostRemoveElementAttributesTb.Name = "PostRemoveElementAttributesTb";
+            PostRemoveElementAttributesTb.Size = new Size(753, 27);
+            PostRemoveElementAttributesTb.TabIndex = 41;
             // 
             // label34
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(13, 798);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(164, 15);
-            this.label34.TabIndex = 40;
-            this.label34.Text = "Find and replace in raw HTML";
+            label34.AutoSize = true;
+            label34.Location = new Point(15, 1064);
+            label34.Name = "label34";
+            label34.Size = new Size(206, 20);
+            label34.TabIndex = 40;
+            label34.Text = "Find and replace in raw HTML";
             // 
             // PostFindAndReplaceRawHTMLTb
             // 
-            this.PostFindAndReplaceRawHTMLTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostFindAndReplaceRawHTMLTb.Location = new System.Drawing.Point(230, 795);
-            this.PostFindAndReplaceRawHTMLTb.Name = "PostFindAndReplaceRawHTMLTb";
-            this.PostFindAndReplaceRawHTMLTb.Size = new System.Drawing.Size(659, 23);
-            this.PostFindAndReplaceRawHTMLTb.TabIndex = 39;
+            PostFindAndReplaceRawHTMLTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PostFindAndReplaceRawHTMLTb.Location = new Point(263, 1060);
+            PostFindAndReplaceRawHTMLTb.Margin = new Padding(3, 4, 3, 4);
+            PostFindAndReplaceRawHTMLTb.Name = "PostFindAndReplaceRawHTMLTb";
+            PostFindAndReplaceRawHTMLTb.Size = new Size(753, 27);
+            PostFindAndReplaceRawHTMLTb.TabIndex = 39;
             // 
             // SaveMetaDescriptionCb
             // 
-            this.SaveMetaDescriptionCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveMetaDescriptionCb.AutoSize = true;
-            this.SaveMetaDescriptionCb.Checked = true;
-            this.SaveMetaDescriptionCb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SaveMetaDescriptionCb.Location = new System.Drawing.Point(230, 584);
-            this.SaveMetaDescriptionCb.Name = "SaveMetaDescriptionCb";
-            this.SaveMetaDescriptionCb.Size = new System.Drawing.Size(15, 14);
-            this.SaveMetaDescriptionCb.TabIndex = 38;
-            this.SaveMetaDescriptionCb.UseVisualStyleBackColor = true;
+            SaveMetaDescriptionCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            SaveMetaDescriptionCb.AutoSize = true;
+            SaveMetaDescriptionCb.Checked = true;
+            SaveMetaDescriptionCb.CheckState = CheckState.Checked;
+            SaveMetaDescriptionCb.Location = new Point(263, 779);
+            SaveMetaDescriptionCb.Margin = new Padding(3, 4, 3, 4);
+            SaveMetaDescriptionCb.Name = "SaveMetaDescriptionCb";
+            SaveMetaDescriptionCb.Size = new Size(18, 17);
+            SaveMetaDescriptionCb.TabIndex = 38;
+            SaveMetaDescriptionCb.UseVisualStyleBackColor = true;
             // 
             // label33
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(13, 583);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(128, 15);
-            this.label33.TabIndex = 37;
-            this.label33.Text = "Save meta description?";
+            label33.AutoSize = true;
+            label33.Location = new Point(15, 777);
+            label33.Name = "label33";
+            label33.Size = new Size(163, 20);
+            label33.TabIndex = 37;
+            label33.Text = "Save meta description?";
             // 
             // SaveFeaturedImagesPostCb
             // 
-            this.SaveFeaturedImagesPostCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveFeaturedImagesPostCb.AutoSize = true;
-            this.SaveFeaturedImagesPostCb.Checked = true;
-            this.SaveFeaturedImagesPostCb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SaveFeaturedImagesPostCb.Location = new System.Drawing.Point(230, 621);
-            this.SaveFeaturedImagesPostCb.Name = "SaveFeaturedImagesPostCb";
-            this.SaveFeaturedImagesPostCb.Size = new System.Drawing.Size(15, 14);
-            this.SaveFeaturedImagesPostCb.TabIndex = 36;
-            this.SaveFeaturedImagesPostCb.UseVisualStyleBackColor = true;
+            SaveFeaturedImagesPostCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            SaveFeaturedImagesPostCb.AutoSize = true;
+            SaveFeaturedImagesPostCb.Checked = true;
+            SaveFeaturedImagesPostCb.CheckState = CheckState.Checked;
+            SaveFeaturedImagesPostCb.Location = new Point(263, 828);
+            SaveFeaturedImagesPostCb.Margin = new Padding(3, 4, 3, 4);
+            SaveFeaturedImagesPostCb.Name = "SaveFeaturedImagesPostCb";
+            SaveFeaturedImagesPostCb.Size = new Size(18, 17);
+            SaveFeaturedImagesPostCb.TabIndex = 36;
+            SaveFeaturedImagesPostCb.UseVisualStyleBackColor = true;
             // 
             // label32
             // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(13, 620);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(172, 30);
-            this.label32.TabIndex = 35;
-            this.label32.Text = "Save featured image, if it is not \r\nfound in category page?";
+            label32.AutoSize = true;
+            label32.Location = new Point(15, 827);
+            label32.Name = "label32";
+            label32.Size = new Size(219, 40);
+            label32.TabIndex = 35;
+            label32.Text = "Save featured image, if it is not \r\nfound in category page?";
             // 
             // AddMetaKeywordsAsTagCb
             // 
-            this.AddMetaKeywordsAsTagCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddMetaKeywordsAsTagCb.AutoSize = true;
-            this.AddMetaKeywordsAsTagCb.Checked = true;
-            this.AddMetaKeywordsAsTagCb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.AddMetaKeywordsAsTagCb.Location = new System.Drawing.Point(230, 546);
-            this.AddMetaKeywordsAsTagCb.Name = "AddMetaKeywordsAsTagCb";
-            this.AddMetaKeywordsAsTagCb.Size = new System.Drawing.Size(15, 14);
-            this.AddMetaKeywordsAsTagCb.TabIndex = 34;
-            this.AddMetaKeywordsAsTagCb.UseVisualStyleBackColor = true;
+            AddMetaKeywordsAsTagCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddMetaKeywordsAsTagCb.AutoSize = true;
+            AddMetaKeywordsAsTagCb.Checked = true;
+            AddMetaKeywordsAsTagCb.CheckState = CheckState.Checked;
+            AddMetaKeywordsAsTagCb.Location = new Point(263, 728);
+            AddMetaKeywordsAsTagCb.Margin = new Padding(3, 4, 3, 4);
+            AddMetaKeywordsAsTagCb.Name = "AddMetaKeywordsAsTagCb";
+            AddMetaKeywordsAsTagCb.Size = new Size(18, 17);
+            AddMetaKeywordsAsTagCb.TabIndex = 34;
+            AddMetaKeywordsAsTagCb.UseVisualStyleBackColor = true;
             // 
             // label31
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(13, 545);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(156, 15);
-            this.label31.TabIndex = 33;
-            this.label31.Text = "Add meta keywords as tags?";
+            label31.AutoSize = true;
+            label31.Location = new Point(15, 727);
+            label31.Name = "label31";
+            label31.Size = new Size(198, 20);
+            label31.TabIndex = 33;
+            label31.Text = "Add meta keywords as tags?";
             // 
             // SaveMetaKeywordsCb
             // 
-            this.SaveMetaKeywordsCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveMetaKeywordsCb.AutoSize = true;
-            this.SaveMetaKeywordsCb.Checked = true;
-            this.SaveMetaKeywordsCb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SaveMetaKeywordsCb.Location = new System.Drawing.Point(230, 511);
-            this.SaveMetaKeywordsCb.Name = "SaveMetaKeywordsCb";
-            this.SaveMetaKeywordsCb.Size = new System.Drawing.Size(15, 14);
-            this.SaveMetaKeywordsCb.TabIndex = 32;
-            this.SaveMetaKeywordsCb.UseVisualStyleBackColor = true;
+            SaveMetaKeywordsCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            SaveMetaKeywordsCb.AutoSize = true;
+            SaveMetaKeywordsCb.Checked = true;
+            SaveMetaKeywordsCb.CheckState = CheckState.Checked;
+            SaveMetaKeywordsCb.Location = new Point(263, 681);
+            SaveMetaKeywordsCb.Margin = new Padding(3, 4, 3, 4);
+            SaveMetaKeywordsCb.Name = "SaveMetaKeywordsCb";
+            SaveMetaKeywordsCb.Size = new Size(18, 17);
+            SaveMetaKeywordsCb.TabIndex = 32;
+            SaveMetaKeywordsCb.UseVisualStyleBackColor = true;
             // 
             // label30
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(13, 510);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(119, 15);
-            this.label30.TabIndex = 31;
-            this.label30.Text = "Save meta keywords?";
+            label30.AutoSize = true;
+            label30.Location = new Point(15, 680);
+            label30.Name = "label30";
+            label30.Size = new Size(151, 20);
+            label30.TabIndex = 31;
+            label30.Text = "Save meta keywords?";
             // 
             // label29
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(13, 753);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(161, 15);
-            this.label29.TabIndex = 30;
-            this.label29.Text = "Post Next Page URL Selectors";
+            label29.AutoSize = true;
+            label29.Location = new Point(15, 1004);
+            label29.Name = "label29";
+            label29.Size = new Size(201, 20);
+            label29.TabIndex = 30;
+            label29.Text = "Post Next Page URL Selectors";
             // 
             // PostNextPageURLSelectorTb
             // 
-            this.PostNextPageURLSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostNextPageURLSelectorTb.Location = new System.Drawing.Point(230, 750);
-            this.PostNextPageURLSelectorTb.Name = "PostNextPageURLSelectorTb";
-            this.PostNextPageURLSelectorTb.Size = new System.Drawing.Size(659, 23);
-            this.PostNextPageURLSelectorTb.TabIndex = 29;
+            PostNextPageURLSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PostNextPageURLSelectorTb.Location = new Point(263, 1000);
+            PostNextPageURLSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            PostNextPageURLSelectorTb.Name = "PostNextPageURLSelectorTb";
+            PostNextPageURLSelectorTb.Size = new Size(753, 27);
+            PostNextPageURLSelectorTb.TabIndex = 29;
             // 
             // label28
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(13, 710);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(89, 15);
-            this.label28.TabIndex = 28;
-            this.label28.Text = "Paginate posts?";
+            label28.AutoSize = true;
+            label28.Location = new Point(15, 947);
+            label28.Name = "label28";
+            label28.Size = new Size(112, 20);
+            label28.TabIndex = 28;
+            label28.Text = "Paginate posts?";
             // 
             // label27
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(13, 668);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(139, 15);
-            this.label27.TabIndex = 26;
-            this.label27.Text = "Featured Image Selectors";
+            label27.AutoSize = true;
+            label27.Location = new Point(15, 891);
+            label27.Name = "label27";
+            label27.Size = new Size(177, 20);
+            label27.TabIndex = 26;
+            label27.Text = "Featured Image Selectors";
             // 
             // PostFeaturedImageSelectorTb
             // 
-            this.PostFeaturedImageSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostFeaturedImageSelectorTb.Location = new System.Drawing.Point(230, 665);
-            this.PostFeaturedImageSelectorTb.Name = "PostFeaturedImageSelectorTb";
-            this.PostFeaturedImageSelectorTb.Size = new System.Drawing.Size(659, 23);
-            this.PostFeaturedImageSelectorTb.TabIndex = 25;
+            PostFeaturedImageSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PostFeaturedImageSelectorTb.Location = new Point(263, 887);
+            PostFeaturedImageSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            PostFeaturedImageSelectorTb.Name = "PostFeaturedImageSelectorTb";
+            PostFeaturedImageSelectorTb.Size = new Size(753, 27);
+            PostFeaturedImageSelectorTb.TabIndex = 25;
             // 
             // label26
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(13, 468);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(102, 15);
-            this.label26.TabIndex = 24;
-            this.label26.Text = "Post Date Selector";
+            label26.AutoSize = true;
+            label26.Location = new Point(15, 624);
+            label26.Name = "label26";
+            label26.Size = new Size(130, 20);
+            label26.TabIndex = 24;
+            label26.Text = "Post Date Selector";
             // 
             // PostDateSelectorTb
             // 
-            this.PostDateSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostDateSelectorTb.Location = new System.Drawing.Point(230, 465);
-            this.PostDateSelectorTb.Name = "PostDateSelectorTb";
-            this.PostDateSelectorTb.Size = new System.Drawing.Size(659, 23);
-            this.PostDateSelectorTb.TabIndex = 23;
+            PostDateSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PostDateSelectorTb.Location = new Point(263, 620);
+            PostDateSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            PostDateSelectorTb.Name = "PostDateSelectorTb";
+            PostDateSelectorTb.Size = new Size(753, 27);
+            PostDateSelectorTb.TabIndex = 23;
             // 
             // label25
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(13, 427);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(188, 15);
-            this.label25.TabIndex = 22;
-            this.label25.Text = "Category Name Separator Selector";
+            label25.AutoSize = true;
+            label25.Location = new Point(15, 569);
+            label25.Name = "label25";
+            label25.Size = new Size(240, 20);
+            label25.TabIndex = 22;
+            label25.Text = "Category Name Separator Selector";
             // 
             // CategoryNameSeparatorSelectorTb
             // 
-            this.CategoryNameSeparatorSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryNameSeparatorSelectorTb.Location = new System.Drawing.Point(230, 424);
-            this.CategoryNameSeparatorSelectorTb.Name = "CategoryNameSeparatorSelectorTb";
-            this.CategoryNameSeparatorSelectorTb.Size = new System.Drawing.Size(659, 23);
-            this.CategoryNameSeparatorSelectorTb.TabIndex = 21;
+            CategoryNameSeparatorSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CategoryNameSeparatorSelectorTb.Location = new Point(263, 565);
+            CategoryNameSeparatorSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            CategoryNameSeparatorSelectorTb.Name = "CategoryNameSeparatorSelectorTb";
+            CategoryNameSeparatorSelectorTb.Size = new Size(753, 27);
+            CategoryNameSeparatorSelectorTb.TabIndex = 21;
             // 
             // label24
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(13, 387);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(140, 15);
-            this.label24.TabIndex = 20;
-            this.label24.Text = "Category Name Selectors";
+            label24.AutoSize = true;
+            label24.Location = new Point(15, 516);
+            label24.Name = "label24";
+            label24.Size = new Size(177, 20);
+            label24.TabIndex = 20;
+            label24.Text = "Category Name Selectors";
             // 
             // CategoryNameSelectorTb
             // 
-            this.CategoryNameSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryNameSelectorTb.Location = new System.Drawing.Point(230, 384);
-            this.CategoryNameSelectorTb.Name = "CategoryNameSelectorTb";
-            this.CategoryNameSelectorTb.Size = new System.Drawing.Size(659, 23);
-            this.CategoryNameSelectorTb.TabIndex = 19;
+            CategoryNameSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CategoryNameSelectorTb.Location = new Point(263, 512);
+            CategoryNameSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            CategoryNameSelectorTb.Name = "CategoryNameSelectorTb";
+            CategoryNameSelectorTb.Size = new Size(753, 27);
+            CategoryNameSelectorTb.TabIndex = 19;
             // 
             // label23
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(13, 346);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(144, 15);
-            this.label23.TabIndex = 18;
-            this.label23.Text = "Slug (Permalink) Selectors";
+            label23.AutoSize = true;
+            label23.Location = new Point(15, 461);
+            label23.Name = "label23";
+            label23.Size = new Size(180, 20);
+            label23.TabIndex = 18;
+            label23.Text = "Slug (Permalink) Selectors";
             // 
             // PostSlugSelectorTb
             // 
-            this.PostSlugSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostSlugSelectorTb.Location = new System.Drawing.Point(230, 343);
-            this.PostSlugSelectorTb.Name = "PostSlugSelectorTb";
-            this.PostSlugSelectorTb.Size = new System.Drawing.Size(659, 23);
-            this.PostSlugSelectorTb.TabIndex = 17;
+            PostSlugSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PostSlugSelectorTb.Location = new Point(263, 457);
+            PostSlugSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            PostSlugSelectorTb.Name = "PostSlugSelectorTb";
+            PostSlugSelectorTb.Size = new Size(753, 27);
+            PostSlugSelectorTb.TabIndex = 17;
             // 
             // label22
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(13, 309);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(75, 15);
-            this.label22.TabIndex = 16;
-            this.label22.Text = "Tag Selectors";
+            label22.AutoSize = true;
+            label22.Location = new Point(15, 412);
+            label22.Name = "label22";
+            label22.Size = new Size(96, 20);
+            label22.TabIndex = 16;
+            label22.Text = "Tag Selectors";
             // 
             // PostTagSelectorTb
             // 
-            this.PostTagSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostTagSelectorTb.Location = new System.Drawing.Point(230, 301);
-            this.PostTagSelectorTb.Name = "PostTagSelectorTb";
-            this.PostTagSelectorTb.Size = new System.Drawing.Size(659, 23);
-            this.PostTagSelectorTb.TabIndex = 15;
+            PostTagSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PostTagSelectorTb.Location = new Point(263, 401);
+            PostTagSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            PostTagSelectorTb.Name = "PostTagSelectorTb";
+            PostTagSelectorTb.Size = new Size(753, 27);
+            PostTagSelectorTb.TabIndex = 15;
             // 
             // label21
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(13, 263);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(100, 15);
-            this.label21.TabIndex = 14;
-            this.label21.Text = "Content Selectors";
+            label21.AutoSize = true;
+            label21.Location = new Point(15, 351);
+            label21.Name = "label21";
+            label21.Size = new Size(125, 20);
+            label21.TabIndex = 14;
+            label21.Text = "Content Selectors";
             // 
             // PostContentSelectorTb
             // 
-            this.PostContentSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostContentSelectorTb.Location = new System.Drawing.Point(230, 260);
-            this.PostContentSelectorTb.Name = "PostContentSelectorTb";
-            this.PostContentSelectorTb.Size = new System.Drawing.Size(659, 23);
-            this.PostContentSelectorTb.TabIndex = 13;
+            PostContentSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PostContentSelectorTb.Location = new Point(263, 347);
+            PostContentSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            PostContentSelectorTb.Name = "PostContentSelectorTb";
+            PostContentSelectorTb.Size = new Size(753, 27);
+            PostContentSelectorTb.TabIndex = 13;
             // 
             // label19
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(13, 222);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(96, 15);
-            this.label19.TabIndex = 10;
-            this.label19.Text = "Excerpt Selectors";
+            label19.AutoSize = true;
+            label19.Location = new Point(15, 296);
+            label19.Name = "label19";
+            label19.Size = new Size(122, 20);
+            label19.TabIndex = 10;
+            label19.Text = "Excerpt Selectors";
             // 
             // PostExcerptSelectorTb
             // 
-            this.PostExcerptSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostExcerptSelectorTb.Location = new System.Drawing.Point(230, 219);
-            this.PostExcerptSelectorTb.Name = "PostExcerptSelectorTb";
-            this.PostExcerptSelectorTb.Size = new System.Drawing.Size(659, 23);
-            this.PostExcerptSelectorTb.TabIndex = 9;
+            PostExcerptSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PostExcerptSelectorTb.Location = new Point(263, 292);
+            PostExcerptSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            PostExcerptSelectorTb.Name = "PostExcerptSelectorTb";
+            PostExcerptSelectorTb.Size = new Size(753, 27);
+            PostExcerptSelectorTb.TabIndex = 9;
             // 
             // label18
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(13, 180);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(79, 15);
-            this.label18.TabIndex = 8;
-            this.label18.Text = "Title Selectors";
+            label18.AutoSize = true;
+            label18.Location = new Point(15, 240);
+            label18.Name = "label18";
+            label18.Size = new Size(102, 20);
+            label18.TabIndex = 8;
+            label18.Text = "Title Selectors";
             // 
             // PostFormatCb
             // 
-            this.PostFormatCb.AllowDrop = true;
-            this.PostFormatCb.DisplayMember = "standard";
-            this.PostFormatCb.FormattingEnabled = true;
-            this.PostFormatCb.Items.AddRange(new object[] {
-            "standard",
-            "gallery",
-            "video"});
-            this.PostFormatCb.Location = new System.Drawing.Point(230, 13);
-            this.PostFormatCb.Name = "PostFormatCb";
-            this.PostFormatCb.Size = new System.Drawing.Size(115, 23);
-            this.PostFormatCb.TabIndex = 7;
-            this.PostFormatCb.Text = "standard";
+            PostFormatCb.AllowDrop = true;
+            PostFormatCb.DisplayMember = "standard";
+            PostFormatCb.FormattingEnabled = true;
+            PostFormatCb.Items.AddRange(new object[] { "standard", "gallery", "video" });
+            PostFormatCb.Location = new Point(263, 17);
+            PostFormatCb.Margin = new Padding(3, 4, 3, 4);
+            PostFormatCb.Name = "PostFormatCb";
+            PostFormatCb.Size = new Size(131, 28);
+            PostFormatCb.TabIndex = 7;
+            PostFormatCb.Text = "standard";
             // 
             // PostTitleSelectorTb
             // 
-            this.PostTitleSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostTitleSelectorTb.Location = new System.Drawing.Point(230, 177);
-            this.PostTitleSelectorTb.Name = "PostTitleSelectorTb";
-            this.PostTitleSelectorTb.Size = new System.Drawing.Size(659, 23);
-            this.PostTitleSelectorTb.TabIndex = 5;
+            PostTitleSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PostTitleSelectorTb.Location = new Point(263, 236);
+            PostTitleSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            PostTitleSelectorTb.Name = "PostTitleSelectorTb";
+            PostTitleSelectorTb.Size = new Size(753, 27);
+            PostTitleSelectorTb.TabIndex = 5;
             // 
             // label17
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(13, 16);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(45, 15);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "Format";
+            label17.AutoSize = true;
+            label17.Location = new Point(15, 21);
+            label17.Name = "label17";
+            label17.Size = new Size(56, 20);
+            label17.TabIndex = 2;
+            label17.Text = "Format";
             // 
             // categoryTab
             // 
-            this.categoryTab.AutoScroll = true;
-            this.categoryTab.Controls.Add(this.CategoryDescriptionTb);
-            this.categoryTab.Controls.Add(this.label7);
-            this.categoryTab.Controls.Add(this.CrawlerUrlsTb);
-            this.categoryTab.Controls.Add(this.CrawlerUrlsLb);
-            this.categoryTab.Controls.Add(this.UnnecessaryElementsTb);
-            this.categoryTab.Controls.Add(this.label16);
-            this.categoryTab.Controls.Add(this.RemoveElementAttributesTb);
-            this.categoryTab.Controls.Add(this.label15);
-            this.categoryTab.Controls.Add(this.FindAndReplaceRawHTMLTb);
-            this.categoryTab.Controls.Add(this.label14);
-            this.categoryTab.Controls.Add(this.FeaturedImageSelectorTb);
-            this.categoryTab.Controls.Add(this.label13);
-            this.categoryTab.Controls.Add(this.SaveFeaturedImagesCb);
-            this.categoryTab.Controls.Add(this.label12);
-            this.categoryTab.Controls.Add(this.CategoryNextPageURLSelectorTb);
-            this.categoryTab.Controls.Add(this.CategoryNextPageURLSelectorLb);
-            this.categoryTab.Controls.Add(this.CategoryPostURLSelectorTb);
-            this.categoryTab.Controls.Add(this.CategoryPostURLSelectorLb);
-            this.categoryTab.Controls.Add(this.CategoryMapTb);
-            this.categoryTab.Controls.Add(this.label9);
-            this.categoryTab.Controls.Add(this.CategoryListURLSelectorTb);
-            this.categoryTab.Controls.Add(this.CategoryListURLSelectorLb);
-            this.categoryTab.Controls.Add(this.CategoryListPageURLTb);
-            this.categoryTab.Controls.Add(this.CategoryListPageURLLb);
-            this.categoryTab.Location = new System.Drawing.Point(4, 24);
-            this.categoryTab.Name = "categoryTab";
-            this.categoryTab.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.categoryTab.Size = new System.Drawing.Size(920, 987);
-            this.categoryTab.TabIndex = 2;
-            this.categoryTab.Text = "Category";
-            this.categoryTab.UseVisualStyleBackColor = true;
+            categoryTab.AutoScroll = true;
+            categoryTab.Controls.Add(CategoryDescriptionTb);
+            categoryTab.Controls.Add(label7);
+            categoryTab.Controls.Add(CrawlerUrlsTb);
+            categoryTab.Controls.Add(CrawlerUrlsLb);
+            categoryTab.Controls.Add(UnnecessaryElementsTb);
+            categoryTab.Controls.Add(label16);
+            categoryTab.Controls.Add(RemoveElementAttributesTb);
+            categoryTab.Controls.Add(label15);
+            categoryTab.Controls.Add(FindAndReplaceRawHTMLTb);
+            categoryTab.Controls.Add(label14);
+            categoryTab.Controls.Add(FeaturedImageSelectorTb);
+            categoryTab.Controls.Add(label13);
+            categoryTab.Controls.Add(SaveFeaturedImagesCb);
+            categoryTab.Controls.Add(label12);
+            categoryTab.Controls.Add(CategoryNextPageURLSelectorTb);
+            categoryTab.Controls.Add(CategoryNextPageURLSelectorLb);
+            categoryTab.Controls.Add(CategoryPostURLSelectorTb);
+            categoryTab.Controls.Add(CategoryPostURLSelectorLb);
+            categoryTab.Controls.Add(CategoryMapTb);
+            categoryTab.Controls.Add(label9);
+            categoryTab.Controls.Add(CategoryListURLSelectorTb);
+            categoryTab.Controls.Add(CategoryListURLSelectorLb);
+            categoryTab.Controls.Add(CategoryListPageURLTb);
+            categoryTab.Controls.Add(CategoryListPageURLLb);
+            categoryTab.Location = new Point(4, 29);
+            categoryTab.Margin = new Padding(3, 4, 3, 4);
+            categoryTab.Name = "categoryTab";
+            categoryTab.Padding = new Padding(11, 4, 11, 4);
+            categoryTab.Size = new Size(1053, 1320);
+            categoryTab.TabIndex = 2;
+            categoryTab.Text = "Category";
+            categoryTab.UseVisualStyleBackColor = true;
             // 
             // CategoryDescriptionTb
             // 
-            this.CategoryDescriptionTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryDescriptionTb.Location = new System.Drawing.Point(224, 188);
-            this.CategoryDescriptionTb.Name = "CategoryDescriptionTb";
-            this.CategoryDescriptionTb.Size = new System.Drawing.Size(665, 23);
-            this.CategoryDescriptionTb.TabIndex = 27;
+            CategoryDescriptionTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CategoryDescriptionTb.Location = new Point(256, 251);
+            CategoryDescriptionTb.Margin = new Padding(3, 4, 3, 4);
+            CategoryDescriptionTb.Name = "CategoryDescriptionTb";
+            CategoryDescriptionTb.Size = new Size(759, 27);
+            CategoryDescriptionTb.TabIndex = 27;
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 191);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(118, 15);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "Category Description";
+            label7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label7.AutoSize = true;
+            label7.Location = new Point(15, 255);
+            label7.Name = "label7";
+            label7.Size = new Size(149, 20);
+            label7.TabIndex = 26;
+            label7.Text = "Category Description";
             // 
             // CrawlerUrlsTb
             // 
-            this.CrawlerUrlsTb.Location = new System.Drawing.Point(223, 15);
-            this.CrawlerUrlsTb.Name = "CrawlerUrlsTb";
-            this.CrawlerUrlsTb.Size = new System.Drawing.Size(497, 147);
-            this.CrawlerUrlsTb.TabIndex = 25;
-            this.CrawlerUrlsTb.Text = "";
+            CrawlerUrlsTb.Location = new Point(255, 20);
+            CrawlerUrlsTb.Margin = new Padding(3, 4, 3, 4);
+            CrawlerUrlsTb.Name = "CrawlerUrlsTb";
+            CrawlerUrlsTb.Size = new Size(567, 195);
+            CrawlerUrlsTb.TabIndex = 25;
+            CrawlerUrlsTb.Text = "";
             // 
             // CrawlerUrlsLb
             // 
-            this.CrawlerUrlsLb.AutoSize = true;
-            this.CrawlerUrlsLb.Location = new System.Drawing.Point(13, 17);
-            this.CrawlerUrlsLb.Name = "CrawlerUrlsLb";
-            this.CrawlerUrlsLb.Size = new System.Drawing.Size(70, 15);
-            this.CrawlerUrlsLb.TabIndex = 24;
-            this.CrawlerUrlsLb.Text = "Crawler Urls";
+            CrawlerUrlsLb.AutoSize = true;
+            CrawlerUrlsLb.Location = new Point(15, 23);
+            CrawlerUrlsLb.Name = "CrawlerUrlsLb";
+            CrawlerUrlsLb.Size = new Size(88, 20);
+            CrawlerUrlsLb.TabIndex = 24;
+            CrawlerUrlsLb.Text = "Crawler Urls";
             // 
             // UnnecessaryElementsTb
             // 
-            this.UnnecessaryElementsTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.UnnecessaryElementsTb.Location = new System.Drawing.Point(224, 446);
-            this.UnnecessaryElementsTb.Name = "UnnecessaryElementsTb";
-            this.UnnecessaryElementsTb.Size = new System.Drawing.Size(665, 23);
-            this.UnnecessaryElementsTb.TabIndex = 22;
+            UnnecessaryElementsTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            UnnecessaryElementsTb.Location = new Point(256, 595);
+            UnnecessaryElementsTb.Margin = new Padding(3, 4, 3, 4);
+            UnnecessaryElementsTb.Name = "UnnecessaryElementsTb";
+            UnnecessaryElementsTb.Size = new Size(759, 27);
+            UnnecessaryElementsTb.TabIndex = 22;
             // 
             // label16
             // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(13, 449);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(169, 15);
-            this.label16.TabIndex = 21;
-            this.label16.Text = "Unnecessary Element Selectors";
+            label16.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label16.AutoSize = true;
+            label16.Location = new Point(15, 599);
+            label16.Name = "label16";
+            label16.Size = new Size(212, 20);
+            label16.TabIndex = 21;
+            label16.Text = "Unnecessary Element Selectors";
             // 
             // RemoveElementAttributesTb
             // 
-            this.RemoveElementAttributesTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveElementAttributesTb.Location = new System.Drawing.Point(224, 402);
-            this.RemoveElementAttributesTb.Name = "RemoveElementAttributesTb";
-            this.RemoveElementAttributesTb.Size = new System.Drawing.Size(665, 23);
-            this.RemoveElementAttributesTb.TabIndex = 20;
+            RemoveElementAttributesTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            RemoveElementAttributesTb.Location = new Point(256, 536);
+            RemoveElementAttributesTb.Margin = new Padding(3, 4, 3, 4);
+            RemoveElementAttributesTb.Name = "RemoveElementAttributesTb";
+            RemoveElementAttributesTb.Size = new Size(759, 27);
+            RemoveElementAttributesTb.TabIndex = 20;
             // 
             // label15
             // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(13, 405);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(145, 15);
-            this.label15.TabIndex = 19;
-            this.label15.Text = "RemoveElementAttributes";
+            label15.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label15.AutoSize = true;
+            label15.Location = new Point(15, 540);
+            label15.Name = "label15";
+            label15.Size = new Size(182, 20);
+            label15.TabIndex = 19;
+            label15.Text = "RemoveElementAttributes";
             // 
             // FindAndReplaceRawHTMLTb
             // 
-            this.FindAndReplaceRawHTMLTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FindAndReplaceRawHTMLTb.Location = new System.Drawing.Point(224, 361);
-            this.FindAndReplaceRawHTMLTb.Name = "FindAndReplaceRawHTMLTb";
-            this.FindAndReplaceRawHTMLTb.Size = new System.Drawing.Size(665, 23);
-            this.FindAndReplaceRawHTMLTb.TabIndex = 18;
+            FindAndReplaceRawHTMLTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            FindAndReplaceRawHTMLTb.Location = new Point(256, 481);
+            FindAndReplaceRawHTMLTb.Margin = new Padding(3, 4, 3, 4);
+            FindAndReplaceRawHTMLTb.Name = "FindAndReplaceRawHTMLTb";
+            FindAndReplaceRawHTMLTb.Size = new Size(759, 27);
+            FindAndReplaceRawHTMLTb.TabIndex = 18;
             // 
             // label14
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 364);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(164, 15);
-            this.label14.TabIndex = 17;
-            this.label14.Text = "Find and replace in raw HTML";
+            label14.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label14.AutoSize = true;
+            label14.Location = new Point(15, 485);
+            label14.Name = "label14";
+            label14.Size = new Size(206, 20);
+            label14.TabIndex = 17;
+            label14.Text = "Find and replace in raw HTML";
             // 
             // FeaturedImageSelectorTb
             // 
-            this.FeaturedImageSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FeaturedImageSelectorTb.Location = new System.Drawing.Point(224, 319);
-            this.FeaturedImageSelectorTb.Name = "FeaturedImageSelectorTb";
-            this.FeaturedImageSelectorTb.Size = new System.Drawing.Size(665, 23);
-            this.FeaturedImageSelectorTb.TabIndex = 16;
+            FeaturedImageSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            FeaturedImageSelectorTb.Location = new Point(256, 425);
+            FeaturedImageSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            FeaturedImageSelectorTb.Name = "FeaturedImageSelectorTb";
+            FeaturedImageSelectorTb.Size = new Size(759, 27);
+            FeaturedImageSelectorTb.TabIndex = 16;
             // 
             // label13
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 322);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(128, 15);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "FeaturedImageSelector";
+            label13.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label13.AutoSize = true;
+            label13.Location = new Point(15, 429);
+            label13.Name = "label13";
+            label13.Size = new Size(163, 20);
+            label13.TabIndex = 15;
+            label13.Text = "FeaturedImageSelector";
             // 
             // SaveFeaturedImagesCb
             // 
-            this.SaveFeaturedImagesCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveFeaturedImagesCb.AutoSize = true;
-            this.SaveFeaturedImagesCb.Checked = true;
-            this.SaveFeaturedImagesCb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.SaveFeaturedImagesCb.Location = new System.Drawing.Point(224, 283);
-            this.SaveFeaturedImagesCb.Name = "SaveFeaturedImagesCb";
-            this.SaveFeaturedImagesCb.Size = new System.Drawing.Size(15, 14);
-            this.SaveFeaturedImagesCb.TabIndex = 14;
-            this.SaveFeaturedImagesCb.UseVisualStyleBackColor = true;
+            SaveFeaturedImagesCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            SaveFeaturedImagesCb.AutoSize = true;
+            SaveFeaturedImagesCb.Checked = true;
+            SaveFeaturedImagesCb.CheckState = CheckState.Checked;
+            SaveFeaturedImagesCb.Location = new Point(256, 377);
+            SaveFeaturedImagesCb.Margin = new Padding(3, 4, 3, 4);
+            SaveFeaturedImagesCb.Name = "SaveFeaturedImagesCb";
+            SaveFeaturedImagesCb.Size = new Size(18, 17);
+            SaveFeaturedImagesCb.TabIndex = 14;
+            SaveFeaturedImagesCb.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 282);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(124, 15);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Save featured images?";
+            label12.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label12.AutoSize = true;
+            label12.Location = new Point(15, 376);
+            label12.Name = "label12";
+            label12.Size = new Size(159, 20);
+            label12.TabIndex = 13;
+            label12.Text = "Save featured images?";
             // 
             // CategoryNextPageURLSelectorTb
             // 
-            this.CategoryNextPageURLSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryNextPageURLSelectorTb.Location = new System.Drawing.Point(224, 139);
-            this.CategoryNextPageURLSelectorTb.Name = "CategoryNextPageURLSelectorTb";
-            this.CategoryNextPageURLSelectorTb.Size = new System.Drawing.Size(665, 23);
-            this.CategoryNextPageURLSelectorTb.TabIndex = 12;
+            CategoryNextPageURLSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CategoryNextPageURLSelectorTb.Location = new Point(256, 185);
+            CategoryNextPageURLSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            CategoryNextPageURLSelectorTb.Name = "CategoryNextPageURLSelectorTb";
+            CategoryNextPageURLSelectorTb.Size = new Size(759, 27);
+            CategoryNextPageURLSelectorTb.TabIndex = 12;
             // 
             // CategoryNextPageURLSelectorLb
             // 
-            this.CategoryNextPageURLSelectorLb.AutoSize = true;
-            this.CategoryNextPageURLSelectorLb.Location = new System.Drawing.Point(13, 142);
-            this.CategoryNextPageURLSelectorLb.Name = "CategoryNextPageURLSelectorLb";
-            this.CategoryNextPageURLSelectorLb.Size = new System.Drawing.Size(186, 15);
-            this.CategoryNextPageURLSelectorLb.TabIndex = 11;
-            this.CategoryNextPageURLSelectorLb.Text = "Category Next Page URL Selectors";
+            CategoryNextPageURLSelectorLb.AutoSize = true;
+            CategoryNextPageURLSelectorLb.Location = new Point(15, 189);
+            CategoryNextPageURLSelectorLb.Name = "CategoryNextPageURLSelectorLb";
+            CategoryNextPageURLSelectorLb.Size = new Size(234, 20);
+            CategoryNextPageURLSelectorLb.TabIndex = 11;
+            CategoryNextPageURLSelectorLb.Text = "Category Next Page URL Selectors";
             // 
             // CategoryPostURLSelectorTb
             // 
-            this.CategoryPostURLSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryPostURLSelectorTb.Location = new System.Drawing.Point(224, 98);
-            this.CategoryPostURLSelectorTb.Name = "CategoryPostURLSelectorTb";
-            this.CategoryPostURLSelectorTb.Size = new System.Drawing.Size(665, 23);
-            this.CategoryPostURLSelectorTb.TabIndex = 10;
+            CategoryPostURLSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CategoryPostURLSelectorTb.Location = new Point(256, 131);
+            CategoryPostURLSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            CategoryPostURLSelectorTb.Name = "CategoryPostURLSelectorTb";
+            CategoryPostURLSelectorTb.Size = new Size(759, 27);
+            CategoryPostURLSelectorTb.TabIndex = 10;
             // 
             // CategoryPostURLSelectorLb
             // 
-            this.CategoryPostURLSelectorLb.AutoSize = true;
-            this.CategoryPostURLSelectorLb.Location = new System.Drawing.Point(13, 101);
-            this.CategoryPostURLSelectorLb.Name = "CategoryPostURLSelectorLb";
-            this.CategoryPostURLSelectorLb.Size = new System.Drawing.Size(155, 15);
-            this.CategoryPostURLSelectorLb.TabIndex = 9;
-            this.CategoryPostURLSelectorLb.Text = "Category Post URL Selectors";
+            CategoryPostURLSelectorLb.AutoSize = true;
+            CategoryPostURLSelectorLb.Location = new Point(15, 135);
+            CategoryPostURLSelectorLb.Name = "CategoryPostURLSelectorLb";
+            CategoryPostURLSelectorLb.Size = new Size(194, 20);
+            CategoryPostURLSelectorLb.TabIndex = 9;
+            CategoryPostURLSelectorLb.Text = "Category Post URL Selectors";
             // 
             // CategoryMapTb
             // 
-            this.CategoryMapTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryMapTb.Location = new System.Drawing.Point(224, 236);
-            this.CategoryMapTb.Name = "CategoryMapTb";
-            this.CategoryMapTb.Size = new System.Drawing.Size(665, 23);
-            this.CategoryMapTb.TabIndex = 8;
+            CategoryMapTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CategoryMapTb.Location = new Point(256, 315);
+            CategoryMapTb.Margin = new Padding(3, 4, 3, 4);
+            CategoryMapTb.Name = "CategoryMapTb";
+            CategoryMapTb.Size = new Size(759, 27);
+            CategoryMapTb.TabIndex = 8;
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 239);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 15);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "Category Map";
+            label9.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label9.AutoSize = true;
+            label9.Location = new Point(15, 319);
+            label9.Name = "label9";
+            label9.Size = new Size(103, 20);
+            label9.TabIndex = 7;
+            label9.Text = "Category Map";
             // 
             // CategoryListURLSelectorTb
             // 
-            this.CategoryListURLSelectorTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryListURLSelectorTb.Location = new System.Drawing.Point(224, 52);
-            this.CategoryListURLSelectorTb.Name = "CategoryListURLSelectorTb";
-            this.CategoryListURLSelectorTb.Size = new System.Drawing.Size(665, 23);
-            this.CategoryListURLSelectorTb.TabIndex = 6;
+            CategoryListURLSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CategoryListURLSelectorTb.Location = new Point(256, 69);
+            CategoryListURLSelectorTb.Margin = new Padding(3, 4, 3, 4);
+            CategoryListURLSelectorTb.Name = "CategoryListURLSelectorTb";
+            CategoryListURLSelectorTb.Size = new Size(759, 27);
+            CategoryListURLSelectorTb.TabIndex = 6;
             // 
             // CategoryListURLSelectorLb
             // 
-            this.CategoryListURLSelectorLb.AutoSize = true;
-            this.CategoryListURLSelectorLb.Location = new System.Drawing.Point(13, 55);
-            this.CategoryListURLSelectorLb.Name = "CategoryListURLSelectorLb";
-            this.CategoryListURLSelectorLb.Size = new System.Drawing.Size(150, 15);
-            this.CategoryListURLSelectorLb.TabIndex = 5;
-            this.CategoryListURLSelectorLb.Text = "Category List URL Selectors";
+            CategoryListURLSelectorLb.AutoSize = true;
+            CategoryListURLSelectorLb.Location = new Point(15, 73);
+            CategoryListURLSelectorLb.Name = "CategoryListURLSelectorLb";
+            CategoryListURLSelectorLb.Size = new Size(189, 20);
+            CategoryListURLSelectorLb.TabIndex = 5;
+            CategoryListURLSelectorLb.Text = "Category List URL Selectors";
             // 
             // CategoryListPageURLTb
             // 
-            this.CategoryListPageURLTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryListPageURLTb.Location = new System.Drawing.Point(224, 14);
-            this.CategoryListPageURLTb.Name = "CategoryListPageURLTb";
-            this.CategoryListPageURLTb.Size = new System.Drawing.Size(665, 23);
-            this.CategoryListPageURLTb.TabIndex = 4;
+            CategoryListPageURLTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CategoryListPageURLTb.Location = new Point(256, 19);
+            CategoryListPageURLTb.Margin = new Padding(3, 4, 3, 4);
+            CategoryListPageURLTb.Name = "CategoryListPageURLTb";
+            CategoryListPageURLTb.Size = new Size(759, 27);
+            CategoryListPageURLTb.TabIndex = 4;
             // 
             // CategoryListPageURLLb
             // 
-            this.CategoryListPageURLLb.AutoSize = true;
-            this.CategoryListPageURLLb.Location = new System.Drawing.Point(13, 17);
-            this.CategoryListPageURLLb.Name = "CategoryListPageURLLb";
-            this.CategoryListPageURLLb.Size = new System.Drawing.Size(129, 15);
-            this.CategoryListPageURLLb.TabIndex = 1;
-            this.CategoryListPageURLLb.Text = "Category List Page URL";
+            CategoryListPageURLLb.AutoSize = true;
+            CategoryListPageURLLb.Location = new Point(15, 23);
+            CategoryListPageURLLb.Name = "CategoryListPageURLLb";
+            CategoryListPageURLLb.Size = new Size(161, 20);
+            CategoryListPageURLLb.TabIndex = 1;
+            CategoryListPageURLLb.Text = "Category List Page URL";
             // 
             // mainTab
             // 
-            this.mainTab.AutoScroll = true;
-            this.mainTab.Controls.Add(this.CategoryPageRb);
-            this.mainTab.Controls.Add(this.ListUrlRb);
-            this.mainTab.Controls.Add(this.label48);
-            this.mainTab.Controls.Add(this.ProxyRetryLimitNumeric);
-            this.mainTab.Controls.Add(this.label46);
-            this.mainTab.Controls.Add(this.CookieCb);
-            this.mainTab.Controls.Add(this.label43);
-            this.mainTab.Controls.Add(this.TimeIntervalNumeric);
-            this.mainTab.Controls.Add(this.label40);
-            this.mainTab.Controls.Add(this.RandomizeProxiesCb);
-            this.mainTab.Controls.Add(this.label39);
-            this.mainTab.Controls.Add(this.ProxiesTb);
-            this.mainTab.Controls.Add(this.label38);
-            this.mainTab.Controls.Add(this.UseProxyCb);
-            this.mainTab.Controls.Add(this.label37);
-            this.mainTab.Controls.Add(this.connectionTimeoutNumeric);
-            this.mainTab.Controls.Add(this.label20);
-            this.mainTab.Controls.Add(this.MaximumPagesCrawlPerPostNumeric);
-            this.mainTab.Controls.Add(this.MaximumPagesCrawlPerCategoryNumeric);
-            this.mainTab.Controls.Add(this.HTTPUserAgentTb);
-            this.mainTab.Controls.Add(this.label6);
-            this.mainTab.Controls.Add(this.label5);
-            this.mainTab.Controls.Add(this.label4);
-            this.mainTab.Controls.Add(this.CheckDuplicatePostViaContentCb);
-            this.mainTab.Controls.Add(this.CheckDuplicatePostViaTitleCb);
-            this.mainTab.Controls.Add(this.CheckDuplicatePostViaUrlCb);
-            this.mainTab.Controls.Add(this.ActiveForSchedulingCb);
-            this.mainTab.Controls.Add(this.UrlTxt);
-            this.mainTab.Controls.Add(this.label3);
-            this.mainTab.Controls.Add(this.label2);
-            this.mainTab.Controls.Add(this.label1);
-            this.mainTab.Location = new System.Drawing.Point(4, 24);
-            this.mainTab.Name = "mainTab";
-            this.mainTab.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.mainTab.Size = new System.Drawing.Size(920, 987);
-            this.mainTab.TabIndex = 1;
-            this.mainTab.Text = "Main";
-            this.mainTab.UseVisualStyleBackColor = true;
+            mainTab.AutoScroll = true;
+            mainTab.Controls.Add(CategoryPageRb);
+            mainTab.Controls.Add(ListUrlRb);
+            mainTab.Controls.Add(label48);
+            mainTab.Controls.Add(ProxyRetryLimitNumeric);
+            mainTab.Controls.Add(label46);
+            mainTab.Controls.Add(CookieCb);
+            mainTab.Controls.Add(label43);
+            mainTab.Controls.Add(TimeIntervalNumeric);
+            mainTab.Controls.Add(label40);
+            mainTab.Controls.Add(RandomizeProxiesCb);
+            mainTab.Controls.Add(label39);
+            mainTab.Controls.Add(ProxiesTb);
+            mainTab.Controls.Add(label38);
+            mainTab.Controls.Add(UseProxyCb);
+            mainTab.Controls.Add(label37);
+            mainTab.Controls.Add(connectionTimeoutNumeric);
+            mainTab.Controls.Add(label20);
+            mainTab.Controls.Add(MaximumPagesCrawlPerPostNumeric);
+            mainTab.Controls.Add(MaximumPagesCrawlPerCategoryNumeric);
+            mainTab.Controls.Add(HTTPUserAgentTb);
+            mainTab.Controls.Add(label6);
+            mainTab.Controls.Add(label5);
+            mainTab.Controls.Add(label4);
+            mainTab.Controls.Add(CheckDuplicatePostViaContentCb);
+            mainTab.Controls.Add(CheckDuplicatePostViaTitleCb);
+            mainTab.Controls.Add(CheckDuplicatePostViaUrlCb);
+            mainTab.Controls.Add(ActiveForSchedulingCb);
+            mainTab.Controls.Add(UrlTxt);
+            mainTab.Controls.Add(label3);
+            mainTab.Controls.Add(label2);
+            mainTab.Controls.Add(label1);
+            mainTab.Location = new Point(4, 29);
+            mainTab.Margin = new Padding(3, 4, 3, 4);
+            mainTab.Name = "mainTab";
+            mainTab.Padding = new Padding(11, 4, 11, 4);
+            mainTab.Size = new Size(1053, 1320);
+            mainTab.TabIndex = 1;
+            mainTab.Text = "Main";
+            mainTab.UseVisualStyleBackColor = true;
             // 
             // CategoryPageRb
             // 
-            this.CategoryPageRb.AutoSize = true;
-            this.CategoryPageRb.Checked = true;
-            this.CategoryPageRb.Location = new System.Drawing.Point(323, 85);
-            this.CategoryPageRb.Name = "CategoryPageRb";
-            this.CategoryPageRb.Size = new System.Drawing.Size(102, 19);
-            this.CategoryPageRb.TabIndex = 43;
-            this.CategoryPageRb.TabStop = true;
-            this.CategoryPageRb.Text = "Category Page";
-            this.CategoryPageRb.UseVisualStyleBackColor = true;
+            CategoryPageRb.AutoSize = true;
+            CategoryPageRb.Checked = true;
+            CategoryPageRb.Location = new Point(369, 113);
+            CategoryPageRb.Margin = new Padding(3, 4, 3, 4);
+            CategoryPageRb.Name = "CategoryPageRb";
+            CategoryPageRb.Size = new Size(126, 24);
+            CategoryPageRb.TabIndex = 43;
+            CategoryPageRb.TabStop = true;
+            CategoryPageRb.Text = "Category Page";
+            CategoryPageRb.UseVisualStyleBackColor = true;
+            CategoryPageRb.CheckedChanged += CategoryPageRb_CheckedChanged_1;
             // 
             // ListUrlRb
             // 
-            this.ListUrlRb.AutoSize = true;
-            this.ListUrlRb.Location = new System.Drawing.Point(214, 87);
-            this.ListUrlRb.Name = "ListUrlRb";
-            this.ListUrlRb.Size = new System.Drawing.Size(61, 19);
-            this.ListUrlRb.TabIndex = 42;
-            this.ListUrlRb.Text = "List Url";
-            this.ListUrlRb.UseVisualStyleBackColor = true;
+            ListUrlRb.AutoSize = true;
+            ListUrlRb.Location = new Point(245, 116);
+            ListUrlRb.Margin = new Padding(3, 4, 3, 4);
+            ListUrlRb.Name = "ListUrlRb";
+            ListUrlRb.Size = new Size(75, 24);
+            ListUrlRb.TabIndex = 42;
+            ListUrlRb.Text = "List Url";
+            ListUrlRb.UseVisualStyleBackColor = true;
+            ListUrlRb.CheckedChanged += ListUrlRb_CheckedChanged_1;
             // 
             // label48
             // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(13, 89);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(74, 15);
-            this.label48.TabIndex = 40;
-            this.label48.Text = "Type Crawler";
+            label48.AutoSize = true;
+            label48.Location = new Point(15, 119);
+            label48.Name = "label48";
+            label48.Size = new Size(94, 20);
+            label48.TabIndex = 40;
+            label48.Text = "Type Crawler";
             // 
             // ProxyRetryLimitNumeric
             // 
-            this.ProxyRetryLimitNumeric.Location = new System.Drawing.Point(214, 625);
-            this.ProxyRetryLimitNumeric.Margin = new System.Windows.Forms.Padding(3, 3, 20, 20);
-            this.ProxyRetryLimitNumeric.Name = "ProxyRetryLimitNumeric";
-            this.ProxyRetryLimitNumeric.Size = new System.Drawing.Size(50, 23);
-            this.ProxyRetryLimitNumeric.TabIndex = 39;
+            ProxyRetryLimitNumeric.Location = new Point(245, 833);
+            ProxyRetryLimitNumeric.Margin = new Padding(3, 4, 23, 27);
+            ProxyRetryLimitNumeric.Name = "ProxyRetryLimitNumeric";
+            ProxyRetryLimitNumeric.Size = new Size(57, 27);
+            ProxyRetryLimitNumeric.TabIndex = 39;
             // 
             // label46
             // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(13, 627);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(97, 15);
-            this.label46.TabIndex = 38;
-            this.label46.Text = "Proxy Retry Limit";
+            label46.AutoSize = true;
+            label46.Location = new Point(15, 836);
+            label46.Name = "label46";
+            label46.Size = new Size(120, 20);
+            label46.TabIndex = 38;
+            label46.Text = "Proxy Retry Limit";
             // 
             // CookieCb
             // 
-            this.CookieCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CookieCb.Location = new System.Drawing.Point(216, 371);
-            this.CookieCb.Multiline = true;
-            this.CookieCb.Name = "CookieCb";
-            this.CookieCb.PlaceholderText = "Parse cookies from string as: name1=value1; name2=value2;...";
-            this.CookieCb.Size = new System.Drawing.Size(665, 73);
-            this.CookieCb.TabIndex = 30;
+            CookieCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CookieCb.Location = new Point(247, 495);
+            CookieCb.Margin = new Padding(3, 4, 3, 4);
+            CookieCb.Multiline = true;
+            CookieCb.Name = "CookieCb";
+            CookieCb.PlaceholderText = "Parse cookies from string as: name1=value1; name2=value2;...";
+            CookieCb.Size = new Size(759, 96);
+            CookieCb.TabIndex = 30;
             // 
             // label43
             // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(13, 374);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(44, 15);
-            this.label43.TabIndex = 29;
-            this.label43.Text = "Cookie";
+            label43.AutoSize = true;
+            label43.Location = new Point(15, 499);
+            label43.Name = "label43";
+            label43.Size = new Size(55, 20);
+            label43.TabIndex = 29;
+            label43.Text = "Cookie";
             // 
             // TimeIntervalNumeric
             // 
-            this.TimeIntervalNumeric.Location = new System.Drawing.Point(216, 289);
-            this.TimeIntervalNumeric.Name = "TimeIntervalNumeric";
-            this.TimeIntervalNumeric.Size = new System.Drawing.Size(50, 23);
-            this.TimeIntervalNumeric.TabIndex = 25;
+            TimeIntervalNumeric.Location = new Point(247, 385);
+            TimeIntervalNumeric.Margin = new Padding(3, 4, 3, 4);
+            TimeIntervalNumeric.Name = "TimeIntervalNumeric";
+            TimeIntervalNumeric.Size = new Size(57, 27);
+            TimeIntervalNumeric.TabIndex = 25;
             // 
             // label40
             // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(13, 289);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(75, 15);
-            this.label40.TabIndex = 24;
-            this.label40.Text = "Time Interval";
+            label40.AutoSize = true;
+            label40.Location = new Point(15, 385);
+            label40.Name = "label40";
+            label40.Size = new Size(95, 20);
+            label40.TabIndex = 24;
+            label40.Text = "Time Interval";
             // 
             // RandomizeProxiesCb
             // 
-            this.RandomizeProxiesCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RandomizeProxiesCb.AutoSize = true;
-            this.RandomizeProxiesCb.Location = new System.Drawing.Point(214, 591);
-            this.RandomizeProxiesCb.Name = "RandomizeProxiesCb";
-            this.RandomizeProxiesCb.Size = new System.Drawing.Size(15, 14);
-            this.RandomizeProxiesCb.TabIndex = 23;
-            this.RandomizeProxiesCb.UseVisualStyleBackColor = true;
+            RandomizeProxiesCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            RandomizeProxiesCb.AutoSize = true;
+            RandomizeProxiesCb.Location = new Point(245, 788);
+            RandomizeProxiesCb.Margin = new Padding(3, 4, 3, 4);
+            RandomizeProxiesCb.Name = "RandomizeProxiesCb";
+            RandomizeProxiesCb.Size = new Size(18, 17);
+            RandomizeProxiesCb.TabIndex = 23;
+            RandomizeProxiesCb.UseVisualStyleBackColor = true;
             // 
             // label39
             // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(13, 590);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(107, 15);
-            this.label39.TabIndex = 22;
-            this.label39.Text = "Randomize Proxies";
+            label39.AutoSize = true;
+            label39.Location = new Point(15, 787);
+            label39.Name = "label39";
+            label39.Size = new Size(135, 20);
+            label39.TabIndex = 22;
+            label39.Text = "Randomize Proxies";
             // 
             // ProxiesTb
             // 
-            this.ProxiesTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProxiesTb.Location = new System.Drawing.Point(214, 497);
-            this.ProxiesTb.Multiline = true;
-            this.ProxiesTb.Name = "ProxiesTb";
-            this.ProxiesTb.PlaceholderText = "New line-separated proxies...";
-            this.ProxiesTb.Size = new System.Drawing.Size(665, 75);
-            this.ProxiesTb.TabIndex = 21;
+            ProxiesTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            ProxiesTb.Location = new Point(245, 663);
+            ProxiesTb.Margin = new Padding(3, 4, 3, 4);
+            ProxiesTb.Multiline = true;
+            ProxiesTb.Name = "ProxiesTb";
+            ProxiesTb.PlaceholderText = "New line-separated proxies...";
+            ProxiesTb.Size = new Size(759, 99);
+            ProxiesTb.TabIndex = 21;
             // 
             // label38
             // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(13, 500);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(45, 15);
-            this.label38.TabIndex = 20;
-            this.label38.Text = "Proxies";
+            label38.AutoSize = true;
+            label38.Location = new Point(15, 667);
+            label38.Name = "label38";
+            label38.Size = new Size(56, 20);
+            label38.TabIndex = 20;
+            label38.Text = "Proxies";
             // 
             // UseProxyCb
             // 
-            this.UseProxyCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.UseProxyCb.AutoSize = true;
-            this.UseProxyCb.Location = new System.Drawing.Point(214, 463);
-            this.UseProxyCb.Name = "UseProxyCb";
-            this.UseProxyCb.Size = new System.Drawing.Size(15, 14);
-            this.UseProxyCb.TabIndex = 19;
-            this.UseProxyCb.UseVisualStyleBackColor = true;
+            UseProxyCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            UseProxyCb.AutoSize = true;
+            UseProxyCb.Location = new Point(245, 617);
+            UseProxyCb.Margin = new Padding(3, 4, 3, 4);
+            UseProxyCb.Name = "UseProxyCb";
+            UseProxyCb.Size = new Size(18, 17);
+            UseProxyCb.TabIndex = 19;
+            UseProxyCb.UseVisualStyleBackColor = true;
             // 
             // label37
             // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(13, 462);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(59, 15);
-            this.label37.TabIndex = 18;
-            this.label37.Text = "Use Proxy";
+            label37.AutoSize = true;
+            label37.Location = new Point(15, 616);
+            label37.Name = "label37";
+            label37.Size = new Size(73, 20);
+            label37.TabIndex = 18;
+            label37.Text = "Use Proxy";
             // 
             // connectionTimeoutNumeric
             // 
-            this.connectionTimeoutNumeric.Location = new System.Drawing.Point(216, 249);
-            this.connectionTimeoutNumeric.Name = "connectionTimeoutNumeric";
-            this.connectionTimeoutNumeric.Size = new System.Drawing.Size(50, 23);
-            this.connectionTimeoutNumeric.TabIndex = 17;
+            connectionTimeoutNumeric.Location = new Point(247, 332);
+            connectionTimeoutNumeric.Margin = new Padding(3, 4, 3, 4);
+            connectionTimeoutNumeric.Name = "connectionTimeoutNumeric";
+            connectionTimeoutNumeric.Size = new Size(57, 27);
+            connectionTimeoutNumeric.TabIndex = 17;
             // 
             // label20
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(13, 251);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(116, 15);
-            this.label20.TabIndex = 16;
-            this.label20.Text = "Connection Timeout";
+            label20.AutoSize = true;
+            label20.Location = new Point(15, 335);
+            label20.Name = "label20";
+            label20.Size = new Size(143, 20);
+            label20.TabIndex = 16;
+            label20.Text = "Connection Timeout";
             // 
             // MaximumPagesCrawlPerPostNumeric
             // 
-            this.MaximumPagesCrawlPerPostNumeric.Location = new System.Drawing.Point(216, 204);
-            this.MaximumPagesCrawlPerPostNumeric.Name = "MaximumPagesCrawlPerPostNumeric";
-            this.MaximumPagesCrawlPerPostNumeric.Size = new System.Drawing.Size(50, 23);
-            this.MaximumPagesCrawlPerPostNumeric.TabIndex = 15;
+            MaximumPagesCrawlPerPostNumeric.Location = new Point(247, 272);
+            MaximumPagesCrawlPerPostNumeric.Margin = new Padding(3, 4, 3, 4);
+            MaximumPagesCrawlPerPostNumeric.Name = "MaximumPagesCrawlPerPostNumeric";
+            MaximumPagesCrawlPerPostNumeric.Size = new Size(57, 27);
+            MaximumPagesCrawlPerPostNumeric.TabIndex = 15;
             // 
             // MaximumPagesCrawlPerCategoryNumeric
             // 
-            this.MaximumPagesCrawlPerCategoryNumeric.Location = new System.Drawing.Point(216, 161);
-            this.MaximumPagesCrawlPerCategoryNumeric.Name = "MaximumPagesCrawlPerCategoryNumeric";
-            this.MaximumPagesCrawlPerCategoryNumeric.Size = new System.Drawing.Size(50, 23);
-            this.MaximumPagesCrawlPerCategoryNumeric.TabIndex = 14;
+            MaximumPagesCrawlPerCategoryNumeric.Location = new Point(247, 215);
+            MaximumPagesCrawlPerCategoryNumeric.Margin = new Padding(3, 4, 3, 4);
+            MaximumPagesCrawlPerCategoryNumeric.Name = "MaximumPagesCrawlPerCategoryNumeric";
+            MaximumPagesCrawlPerCategoryNumeric.Size = new Size(57, 27);
+            MaximumPagesCrawlPerCategoryNumeric.TabIndex = 14;
             // 
             // HTTPUserAgentTb
             // 
-            this.HTTPUserAgentTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.HTTPUserAgentTb.Location = new System.Drawing.Point(216, 330);
-            this.HTTPUserAgentTb.Name = "HTTPUserAgentTb";
-            this.HTTPUserAgentTb.PlaceholderText = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) " +
-    "Chrome/60.0.3112.113 Safari/537.36";
-            this.HTTPUserAgentTb.Size = new System.Drawing.Size(665, 23);
-            this.HTTPUserAgentTb.TabIndex = 13;
+            HTTPUserAgentTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            HTTPUserAgentTb.Location = new Point(247, 440);
+            HTTPUserAgentTb.Margin = new Padding(3, 4, 3, 4);
+            HTTPUserAgentTb.Name = "HTTPUserAgentTb";
+            HTTPUserAgentTb.PlaceholderText = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36";
+            HTTPUserAgentTb.Size = new Size(759, 27);
+            HTTPUserAgentTb.TabIndex = 13;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 333);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 15);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "HTTP User Agent?";
+            label6.AutoSize = true;
+            label6.Location = new Point(15, 444);
+            label6.Name = "label6";
+            label6.Size = new Size(128, 20);
+            label6.TabIndex = 12;
+            label6.Text = "HTTP User Agent?";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 204);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(172, 30);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Maximum number of pages to \r\ncrawl per category";
+            label5.AutoSize = true;
+            label5.Location = new Point(15, 272);
+            label5.Name = "label5";
+            label5.Size = new Size(214, 40);
+            label5.TabIndex = 10;
+            label5.Text = "Maximum number of pages to \r\ncrawl per category";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 154);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(172, 30);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Maximum number of pages to \r\ncrawl per category";
+            label4.AutoSize = true;
+            label4.Location = new Point(15, 205);
+            label4.Name = "label4";
+            label4.Size = new Size(214, 40);
+            label4.TabIndex = 8;
+            label4.Text = "Maximum number of pages to \r\ncrawl per category";
             // 
             // CheckDuplicatePostViaContentCb
             // 
-            this.CheckDuplicatePostViaContentCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CheckDuplicatePostViaContentCb.AutoSize = true;
-            this.CheckDuplicatePostViaContentCb.Location = new System.Drawing.Point(432, 124);
-            this.CheckDuplicatePostViaContentCb.Name = "CheckDuplicatePostViaContentCb";
-            this.CheckDuplicatePostViaContentCb.Size = new System.Drawing.Size(69, 19);
-            this.CheckDuplicatePostViaContentCb.TabIndex = 7;
-            this.CheckDuplicatePostViaContentCb.Text = "Content";
-            this.CheckDuplicatePostViaContentCb.UseVisualStyleBackColor = true;
+            CheckDuplicatePostViaContentCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CheckDuplicatePostViaContentCb.AutoSize = true;
+            CheckDuplicatePostViaContentCb.Location = new Point(494, 165);
+            CheckDuplicatePostViaContentCb.Margin = new Padding(3, 4, 3, 4);
+            CheckDuplicatePostViaContentCb.Name = "CheckDuplicatePostViaContentCb";
+            CheckDuplicatePostViaContentCb.Size = new Size(83, 24);
+            CheckDuplicatePostViaContentCb.TabIndex = 7;
+            CheckDuplicatePostViaContentCb.Text = "Content";
+            CheckDuplicatePostViaContentCb.UseVisualStyleBackColor = true;
             // 
             // CheckDuplicatePostViaTitleCb
             // 
-            this.CheckDuplicatePostViaTitleCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CheckDuplicatePostViaTitleCb.AutoSize = true;
-            this.CheckDuplicatePostViaTitleCb.Location = new System.Drawing.Point(323, 124);
-            this.CheckDuplicatePostViaTitleCb.Name = "CheckDuplicatePostViaTitleCb";
-            this.CheckDuplicatePostViaTitleCb.Size = new System.Drawing.Size(48, 19);
-            this.CheckDuplicatePostViaTitleCb.TabIndex = 6;
-            this.CheckDuplicatePostViaTitleCb.Text = "Title";
-            this.CheckDuplicatePostViaTitleCb.UseVisualStyleBackColor = true;
+            CheckDuplicatePostViaTitleCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CheckDuplicatePostViaTitleCb.AutoSize = true;
+            CheckDuplicatePostViaTitleCb.Location = new Point(369, 165);
+            CheckDuplicatePostViaTitleCb.Margin = new Padding(3, 4, 3, 4);
+            CheckDuplicatePostViaTitleCb.Name = "CheckDuplicatePostViaTitleCb";
+            CheckDuplicatePostViaTitleCb.Size = new Size(60, 24);
+            CheckDuplicatePostViaTitleCb.TabIndex = 6;
+            CheckDuplicatePostViaTitleCb.Text = "Title";
+            CheckDuplicatePostViaTitleCb.UseVisualStyleBackColor = true;
             // 
             // CheckDuplicatePostViaUrlCb
             // 
-            this.CheckDuplicatePostViaUrlCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CheckDuplicatePostViaUrlCb.AutoSize = true;
-            this.CheckDuplicatePostViaUrlCb.Location = new System.Drawing.Point(216, 124);
-            this.CheckDuplicatePostViaUrlCb.Name = "CheckDuplicatePostViaUrlCb";
-            this.CheckDuplicatePostViaUrlCb.Size = new System.Drawing.Size(41, 19);
-            this.CheckDuplicatePostViaUrlCb.TabIndex = 5;
-            this.CheckDuplicatePostViaUrlCb.Text = "Url";
-            this.CheckDuplicatePostViaUrlCb.UseVisualStyleBackColor = true;
+            CheckDuplicatePostViaUrlCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CheckDuplicatePostViaUrlCb.AutoSize = true;
+            CheckDuplicatePostViaUrlCb.Location = new Point(247, 165);
+            CheckDuplicatePostViaUrlCb.Margin = new Padding(3, 4, 3, 4);
+            CheckDuplicatePostViaUrlCb.Name = "CheckDuplicatePostViaUrlCb";
+            CheckDuplicatePostViaUrlCb.Size = new Size(50, 24);
+            CheckDuplicatePostViaUrlCb.TabIndex = 5;
+            CheckDuplicatePostViaUrlCb.Text = "Url";
+            CheckDuplicatePostViaUrlCb.UseVisualStyleBackColor = true;
             // 
             // ActiveForSchedulingCb
             // 
-            this.ActiveForSchedulingCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ActiveForSchedulingCb.AutoSize = true;
-            this.ActiveForSchedulingCb.Location = new System.Drawing.Point(216, 57);
-            this.ActiveForSchedulingCb.Name = "ActiveForSchedulingCb";
-            this.ActiveForSchedulingCb.Size = new System.Drawing.Size(15, 14);
-            this.ActiveForSchedulingCb.TabIndex = 4;
-            this.ActiveForSchedulingCb.UseVisualStyleBackColor = true;
+            ActiveForSchedulingCb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            ActiveForSchedulingCb.AutoSize = true;
+            ActiveForSchedulingCb.Location = new Point(247, 76);
+            ActiveForSchedulingCb.Margin = new Padding(3, 4, 3, 4);
+            ActiveForSchedulingCb.Name = "ActiveForSchedulingCb";
+            ActiveForSchedulingCb.Size = new Size(18, 17);
+            ActiveForSchedulingCb.TabIndex = 4;
+            ActiveForSchedulingCb.UseVisualStyleBackColor = true;
             // 
             // UrlTxt
             // 
-            this.UrlTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.UrlTxt.Location = new System.Drawing.Point(216, 14);
-            this.UrlTxt.Name = "UrlTxt";
-            this.UrlTxt.PlaceholderText = "https://truyenfull.vn";
-            this.UrlTxt.Size = new System.Drawing.Size(665, 23);
-            this.UrlTxt.TabIndex = 3;
+            UrlTxt.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            UrlTxt.Location = new Point(247, 19);
+            UrlTxt.Margin = new Padding(3, 4, 3, 4);
+            UrlTxt.Name = "UrlTxt";
+            UrlTxt.PlaceholderText = "https://truyenfull.vn";
+            UrlTxt.Size = new Size(759, 27);
+            UrlTxt.TabIndex = 3;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Check duplicate posts via";
+            label3.AutoSize = true;
+            label3.Location = new Point(15, 164);
+            label3.Name = "label3";
+            label3.Size = new Size(176, 20);
+            label3.TabIndex = 2;
+            label3.Text = "Check duplicate posts via";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Active for scheduling?";
+            label2.AutoSize = true;
+            label2.Location = new Point(15, 75);
+            label2.Name = "label2";
+            label2.Size = new Size(155, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Active for scheduling?";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Url";
+            label1.AutoSize = true;
+            label1.Location = new Point(15, 23);
+            label1.Name = "label1";
+            label1.Size = new Size(28, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Url";
             // 
             // addnewTab
             // 
-            this.addnewTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.addnewTab.Controls.Add(this.mainTab);
-            this.addnewTab.Controls.Add(this.categoryTab);
-            this.addnewTab.Controls.Add(this.postTab);
-            this.addnewTab.Controls.Add(this.noteTab);
-            this.addnewTab.Location = new System.Drawing.Point(0, 32);
-            this.addnewTab.Name = "addnewTab";
-            this.addnewTab.SelectedIndex = 0;
-            this.addnewTab.Size = new System.Drawing.Size(928, 1015);
-            this.addnewTab.TabIndex = 1;
+            addnewTab.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            addnewTab.Controls.Add(mainTab);
+            addnewTab.Controls.Add(categoryTab);
+            addnewTab.Controls.Add(postTab);
+            addnewTab.Controls.Add(noteTab);
+            addnewTab.Location = new Point(0, 43);
+            addnewTab.Margin = new Padding(3, 4, 3, 4);
+            addnewTab.Name = "addnewTab";
+            addnewTab.SelectedIndex = 0;
+            addnewTab.Size = new Size(1061, 1353);
+            addnewTab.TabIndex = 1;
             // 
             // noteTab
             // 
-            this.noteTab.Controls.Add(this.NoteTb);
-            this.noteTab.Location = new System.Drawing.Point(4, 24);
-            this.noteTab.Name = "noteTab";
-            this.noteTab.Padding = new System.Windows.Forms.Padding(3);
-            this.noteTab.Size = new System.Drawing.Size(920, 987);
-            this.noteTab.TabIndex = 4;
-            this.noteTab.Text = "Note";
-            this.noteTab.UseVisualStyleBackColor = true;
+            noteTab.Controls.Add(NoteTb);
+            noteTab.Location = new Point(4, 29);
+            noteTab.Margin = new Padding(3, 4, 3, 4);
+            noteTab.Name = "noteTab";
+            noteTab.Padding = new Padding(3, 4, 3, 4);
+            noteTab.Size = new Size(1053, 1320);
+            noteTab.TabIndex = 4;
+            noteTab.Text = "Note";
+            noteTab.UseVisualStyleBackColor = true;
             // 
             // NoteTb
             // 
-            this.NoteTb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NoteTb.Location = new System.Drawing.Point(3, 3);
-            this.NoteTb.Name = "NoteTb";
-            this.NoteTb.Size = new System.Drawing.Size(914, 981);
-            this.NoteTb.TabIndex = 0;
-            this.NoteTb.Text = "";
+            NoteTb.Dock = DockStyle.Fill;
+            NoteTb.Location = new Point(3, 4);
+            NoteTb.Margin = new Padding(3, 4, 3, 4);
+            NoteTb.Name = "NoteTb";
+            NoteTb.Size = new Size(1047, 1312);
+            NoteTb.TabIndex = 0;
+            NoteTb.Text = "";
             // 
             // SiteDetail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.cancleBtn);
-            this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.NameTb);
-            this.Controls.Add(this.addnewTab);
-            this.Name = "SiteDetail";
-            this.Size = new System.Drawing.Size(928, 1077);
-            this.postTab.ResumeLayout(false);
-            this.postTab.PerformLayout();
-            this.categoryTab.ResumeLayout(false);
-            this.categoryTab.PerformLayout();
-            this.mainTab.ResumeLayout(false);
-            this.mainTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProxyRetryLimitNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TimeIntervalNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.connectionTimeoutNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaximumPagesCrawlPerPostNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaximumPagesCrawlPerCategoryNumeric)).EndInit();
-            this.addnewTab.ResumeLayout(false);
-            this.noteTab.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(cancleBtn);
+            Controls.Add(saveBtn);
+            Controls.Add(NameTb);
+            Controls.Add(addnewTab);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "SiteDetail";
+            Size = new Size(1061, 1436);
+            postTab.ResumeLayout(false);
+            postTab.PerformLayout();
+            categoryTab.ResumeLayout(false);
+            categoryTab.PerformLayout();
+            mainTab.ResumeLayout(false);
+            mainTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ProxyRetryLimitNumeric).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TimeIntervalNumeric).EndInit();
+            ((System.ComponentModel.ISupportInitialize)connectionTimeoutNumeric).EndInit();
+            ((System.ComponentModel.ISupportInitialize)MaximumPagesCrawlPerPostNumeric).EndInit();
+            ((System.ComponentModel.ISupportInitialize)MaximumPagesCrawlPerCategoryNumeric).EndInit();
+            addnewTab.ResumeLayout(false);
+            noteTab.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
