@@ -8,6 +8,8 @@ namespace XLeech.Core
 {
     public interface IProccessor
     {
+
+
         Task<CategoryModel> GetCategory(IHtmlDocument document, SiteConfig siteConfig);
         Task<CategoryModel> IsExistCategory(CategoryModel post, SiteConfig siteConfig);
         Task<Category> SaveCategory(CategoryModel category);

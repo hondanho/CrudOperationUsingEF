@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Security.Policy;
-using XLeech.Core.Service;
+﻿using XLeech.Core.Service;
 using XLeech.Data.Entity;
 using XLeech.Data.EntityFramework;
 using XLeech.Data.Repository;
@@ -21,8 +19,7 @@ namespace XLeech
         public Main(AppDbContext dbContext,
             Repository<SiteConfig> siteRepository,
             Repository<CategoryConfig> categoryRepository,
-            Repository<PostConfig> postRepository,
-            CrawlerService crawlerService
+            Repository<PostConfig> postRepository
             )
         {
             AppWindow = this;
@@ -32,7 +29,6 @@ namespace XLeech
             this._siteRepository = siteRepository;
             this._categoryRepository = categoryRepository;
             this._postRepository = postRepository;
-            this.CrawlerService = crawlerService;
         }
 
         /// <summary>
@@ -61,16 +57,16 @@ namespace XLeech
             if (pageType == PageTypeEnum.AddNewSite || pageType == PageTypeEnum.EditSite)
             {
                 var siteDetail = new SiteDetail(
-                        _dbContext, 
-                        this._siteRepository, 
-                        this._categoryRepository, 
+                        _dbContext,
+                        this._siteRepository,
+                        this._categoryRepository,
                         this._postRepository
                     );
                 if (pageType == PageTypeEnum.AddNewSite)
                 {
                     siteDetail.setViewCreateSite();
                 }
-                if ( pageType == PageTypeEnum.EditSite)
+                if (pageType == PageTypeEnum.EditSite)
                 {
                     siteDetail.setViewEditSite(siteId);
                 }
@@ -243,5 +239,6 @@ namespace XLeech
     }
 
     public delegate void ShowDetailDelegate(int siteId);
+
     public delegate void BackDelegate();
 }

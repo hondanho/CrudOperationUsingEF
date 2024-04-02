@@ -39,7 +39,7 @@ namespace XLeech.Core
             }
 
             // feature image
-            if (siteConfig.Post.SaveFeaturedImages && !string.IsNullOrEmpty(siteConfig.Category.FeaturedImageSelector))
+            if (siteConfig.Category.SaveFeaturedImages && !string.IsNullOrEmpty(siteConfig.Category.FeaturedImageSelector))
             {
                 var imageEle = document.QuerySelector(siteConfig.Category.FeaturedImageSelector);
                 var featureImage = imageEle.GetAttribute("href") ?? imageEle.GetAttribute("src");
@@ -65,7 +65,7 @@ namespace XLeech.Core
             // feature image
             if (siteConfig.Post.SaveFeaturedImages)
             {
-                var imageEle = document.QuerySelector(siteConfig.Category.FeaturedImageSelector);
+                var imageEle = document.QuerySelector(siteConfig.Post.FeaturedImageSelector);
                 var featureImage = imageEle.GetAttribute("href") ?? imageEle.GetAttribute("src");
                 postModel.FeatureImage = featureImage;
             }

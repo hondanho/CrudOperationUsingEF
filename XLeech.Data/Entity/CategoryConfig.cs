@@ -6,6 +6,7 @@ namespace XLeech.Data.Entity
         public int SiteID { get; set; }
         public string? CategoryListPageURL { get; set; }
         public string? CategoryListURLSelector { get; set; }
+        public string? CategoryPostURL { get; set; }
         public string? CategoryPostURLSelector { get; set; }
         public string? CategoryNextPageURLSelector { get; set; }
         public string? Urls { get; set; }

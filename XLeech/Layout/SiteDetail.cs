@@ -88,6 +88,7 @@ namespace XLeech
                 this.CrawlerUrlsTb.Text = site.Category.Urls;
                 this.CategoryListPageURLTb.Text = site.Category.CategoryListPageURL;
                 this.CategoryListURLSelectorTb.Text = site.Category.CategoryListURLSelector;
+                this.CategoryPostUrlTb.Text = site.Category.CategoryPostURL;
                 this.CategoryPostURLSelectorTb.Text = site.Category.CategoryPostURLSelector;
                 this.CategoryNextPageURLSelectorTb.Text = site.Category.CategoryNextPageURLSelector;
                 this.CategoryDescriptionTb.Text = site.Category.Description;
@@ -161,7 +162,7 @@ namespace XLeech
                 this.CategoryListPageURLTb.Show();
                 this.CategoryListURLSelectorLb.Show();
                 this.CategoryListURLSelectorTb.Show();
-                this.CategoryPostURLSelectorLb.Show();
+                this.CategoryPostUrlTb.Show();
                 this.CategoryPostURLSelectorTb.Show();
                 this.CategoryNextPageURLSelectorLb.Show();
                 this.CategoryNextPageURLSelectorTb.Show();
@@ -172,7 +173,7 @@ namespace XLeech
                 this.CategoryListPageURLTb.Hide();
                 this.CategoryListURLSelectorLb.Hide();
                 this.CategoryListURLSelectorTb.Hide();
-                this.CategoryPostURLSelectorLb.Hide();
+                this.CategoryPostUrlTb.Hide();
                 this.CategoryPostURLSelectorTb.Hide();
                 this.CategoryNextPageURLSelectorLb.Hide();
                 this.CategoryNextPageURLSelectorTb.Hide();
@@ -283,6 +284,7 @@ namespace XLeech
             {
                 categoryConfig.CategoryListPageURL = this.CategoryListPageURLTb.Text;
                 categoryConfig.CategoryListURLSelector = this.CategoryListURLSelectorTb.Text;
+                categoryConfig.CategoryPostURL = this.CategoryPostUrlTb.Text;
                 categoryConfig.CategoryPostURLSelector = this.CategoryPostURLSelectorTb.Text;
                 categoryConfig.CategoryNextPageURLSelector = this.CategoryNextPageURLSelectorTb.Text;
             }

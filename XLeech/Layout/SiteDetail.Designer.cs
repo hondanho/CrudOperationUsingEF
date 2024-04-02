@@ -77,6 +77,8 @@
             PostTitleSelectorTb = new TextBox();
             label17 = new Label();
             categoryTab = new TabPage();
+            CategoryPostUrlTb = new TextBox();
+            label8 = new Label();
             CategoryDescriptionTb = new TextBox();
             label7 = new Label();
             CrawlerUrlsTb = new RichTextBox();
@@ -136,6 +138,7 @@
             addnewTab = new TabControl();
             noteTab = new TabPage();
             NoteTb = new RichTextBox();
+            label10 = new Label();
             postTab.SuspendLayout();
             categoryTab.SuspendLayout();
             mainTab.SuspendLayout();
@@ -180,6 +183,7 @@
             cancleBtn.TabIndex = 4;
             cancleBtn.Text = "Cancle";
             cancleBtn.UseVisualStyleBackColor = true;
+            cancleBtn.Click += cancleBtn_Click;
             // 
             // postTab
             // 
@@ -667,6 +671,9 @@
             // categoryTab
             // 
             categoryTab.AutoScroll = true;
+            categoryTab.Controls.Add(label10);
+            categoryTab.Controls.Add(CategoryPostUrlTb);
+            categoryTab.Controls.Add(label8);
             categoryTab.Controls.Add(CategoryDescriptionTb);
             categoryTab.Controls.Add(label7);
             categoryTab.Controls.Add(CrawlerUrlsTb);
@@ -700,10 +707,28 @@
             categoryTab.Text = "Category";
             categoryTab.UseVisualStyleBackColor = true;
             // 
+            // CategoryPostUrlTb
+            // 
+            CategoryPostUrlTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            CategoryPostUrlTb.Location = new Point(256, 125);
+            CategoryPostUrlTb.Margin = new Padding(3, 4, 3, 4);
+            CategoryPostUrlTb.Name = "CategoryPostUrlTb";
+            CategoryPostUrlTb.Size = new Size(759, 27);
+            CategoryPostUrlTb.TabIndex = 29;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(15, 129);
+            label8.Name = "label8";
+            label8.Size = new Size(130, 20);
+            label8.TabIndex = 28;
+            label8.Text = "Category Post URL";
+            // 
             // CategoryDescriptionTb
             // 
             CategoryDescriptionTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            CategoryDescriptionTb.Location = new Point(256, 251);
+            CategoryDescriptionTb.Location = new Point(256, 303);
             CategoryDescriptionTb.Margin = new Padding(3, 4, 3, 4);
             CategoryDescriptionTb.Name = "CategoryDescriptionTb";
             CategoryDescriptionTb.Size = new Size(759, 27);
@@ -713,7 +738,7 @@
             // 
             label7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label7.AutoSize = true;
-            label7.Location = new Point(15, 255);
+            label7.Location = new Point(15, 307);
             label7.Name = "label7";
             label7.Size = new Size(149, 20);
             label7.TabIndex = 26;
@@ -740,7 +765,7 @@
             // UnnecessaryElementsTb
             // 
             UnnecessaryElementsTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            UnnecessaryElementsTb.Location = new Point(256, 595);
+            UnnecessaryElementsTb.Location = new Point(256, 647);
             UnnecessaryElementsTb.Margin = new Padding(3, 4, 3, 4);
             UnnecessaryElementsTb.Name = "UnnecessaryElementsTb";
             UnnecessaryElementsTb.Size = new Size(759, 27);
@@ -750,7 +775,7 @@
             // 
             label16.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label16.AutoSize = true;
-            label16.Location = new Point(15, 599);
+            label16.Location = new Point(15, 651);
             label16.Name = "label16";
             label16.Size = new Size(212, 20);
             label16.TabIndex = 21;
@@ -759,7 +784,7 @@
             // RemoveElementAttributesTb
             // 
             RemoveElementAttributesTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            RemoveElementAttributesTb.Location = new Point(256, 536);
+            RemoveElementAttributesTb.Location = new Point(256, 588);
             RemoveElementAttributesTb.Margin = new Padding(3, 4, 3, 4);
             RemoveElementAttributesTb.Name = "RemoveElementAttributesTb";
             RemoveElementAttributesTb.Size = new Size(759, 27);
@@ -769,7 +794,7 @@
             // 
             label15.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label15.AutoSize = true;
-            label15.Location = new Point(15, 540);
+            label15.Location = new Point(15, 592);
             label15.Name = "label15";
             label15.Size = new Size(182, 20);
             label15.TabIndex = 19;
@@ -778,7 +803,7 @@
             // FindAndReplaceRawHTMLTb
             // 
             FindAndReplaceRawHTMLTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            FindAndReplaceRawHTMLTb.Location = new Point(256, 481);
+            FindAndReplaceRawHTMLTb.Location = new Point(256, 533);
             FindAndReplaceRawHTMLTb.Margin = new Padding(3, 4, 3, 4);
             FindAndReplaceRawHTMLTb.Name = "FindAndReplaceRawHTMLTb";
             FindAndReplaceRawHTMLTb.Size = new Size(759, 27);
@@ -788,7 +813,7 @@
             // 
             label14.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label14.AutoSize = true;
-            label14.Location = new Point(15, 485);
+            label14.Location = new Point(15, 537);
             label14.Name = "label14";
             label14.Size = new Size(206, 20);
             label14.TabIndex = 17;
@@ -797,7 +822,7 @@
             // FeaturedImageSelectorTb
             // 
             FeaturedImageSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            FeaturedImageSelectorTb.Location = new Point(256, 425);
+            FeaturedImageSelectorTb.Location = new Point(256, 477);
             FeaturedImageSelectorTb.Margin = new Padding(3, 4, 3, 4);
             FeaturedImageSelectorTb.Name = "FeaturedImageSelectorTb";
             FeaturedImageSelectorTb.Size = new Size(759, 27);
@@ -807,7 +832,7 @@
             // 
             label13.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label13.AutoSize = true;
-            label13.Location = new Point(15, 429);
+            label13.Location = new Point(15, 481);
             label13.Name = "label13";
             label13.Size = new Size(163, 20);
             label13.TabIndex = 15;
@@ -819,7 +844,7 @@
             SaveFeaturedImagesCb.AutoSize = true;
             SaveFeaturedImagesCb.Checked = true;
             SaveFeaturedImagesCb.CheckState = CheckState.Checked;
-            SaveFeaturedImagesCb.Location = new Point(256, 377);
+            SaveFeaturedImagesCb.Location = new Point(256, 429);
             SaveFeaturedImagesCb.Margin = new Padding(3, 4, 3, 4);
             SaveFeaturedImagesCb.Name = "SaveFeaturedImagesCb";
             SaveFeaturedImagesCb.Size = new Size(18, 17);
@@ -830,7 +855,7 @@
             // 
             label12.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label12.AutoSize = true;
-            label12.Location = new Point(15, 376);
+            label12.Location = new Point(15, 426);
             label12.Name = "label12";
             label12.Size = new Size(159, 20);
             label12.TabIndex = 13;
@@ -839,7 +864,7 @@
             // CategoryNextPageURLSelectorTb
             // 
             CategoryNextPageURLSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            CategoryNextPageURLSelectorTb.Location = new Point(256, 185);
+            CategoryNextPageURLSelectorTb.Location = new Point(256, 237);
             CategoryNextPageURLSelectorTb.Margin = new Padding(3, 4, 3, 4);
             CategoryNextPageURLSelectorTb.Name = "CategoryNextPageURLSelectorTb";
             CategoryNextPageURLSelectorTb.Size = new Size(759, 27);
@@ -848,7 +873,7 @@
             // CategoryNextPageURLSelectorLb
             // 
             CategoryNextPageURLSelectorLb.AutoSize = true;
-            CategoryNextPageURLSelectorLb.Location = new Point(15, 189);
+            CategoryNextPageURLSelectorLb.Location = new Point(14, 240);
             CategoryNextPageURLSelectorLb.Name = "CategoryNextPageURLSelectorLb";
             CategoryNextPageURLSelectorLb.Size = new Size(234, 20);
             CategoryNextPageURLSelectorLb.TabIndex = 11;
@@ -857,7 +882,7 @@
             // CategoryPostURLSelectorTb
             // 
             CategoryPostURLSelectorTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            CategoryPostURLSelectorTb.Location = new Point(256, 131);
+            CategoryPostURLSelectorTb.Location = new Point(256, 183);
             CategoryPostURLSelectorTb.Margin = new Padding(3, 4, 3, 4);
             CategoryPostURLSelectorTb.Name = "CategoryPostURLSelectorTb";
             CategoryPostURLSelectorTb.Size = new Size(759, 27);
@@ -866,7 +891,7 @@
             // CategoryPostURLSelectorLb
             // 
             CategoryPostURLSelectorLb.AutoSize = true;
-            CategoryPostURLSelectorLb.Location = new Point(15, 135);
+            CategoryPostURLSelectorLb.Location = new Point(15, 187);
             CategoryPostURLSelectorLb.Name = "CategoryPostURLSelectorLb";
             CategoryPostURLSelectorLb.Size = new Size(194, 20);
             CategoryPostURLSelectorLb.TabIndex = 9;
@@ -875,7 +900,7 @@
             // CategoryMapTb
             // 
             CategoryMapTb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            CategoryMapTb.Location = new Point(256, 315);
+            CategoryMapTb.Location = new Point(256, 367);
             CategoryMapTb.Margin = new Padding(3, 4, 3, 4);
             CategoryMapTb.Name = "CategoryMapTb";
             CategoryMapTb.Size = new Size(759, 27);
@@ -885,7 +910,7 @@
             // 
             label9.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label9.AutoSize = true;
-            label9.Location = new Point(15, 319);
+            label9.Location = new Point(15, 308);
             label9.Name = "label9";
             label9.Size = new Size(103, 20);
             label9.TabIndex = 7;
@@ -1309,6 +1334,16 @@
             NoteTb.TabIndex = 0;
             NoteTb.Text = "";
             // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label10.AutoSize = true;
+            label10.Location = new Point(15, 370);
+            label10.Name = "label10";
+            label10.Size = new Size(103, 20);
+            label10.TabIndex = 30;
+            label10.Text = "Category Map";
+            // 
             // SiteDetail
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1450,5 +1485,8 @@
         private TextBox NameTb;
         private TextBox CategoryDescriptionTb;
         private Label label7;
+        private TextBox CategoryPostUrlTb;
+        private Label label8;
+        private Label label10;
     }
 }

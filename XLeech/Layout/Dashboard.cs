@@ -1,15 +1,13 @@
 ﻿using Abot2;
+using Abot2.Crawler;
 using AbotX2.Parallel;
 using AbotX2.Poco;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System.Windows.Forms;
 using WordPressPCL.Models;
 using XLeech.Core;
-using XLeech.Core.Service;
 using XLeech.Data.Entity;
 using XLeech.Data.EntityFramework;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Guid = System.Guid;
 
 namespace XLeech
@@ -37,23 +35,36 @@ namespace XLeech
                 .Enrich.WithThreadId()
                 .WriteTo.Console(outputTemplate: Constants.LogFormatTemplate)
                 .CreateLogger();
-            await ParallelCrawlerEngine();
+
+            var sites = _dbContext.Sites
+                       .Where(x => x.ActiveForScheduling)
+                       .Include(x => x.Category)
+                       .Include(y => y.Post)
+                       .ToList();
+            await ParallelCrawlerEngineUrls();
         }
 
-        private async Task ParallelCrawlerEngine()
+        private async Task ParallelCrawlerEngineUrls()
         {
             var sites = _dbContext.Sites
                         .Where(x => x.ActiveForScheduling)
                         .Include(x => x.Category)
                         .Include(y => y.Post)
                         .ToList();
-            List<SiteToCrawl> siteToCrawls = sites.Select(y => new SiteToCrawl
+            var siteToCrawlUrls = new List<SiteToCrawl>();
+            foreach (var item in sites.Where(x => x.IsPageUrl))
             {
-                Uri = new Uri(y.Category.Urls),
-                SiteBag = y
-            }).ToList();
+                string[] urls = item.Category.Urls.Split(new string[] { "\n" }, StringSplitOptions.None);
+                siteToCrawlUrls.AddRange(urls.Select(x => new SiteToCrawl
+                {
+                    Uri = new Uri(x),
+                    SiteBag = item
+                }).ToList()
+                );
+            }
+
             var siteToCrawlProvider = new SiteToCrawlProvider();
-            siteToCrawlProvider.AddSitesToCrawl(siteToCrawls);
+            siteToCrawlProvider.AddSitesToCrawl(siteToCrawlUrls);
             var config = GetSafeConfig();
             config.MaxConcurrentSiteCrawls = 1;
 
@@ -63,47 +74,38 @@ namespace XLeech
                     new ParallelImplementationContainer()
                     {
                         SiteToCrawlProvider = siteToCrawlProvider,
-                        WebCrawlerFactory = new WebCrawlerFactory(config)//Same config will be used for every crawler
+                        WebCrawlerFactory = new WebCrawlerFactory(config) //Same config will be used for every crawler
                     })
                 );
 
             var crawlCounts = new Dictionary<Guid, int>();
             var siteStartingEvents = 0;
             var allSitesCompletedEvents = 0;
+
             crawlEngine.CrawlerInstanceCreated += (sender, eventArgs) =>
             {
                 var crawlId = Guid.NewGuid();
                 eventArgs.Crawler.CrawlBag.CrawlId = crawlId;
                 eventArgs.Crawler.PageCrawlCompleted += async (abotSender, abotEventArgs) =>
                 {
-                    var crawledPage = abotEventArgs.CrawledPage;
                     var siteBag = eventArgs.SiteToCrawl.SiteBag as SiteConfig;
-                    var wordpressProcessor = new WordpressProcessor(siteBag);
-
-                    var categoryModel = await wordpressProcessor.GetCategory(crawledPage.AngleSharpHtmlDocument, siteBag);
-                    var existCategory = await wordpressProcessor.IsExistCategory(categoryModel, siteBag);
-                    var category = new Category()
+                    if (siteBag.IsPageUrl)
                     {
-                        Id = existCategory?.Id ?? 0
-                    };
-                    if (existCategory == null)
-                    {
-                        category = await wordpressProcessor.SaveCategory(categoryModel);
+                        PageCrawlCompletedUrl(abotSender, abotEventArgs, siteBag);
                     }
-
-                    var postModel = await wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteBag);
-                    var existPost = await wordpressProcessor.IsExistPost(postModel, siteBag);
-                    if (existPost == null)
+                    else
                     {
-                        await wordpressProcessor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
+                        PageCrawlCompletedCategoryPage(abotSender, abotEventArgs, siteBag);
                     }
                 };
             };
+
             crawlEngine.SiteCrawlStarting += (sender, args) =>
             {
                 Interlocked.Increment(ref siteStartingEvents);
                 ShowLog(string.Format("{0} started", args.SiteToCrawl.Uri));
             };
+
             crawlEngine.SiteCrawlCompleted += (sender, args) =>
             {
                 lock (crawlCounts)
@@ -111,16 +113,45 @@ namespace XLeech
                     crawlCounts.Add(args.CrawledSite.SiteToCrawl.Id, args.CrawledSite.CrawlResult.CrawlContext.CrawledCount);
                 }
                 ShowLog(string.Format("{0} Completed", args.CrawledSite.SiteToCrawl.Uri));
-
             };
+
             crawlEngine.AllCrawlsCompleted += (sender, eventArgs) =>
             {
                 Interlocked.Increment(ref allSitesCompletedEvents);
                 ShowLog("All Url Completed");
-
             };
 
             await crawlEngine.StartAsync();
+        }
+
+        private async void PageCrawlCompletedCategoryPage(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
+        {
+            // get list post
+
+        }
+
+        private async void PageCrawlCompletedUrl(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
+        {
+            var crawledPage = abotEventArgs.CrawledPage;
+            var wordpressProcessor = new WordpressProcessor(siteConfig);
+
+            var categoryModel = await wordpressProcessor.GetCategory(crawledPage.AngleSharpHtmlDocument, siteConfig);
+            var existCategory = await wordpressProcessor.IsExistCategory(categoryModel, siteConfig);
+            var category = new Category()
+            {
+                Id = existCategory?.Id ?? 0
+            };
+            if (existCategory == null)
+            {
+                category = await wordpressProcessor.SaveCategory(categoryModel);
+            }
+
+            var postModel = await wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteConfig);
+            var existPost = await wordpressProcessor.IsExistPost(postModel, siteConfig);
+            if (existPost == null)
+            {
+                await wordpressProcessor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
+            }
         }
 
         private void ShowLog(string log)
