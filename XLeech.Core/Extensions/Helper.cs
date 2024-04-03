@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -178,14 +179,39 @@ namespace XLeech.Core.Extensions
             return result;
         }
 
-        public static string CleanSlug(string slug)
+        public static string ObjectToBase64(object obj)
         {
-            if (string.IsNullOrEmpty(slug)) return string.Empty;
+            byte[] objBytes;
+            // Serialize đối tượng thành mảng byte
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(memoryStream, obj);
+                objBytes = memoryStream.ToArray();
+            }
 
-            slug = slug?.Replace("+", "-");
-            slug = slug?.Replace(".html", "");
-            slug = slug.Trim().ToLower();
-            return slug;
+            // Chuyển đổi mảng byte thành chuỗi Base64 và trả về
+            return Convert.ToBase64String(objBytes);
+        }
+
+        public static string ObjectToString(object obj)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                new BinaryFormatter().Serialize(ms, obj);
+                return Convert.ToBase64String(ms.ToArray());
+            }
+        }
+
+        public static object StringToObject(string base64String)
+        {
+            byte[] bytes = Convert.FromBase64String(base64String);
+            using (MemoryStream ms = new MemoryStream(bytes, 0, bytes.Length))
+            {
+                ms.Write(bytes, 0, bytes.Length);
+                ms.Position = 0;
+                return new BinaryFormatter().Deserialize(ms);
+            }
         }
 
         public static string ConvertStrToCapitalize(string str)
@@ -198,5 +224,4 @@ namespace XLeech.Core.Extensions
                 return char.ToUpper(str[0]) + str.Substring(1);
         }
     }
-
 }

@@ -59,11 +59,11 @@ namespace XLeech
                 var siteDetail = new SiteDetail();
                 if (pageType == PageTypeEnum.AddNewSite)
                 {
-                    siteDetail.setViewCreateSite();
+                    siteDetail.SetViewCreateSite();
                 }
                 if (pageType == PageTypeEnum.EditSite)
                 {
-                    siteDetail.setViewEditSite(siteId);
+                    siteDetail.SetViewEditSite(siteId);
                 }
 
                 siteDetail.SetCallback(BackToListSite);

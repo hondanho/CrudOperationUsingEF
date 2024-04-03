@@ -1,6 +1,8 @@
 ﻿
 namespace XLeech.Data.Entity
 {
+
+    [Serializable]
     public class SiteConfig: BaseEntity
     {
         public string? Name { get; set; }

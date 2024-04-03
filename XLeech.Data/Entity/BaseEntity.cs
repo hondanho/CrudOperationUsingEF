@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace XLeech.Data.Entity
 {
+
+    [Serializable]
     public class BaseEntity
     {
         public int Id {  get; set; }

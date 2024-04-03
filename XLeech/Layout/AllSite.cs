@@ -34,6 +34,16 @@ namespace XLeech
             var siteId = Convert.ToInt32(dataGridView.CurrentRow.Cells["Id"].Value);
             _showDetailDelegate(siteId);
         }
+
+        private void dataGridView_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            MessageBox.Show("delete");
+        }
+
+        private void dataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            MessageBox.Show("delete");
+        }
     }
 
 }

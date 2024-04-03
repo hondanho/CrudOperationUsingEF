@@ -77,6 +77,7 @@
             PostTitleSelectorTb = new TextBox();
             label17 = new Label();
             categoryTab = new TabPage();
+            label10 = new Label();
             CategoryPostUrlTb = new TextBox();
             label8 = new Label();
             CategoryDescriptionTb = new TextBox();
@@ -138,7 +139,12 @@
             addnewTab = new TabControl();
             noteTab = new TabPage();
             NoteTb = new RichTextBox();
-            label10 = new Label();
+            tabPage1 = new TabPage();
+            ExportSettingTb = new RichTextBox();
+            label47 = new Label();
+            label45 = new Label();
+            label11 = new Label();
+            ImportSettingTb = new RichTextBox();
             postTab.SuspendLayout();
             categoryTab.SuspendLayout();
             mainTab.SuspendLayout();
@@ -149,6 +155,7 @@
             ((System.ComponentModel.ISupportInitialize)MaximumPagesCrawlPerCategoryNumeric).BeginInit();
             addnewTab.SuspendLayout();
             noteTab.SuspendLayout();
+            tabPage1.SuspendLayout();
             SuspendLayout();
             // 
             // NameTb
@@ -183,7 +190,7 @@
             cancleBtn.TabIndex = 4;
             cancleBtn.Text = "Cancle";
             cancleBtn.UseVisualStyleBackColor = true;
-            cancleBtn.Click += cancleBtn_Click;
+            cancleBtn.Click += CancleBtn_Click;
             // 
             // postTab
             // 
@@ -706,6 +713,16 @@
             categoryTab.TabIndex = 2;
             categoryTab.Text = "Category";
             categoryTab.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label10.AutoSize = true;
+            label10.Location = new Point(15, 370);
+            label10.Name = "label10";
+            label10.Size = new Size(103, 20);
+            label10.TabIndex = 30;
+            label10.Text = "Category Map";
             // 
             // CategoryPostUrlTb
             // 
@@ -1305,6 +1322,7 @@
             addnewTab.Controls.Add(categoryTab);
             addnewTab.Controls.Add(postTab);
             addnewTab.Controls.Add(noteTab);
+            addnewTab.Controls.Add(tabPage1);
             addnewTab.Location = new Point(0, 43);
             addnewTab.Margin = new Padding(3, 4, 3, 4);
             addnewTab.Name = "addnewTab";
@@ -1326,23 +1344,73 @@
             // 
             // NoteTb
             // 
-            NoteTb.Dock = DockStyle.Fill;
-            NoteTb.Location = new Point(3, 4);
+            NoteTb.Location = new Point(25, 27);
             NoteTb.Margin = new Padding(3, 4, 3, 4);
             NoteTb.Name = "NoteTb";
-            NoteTb.Size = new Size(1047, 1312);
+            NoteTb.Size = new Size(1000, 1267);
             NoteTb.TabIndex = 0;
             NoteTb.Text = "";
             // 
-            // label10
+            // tabPage1
             // 
-            label10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label10.AutoSize = true;
-            label10.Location = new Point(15, 370);
-            label10.Name = "label10";
-            label10.Size = new Size(103, 20);
-            label10.TabIndex = 30;
-            label10.Text = "Category Map";
+            tabPage1.Controls.Add(ExportSettingTb);
+            tabPage1.Controls.Add(label47);
+            tabPage1.Controls.Add(label45);
+            tabPage1.Controls.Add(label11);
+            tabPage1.Controls.Add(ImportSettingTb);
+            tabPage1.Location = new Point(4, 29);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(1053, 1320);
+            tabPage1.TabIndex = 5;
+            tabPage1.Text = "Import/Export Settings";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ExportSettingTb
+            // 
+            ExportSettingTb.Location = new Point(194, 265);
+            ExportSettingTb.Margin = new Padding(3, 4, 3, 4);
+            ExportSettingTb.Name = "ExportSettingTb";
+            ExportSettingTb.ReadOnly = true;
+            ExportSettingTb.Size = new Size(827, 166);
+            ExportSettingTb.TabIndex = 6;
+            ExportSettingTb.Text = "";
+            // 
+            // label47
+            // 
+            label47.AutoSize = true;
+            label47.Location = new Point(17, 265);
+            label47.Name = "label47";
+            label47.Size = new Size(109, 20);
+            label47.TabIndex = 5;
+            label47.Text = "Export Settings";
+            // 
+            // label45
+            // 
+            label45.AutoSize = true;
+            label45.Location = new Point(17, 64);
+            label45.Name = "label45";
+            label45.Size = new Size(111, 20);
+            label45.TabIndex = 4;
+            label45.Text = "Import Settings";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(17, 28);
+            label11.Name = "label11";
+            label11.Size = new Size(533, 20);
+            label11.TabIndex = 3;
+            label11.Text = "Import settings from another site or copy the settings to import for another site";
+            // 
+            // ImportSettingTb
+            // 
+            ImportSettingTb.Location = new Point(194, 64);
+            ImportSettingTb.Margin = new Padding(3, 4, 3, 4);
+            ImportSettingTb.Name = "ImportSettingTb";
+            ImportSettingTb.Size = new Size(827, 166);
+            ImportSettingTb.TabIndex = 1;
+            ImportSettingTb.Text = "";
             // 
             // SiteDetail
             // 
@@ -1368,6 +1436,8 @@
             ((System.ComponentModel.ISupportInitialize)MaximumPagesCrawlPerCategoryNumeric).EndInit();
             addnewTab.ResumeLayout(false);
             noteTab.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1488,5 +1558,11 @@
         private TextBox CategoryPostUrlTb;
         private Label label8;
         private Label label10;
+        private TabPage tabPage1;
+        private RichTextBox ImportSettingTb;
+        private Label label11;
+        private Label label45;
+        private Label label47;
+        private RichTextBox ExportSettingTb;
     }
 }

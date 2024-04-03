@@ -1,6 +1,8 @@
 ﻿
 namespace XLeech.Data.Entity
 {
+
+    [Serializable]
     public class CategoryConfig: BaseEntity
     {
         public int SiteID { get; set; }

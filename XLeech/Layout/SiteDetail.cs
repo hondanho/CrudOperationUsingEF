@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using XLeech.Core.Extensions;
 using XLeech.Data.Entity;
 using XLeech.Data.EntityFramework;
 using XLeech.Data.Repository;
@@ -42,18 +43,18 @@ namespace XLeech
             _backToListSite = backToListSite;
         }
 
-        public void setViewCreateSite()
+        public void SetViewCreateSite()
         {
             this.saveBtn.Text = ButtonNameConsts.Create;
-            this.saveBtn.Click += createBtn_Click;
+            this.saveBtn.Click += CreateBtn_Click;
             _siteConfig = new SiteConfig();
-            setShowTypeCrawler();
+            SetShowTypeCrawler();
         }
 
-        public void setViewEditSite(int siteId)
+        public void SetViewEditSite(int siteId)
         {
             this.saveBtn.Text = ButtonNameConsts.Edit;
-            this.saveBtn.Click += editBtn_Click;
+            this.saveBtn.Click += EditBtn_Click;
 
             var site = _dbContext.Sites
                         .Where(x => x.Id == siteId)
@@ -124,20 +125,26 @@ namespace XLeech
                 this.PostUnnecessaryElementsTb.Text = site.Post.UnnecessaryElements;
             }
 
-            setShowTypeCrawler();
+            SetShowTypeCrawler();
+            SetSettingExport(site);
         }
 
-        private void setShowTypeCrawler()
+        private void SetSettingExport(SiteConfig siteConfig)
+        {
+            this.ExportSettingTb.Text = Helper.ObjectToString(siteConfig);
+        }
+
+        private void SetShowTypeCrawler()
         {
             if (IsCrawleUrls())
             {
-                showCrawlerUrls(true);
-                showCategoryPage(false);
+                ShowCrawlerUrls(true);
+                ShowCategoryPage(false);
             }
             else
             {
-                showCrawlerUrls(false);
-                showCategoryPage(true);
+                ShowCrawlerUrls(false);
+                ShowCategoryPage(true);
             }
         }
 
@@ -146,7 +153,7 @@ namespace XLeech
             return this.ListUrlRb.Checked && !this.CategoryPageRb.Checked;
         }
 
-        private void showCrawlerUrls(bool isShow)
+        private void ShowCrawlerUrls(bool isShow)
         {
             if (isShow)
             {
@@ -160,7 +167,7 @@ namespace XLeech
             }
         }
 
-        private void showCategoryPage(bool isShow)
+        private void ShowCategoryPage(bool isShow)
         {
             if (isShow)
             {
@@ -186,7 +193,7 @@ namespace XLeech
             }
         }
 
-        private async void editBtn_Click(object sender, EventArgs e)
+        private async void EditBtn_Click(object sender, EventArgs e)
         {
             var now = DateTime.Now;
 
@@ -204,49 +211,83 @@ namespace XLeech
             _backToListSite();
         }
 
-        private async void createBtn_Click(object sender, EventArgs e)
+        private async void CreateBtn_Click(object sender, EventArgs e)
         {
             var now = DateTime.Now;
-
-            var site = SetSiteConfig(new SiteConfig
+            if (string.IsNullOrEmpty(this.ImportSettingTb.Text))
             {
-                UpdateTime = now,
-                CreateTime = now
-            });
-            await this._siteRepository.AddAsync(site);
+                var site = SetSiteConfig(new SiteConfig
+                {
+                    UpdateTime = now,
+                    CreateTime = now
+                });
+                await this._siteRepository.AddAsync(site);
 
-            var category = SetCategoryConfig(new CategoryConfig
-            {
-                SiteID = site.Id,
-                UpdateTime = now,
-                CreateTime = now
-            });
-            await this._categoryRepository.AddAsync(category);
+                var category = SetCategoryConfig(new CategoryConfig
+                {
+                    SiteID = site.Id,
+                    UpdateTime = now,
+                    CreateTime = now
+                });
+                await this._categoryRepository.AddAsync(category);
 
-            var post = SetPostConfig(new PostConfig
+                var post = SetPostConfig(new PostConfig
+                {
+                    SiteID = site.Id,
+                    UpdateTime = now,
+                    CreateTime = now
+                });
+                await this._postRepository.AddAsync(post);
+            }
+            else // case import settings
             {
-                SiteID = site.Id,
-                UpdateTime = now,
-                CreateTime = now
-            });
-            await this._postRepository.AddAsync(post);
+                var siteConfig = Helper.StringToObject(this.ImportSettingTb.Text) as SiteConfig;
+                siteConfig.Id = 0;
+                siteConfig.CreateTime = now;
+                siteConfig.UpdateTime = now;
+                siteConfig.LastPostCrawl = null;
+                siteConfig.Name = string.IsNullOrEmpty(this.NameTb.Text) ? string.Format("{0}_copy_{1}", siteConfig.Name, DateTime.Now) : this.NameTb.Text;
+                siteConfig.IsDone = false;
+                siteConfig.CategoryNextPageURL = null;
+
+                var category = siteConfig.Category;
+                category.CreateTime = now;
+                category.UpdateTime = now;
+                category.Id = 0;
+
+                var post = siteConfig.Post;
+                post.Id = 0;
+                post.CreateTime = now;
+                post.UpdateTime = now;
+
+                siteConfig.Post = null;
+                siteConfig.Category = null;
+                await this._siteRepository.AddAsync(siteConfig);
+
+                category.SiteID = siteConfig.Id;
+                await this._categoryRepository.AddAsync(category);
+
+                post.SiteID = siteConfig.Id;
+                await this._postRepository.AddAsync(post);
+            }
+
             _backToListSite();
         }
 
 
-        private void cancleBtn_Click(object sender, EventArgs e)
+        private void CancleBtn_Click(object sender, EventArgs e)
         {
             _backToListSite();
         }
 
         private void ListUrlRb_CheckedChanged(object sender, EventArgs e)
         {
-            setShowTypeCrawler();
+            SetShowTypeCrawler();
         }
 
         private void CategoryPageRb_CheckedChanged(object sender, EventArgs e)
         {
-            setShowTypeCrawler();
+            SetShowTypeCrawler();
         }
 
         private SiteConfig SetSiteConfig(SiteConfig siteConfig)
@@ -327,12 +368,12 @@ namespace XLeech
 
         private void ListUrlRb_CheckedChanged_1(object sender, EventArgs e)
         {
-            setShowTypeCrawler();
+            SetShowTypeCrawler();
         }
 
         private void CategoryPageRb_CheckedChanged_1(object sender, EventArgs e)
         {
-            setShowTypeCrawler();
+            SetShowTypeCrawler();
         }
     }
 }

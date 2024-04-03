@@ -1,6 +1,8 @@
 ﻿
 namespace XLeech.Data.Entity
 {
+
+    [Serializable]
     public class PostConfig: BaseEntity
     {
         public int SiteID { get; set; }

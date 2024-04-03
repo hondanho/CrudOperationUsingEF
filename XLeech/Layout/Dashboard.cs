@@ -3,6 +3,7 @@ using AbotX2.Parallel;
 using AbotX2.Poco;
 using Microsoft.EntityFrameworkCore;
 using System;
+using XLeech.Core.Extensions;
 using XLeech.Core.Model;
 using XLeech.Core.Service;
 using XLeech.Data.Entity;
@@ -266,14 +267,14 @@ namespace XLeech
             {
                 richTextBox.Invoke(() =>
                 {
-                    richTextBox.Text += string.Format("{0} {1}\n", DateTime.Now, log);
+                    richTextBox.Text += string.Format("{0} {1}\n", DateTime.Now.ToString(Constants.FormatDateShowLog), log);
                     richTextBox.SelectionStart = richTextBox.Text.Length;
                     richTextBox.ScrollToCaret();
                 });
             }
             else
             {
-                richTextBox.Text += string.Format("{0} {1}\n", DateTime.Now, log);
+                richTextBox.Text += string.Format("{0} {1}\n", DateTime.Now.ToString(Constants.FormatDateShowLog), log);
                 richTextBox.SelectionStart = richTextBox.Text.Length;
                 richTextBox.ScrollToCaret();
             }
