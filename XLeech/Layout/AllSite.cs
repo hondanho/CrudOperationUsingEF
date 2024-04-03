@@ -103,7 +103,7 @@ namespace XLeech
         {
             foreach (DataGridViewRow row in this.dataGridView.Rows)
             {
-                if (Convert.ToBoolean(row.Cells[2].Value))
+                if (Convert.ToBoolean(row.Cells["ActiveForScheduling"].Value))
                 {
                     row.Cells[2].Style.ForeColor = Color.Green;
                 }
@@ -111,6 +111,8 @@ namespace XLeech
                 {
                     row.Cells[2].Style.ForeColor = Color.Yellow;
                 }
+
+                row.Cells[2].Value = "⚫";
             }
         }
     }

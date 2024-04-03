@@ -35,12 +35,13 @@
             editToolStripMenuItem1 = new ToolStripMenuItem();
             Id = new DataGridViewTextBoxColumn();
             SiteTitle = new DataGridViewTextBoxColumn();
-            ActiveForScheduling = new DataGridViewTextBoxColumn();
+            ActiveForScheduling1 = new DataGridViewTextBoxColumn();
             IsDone = new DataGridViewTextBoxColumn();
             CategoryNextPageURL = new DataGridViewTextBoxColumn();
             LatestRun = new DataGridViewTextBoxColumn();
             UseProxy = new DataGridViewTextBoxColumn();
             TimeInterval = new DataGridViewTextBoxColumn();
+            ActiveForScheduling = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             contextMenuStripGrid.SuspendLayout();
             SuspendLayout();
@@ -52,7 +53,7 @@
             dataGridView.BorderStyle = BorderStyle.None;
             dataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] { Id, SiteTitle, ActiveForScheduling, IsDone, CategoryNextPageURL, LatestRun, UseProxy, TimeInterval });
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { Id, SiteTitle, ActiveForScheduling1, IsDone, CategoryNextPageURL, LatestRun, UseProxy, TimeInterval, ActiveForScheduling });
             dataGridView.ContextMenuStrip = contextMenuStripGrid;
             dataGridView.Location = new Point(0, 0);
             dataGridView.Margin = new Padding(3, 4, 3, 4);
@@ -91,10 +92,10 @@
             // 
             Id.DataPropertyName = "Id";
             Id.HeaderText = "Id";
-            Id.MinimumWidth = 6;
+            Id.MinimumWidth = 50;
             Id.Name = "Id";
             Id.ReadOnly = true;
-            Id.Width = 125;
+            Id.Width = 50;
             // 
             // SiteTitle
             // 
@@ -105,14 +106,14 @@
             SiteTitle.ReadOnly = true;
             SiteTitle.Width = 125;
             // 
-            // ActiveForScheduling
+            // ActiveForScheduling1
             // 
-            ActiveForScheduling.DataPropertyName = "ActiveForScheduling";
-            ActiveForScheduling.HeaderText = "Active For Scheduling";
-            ActiveForScheduling.MinimumWidth = 150;
-            ActiveForScheduling.Name = "ActiveForScheduling";
-            ActiveForScheduling.ReadOnly = true;
-            ActiveForScheduling.Width = 150;
+            ActiveForScheduling1.DataPropertyName = "ActiveForScheduling1";
+            ActiveForScheduling1.HeaderText = "Active For Scheduling";
+            ActiveForScheduling1.MinimumWidth = 135;
+            ActiveForScheduling1.Name = "ActiveForScheduling1";
+            ActiveForScheduling1.ReadOnly = true;
+            ActiveForScheduling1.Width = 135;
             // 
             // IsDone
             // 
@@ -154,10 +155,20 @@
             // 
             TimeInterval.DataPropertyName = "TimeInterval";
             TimeInterval.HeaderText = "Time Interval";
-            TimeInterval.MinimumWidth = 6;
+            TimeInterval.MinimumWidth = 50;
             TimeInterval.Name = "TimeInterval";
             TimeInterval.ReadOnly = true;
             TimeInterval.Width = 125;
+            // 
+            // ActiveForScheduling
+            // 
+            ActiveForScheduling.DataPropertyName = "ActiveForScheduling";
+            ActiveForScheduling.HeaderText = "ActiveForScheduling";
+            ActiveForScheduling.MinimumWidth = 6;
+            ActiveForScheduling.Name = "ActiveForScheduling";
+            ActiveForScheduling.ReadOnly = true;
+            ActiveForScheduling.Visible = false;
+            ActiveForScheduling.Width = 125;
             // 
             // AllSite
             // 
@@ -180,11 +191,12 @@
         private ToolStripMenuItem editToolStripMenuItem1;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn SiteTitle;
-        private DataGridViewTextBoxColumn ActiveForScheduling;
+        private DataGridViewTextBoxColumn ActiveForScheduling1;
         private DataGridViewTextBoxColumn IsDone;
         private DataGridViewTextBoxColumn CategoryNextPageURL;
         private DataGridViewTextBoxColumn LatestRun;
         private DataGridViewTextBoxColumn UseProxy;
         private DataGridViewTextBoxColumn TimeInterval;
+        private DataGridViewTextBoxColumn ActiveForScheduling;
     }
 }
