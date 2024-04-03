@@ -7470,23 +7470,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pro\\.nuget\\packages\\": {},
+    "C:\\Users\\iONAH\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ex\\CrudOperationUsingEF\\XLeech.Core\\XLeech.Core.csproj",
+      "projectUniqueName": "D:\\CrudOperationUsingEF\\XLeech.Core\\XLeech.Core.csproj",
       "projectName": "XLeech.Core",
-      "projectPath": "E:\\ex\\CrudOperationUsingEF\\XLeech.Core\\XLeech.Core.csproj",
-      "packagesPath": "C:\\Users\\pro\\.nuget\\packages\\",
-      "outputPath": "E:\\ex\\CrudOperationUsingEF\\XLeech.Core\\obj\\",
+      "projectPath": "D:\\CrudOperationUsingEF\\XLeech.Core\\XLeech.Core.csproj",
+      "packagesPath": "C:\\Users\\iONAH\\.nuget\\packages\\",
+      "outputPath": "D:\\CrudOperationUsingEF\\XLeech.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\pro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\iONAH\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7500,8 +7500,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\ex\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj": {
-              "projectPath": "E:\\ex\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj"
+            "D:\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj": {
+              "projectPath": "D:\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj"
             }
           }
         }
@@ -7540,26 +7540,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.24, 6.0.24]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.24, 6.0.24]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.24, 6.0.24]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

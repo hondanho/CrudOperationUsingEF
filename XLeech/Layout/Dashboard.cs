@@ -1,7 +1,6 @@
 ﻿using AbotX2.Parallel;
 using AbotX2.Poco;
 using Microsoft.EntityFrameworkCore;
-using System.Windows.Forms;
 using XLeech.Core.Service;
 using XLeech.Data.Entity;
 using XLeech.Data.EntityFramework;
@@ -16,7 +15,7 @@ namespace XLeech
         private readonly Repository<SiteConfig> _siteConfigRepository;
         private readonly CrawlerService _crawlerService;
         private readonly List<ParallelCrawlerEngine> _parallelCrawlerEngine;
-        private int siteSuccess = 0;
+        private int categoryCrawled = 0;
         private int postSuccess = 0;
         private int postFailed = 0;
 
@@ -37,14 +36,26 @@ namespace XLeech
             }
         }
 
-        public async Task CrawlerAsync()
+        private static CrawlConfigurationX GetSafeConfig()
+        {
+            return new CrawlConfigurationX
+            {
+                MaxPagesToCrawl = 1,
+                MinCrawlDelayPerDomainMilliSeconds = 5000,
+                //MaxConcurrentSiteCrawls = 5,
+                //HttpRequestTimeoutInSeconds= 60,
+                //MaxConcurrentThreads = 5,
+            };
+        }
+
+        private async Task CrawlerAsync()
         {
             var sites = _dbContext.Sites
                        .Where(x => x.ActiveForScheduling && !x.IsDone)
                        .Include(x => x.Category)
                        .Include(y => y.Post)
                        .ToList();
-            this.Sitelb.Text = sites?.Count.ToString();
+            this.AllSiteLb.Text = sites?.Count.ToString();
             if (sites.Any())
             {
                 foreach (var site in sites)
@@ -59,6 +70,7 @@ namespace XLeech
         {
             var siteToCrawlUrls = new List<SiteToCrawl>();
             var config = GetSafeConfig();
+            var categoryPageURLCrawle = _crawlerService.GetCategoryPageURLCrawle(siteConfig);
 
             // get urls from url list
             if (siteConfig.IsPageUrl)
@@ -71,7 +83,6 @@ namespace XLeech
                 }).ToList()
                 );
             }
-
             // get urls from category page
             if (!siteConfig.IsPageUrl)
             {
@@ -89,7 +100,6 @@ namespace XLeech
 
             var siteToCrawlProvider = new SiteToCrawlProvider();
             siteToCrawlProvider.AddSitesToCrawl(siteToCrawlUrls);
-
             var crawlEngine = new ParallelCrawlerEngine(
                 config,
                 new ParallelImplementationOverride(config,
@@ -99,9 +109,6 @@ namespace XLeech
                         WebCrawlerFactory = new WebCrawlerFactory(config) //Same config will be used for every crawler
                     })
                 );
-
-            var crawlCounts = new Dictionary<Guid, int>();
-            var siteStartingEvents = 0;
 
             crawlEngine.CrawlerInstanceCreated += (sender, eventArgs) =>
             {
@@ -115,36 +122,35 @@ namespace XLeech
                         await _crawlerService.PageCrawlCompleted(abotSender, abotEventArgs, siteBag);
                         Interlocked.Increment(ref postSuccess);
                     }
-                    catch (Exception ex) {
+                    catch (Exception ex)
+                    {
                         Interlocked.Increment(ref postFailed);
-                        ShowLog(string.Format("Exception {0}", ex.Message));
+                        ShowLabel(this.PostFailedLb, postFailed.ToString());
+                        LogPost(string.Format("{0} Exception {1}", eventArgs.SiteToCrawl.Uri, ex.Message));
                     }
                 };
             };
 
             crawlEngine.SiteCrawlStarting += (sender, args) =>
             {
-                Interlocked.Increment(ref siteStartingEvents);
-                ShowLog(string.Format("{0} started", args.SiteToCrawl.Uri));
+                LogPost(string.Format("{0} Started", args.SiteToCrawl.Uri));
             };
 
             crawlEngine.SiteCrawlCompleted += (sender, args) =>
             {
-                lock (crawlCounts)
-                {
-                    crawlCounts.Add(args.CrawledSite.SiteToCrawl.Id, args.CrawledSite.CrawlResult.CrawlContext.CrawledCount);
-                }
-                ShowLog(string.Format("{0} Completed", args.CrawledSite.SiteToCrawl.Uri));
+                Interlocked.Increment(ref postSuccess);
+                ShowLabel(this.PostSuccessLb, postSuccess.ToString());
+                LogPost(string.Format("{0} Completed", args.CrawledSite.SiteToCrawl.Uri));
             };
 
             crawlEngine.AllCrawlsCompleted += async (sender, eventArgs) =>
             {
-                Interlocked.Increment(ref siteSuccess);
-                ShowLog(string.Format("All Url Completed: {0} url", crawlCounts.Count()));
+                Interlocked.Increment(ref categoryCrawled);
+                ShowLabel(this.CategoryCrawledLb, categoryCrawled.ToString());
+                LogSite(string.Format("{0} Completed", categoryPageURLCrawle));
 
                 siteConfig.IsDone = string.IsNullOrEmpty(siteConfig.CategoryNextPageURL);
                 await _siteConfigRepository.UpdateAsync(siteConfig);
-
                 if (!siteConfig.IsDone)
                 {
                     ParallelCrawlerEngineUrls(siteConfig);
@@ -154,36 +160,6 @@ namespace XLeech
             crawlEngine.StartAsync();
 
             return crawlEngine;
-        }
-
-        private void ShowLog(string log)
-        {
-            if (StatusTb.InvokeRequired)
-            {
-                StatusTb.Invoke(() => {
-                    StatusTb.Text += string.Format("{0} \n", log);
-                    StatusTb.SelectionStart = StatusTb.Text.Length;
-                    StatusTb.ScrollToCaret();
-                });
-            }
-            else
-            {
-                StatusTb.Text += string.Format("{0} \n", log);
-                StatusTb.SelectionStart = StatusTb.Text.Length;
-                StatusTb.ScrollToCaret();
-            }
-        }
-
-        private static CrawlConfigurationX GetSafeConfig()
-        {
-            return new CrawlConfigurationX
-            {
-                MaxPagesToCrawl = 1,
-                MinCrawlDelayPerDomainMilliSeconds = 5000,
-                //MaxConcurrentSiteCrawls = 5,
-                //HttpRequestTimeoutInSeconds= 60,
-                //MaxConcurrentThreads = 5,
-            };
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
@@ -219,14 +195,51 @@ namespace XLeech
             }
         }
 
-        private void Dashboard_Load(object sender, EventArgs e)
+        #region Log
+        private void ShowLabel(Label label, string log)
         {
-
+            if (label.InvokeRequired)
+            {
+                label.Invoke(() =>
+                {
+                    label.Text += string.Format("{0} {1}\n", DateTime.Now, log);
+                });
+            }
+            else
+            {
+                label.Text += string.Format("{0} {1}\n", DateTime.Now, log);
+            }
         }
 
-        private void Sitelb_Click(object sender, EventArgs e)
+        private void LogSite(string log)
         {
-
+            ShowLog(this.LogSiteTb, log);
         }
+
+        private void LogPost(string log)
+        {
+            ShowLog(this.LogPostTb, log);
+        }
+
+        private void ShowLog(RichTextBox richTextBox, string log)
+        {
+            if (richTextBox.InvokeRequired)
+            {
+                richTextBox.Invoke(() =>
+                {
+                    richTextBox.Text += string.Format("{0} {1}\n", DateTime.Now, log);
+                    richTextBox.SelectionStart = richTextBox.Text.Length;
+                    richTextBox.ScrollToCaret();
+                });
+            }
+            else
+            {
+                richTextBox.Text += string.Format("{0} {1}\n", DateTime.Now, log);
+                richTextBox.SelectionStart = richTextBox.Text.Length;
+                richTextBox.ScrollToCaret();
+            }
+        }
+
+        #endregion
     }
 }

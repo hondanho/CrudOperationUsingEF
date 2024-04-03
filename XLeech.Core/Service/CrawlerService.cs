@@ -92,10 +92,15 @@ namespace XLeech.Core.Service
                     categoryPageInfo.CategoryNextPageURL = await GetNexCategoryPostURL(crawlerPage.AngleSharpHtmlDocument, siteConfig);
                 };
 
-                await crawler.CrawlAsync(new Uri(siteConfig.CategoryNextPageURL ?? siteConfig.Category.CategoryPostURL));
+                await crawler.CrawlAsync(new Uri(GetCategoryPageURLCrawle(siteConfig)));
             }
 
             return categoryPageInfo;
+        }
+
+        public string GetCategoryPageURLCrawle(SiteConfig siteConfig)
+        {
+            return siteConfig.CategoryNextPageURL ?? siteConfig.Category.CategoryPostURL;
         }
 
         public Task<string?> GetNexCategoryPostURL(IHtmlDocument document, SiteConfig siteConfig)

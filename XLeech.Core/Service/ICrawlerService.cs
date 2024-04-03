@@ -9,6 +9,7 @@ namespace XLeech.Core.Service
 {
     interface ICrawlerService
     {
+        string GetCategoryPageURLCrawle(SiteConfig siteConfig);
         Task<CategoryPageInfo> GetCategoryNextPageInfo(SiteConfig siteConfig, CrawlConfigurationX crawlConfigurationX);
         Task PageCrawlCompleted(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig);
         Task PageCrawlCompletedCategoryPage(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig);
