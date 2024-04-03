@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Windows.Forms;
 using XLeech.Data.Entity;
 using XLeech.Data.EntityFramework;
 using XLeech.Data.Repository;
@@ -70,14 +71,14 @@ namespace XLeech
                         this.contextMenuStripGrid.Hide();
                     }
 
-                    
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         private void editToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -95,6 +96,21 @@ namespace XLeech
                 this.dataGridView.CurrentCell = this.dataGridView.Rows[e.RowIndex].Cells[1];
                 this.contextMenuStripGrid.Show(this.dataGridView, e.Location);
                 this.contextMenuStripGrid.Show(Cursor.Position);
+            }
+        }
+
+        private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            foreach (DataGridViewRow row in this.dataGridView.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[2].Value))
+                {
+                    row.Cells[2].Style.ForeColor = Color.Green;
+                }
+                else
+                {
+                    row.Cells[2].Style.ForeColor = Color.Yellow;
+                }
             }
         }
     }

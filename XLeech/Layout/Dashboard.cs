@@ -67,6 +67,10 @@ namespace XLeech
                     ParallelCrawlerEngineUrls(site);
                 }
             }
+            else
+            {
+                MessageBox.Show("No site crawle");
+            }
         }
 
         private async Task<ParallelCrawlerEngine> ParallelCrawlerEngineUrls(SiteConfig siteConfig)
