@@ -45,7 +45,8 @@ namespace XLeech
             return new CrawlConfigurationX
             {
                 MaxPagesToCrawl = 1,
-                MinCrawlDelayPerDomainMilliSeconds = 5000,
+                MinCrawlDelayPerDomainMilliSeconds = 10000,
+                
                 //MaxConcurrentSiteCrawls = 5,
                 //HttpRequestTimeoutInSeconds= 60,
                 //MaxConcurrentThreads = 5,

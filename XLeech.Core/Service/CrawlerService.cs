@@ -109,6 +109,7 @@ namespace XLeech.Core.Service
         public async Task<CategoryPageInfo> GetCategoryNextPageInfo(SiteConfig siteConfig, CrawlConfigurationX crawlConfigurationX)
         {
             var categoryPageInfo = new CategoryPageInfo();
+            crawlConfigurationX = MergeCrawlConfiguration(crawlConfigurationX, siteConfig);
             using (var crawler = new CrawlerX(crawlConfigurationX))
             {
                 crawler.PageCrawlCompleted += async (sender, args) =>
@@ -137,6 +138,16 @@ namespace XLeech.Core.Service
             if (ele == null) return null;
 
             return ele?.GetAttribute("href") ?? ele?.GetAttribute("src");
+        }
+
+        public CrawlConfigurationX MergeCrawlConfiguration(CrawlConfigurationX config, SiteConfig siteConfig)
+        {
+            if (!string.IsNullOrEmpty(siteConfig.HTTPUserAgent))
+            {
+                config.UserAgentString = siteConfig.HTTPUserAgent;
+            }
+
+            return config;
         }
     }
 }

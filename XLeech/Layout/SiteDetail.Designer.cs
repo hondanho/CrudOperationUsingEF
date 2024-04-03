@@ -145,6 +145,13 @@
             label45 = new Label();
             label11 = new Label();
             ImportSettingTb = new RichTextBox();
+            textBox1 = new TextBox();
+            label49 = new Label();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
+            label50 = new Label();
+            label51 = new Label();
+            label52 = new Label();
             postTab.SuspendLayout();
             categoryTab.SuspendLayout();
             mainTab.SuspendLayout();
@@ -972,6 +979,13 @@
             // mainTab
             // 
             mainTab.AutoScroll = true;
+            mainTab.Controls.Add(label52);
+            mainTab.Controls.Add(label51);
+            mainTab.Controls.Add(label50);
+            mainTab.Controls.Add(textBox3);
+            mainTab.Controls.Add(textBox2);
+            mainTab.Controls.Add(textBox1);
+            mainTab.Controls.Add(label49);
             mainTab.Controls.Add(CategoryPageRb);
             mainTab.Controls.Add(ListUrlRb);
             mainTab.Controls.Add(label48);
@@ -1412,6 +1426,72 @@
             ImportSettingTb.TabIndex = 1;
             ImportSettingTb.Text = "";
             // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Location = new Point(457, 881);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "https://example.com/wp-json/";
+            textBox1.Size = new Size(225, 27);
+            textBox1.TabIndex = 45;
+            // 
+            // label49
+            // 
+            label49.AutoSize = true;
+            label49.Location = new Point(14, 892);
+            label49.Name = "label49";
+            label49.Size = new Size(79, 20);
+            label49.TabIndex = 44;
+            label49.Text = "Wordpress";
+            // 
+            // textBox2
+            // 
+            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBox2.Location = new Point(457, 998);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
+            textBox2.Name = "textBox2";
+            textBox2.PlaceholderText = "b3sR lCNw aPla aMZ9 XvKt qi0q";
+            textBox2.Size = new Size(225, 27);
+            textBox2.TabIndex = 46;
+            // 
+            // textBox3
+            // 
+            textBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBox3.Location = new Point(458, 938);
+            textBox3.Margin = new Padding(3, 4, 3, 4);
+            textBox3.Name = "textBox3";
+            textBox3.PlaceholderText = "admin";
+            textBox3.Size = new Size(225, 27);
+            textBox3.TabIndex = 47;
+            // 
+            // label50
+            // 
+            label50.AutoSize = true;
+            label50.Location = new Point(241, 888);
+            label50.Name = "label50";
+            label50.Size = new Size(53, 20);
+            label50.TabIndex = 48;
+            label50.Text = "Url api";
+            // 
+            // label51
+            // 
+            label51.AutoSize = true;
+            label51.Location = new Point(241, 1005);
+            label51.Name = "label51";
+            label51.Size = new Size(151, 20);
+            label51.TabIndex = 49;
+            label51.Text = "Application Password";
+            // 
+            // label52
+            // 
+            label52.AutoSize = true;
+            label52.Location = new Point(241, 945);
+            label52.Name = "label52";
+            label52.Size = new Size(82, 20);
+            label52.TabIndex = 50;
+            label52.Text = "User Name";
+            // 
             // SiteDetail
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1564,5 +1644,12 @@
         private Label label45;
         private Label label47;
         private RichTextBox ExportSettingTb;
+        private TextBox textBox1;
+        private Label label49;
+        private Label label52;
+        private Label label51;
+        private Label label50;
+        private TextBox textBox3;
+        private TextBox textBox2;
     }
 }
