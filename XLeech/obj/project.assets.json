@@ -7489,23 +7489,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\iONAH\\.nuget\\packages\\": {},
+    "C:\\Users\\pro\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CrudOperationUsingEF\\XLeech\\XLeech.csproj",
+      "projectUniqueName": "E:\\ex\\CrudOperationUsingEF\\XLeech\\XLeech.csproj",
       "projectName": "XLeech",
-      "projectPath": "D:\\CrudOperationUsingEF\\XLeech\\XLeech.csproj",
-      "packagesPath": "C:\\Users\\iONAH\\.nuget\\packages\\",
-      "outputPath": "D:\\CrudOperationUsingEF\\XLeech\\obj\\",
+      "projectPath": "E:\\ex\\CrudOperationUsingEF\\XLeech\\XLeech.csproj",
+      "packagesPath": "C:\\Users\\pro\\.nuget\\packages\\",
+      "outputPath": "E:\\ex\\CrudOperationUsingEF\\XLeech\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\iONAH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7519,11 +7519,11 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "D:\\CrudOperationUsingEF\\XLeech.Core\\XLeech.Core.csproj": {
-              "projectPath": "D:\\CrudOperationUsingEF\\XLeech.Core\\XLeech.Core.csproj"
+            "E:\\ex\\CrudOperationUsingEF\\XLeech.Core\\XLeech.Core.csproj": {
+              "projectPath": "E:\\ex\\CrudOperationUsingEF\\XLeech.Core\\XLeech.Core.csproj"
             },
-            "D:\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj": {
-              "projectPath": "D:\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj"
+            "E:\\ex\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj": {
+              "projectPath": "E:\\ex\\CrudOperationUsingEF\\XLeech.Data\\XLeech.Data.csproj"
             }
           }
         }
@@ -7548,6 +7548,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.24, 6.0.24]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[6.0.24, 6.0.24]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.24, 6.0.24]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.24, 6.0.24]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -7556,7 +7574,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

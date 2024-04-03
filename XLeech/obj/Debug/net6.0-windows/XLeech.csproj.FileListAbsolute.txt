@@ -145,6 +145,7 @@ D:\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\refint\XLeech.dll
 D:\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.pdb
 D:\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.genruntimeconfig.cache
 D:\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\ref\XLeech.dll
+D:\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.Properties.Resources.resources
 E:\ex\CrudOperationUsingEF\XLeech\bin\Debug\net6.0-windows\XLeech.exe
 E:\ex\CrudOperationUsingEF\XLeech\bin\Debug\net6.0-windows\appsettings.json
 E:\ex\CrudOperationUsingEF\XLeech\bin\Debug\net6.0-windows\XLeech.deps.json
@@ -208,6 +209,7 @@ E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.Dashboard.reso
 E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.GeneralSettings.resources
 E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.SiteDetail.resources
 E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.Main.resources
+E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.Properties.Resources.resources
 E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.csproj.GenerateResource.cache
 E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.GeneratedMSBuildEditorConfig.editorconfig
 E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.AssemblyInfoInputs.cache
@@ -219,5 +221,3 @@ E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\refint\XLeech.dll
 E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.pdb
 E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.genruntimeconfig.cache
 E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\ref\XLeech.dll
-E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.Properties.Resources.resources
-D:\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.Properties.Resources.resources

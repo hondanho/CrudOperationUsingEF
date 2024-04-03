@@ -19,17 +19,12 @@ namespace XLeech.Core
 
         public WordpressProcessor(SiteConfig siteConfig)
         {
-            _wordPressClient = new WordPressClient(UriApi);
-            _wordPressClient.Auth.UseBasicAuth(UserName, Password);
+            _wordPressClient = new WordPressClient(!string.IsNullOrEmpty(siteConfig.WordpressApiUrl) ? siteConfig.WordpressApiUrl : UriApi);
+            _wordPressClient.Auth.UseBasicAuth(
+                    !string.IsNullOrEmpty(siteConfig.WordpressUserName) ? siteConfig.WordpressUserName : UserName,
+                    !string.IsNullOrEmpty(siteConfig.WordpressApplicationPW) ? siteConfig.WordpressApplicationPW : Password
+                );
         }
-
-        //public Task<List<string>> GetPostUrls(IHtmlDocument document, SiteConfig siteConfig)
-        //{
-        //    var postUrls = document.QuerySelectorAll(siteConfig.Category.CategoryPostURLSelector)
-        //        .Select(ele => ele.GetAttribute("href") ?? ele.GetAttribute("src"))
-        //        .ToList();
-        //    return Task.FromResult(postUrls.Where(x => !string.IsNullOrEmpty(x)).ToList());
-        //}
 
         public CategoryModel GetCategory(IHtmlDocument document, SiteConfig siteConfig)
         {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Security.Policy;
 using XLeech.Core.Extensions;
 using XLeech.Data.Entity;
 using XLeech.Data.EntityFramework;
@@ -84,6 +85,9 @@ namespace XLeech
                 this.NoteTb.Text = site.Notes;
                 this.CookieCb.Text = site.Cookie;
                 this.ProxyRetryLimitNumeric.Value = site.ProxyRetryLimit;
+                this.WordpressApiUrlTb.Text = site.WordpressApiUrl;
+                this.WordpressUserNameTb.Text = site.WordpressUserName;
+                this.WordpressApplicationPWTb.Text = site.WordpressApplicationPW;
 
                 // category
                 this.CategoryMapTb.Text = site.Category.CategoryMap;
@@ -197,17 +201,38 @@ namespace XLeech
         {
             var now = DateTime.Now;
 
-            var site = SetSiteConfig(_siteConfig);
-            site.UpdateTime = now;
-            await this._siteRepository.UpdateAsync(site);
+            if (string.IsNullOrEmpty(this.ImportSettingTb.Text))
+            {
+                var site = SetSiteConfig(_siteConfig);
+                site.UpdateTime = now;
+                await this._siteRepository.UpdateAsync(site);
 
-            var category = SetCategoryConfig(_siteConfig.Category);
-            category.UpdateTime = now;
-            await this._categoryRepository.UpdateAsync(category);
+                var category = SetCategoryConfig(_siteConfig.Category);
+                category.UpdateTime = now;
+                await this._categoryRepository.UpdateAsync(category);
 
-            var post = SetPostConfig(_siteConfig.Post);
-            post.UpdateTime = now;
-            await this._postRepository.UpdateAsync(post);
+                var post = SetPostConfig(_siteConfig.Post);
+                post.UpdateTime = now;
+                await this._postRepository.UpdateAsync(post);
+            }
+            else
+            {
+                var siteConfig = Helper.StringToObject(this.ImportSettingTb.Text) as SiteConfig;
+                siteConfig.Id = _siteConfig.Id;
+                siteConfig.UpdateTime = now;
+                siteConfig.LastPostCrawl = null;
+                siteConfig.Name = string.IsNullOrEmpty(this.NameTb.Text) ? string.Format("{0}_copy_{1}", siteConfig.Name, DateTime.Now) : this.NameTb.Text;
+                siteConfig.IsDone = false;
+                siteConfig.CategoryNextPageURL = null;
+                
+                siteConfig.Category.Id = _siteConfig.Category.Id;
+                _siteConfig.Category.UpdateTime = now;
+                siteConfig.Post.Id = _siteConfig.Post.Id;
+                _siteConfig.Post.UpdateTime = now;
+
+                await this._siteRepository.UpdateAsync(siteConfig);
+            }
+
             _backToListSite();
         }
 
@@ -274,7 +299,6 @@ namespace XLeech
             _backToListSite();
         }
 
-
         private void CancleBtn_Click(object sender, EventArgs e)
         {
             _backToListSite();
@@ -310,6 +334,9 @@ namespace XLeech
             siteConfig.Notes = this.NoteTb.Text;
             siteConfig.Cookie = this.CookieCb.Text;
             siteConfig.ProxyRetryLimit = (int)this.ProxyRetryLimitNumeric.Value;
+            siteConfig.WordpressApiUrl = this.WordpressApiUrlTb.Text;
+            siteConfig.WordpressUserName = this.WordpressUserNameTb.Text;
+            siteConfig.WordpressApplicationPW = this.WordpressApplicationPWTb.Text;
             return siteConfig;
         }
 

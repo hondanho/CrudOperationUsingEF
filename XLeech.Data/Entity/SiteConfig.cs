@@ -30,6 +30,10 @@ namespace XLeech.Data.Entity
         public string? CategoryNextPageURL { get; set; }
         public string? LastPostCrawl { get; set; }
         public string? Notes { get; set; }
+        public string? WordpressApiUrl { get; set; }
+        public string? WordpressUserName { get; set; }
+        public string? WordpressApplicationPW { get; set; }
+
         public CategoryConfig Category { get; set; }
         public PostConfig Post { get; set; }
     }
