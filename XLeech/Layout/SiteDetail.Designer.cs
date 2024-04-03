@@ -152,6 +152,7 @@
             this.label45 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.ImportSettingTb = new System.Windows.Forms.RichTextBox();
+            this.label53 = new System.Windows.Forms.Label();
             this.postTab.SuspendLayout();
             this.categoryTab.SuspendLayout();
             this.mainTab.SuspendLayout();
@@ -332,7 +333,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(13, 889);
+            this.label36.Location = new System.Drawing.Point(13, 912);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(169, 15);
             this.label36.TabIndex = 44;
@@ -342,9 +343,11 @@
             // 
             this.PostUnnecessaryElementsTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PostUnnecessaryElementsTb.Location = new System.Drawing.Point(230, 886);
+            this.PostUnnecessaryElementsTb.Location = new System.Drawing.Point(230, 912);
+            this.PostUnnecessaryElementsTb.Multiline = true;
             this.PostUnnecessaryElementsTb.Name = "PostUnnecessaryElementsTb";
-            this.PostUnnecessaryElementsTb.Size = new System.Drawing.Size(659, 23);
+            this.PostUnnecessaryElementsTb.PlaceholderText = "New line-separated selector";
+            this.PostUnnecessaryElementsTb.Size = new System.Drawing.Size(659, 52);
             this.PostUnnecessaryElementsTb.TabIndex = 43;
             // 
             // label35
@@ -361,8 +364,10 @@
             this.PostRemoveElementAttributesTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PostRemoveElementAttributesTb.Location = new System.Drawing.Point(230, 840);
+            this.PostRemoveElementAttributesTb.Multiline = true;
             this.PostRemoveElementAttributesTb.Name = "PostRemoveElementAttributesTb";
-            this.PostRemoveElementAttributesTb.Size = new System.Drawing.Size(659, 23);
+            this.PostRemoveElementAttributesTb.PlaceholderText = "New line-separated selector";
+            this.PostRemoveElementAttributesTb.Size = new System.Drawing.Size(659, 54);
             this.PostRemoveElementAttributesTb.TabIndex = 41;
             // 
             // label34
@@ -792,9 +797,11 @@
             // 
             this.UnnecessaryElementsTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.UnnecessaryElementsTb.Location = new System.Drawing.Point(224, 485);
+            this.UnnecessaryElementsTb.Location = new System.Drawing.Point(223, 519);
+            this.UnnecessaryElementsTb.Multiline = true;
             this.UnnecessaryElementsTb.Name = "UnnecessaryElementsTb";
-            this.UnnecessaryElementsTb.Size = new System.Drawing.Size(665, 23);
+            this.UnnecessaryElementsTb.PlaceholderText = "New line-separated selector";
+            this.UnnecessaryElementsTb.Size = new System.Drawing.Size(665, 48);
             this.UnnecessaryElementsTb.TabIndex = 22;
             // 
             // label16
@@ -802,7 +809,7 @@
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(13, 488);
+            this.label16.Location = new System.Drawing.Point(13, 522);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(169, 15);
             this.label16.TabIndex = 21;
@@ -813,8 +820,10 @@
             this.RemoveElementAttributesTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RemoveElementAttributesTb.Location = new System.Drawing.Point(224, 441);
+            this.RemoveElementAttributesTb.Multiline = true;
             this.RemoveElementAttributesTb.Name = "RemoveElementAttributesTb";
-            this.RemoveElementAttributesTb.Size = new System.Drawing.Size(665, 23);
+            this.RemoveElementAttributesTb.PlaceholderText = "New line-separated selector";
+            this.RemoveElementAttributesTb.Size = new System.Drawing.Size(665, 57);
             this.RemoveElementAttributesTb.TabIndex = 20;
             // 
             // label15
@@ -987,6 +996,7 @@
             // mainTab
             // 
             this.mainTab.AutoScroll = true;
+            this.mainTab.Controls.Add(this.label53);
             this.mainTab.Controls.Add(this.label52);
             this.mainTab.Controls.Add(this.label51);
             this.mainTab.Controls.Add(this.label50);
@@ -1036,7 +1046,7 @@
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(13, 738);
+            this.label52.Location = new System.Drawing.Point(13, 794);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(65, 15);
             this.label52.TabIndex = 50;
@@ -1045,7 +1055,7 @@
             // label51
             // 
             this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(13, 778);
+            this.label51.Location = new System.Drawing.Point(13, 834);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(121, 15);
             this.label51.TabIndex = 49;
@@ -1054,7 +1064,7 @@
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(13, 698);
+            this.label50.Location = new System.Drawing.Point(13, 754);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(41, 15);
             this.label50.TabIndex = 48;
@@ -1064,7 +1074,7 @@
             // 
             this.WordpressUserNameTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WordpressUserNameTb.Location = new System.Drawing.Point(214, 738);
+            this.WordpressUserNameTb.Location = new System.Drawing.Point(214, 794);
             this.WordpressUserNameTb.Name = "WordpressUserNameTb";
             this.WordpressUserNameTb.PlaceholderText = "admin";
             this.WordpressUserNameTb.Size = new System.Drawing.Size(197, 23);
@@ -1074,7 +1084,7 @@
             // 
             this.WordpressApplicationPWTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WordpressApplicationPWTb.Location = new System.Drawing.Point(214, 778);
+            this.WordpressApplicationPWTb.Location = new System.Drawing.Point(214, 834);
             this.WordpressApplicationPWTb.Name = "WordpressApplicationPWTb";
             this.WordpressApplicationPWTb.PlaceholderText = "b3sR lCNw aPla aMZ9 XvKt qi0q";
             this.WordpressApplicationPWTb.Size = new System.Drawing.Size(197, 23);
@@ -1084,7 +1094,7 @@
             // 
             this.WordpressApiUrlTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WordpressApiUrlTb.Location = new System.Drawing.Point(214, 698);
+            this.WordpressApiUrlTb.Location = new System.Drawing.Point(214, 754);
             this.WordpressApiUrlTb.Name = "WordpressApiUrlTb";
             this.WordpressApiUrlTb.PlaceholderText = "https://example.com/wp-json/";
             this.WordpressApiUrlTb.Size = new System.Drawing.Size(197, 23);
@@ -1094,7 +1104,7 @@
             // 
             this.label49.AutoSize = true;
             this.label49.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label49.Location = new System.Drawing.Point(13, 664);
+            this.label49.Location = new System.Drawing.Point(13, 720);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(64, 15);
             this.label49.TabIndex = 44;
@@ -1133,7 +1143,7 @@
             // 
             // ProxyRetryLimitNumeric
             // 
-            this.ProxyRetryLimitNumeric.Location = new System.Drawing.Point(214, 625);
+            this.ProxyRetryLimitNumeric.Location = new System.Drawing.Point(214, 669);
             this.ProxyRetryLimitNumeric.Margin = new System.Windows.Forms.Padding(3, 3, 20, 20);
             this.ProxyRetryLimitNumeric.Name = "ProxyRetryLimitNumeric";
             this.ProxyRetryLimitNumeric.Size = new System.Drawing.Size(50, 23);
@@ -1142,7 +1152,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(13, 627);
+            this.label46.Location = new System.Drawing.Point(13, 671);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(97, 15);
             this.label46.TabIndex = 38;
@@ -1189,7 +1199,7 @@
             this.RandomizeProxiesCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RandomizeProxiesCb.AutoSize = true;
-            this.RandomizeProxiesCb.Location = new System.Drawing.Point(214, 591);
+            this.RandomizeProxiesCb.Location = new System.Drawing.Point(214, 635);
             this.RandomizeProxiesCb.Name = "RandomizeProxiesCb";
             this.RandomizeProxiesCb.Size = new System.Drawing.Size(15, 14);
             this.RandomizeProxiesCb.TabIndex = 23;
@@ -1198,7 +1208,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(13, 590);
+            this.label39.Location = new System.Drawing.Point(13, 634);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(107, 15);
             this.label39.TabIndex = 22;
@@ -1208,7 +1218,7 @@
             // 
             this.ProxiesTb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProxiesTb.Location = new System.Drawing.Point(214, 497);
+            this.ProxiesTb.Location = new System.Drawing.Point(214, 541);
             this.ProxiesTb.Multiline = true;
             this.ProxiesTb.Name = "ProxiesTb";
             this.ProxiesTb.PlaceholderText = "New line-separated proxies...";
@@ -1218,7 +1228,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(13, 500);
+            this.label38.Location = new System.Drawing.Point(13, 544);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(45, 15);
             this.label38.TabIndex = 20;
@@ -1229,7 +1239,7 @@
             this.UseProxyCb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.UseProxyCb.AutoSize = true;
-            this.UseProxyCb.Location = new System.Drawing.Point(214, 463);
+            this.UseProxyCb.Location = new System.Drawing.Point(214, 507);
             this.UseProxyCb.Name = "UseProxyCb";
             this.UseProxyCb.Size = new System.Drawing.Size(15, 14);
             this.UseProxyCb.TabIndex = 19;
@@ -1238,11 +1248,11 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(13, 462);
+            this.label37.Location = new System.Drawing.Point(13, 506);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(59, 15);
+            this.label37.Size = new System.Drawing.Size(42, 15);
             this.label37.TabIndex = 18;
-            this.label37.Text = "Use Proxy";
+            this.label37.Text = "Enable";
             // 
             // connectionTimeoutNumeric
             // 
@@ -1492,6 +1502,16 @@
             this.ImportSettingTb.TabIndex = 1;
             this.ImportSettingTb.Text = "";
             // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label53.Location = new System.Drawing.Point(13, 471);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(78, 15);
+            this.label53.TabIndex = 51;
+            this.label53.Text = "Proxy Setting";
+            // 
             // SiteDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1651,5 +1671,6 @@
         private Label label50;
         private TextBox WordpressUserNameTb;
         private TextBox WordpressApplicationPWTb;
+        private Label label53;
     }
 }
