@@ -217,11 +217,6 @@ namespace XLeech
             }
         }
 
-        private void crawleNowToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SetPanelView(PageTypeEnum.Dashboard);
-        }
-
         private void ViewSiteDetail(int siteId)
         {
             SetPanelView(PageTypeEnum.EditSite, siteId);

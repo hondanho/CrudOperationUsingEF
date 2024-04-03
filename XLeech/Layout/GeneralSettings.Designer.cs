@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(49, 21);
-            label1.Name = "label1";
-            label1.Size = new Size(108, 20);
-            label1.TabIndex = 0;
-            label1.Text = "general setting";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(367, 196);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "pedding";
             // 
             // GeneralSettings
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "GeneralSettings";
-            Size = new Size(1026, 660);
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
+            this.Name = "GeneralSettings";
+            this.Size = new System.Drawing.Size(898, 495);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

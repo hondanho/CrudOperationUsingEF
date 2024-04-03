@@ -35,7 +35,6 @@ namespace XLeech
             this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generalSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.crawleNowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,8 +58,7 @@ namespace XLeech
             this.allSitesToolStripMenuItem,
             this.addNewToolStripMenuItem,
             this.dashboardToolStripMenuItem,
-            this.generalSettingsToolStripMenuItem,
-            this.crawleNowToolStripMenuItem});
+            this.generalSettingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(12, 5);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
@@ -98,13 +96,6 @@ namespace XLeech
             this.generalSettingsToolStripMenuItem.Text = "General Settings";
             this.generalSettingsToolStripMenuItem.Click += new System.EventHandler(this.generalSettingsToolStripMenuItem_Click);
             // 
-            // crawleNowToolStripMenuItem
-            // 
-            this.crawleNowToolStripMenuItem.Name = "crawleNowToolStripMenuItem";
-            this.crawleNowToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
-            this.crawleNowToolStripMenuItem.Text = "Crawle Now";
-            this.crawleNowToolStripMenuItem.Click += new System.EventHandler(this.crawleNowToolStripMenuItem_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -134,7 +125,6 @@ namespace XLeech
         private ToolStripMenuItem addNewToolStripMenuItem;
         private ToolStripMenuItem dashboardToolStripMenuItem;
         private ToolStripMenuItem generalSettingsToolStripMenuItem;
-        private ToolStripMenuItem crawleNowToolStripMenuItem;
     }
 
     public class MyRenderer : ToolStripProfessionalRenderer

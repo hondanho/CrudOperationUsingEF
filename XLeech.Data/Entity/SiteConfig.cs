@@ -4,7 +4,7 @@ namespace XLeech.Data.Entity
     public class SiteConfig: BaseEntity
     {
         public string? Name { get; set; }
-        public bool IsDoneCrawle { get; set; }
+        public bool IsDone { get; set; }
         public string? Url { get; set; }
         public bool IsPageUrl {get;set;}
         public bool ActiveForScheduling { get; set; }

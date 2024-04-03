@@ -1,29 +1,15 @@
-﻿using Abot2;
-using Abot2.Crawler;
+﻿using Abot2.Crawler;
 using AbotX2.Crawler;
-using AbotX2.Parallel;
 using AbotX2.Poco;
 using AngleSharp.Html.Dom;
-using Microsoft.EntityFrameworkCore;
-using Serilog;
 using WordPressPCL.Models;
 using XLeech.Core.Model;
 using XLeech.Data.Entity;
-using XLeech.Data.EntityFramework;
-using Guid = System.Guid;
 
 namespace XLeech.Core.Service
 {
     public class CrawlerService : ICrawlerService
     {
-        private AppDbContext _dbContext;
-
-        public CrawlerService(AppDbContext dbContext)
-        {
-            this._dbContext = dbContext;
-        }
-
-
         public async Task PageCrawlCompletedCategoryPage(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
         {
             var crawledPage = abotEventArgs.CrawledPage;
@@ -45,6 +31,18 @@ namespace XLeech.Core.Service
             if (existPost == null)
             {
                 await wordpressProcessor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
+            }
+        }
+
+        public async Task PageCrawlCompleted(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
+        {
+            if (siteConfig.IsPageUrl)
+            {
+                await PageCrawlCompletedUrl(abotSender, abotEventArgs, siteConfig);
+            }
+            else
+            {
+                await PageCrawlCompletedCategoryPage(abotSender, abotEventArgs, siteConfig);
             }
         }
 
@@ -100,7 +98,7 @@ namespace XLeech.Core.Service
             return categoryPageInfo;
         }
 
-        public Task<string> GetNexCategoryPostURL(IHtmlDocument document, SiteConfig siteConfig)
+        public Task<string?> GetNexCategoryPostURL(IHtmlDocument document, SiteConfig siteConfig)
         {
             var ele = document.QuerySelector(siteConfig.Category.CategoryNextPageURLSelector).NextElementSibling;
             return Task.FromResult(ele?.GetAttribute("href") ?? ele?.GetAttribute("src"));

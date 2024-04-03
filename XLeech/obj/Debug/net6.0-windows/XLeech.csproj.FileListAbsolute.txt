@@ -219,3 +219,4 @@ E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\refint\XLeech.dll
 E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.pdb
 E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.genruntimeconfig.cache
 E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\ref\XLeech.dll
+E:\ex\CrudOperationUsingEF\XLeech\obj\Debug\net6.0-windows\XLeech.Properties.Resources.resources
