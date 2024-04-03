@@ -29,93 +29,88 @@ namespace XLeech
         /// </summary>
         private void InitializeComponent()
         {
-            this.PanelMain = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.allSitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generalSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            PanelMain = new Panel();
+            menuStrip1 = new MenuStrip();
+            allSitesToolStripMenuItem = new ToolStripMenuItem();
+            addNewToolStripMenuItem = new ToolStripMenuItem();
+            dashboardToolStripMenuItem = new ToolStripMenuItem();
+            generalSettingsToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // PanelMain
             // 
-            this.PanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelMain.Location = new System.Drawing.Point(12, 42);
-            this.PanelMain.Name = "PanelMain";
-            this.PanelMain.Size = new System.Drawing.Size(760, 506);
-            this.PanelMain.TabIndex = 1;
+            PanelMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            PanelMain.Location = new Point(14, 56);
+            PanelMain.Margin = new Padding(3, 4, 3, 4);
+            PanelMain.Name = "PanelMain";
+            PanelMain.Size = new Size(1157, 675);
+            PanelMain.TabIndex = 1;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.menuStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.allSitesToolStripMenuItem,
-            this.addNewToolStripMenuItem,
-            this.dashboardToolStripMenuItem,
-            this.generalSettingsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(12, 5);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(398, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.TabStop = true;
-            this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
+            menuStrip1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            menuStrip1.BackColor = Color.WhiteSmoke;
+            menuStrip1.Dock = DockStyle.None;
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { allSitesToolStripMenuItem, addNewToolStripMenuItem, dashboardToolStripMenuItem, generalSettingsToolStripMenuItem });
+            menuStrip1.Location = new Point(14, 7);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Padding = new Padding(0, 3, 0, 3);
+            menuStrip1.Size = new Size(388, 30);
+            menuStrip1.TabIndex = 3;
+            menuStrip1.TabStop = true;
+            menuStrip1.Text = "menuStrip1";
+            menuStrip1.ItemClicked += toolStrip1_ItemClicked;
             // 
             // allSitesToolStripMenuItem
             // 
-            this.allSitesToolStripMenuItem.Name = "allSitesToolStripMenuItem";
-            this.allSitesToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.allSitesToolStripMenuItem.Text = "All sites";
-            this.allSitesToolStripMenuItem.Click += new System.EventHandler(this.allSitesToolStripMenuItem_Click);
+            allSitesToolStripMenuItem.Name = "allSitesToolStripMenuItem";
+            allSitesToolStripMenuItem.Size = new Size(74, 24);
+            allSitesToolStripMenuItem.Text = "All sites";
+            allSitesToolStripMenuItem.Click += allSitesToolStripMenuItem_Click;
             // 
             // addNewToolStripMenuItem
             // 
-            this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
-            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.addNewToolStripMenuItem.Text = "Add New";
-            this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
+            addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
+            addNewToolStripMenuItem.Size = new Size(85, 24);
+            addNewToolStripMenuItem.Text = "Add New";
+            addNewToolStripMenuItem.Click += addNewToolStripMenuItem_Click;
             // 
             // dashboardToolStripMenuItem
             // 
-            this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.dashboardToolStripMenuItem.Text = "Dashboard";
-            this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
+            dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
+            dashboardToolStripMenuItem.Size = new Size(96, 24);
+            dashboardToolStripMenuItem.Text = "Dashboard";
+            dashboardToolStripMenuItem.Click += dashboardToolStripMenuItem_Click;
             // 
             // generalSettingsToolStripMenuItem
             // 
-            this.generalSettingsToolStripMenuItem.Name = "generalSettingsToolStripMenuItem";
-            this.generalSettingsToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
-            this.generalSettingsToolStripMenuItem.Text = "General Settings";
-            this.generalSettingsToolStripMenuItem.Click += new System.EventHandler(this.generalSettingsToolStripMenuItem_Click);
+            generalSettingsToolStripMenuItem.Name = "generalSettingsToolStripMenuItem";
+            generalSettingsToolStripMenuItem.Size = new Size(131, 24);
+            generalSettingsToolStripMenuItem.Text = "General Settings";
+            generalSettingsToolStripMenuItem.Click += generalSettingsToolStripMenuItem_Click;
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.PanelMain);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Main";
-            this.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "X Auto Leech";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackColor = Color.WhiteSmoke;
+            ClientSize = new Size(1184, 748);
+            Controls.Add(PanelMain);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "Main";
+            Padding = new Padding(0, 7, 0, 7);
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "X Auto Leech";
+            Load += Form1_Load;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

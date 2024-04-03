@@ -1,6 +1,9 @@
-﻿using AbotX2.Parallel;
+﻿using Abot2.Poco;
+using AbotX2.Parallel;
 using AbotX2.Poco;
 using Microsoft.EntityFrameworkCore;
+using System;
+using XLeech.Core.Model;
 using XLeech.Core.Service;
 using XLeech.Data.Entity;
 using XLeech.Data.EntityFramework;
@@ -14,7 +17,7 @@ namespace XLeech
         private readonly AppDbContext _dbContext;
         private readonly Repository<SiteConfig> _siteConfigRepository;
         private readonly CrawlerService _crawlerService;
-        private readonly List<ParallelCrawlerEngine> _parallelCrawlerEngine;
+        private readonly List<ParallelCrawlerEngine> _parallelCrawlerEngine = new List<ParallelCrawlerEngine>();
         private int categoryCrawled = 0;
         private int postSuccess = 0;
         private int postFailed = 0;
@@ -60,8 +63,7 @@ namespace XLeech
             {
                 foreach (var site in sites)
                 {
-                    var parallelCrawlerEngineUrl = await ParallelCrawlerEngineUrls(site);
-                    _parallelCrawlerEngine.Add(parallelCrawlerEngineUrl);
+                    ParallelCrawlerEngineUrls(site);
                 }
             }
         }
@@ -72,94 +74,122 @@ namespace XLeech
             var config = GetSafeConfig();
             var categoryPageURLCrawle = _crawlerService.GetCategoryPageURLCrawle(siteConfig);
 
-            // get urls from url list
-            if (siteConfig.IsPageUrl)
+            try
             {
-                string[] postUrls = siteConfig.Category.Urls.Split(new string[] { "\n" }, StringSplitOptions.None);
-                siteToCrawlUrls.AddRange(postUrls.Select(x => new SiteToCrawl
+                // get urls from url list
+                if (siteConfig.IsPageUrl)
                 {
-                    Uri = new Uri(x),
-                    SiteBag = siteConfig
-                }).ToList()
-                );
-            }
-            // get urls from category page
-            if (!siteConfig.IsPageUrl)
-            {
-                var categoryNextPageInfo = await _crawlerService.GetCategoryNextPageInfo(siteConfig, config);
-                if (categoryNextPageInfo != null && categoryNextPageInfo.PostUrls.Any())
-                {
-                    siteToCrawlUrls.AddRange(categoryNextPageInfo.PostUrls.Select(x => new SiteToCrawl
+                    string[] postUrls = siteConfig.Category.Urls.Split(new string[] { "\n" }, StringSplitOptions.None);
+                    siteToCrawlUrls.AddRange(postUrls.Select(x => new SiteToCrawl
                     {
                         Uri = new Uri(x),
                         SiteBag = siteConfig
-                    }));
+                    }).ToList()
+                    );
                 }
-                siteConfig.CategoryNextPageURL = categoryNextPageInfo.CategoryNextPageURL;
-            }
-
-            var siteToCrawlProvider = new SiteToCrawlProvider();
-            siteToCrawlProvider.AddSitesToCrawl(siteToCrawlUrls);
-            var crawlEngine = new ParallelCrawlerEngine(
-                config,
-                new ParallelImplementationOverride(config,
-                    new ParallelImplementationContainer()
-                    {
-                        SiteToCrawlProvider = siteToCrawlProvider,
-                        WebCrawlerFactory = new WebCrawlerFactory(config) //Same config will be used for every crawler
-                    })
-                );
-
-            crawlEngine.CrawlerInstanceCreated += (sender, eventArgs) =>
-            {
-                var crawlId = Guid.NewGuid();
-                eventArgs.Crawler.CrawlBag.CrawlId = crawlId;
-                eventArgs.Crawler.PageCrawlCompleted += async (abotSender, abotEventArgs) =>
+                // get urls from category page
+                if (!siteConfig.IsPageUrl)
                 {
-                    try
+                    var categoryNextPageInfo = await _crawlerService.GetCategoryNextPageInfo(siteConfig, config);
+                    if (categoryNextPageInfo != null && categoryNextPageInfo.PostUrls.Any())
                     {
-                        var siteBag = eventArgs.SiteToCrawl.SiteBag as SiteConfig;
-                        await _crawlerService.PageCrawlCompleted(abotSender, abotEventArgs, siteBag);
-                        Interlocked.Increment(ref postSuccess);
+                        siteToCrawlUrls.AddRange(categoryNextPageInfo.PostUrls.Select(x => new SiteToCrawl
+                        {
+                            Uri = new Uri(x),
+                            SiteBag = siteConfig
+                        }));
                     }
-                    catch (Exception ex)
+                    siteConfig.CategoryNextPageURL = categoryNextPageInfo.CategoryNextPageURL;
+                }
+
+                var siteToCrawlProvider = new SiteToCrawlProvider();
+                siteToCrawlProvider.AddSitesToCrawl(siteToCrawlUrls);
+                var crawlEngine = new ParallelCrawlerEngine(
+                    config,
+                    new ParallelImplementationOverride(config,
+                        new ParallelImplementationContainer()
+                        {
+                            SiteToCrawlProvider = siteToCrawlProvider,
+                            WebCrawlerFactory = new WebCrawlerFactory(config) //Same config will be used for every crawler
+                        })
+                    );
+
+                crawlEngine.CrawlerInstanceCreated += (sender, eventArgs) =>
+                {
+                    var crawlId = Guid.NewGuid();
+                    eventArgs.Crawler.CrawlBag.CrawlId = crawlId;
+                    eventArgs.Crawler.PageCrawlCompleted += async (abotSender, abotEventArgs) =>
                     {
-                        Interlocked.Increment(ref postFailed);
-                        ShowLabel(this.PostFailedLb, postFailed.ToString());
-                        LogPost(string.Format("{0} Exception {1}", eventArgs.SiteToCrawl.Uri, ex.Message));
+                        try
+                        {
+                            var siteBag = eventArgs.SiteToCrawl.SiteBag as SiteConfig;
+                            var crawlerResult = await _crawlerService.PageCrawlCompleted(abotSender, abotEventArgs, siteBag);
+
+
+                            Interlocked.Increment(ref postSuccess);
+                            LogLabel(this.PostSuccessLb, postSuccess.ToString());
+                            LogPost(string.Format("{0} Completed, {1}", abotEventArgs.CrawledPage.Uri, crawlerResult.IsSavePost ? "Save" : "Skiped"));
+                        }
+                        catch (Exception ex)
+                        {
+                            Interlocked.Increment(ref postFailed);
+                            LogLabel(this.PostFailedLb, postFailed.ToString());
+                            LogPost(string.Format("{0} Exception {1}", eventArgs.SiteToCrawl.Uri, ex.Message));
+                        }
+                    };
+                };
+
+                crawlEngine.SiteCrawlStarting += (sender, args) =>
+                {
+                    //LogPost(string.Format("{0} Started", args.SiteToCrawl.Uri));
+                };
+
+                crawlEngine.SiteCrawlCompleted += (sender, args) =>
+                {
+                    //var crawlerResult = args.CrawledSite.CrawlResult.CrawlContext.CrawlBag as CrawlerResult;
+                    //var urlPageCrawle = args.CrawledSite.SiteToCrawl.Uri;
+
+                    //if (crawlerResult.IsError)
+                    //{
+                    //    Interlocked.Increment(ref postFailed);
+                    //    LogLabel(this.PostFailedLb, postFailed.ToString());
+                    //    LogPost(string.Format("{0} Exception {1}", urlPageCrawle, crawlerResult.Message));
+                    //}
+                    //else
+                    //{
+                    //    Interlocked.Increment(ref postSuccess);
+                    //    LogLabel(this.PostSuccessLb, postSuccess.ToString());
+                    //    LogPost(string.Format("{0} Completed", urlPageCrawle));
+                    //}
+                };
+
+                crawlEngine.AllCrawlsCompleted += async (sender, eventArgs) =>
+                {
+                    //var parallelCrawlerEngine = _parallelCrawlerEngine.Where(x => x.)
+
+                    Interlocked.Increment(ref categoryCrawled);
+                    LogLabel(this.CategoryCrawledLb, categoryCrawled.ToString());
+                    LogSite(string.Format("{0} Completed", categoryPageURLCrawle));
+
+                    siteConfig.IsDone = string.IsNullOrEmpty(siteConfig.CategoryNextPageURL);
+                    await _siteConfigRepository.UpdateAsync(siteConfig);
+                    if (!siteConfig.IsDone)
+                    {
+                        ParallelCrawlerEngineUrls(siteConfig);
                     }
                 };
-            };
 
-            crawlEngine.SiteCrawlStarting += (sender, args) =>
+                crawlEngine.StartAsync();
+                _parallelCrawlerEngine.Add(crawlEngine);
+
+                return crawlEngine;
+            }
+            catch (Exception ex)
             {
-                LogPost(string.Format("{0} Started", args.SiteToCrawl.Uri));
-            };
+                LogSite(string.Format("{0} Exception {1}", categoryPageURLCrawle, ex.Message));
+            }
 
-            crawlEngine.SiteCrawlCompleted += (sender, args) =>
-            {
-                Interlocked.Increment(ref postSuccess);
-                ShowLabel(this.PostSuccessLb, postSuccess.ToString());
-                LogPost(string.Format("{0} Completed", args.CrawledSite.SiteToCrawl.Uri));
-            };
-
-            crawlEngine.AllCrawlsCompleted += async (sender, eventArgs) =>
-            {
-                Interlocked.Increment(ref categoryCrawled);
-                ShowLabel(this.CategoryCrawledLb, categoryCrawled.ToString());
-                LogSite(string.Format("{0} Completed", categoryPageURLCrawle));
-
-                siteConfig.IsDone = string.IsNullOrEmpty(siteConfig.CategoryNextPageURL);
-                await _siteConfigRepository.UpdateAsync(siteConfig);
-                if (!siteConfig.IsDone)
-                {
-                    ParallelCrawlerEngineUrls(siteConfig);
-                }
-            };
-
-            crawlEngine.StartAsync();
-
-            return crawlEngine;
+            return new ParallelCrawlerEngine(config);
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
@@ -170,7 +200,6 @@ namespace XLeech
         private async void ReCrawleBtn_Click(object sender, EventArgs e)
         {
             var sites = _dbContext.Sites
-                       .Where(x => x.ActiveForScheduling && !x.IsDone)
                        .Include(x => x.Category)
                        .Include(y => y.Post)
                        .ToList();
@@ -195,19 +224,29 @@ namespace XLeech
             }
         }
 
+        
+
+        private void PauseBtn_Click(object sender, EventArgs e)
+        {
+            foreach (var parallelCrawlerEngine in _parallelCrawlerEngine)
+            {
+                parallelCrawlerEngine.Pause();
+            }
+        }
+
         #region Log
-        private void ShowLabel(Label label, string log)
+        private void LogLabel(Label label, string log)
         {
             if (label.InvokeRequired)
             {
                 label.Invoke(() =>
                 {
-                    label.Text += string.Format("{0} {1}\n", DateTime.Now, log);
+                    label.Text = log;
                 });
             }
             else
             {
-                label.Text += string.Format("{0} {1}\n", DateTime.Now, log);
+                label.Text = log;
             }
         }
 

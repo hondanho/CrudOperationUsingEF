@@ -31,7 +31,7 @@ namespace XLeech.Core
         //    return Task.FromResult(postUrls.Where(x => !string.IsNullOrEmpty(x)).ToList());
         //}
 
-        public Task<CategoryModel> GetCategory(IHtmlDocument document, SiteConfig siteConfig)
+        public CategoryModel GetCategory(IHtmlDocument document, SiteConfig siteConfig)
         {
             var categoryModel = new CategoryModel()
             {
@@ -53,20 +53,25 @@ namespace XLeech.Core
                 categoryModel.FeatureImage = featureImage;
             }
 
-            return Task.FromResult(categoryModel);
+            return categoryModel;
         }
 
-        public Task<PostModel> GetPost(IHtmlDocument document, SiteConfig siteConfig)
+        public PostModel GetPost(IHtmlDocument document, SiteConfig siteConfig)
         {
+            var slug = document.QuerySelector(siteConfig.Post.PostSlugSelector)?.GetAttribute("href")?.GetAbsolutePath();
+            var title = document.QuerySelector(siteConfig.Post.PostTitleSelector)?.Text();
+            var content = document.QuerySelector(siteConfig.Post.PostContentSelector)?.InnerHtml;
+            if (string.IsNullOrEmpty(slug) || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(content)) return null;
+
             var postModel = new PostModel()
             {
-                Title = document.QuerySelector(siteConfig.Post.PostTitleSelector)?.Text(),
+                Title = title,
                 Author = siteConfig.Post.PostAuthor,
                 Format = siteConfig.Post.PostFormat,
                 Status = siteConfig.Post.PostStatus,
                 Type = siteConfig.Post.PostType,
-                Slug = document.QuerySelector(siteConfig.Post.PostSlugSelector)?.GetAttribute("href")?.GetAbsolutePath(),
-                Content = document.QuerySelector(siteConfig.Post.PostContentSelector)?.InnerHtml
+                Slug = slug,
+                Content = content
             };
 
             // feature image
@@ -77,7 +82,7 @@ namespace XLeech.Core
                 postModel.FeatureImage = featureImage;
             }
 
-            return Task.FromResult(postModel);
+            return postModel;
         }
 
         public async Task<CategoryModel> IsExistCategory(CategoryModel categoryModel, SiteConfig siteConfig)

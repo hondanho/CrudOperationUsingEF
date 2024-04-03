@@ -41,22 +41,24 @@
             label3 = new Label();
             CategoryCrawledLb = new Label();
             LogPostTb = new RichTextBox();
+            PauseBtn = new Button();
             SuspendLayout();
             // 
             // LogSiteTb
             // 
-            LogSiteTb.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            LogSiteTb.Anchor = AnchorStyles.Left;
             LogSiteTb.BorderStyle = BorderStyle.FixedSingle;
+            LogSiteTb.Font = new Font("Calibri Light", 8F, FontStyle.Italic, GraphicsUnit.Point);
             LogSiteTb.Location = new Point(3, 36);
             LogSiteTb.Name = "LogSiteTb";
-            LogSiteTb.Size = new Size(509, 584);
+            LogSiteTb.Size = new Size(562, 592);
             LogSiteTb.TabIndex = 2;
             LogSiteTb.Text = "";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(3, 13);
+            label1.Location = new Point(3, 8);
             label1.Name = "label1";
             label1.Size = new Size(59, 20);
             label1.TabIndex = 3;
@@ -65,7 +67,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(518, 13);
+            label2.Location = new Point(578, 8);
             label2.Name = "label2";
             label2.Size = new Size(93, 20);
             label2.TabIndex = 4;
@@ -74,7 +76,7 @@
             // AllSiteLb
             // 
             AllSiteLb.AutoSize = true;
-            AllSiteLb.Location = new Point(58, 13);
+            AllSiteLb.Location = new Point(58, 8);
             AllSiteLb.Name = "AllSiteLb";
             AllSiteLb.Size = new Size(17, 20);
             AllSiteLb.TabIndex = 5;
@@ -83,7 +85,7 @@
             // PostSuccessLb
             // 
             PostSuccessLb.AutoSize = true;
-            PostSuccessLb.Location = new Point(607, 13);
+            PostSuccessLb.Location = new Point(667, 8);
             PostSuccessLb.Name = "PostSuccessLb";
             PostSuccessLb.Size = new Size(17, 20);
             PostSuccessLb.TabIndex = 6;
@@ -92,7 +94,7 @@
             // PostFailedLb
             // 
             PostFailedLb.AutoSize = true;
-            PostFailedLb.Location = new Point(743, 13);
+            PostFailedLb.Location = new Point(803, 8);
             PostFailedLb.Name = "PostFailedLb";
             PostFailedLb.Size = new Size(17, 20);
             PostFailedLb.TabIndex = 8;
@@ -101,7 +103,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(665, 13);
+            label6.Location = new Point(725, 8);
             label6.Name = "label6";
             label6.Size = new Size(82, 20);
             label6.TabIndex = 7;
@@ -109,7 +111,8 @@
             // 
             // StartBtn
             // 
-            StartBtn.Location = new Point(3, 636);
+            StartBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            StartBtn.Location = new Point(3, 644);
             StartBtn.Margin = new Padding(3, 4, 3, 4);
             StartBtn.Name = "StartBtn";
             StartBtn.Size = new Size(86, 31);
@@ -120,7 +123,8 @@
             // 
             // StopBtn
             // 
-            StopBtn.Location = new Point(201, 636);
+            StopBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            StopBtn.Location = new Point(314, 644);
             StopBtn.Margin = new Padding(3, 4, 3, 4);
             StopBtn.Name = "StopBtn";
             StopBtn.Size = new Size(86, 31);
@@ -131,7 +135,8 @@
             // 
             // ReCrawleBtn
             // 
-            ReCrawleBtn.Location = new Point(99, 636);
+            ReCrawleBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            ReCrawleBtn.Location = new Point(99, 644);
             ReCrawleBtn.Margin = new Padding(3, 4, 3, 4);
             ReCrawleBtn.Name = "ReCrawleBtn";
             ReCrawleBtn.Size = new Size(95, 31);
@@ -143,7 +148,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(113, 13);
+            label3.Location = new Point(113, 8);
             label3.Name = "label3";
             label3.Size = new Size(72, 20);
             label3.TabIndex = 12;
@@ -152,7 +157,7 @@
             // CategoryCrawledLb
             // 
             CategoryCrawledLb.AutoSize = true;
-            CategoryCrawledLb.Location = new Point(181, 13);
+            CategoryCrawledLb.Location = new Point(181, 8);
             CategoryCrawledLb.Name = "CategoryCrawledLb";
             CategoryCrawledLb.Size = new Size(17, 20);
             CategoryCrawledLb.TabIndex = 13;
@@ -160,18 +165,32 @@
             // 
             // LogPostTb
             // 
-            LogPostTb.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            LogPostTb.Anchor = AnchorStyles.Right;
             LogPostTb.BorderStyle = BorderStyle.FixedSingle;
-            LogPostTb.Location = new Point(518, 36);
+            LogPostTb.Font = new Font("Calibri Light", 8F, FontStyle.Italic, GraphicsUnit.Point);
+            LogPostTb.Location = new Point(581, 36);
             LogPostTb.Name = "LogPostTb";
-            LogPostTb.Size = new Size(516, 584);
+            LogPostTb.Size = new Size(574, 592);
             LogPostTb.TabIndex = 14;
             LogPostTb.Text = "";
+            // 
+            // PauseBtn
+            // 
+            PauseBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            PauseBtn.Location = new Point(205, 644);
+            PauseBtn.Margin = new Padding(3, 4, 3, 4);
+            PauseBtn.Name = "PauseBtn";
+            PauseBtn.Size = new Size(95, 31);
+            PauseBtn.TabIndex = 15;
+            PauseBtn.Text = "Pause";
+            PauseBtn.UseVisualStyleBackColor = true;
+            PauseBtn.Click += PauseBtn_Click;
             // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(PauseBtn);
             Controls.Add(LogPostTb);
             Controls.Add(CategoryCrawledLb);
             Controls.Add(label3);
@@ -187,7 +206,7 @@
             Controls.Add(LogSiteTb);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Dashboard";
-            Size = new Size(1034, 667);
+            Size = new Size(1157, 675);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -207,5 +226,6 @@
         private Label label3;
         private Label CategoryCrawledLb;
         private RichTextBox LogPostTb;
+        private Button PauseBtn;
     }
 }

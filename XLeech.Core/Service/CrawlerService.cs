@@ -10,48 +10,34 @@ namespace XLeech.Core.Service
 {
     public class CrawlerService : ICrawlerService
     {
-        public async Task PageCrawlCompletedCategoryPage(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
+        public async Task<CrawlerResult> PageCrawlCompleted(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
         {
-            var crawledPage = abotEventArgs.CrawledPage;
-            var wordpressProcessor = new WordpressProcessor(siteConfig);
+            var crawlerResult = new CrawlerResult();
 
-            var categoryModel = await wordpressProcessor.GetCategory(crawledPage.AngleSharpHtmlDocument, siteConfig);
-            var existCategory = await wordpressProcessor.IsExistCategory(categoryModel, siteConfig);
-            var category = new Category()
-            {
-                Id = existCategory?.Id ?? 0
-            };
-            if (existCategory == null)
-            {
-                category = await wordpressProcessor.SaveCategory(categoryModel);
-            }
-
-            var postModel = await wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteConfig);
-            var existPost = await wordpressProcessor.IsExistPost(postModel, siteConfig);
-            if (existPost == null)
-            {
-                await wordpressProcessor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
-            }
-        }
-
-        public async Task PageCrawlCompleted(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
-        {
             if (siteConfig.IsPageUrl)
             {
-                await PageCrawlCompletedUrl(abotSender, abotEventArgs, siteConfig);
+                crawlerResult = await PageCrawlCompletedUrl(abotSender, abotEventArgs, siteConfig);
             }
             else
             {
-                await PageCrawlCompletedCategoryPage(abotSender, abotEventArgs, siteConfig);
+                crawlerResult = await PageCrawlCompletedCategoryPage(abotSender, abotEventArgs, siteConfig);
             }
+
+            return await Task.FromResult(crawlerResult);
         }
 
-        public async Task PageCrawlCompletedUrl(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
+        public async Task<CrawlerResult> PageCrawlCompletedCategoryPage(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
         {
             var crawledPage = abotEventArgs.CrawledPage;
             var wordpressProcessor = new WordpressProcessor(siteConfig);
+            var crawlerResult = new CrawlerResult()
+            {
+                IsSaveCategory = false,
+                IsError = false,
+                IsSavePost = false
+            };
 
-            var categoryModel = await wordpressProcessor.GetCategory(crawledPage.AngleSharpHtmlDocument, siteConfig);
+            var categoryModel = wordpressProcessor.GetCategory(crawledPage.AngleSharpHtmlDocument, siteConfig);
             var existCategory = await wordpressProcessor.IsExistCategory(categoryModel, siteConfig);
             var category = new Category()
             {
@@ -60,14 +46,56 @@ namespace XLeech.Core.Service
             if (existCategory == null)
             {
                 category = await wordpressProcessor.SaveCategory(categoryModel);
+                crawlerResult.IsSaveCategory = true;
             }
 
-            var postModel = await wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteConfig);
+            var postModel = wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteConfig);
+            if (postModel == null)
+            {
+               throw new Exception(string.Format("Not found post"));
+            }
             var existPost = await wordpressProcessor.IsExistPost(postModel, siteConfig);
             if (existPost == null)
             {
                 await wordpressProcessor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
+                crawlerResult.IsSavePost = true;
             }
+
+            return await Task.FromResult(crawlerResult);
+        }
+
+        public async Task<CrawlerResult> PageCrawlCompletedUrl(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
+        {
+            var crawledPage = abotEventArgs.CrawledPage;
+            var wordpressProcessor = new WordpressProcessor(siteConfig);
+            var crawlerResult = new CrawlerResult()
+            {
+                IsSaveCategory = false,
+                IsSavePost = false,
+                IsError = false,
+            };
+
+            var categoryModel = wordpressProcessor.GetCategory(crawledPage.AngleSharpHtmlDocument, siteConfig);
+            var existCategory = await wordpressProcessor.IsExistCategory(categoryModel, siteConfig);
+            var category = new Category()
+            {
+                Id = existCategory?.Id ?? 0
+            };
+            if (existCategory == null)
+            {
+                category = await wordpressProcessor.SaveCategory(categoryModel);
+                crawlerResult.IsSaveCategory = true;
+            }
+
+            var postModel = wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteConfig);
+            var existPost = await wordpressProcessor.IsExistPost(postModel, siteConfig);
+            if (existPost == null)
+            {
+                await wordpressProcessor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
+                crawlerResult.IsSavePost = true;
+            }
+
+            return await Task.FromResult(crawlerResult);
         }
 
         public Task<List<string>> GetPostUrls(IHtmlDocument document, SiteConfig siteConfig)
@@ -89,7 +117,7 @@ namespace XLeech.Core.Service
 
                     var crawlerPage = args.CrawledPage;
                     categoryPageInfo.PostUrls = await GetPostUrls(crawlerPage.AngleSharpHtmlDocument, siteConfig);
-                    categoryPageInfo.CategoryNextPageURL = await GetNexCategoryPostURL(crawlerPage.AngleSharpHtmlDocument, siteConfig);
+                    categoryPageInfo.CategoryNextPageURL = GetNexCategoryPostURL(crawlerPage.AngleSharpHtmlDocument, siteConfig);
                 };
 
                 await crawler.CrawlAsync(new Uri(GetCategoryPageURLCrawle(siteConfig)));
@@ -103,10 +131,12 @@ namespace XLeech.Core.Service
             return siteConfig.CategoryNextPageURL ?? siteConfig.Category.CategoryPostURL;
         }
 
-        public Task<string?> GetNexCategoryPostURL(IHtmlDocument document, SiteConfig siteConfig)
+        public string GetNexCategoryPostURL(IHtmlDocument document, SiteConfig siteConfig)
         {
-            var ele = document.QuerySelector(siteConfig.Category.CategoryNextPageURLSelector).NextElementSibling;
-            return Task.FromResult(ele?.GetAttribute("href") ?? ele?.GetAttribute("src"));
+            var ele = document.QuerySelector(siteConfig.Category.CategoryNextPageURLSelector)?.NextElementSibling;
+            if (ele == null) return null;
+
+            return ele?.GetAttribute("href") ?? ele?.GetAttribute("src");
         }
     }
 }
