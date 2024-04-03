@@ -49,7 +49,7 @@ namespace XLeech
 
             if (pageType == PageTypeEnum.ListSite)
             {
-                var allSite = new AllSite(AppDbContext);
+                var allSite = new AllSite();
                 allSite.SetCallback(ViewSiteDetail);
                 childMain = allSite;
             }

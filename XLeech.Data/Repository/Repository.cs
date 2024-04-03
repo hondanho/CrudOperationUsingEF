@@ -39,5 +39,11 @@ namespace XLeech.Data.Repository
             _dbContext.Set<TEntity>().Remove(entity);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task DeleteAsync(int id)
+        {
+            var entity = await _dbContext.Set<TEntity>().FindAsync(id);
+            await DeleteAsync(entity);
+        }
     }
 }

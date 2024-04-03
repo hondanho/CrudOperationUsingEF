@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dataGridView = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             SiteTitle = new DataGridViewTextBoxColumn();
@@ -35,7 +36,11 @@
             UseProxy = new DataGridViewTextBoxColumn();
             LatestRun = new DataGridViewTextBoxColumn();
             TimeInterval = new DataGridViewTextBoxColumn();
+            contextMenuStripGrid = new ContextMenuStrip(components);
+            deleteToolStripMenuItem1 = new ToolStripMenuItem();
+            editToolStripMenuItem1 = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+            contextMenuStripGrid.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView
@@ -47,6 +52,7 @@
             dataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new DataGridViewColumn[] { Id, SiteTitle, ActiveForScheduling, UseProxy, LatestRun, TimeInterval });
+            dataGridView.ContextMenuStrip = contextMenuStripGrid;
             dataGridView.Location = new Point(0, 0);
             dataGridView.Margin = new Padding(3, 4, 3, 4);
             dataGridView.Name = "dataGridView";
@@ -56,8 +62,7 @@
             dataGridView.Size = new Size(749, 568);
             dataGridView.TabIndex = 12;
             dataGridView.CellDoubleClick += dataGridView_CellDoubleClick;
-            dataGridView.UserDeletedRow += dataGridView_UserDeletedRow;
-            dataGridView.UserDeletingRow += dataGridView_UserDeletingRow;
+            dataGridView.CellMouseUp += dataGridView_CellMouseUp;
             // 
             // Id
             // 
@@ -113,6 +118,27 @@
             TimeInterval.ReadOnly = true;
             TimeInterval.Width = 125;
             // 
+            // contextMenuStripGrid
+            // 
+            contextMenuStripGrid.ImageScalingSize = new Size(20, 20);
+            contextMenuStripGrid.Items.AddRange(new ToolStripItem[] { deleteToolStripMenuItem1, editToolStripMenuItem1 });
+            contextMenuStripGrid.Name = "contextMenuStrip1";
+            contextMenuStripGrid.Size = new Size(123, 52);
+            // 
+            // deleteToolStripMenuItem1
+            // 
+            deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            deleteToolStripMenuItem1.Size = new Size(210, 24);
+            deleteToolStripMenuItem1.Text = "Delete";
+            deleteToolStripMenuItem1.Click += deleteToolStripMenuItem1_Click;
+            // 
+            // editToolStripMenuItem1
+            // 
+            editToolStripMenuItem1.Name = "editToolStripMenuItem1";
+            editToolStripMenuItem1.Size = new Size(210, 24);
+            editToolStripMenuItem1.Text = "Edit";
+            editToolStripMenuItem1.Click += editToolStripMenuItem1_Click;
+            // 
             // AllSite
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -122,6 +148,7 @@
             Name = "AllSite";
             Size = new Size(749, 568);
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
+            contextMenuStripGrid.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -134,5 +161,8 @@
         private DataGridViewTextBoxColumn UseProxy;
         private DataGridViewTextBoxColumn LatestRun;
         private DataGridViewTextBoxColumn TimeInterval;
+        private ContextMenuStrip contextMenuStripGrid;
+        private ToolStripMenuItem deleteToolStripMenuItem1;
+        private ToolStripMenuItem editToolStripMenuItem1;
     }
 }
