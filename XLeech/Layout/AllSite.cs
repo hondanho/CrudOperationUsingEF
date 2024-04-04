@@ -63,7 +63,6 @@ namespace XLeech
                     if (dialogResult == DialogResult.Yes)
                     {
                         await _siteConfigRepository.DeleteAsync(site);
-                        MessageBox.Show("Xóa site thành công");
                         SetDataInGridView();
                     }
                     else if (dialogResult == DialogResult.No)
@@ -113,6 +112,16 @@ namespace XLeech
                 }
 
                 row.Cells[2].Value = "⚫";
+
+                if (Convert.ToBoolean(row.Cells["IsPageUrl"].Value))
+                {
+                    row.Cells[5].Value = "List Post Url";
+                }
+                else
+                {
+                    row.Cells[5].Value = "Category Page Link";
+                }
+
             }
         }
     }

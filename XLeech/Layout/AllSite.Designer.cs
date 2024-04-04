@@ -38,10 +38,11 @@
             ActiveForScheduling1 = new DataGridViewTextBoxColumn();
             IsDone = new DataGridViewTextBoxColumn();
             CategoryNextPageURL = new DataGridViewTextBoxColumn();
-            LatestRun = new DataGridViewTextBoxColumn();
+            IsCrawlePageUrlShow = new DataGridViewTextBoxColumn();
             UseProxy = new DataGridViewTextBoxColumn();
             TimeInterval = new DataGridViewTextBoxColumn();
             ActiveForScheduling = new DataGridViewTextBoxColumn();
+            IsPageUrl = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             contextMenuStripGrid.SuspendLayout();
             SuspendLayout();
@@ -53,7 +54,7 @@
             dataGridView.BorderStyle = BorderStyle.None;
             dataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] { Id, SiteTitle, ActiveForScheduling1, IsDone, CategoryNextPageURL, LatestRun, UseProxy, TimeInterval, ActiveForScheduling });
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { Id, SiteTitle, ActiveForScheduling1, IsDone, CategoryNextPageURL, IsCrawlePageUrlShow, UseProxy, TimeInterval, ActiveForScheduling, IsPageUrl });
             dataGridView.ContextMenuStrip = contextMenuStripGrid;
             dataGridView.Location = new Point(0, 0);
             dataGridView.Margin = new Padding(3, 4, 3, 4);
@@ -133,14 +134,13 @@
             CategoryNextPageURL.ReadOnly = true;
             CategoryNextPageURL.Width = 250;
             // 
-            // LatestRun
+            // IsCrawlePageUrlShow
             // 
-            LatestRun.DataPropertyName = "LatestRun";
-            LatestRun.HeaderText = "Latest Run";
-            LatestRun.MinimumWidth = 6;
-            LatestRun.Name = "LatestRun";
-            LatestRun.ReadOnly = true;
-            LatestRun.Width = 125;
+            IsCrawlePageUrlShow.HeaderText = "Crawle Type";
+            IsCrawlePageUrlShow.MinimumWidth = 125;
+            IsCrawlePageUrlShow.Name = "IsCrawlePageUrlShow";
+            IsCrawlePageUrlShow.ReadOnly = true;
+            IsCrawlePageUrlShow.Width = 125;
             // 
             // UseProxy
             // 
@@ -163,12 +163,22 @@
             // ActiveForScheduling
             // 
             ActiveForScheduling.DataPropertyName = "ActiveForScheduling";
-            ActiveForScheduling.HeaderText = "ActiveForScheduling";
+            ActiveForScheduling.HeaderText = "ActiveForScheduling Hide";
             ActiveForScheduling.MinimumWidth = 6;
             ActiveForScheduling.Name = "ActiveForScheduling";
             ActiveForScheduling.ReadOnly = true;
             ActiveForScheduling.Visible = false;
             ActiveForScheduling.Width = 125;
+            // 
+            // IsPageUrl
+            // 
+            IsPageUrl.DataPropertyName = "IsPageUrl";
+            IsPageUrl.HeaderText = "Is Crawle Page Url Hide";
+            IsPageUrl.MinimumWidth = 6;
+            IsPageUrl.Name = "IsPageUrl";
+            IsPageUrl.ReadOnly = true;
+            IsPageUrl.Visible = false;
+            IsPageUrl.Width = 125;
             // 
             // AllSite
             // 
@@ -194,9 +204,10 @@
         private DataGridViewTextBoxColumn ActiveForScheduling1;
         private DataGridViewTextBoxColumn IsDone;
         private DataGridViewTextBoxColumn CategoryNextPageURL;
-        private DataGridViewTextBoxColumn LatestRun;
+        private DataGridViewTextBoxColumn IsCrawlePageUrlShow;
         private DataGridViewTextBoxColumn UseProxy;
         private DataGridViewTextBoxColumn TimeInterval;
         private DataGridViewTextBoxColumn ActiveForScheduling;
+        private DataGridViewTextBoxColumn IsPageUrl;
     }
 }

@@ -180,9 +180,13 @@ namespace XLeech
                 this.CategoryListURLSelectorLb.Show();
                 this.CategoryListURLSelectorTb.Show();
                 this.CategoryPostUrlTb.Show();
+                this.CategoryPostUrlLb.Show();
                 this.CategoryPostURLSelectorTb.Show();
-                this.CategoryNextPageURLSelectorLb.Show();
+                this.CategoryPostURLSelectorLb.Show();
                 this.CategoryNextPageURLSelectorTb.Show();
+                this.CategoryNextPageURLSelectorLb.Show();
+                this.CategoryDescriptionTb.Show();
+                this.CategoryDescriptionLb.Show();
             }
             else
             {
@@ -190,10 +194,14 @@ namespace XLeech
                 this.CategoryListPageURLTb.Hide();
                 this.CategoryListURLSelectorLb.Hide();
                 this.CategoryListURLSelectorTb.Hide();
+                this.CategoryPostUrlLb.Hide();
                 this.CategoryPostUrlTb.Hide();
                 this.CategoryPostURLSelectorTb.Hide();
+                this.CategoryPostURLSelectorLb.Hide();
                 this.CategoryNextPageURLSelectorLb.Hide();
                 this.CategoryNextPageURLSelectorTb.Hide();
+                this.CategoryDescriptionTb.Hide();
+                this.CategoryDescriptionLb.Hide();
             }
         }
 
@@ -224,7 +232,7 @@ namespace XLeech
                 siteConfig.Name = string.IsNullOrEmpty(this.NameTb.Text) ? string.Format("{0}_copy_{1}", siteConfig.Name, DateTime.Now) : this.NameTb.Text;
                 siteConfig.IsDone = false;
                 siteConfig.CategoryNextPageURL = null;
-                
+
                 siteConfig.Category.Id = _siteConfig.Category.Id;
                 _siteConfig.Category.UpdateTime = now;
                 siteConfig.Post.Id = _siteConfig.Post.Id;

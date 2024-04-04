@@ -55,7 +55,25 @@ namespace XLeech.Core
         {
             var slug = document.QuerySelector(siteConfig.Post.PostSlugSelector)?.GetAttribute("href")?.GetAbsolutePath();
             var title = document.QuerySelector(siteConfig.Post.PostTitleSelector)?.Text();
+
+            // remove unnecessary element selectors
+            var eleToRemoveSelectors = siteConfig.Post.UnnecessaryElements?.ToListString();
+            if (eleToRemoveSelectors.Any())
+            {
+                foreach (var eleSelector in eleToRemoveSelectors)
+                {
+                    var nodeToRemoves = document.QuerySelector(siteConfig.Post.PostContentSelector)?.QuerySelectorAll(eleSelector);
+                    if (nodeToRemoves != null && nodeToRemoves.Any())
+                    {
+                        foreach (var node in nodeToRemoves)
+                        {
+                            node.Remove();
+                        }
+                    }
+                }
+            }
             var content = document.QuerySelector(siteConfig.Post.PostContentSelector)?.InnerHtml;
+
             if (string.IsNullOrEmpty(slug) || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(content)) return null;
 
             var postModel = new PostModel()
@@ -88,10 +106,6 @@ namespace XLeech.Core
             {
                 query.Slugs = new List<string> { categoryModel.Slug };
             }
-            //if (siteConfig.CheckDuplicatePostViaTitle)
-            //{
-            //    query.Search = categoryModel.Name;
-            //}
             
             var categorie = (await _wordPressClient.Categories.QueryAsync(query))?.FirstOrDefault();
             categoryModel.Id = categorie?.Id ?? 0;

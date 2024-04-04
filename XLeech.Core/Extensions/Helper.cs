@@ -223,5 +223,11 @@ namespace XLeech.Core.Extensions
             else
                 return char.ToUpper(str[0]) + str.Substring(1);
         }
+
+        public static string[] ToListString(this string str)
+        {
+            if (string.IsNullOrEmpty(str)) return new string[0];
+            return str.Split(new string[] { "\n" }, StringSplitOptions.None);
+        }
     }
 }

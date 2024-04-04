@@ -46,8 +46,7 @@ namespace XLeech
             {
                 MaxPagesToCrawl = 1,
                 MinCrawlDelayPerDomainMilliSeconds = 10000,
-                
-                //MaxConcurrentSiteCrawls = 5,
+                MaxConcurrentSiteCrawls = 3,
                 //HttpRequestTimeoutInSeconds= 60,
                 //MaxConcurrentThreads = 5,
             };
@@ -85,7 +84,7 @@ namespace XLeech
                 // get urls from url list
                 if (siteConfig.IsPageUrl)
                 {
-                    string[] postUrls = siteConfig.Category.Urls.Split(new string[] { "\n" }, StringSplitOptions.None);
+                    string[] postUrls = siteConfig.Category.Urls?.ToListString();
                     siteToCrawlUrls.AddRange(postUrls.Select(x => new SiteToCrawl
                     {
                         Uri = new Uri(x),
