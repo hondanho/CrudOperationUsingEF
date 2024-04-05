@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using XLeech.Core.Service;
-using XLeech.Core;
 
 namespace XLeech
 {
@@ -43,10 +42,13 @@ namespace XLeech
                 options.UseSqlServer(connectionString);
             });
 
+            services.AddHttpClient();
+            services.AddScoped<IChatGPTService, ChatGPTService>();
+
             services.AddScoped<Repository<CategoryConfig>>();
             services.AddScoped<Repository<Data.Entity.SiteConfig>>();
             services.AddScoped<Repository<PostConfig>>();
-            services.AddScoped<CrawlerService>();
+            services.AddScoped<ICrawlerService, CrawlerService>();
 
             // Add your main form
             services.AddScoped<Main>();

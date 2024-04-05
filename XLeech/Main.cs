@@ -9,7 +9,8 @@ namespace XLeech
     public partial class Main : Form
     {
         public static Main AppWindow;
-        public readonly CrawlerService CrawlerService;
+        public readonly ICrawlerService CrawlerService;
+        public readonly IChatGPTService ChatGPTService;
         public readonly AppDbContext AppDbContext;
         public readonly Repository<SiteConfig> SiteConfigRepository;
         public readonly Repository<CategoryConfig> CategoryRepository;
@@ -19,13 +20,15 @@ namespace XLeech
             Repository<CategoryConfig> categoryRepository,
             Repository<SiteConfig> siteConfigRepository,
             Repository<PostConfig> postRepository,
-            CrawlerService crawlerService
+            ICrawlerService crawlerService,
+            IChatGPTService chatGPTService
             )
         {
             AppWindow = this;
             InitializeComponent();
             this.AppDbContext = dbContext;
             this.CrawlerService = crawlerService;
+            this.ChatGPTService = chatGPTService;
             this.CategoryRepository = categoryRepository;
             this.SiteConfigRepository = siteConfigRepository;
             this.PostRepository = postRepository;

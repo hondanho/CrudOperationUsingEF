@@ -7,7 +7,7 @@ using XLeech.Data.Entity;
 
 namespace XLeech.Core.Service
 {
-    interface ICrawlerService
+    public interface ICrawlerService
     {
         string GetCategoryPageURLCrawle(SiteConfig siteConfig);
         Task<CategoryPageInfo> GetCategoryNextPageInfo(SiteConfig siteConfig, CrawlConfigurationX crawlConfigurationX);
