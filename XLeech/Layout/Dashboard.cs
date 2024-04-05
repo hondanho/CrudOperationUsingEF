@@ -17,7 +17,7 @@ namespace XLeech
     {
         private readonly AppDbContext _dbContext;
         private readonly Repository<SiteConfig> _siteConfigRepository;
-        private readonly CrawlerService _crawlerService;
+        private readonly ICrawlerService _crawlerService;
         private readonly List<ParallelCrawlerEngine> _parallelCrawlerEngine = new List<ParallelCrawlerEngine>();
         private int categoryCrawled = 0;
         private int postSuccess = 0;
@@ -47,6 +47,7 @@ namespace XLeech
                 MaxPagesToCrawl = 1,
                 MinCrawlDelayPerDomainMilliSeconds = 10000,
                 MaxConcurrentSiteCrawls = 3,
+                ConfigurationExtensions= {}
                 //HttpRequestTimeoutInSeconds= 60,
                 //MaxConcurrentThreads = 5,
             };
@@ -146,26 +147,10 @@ namespace XLeech
 
                 crawlEngine.SiteCrawlStarting += (sender, args) =>
                 {
-                    //LogPost(string.Format("{0} Started", args.SiteToCrawl.Uri));
                 };
 
                 crawlEngine.SiteCrawlCompleted += (sender, args) =>
                 {
-                    //var crawlerResult = args.CrawledSite.CrawlResult.CrawlContext.CrawlBag as CrawlerResult;
-                    //var urlPageCrawle = args.CrawledSite.SiteToCrawl.Uri;
-
-                    //if (crawlerResult.IsError)
-                    //{
-                    //    Interlocked.Increment(ref postFailed);
-                    //    LogLabel(this.PostFailedLb, postFailed.ToString());
-                    //    LogPost(string.Format("{0} Exception {1}", urlPageCrawle, crawlerResult.Message));
-                    //}
-                    //else
-                    //{
-                    //    Interlocked.Increment(ref postSuccess);
-                    //    LogLabel(this.PostSuccessLb, postSuccess.ToString());
-                    //    LogPost(string.Format("{0} Completed", urlPageCrawle));
-                    //}
                 };
 
                 crawlEngine.AllCrawlsCompleted += async (sender, eventArgs) =>
@@ -182,9 +167,17 @@ namespace XLeech
                     {
                         ParallelCrawlerEngineUrls(siteConfig);
                     }
+                    
+
+                    if (categoryCrawled < 2)
+                    {
+                        siteToCrawlProvider.AddSitesToCrawl(siteToCrawlUrls);
+                        crawlEngine.Pause();
+                        await crawlEngine.StartAsync();
+                    } 
                 };
 
-                crawlEngine.StartAsync();
+                await crawlEngine.StartAsync();
                 _parallelCrawlerEngine.Add(crawlEngine);
 
                 return crawlEngine;

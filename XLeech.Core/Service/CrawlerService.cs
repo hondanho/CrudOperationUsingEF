@@ -10,6 +10,11 @@ namespace XLeech.Core.Service
 {
     public class CrawlerService : ICrawlerService
     {
+        private readonly IChatGPTService _chatGPTService;
+        public CrawlerService(IChatGPTService chatGPTService) {
+            _chatGPTService = chatGPTService;
+        }
+
         public async Task<CrawlerResult> PageCrawlCompleted(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
         {
             var crawlerResult = new CrawlerResult();
@@ -88,6 +93,10 @@ namespace XLeech.Core.Service
             }
 
             var postModel = wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteConfig);
+            if (postModel == null)
+            {
+                throw new Exception(string.Format("Not found post"));
+            }
             var existPost = await wordpressProcessor.IsExistPost(postModel, siteConfig);
             if (existPost == null)
             {

@@ -11,7 +11,6 @@ namespace XLeech
         private readonly AppDbContext _dbContext;
         public ShowDetailDelegate _showDetailDelegate;
         private readonly Repository<SiteConfig> _siteConfigRepository;
-        private int _rowIndex = 0;
 
         public AllSite()
         {
@@ -91,7 +90,6 @@ namespace XLeech
             if (e.Button == MouseButtons.Right)
             {
                 this.dataGridView.Rows[e.RowIndex].Selected = true;
-                this._rowIndex = e.RowIndex;
                 this.dataGridView.CurrentCell = this.dataGridView.Rows[e.RowIndex].Cells[1];
                 this.contextMenuStripGrid.Show(this.dataGridView, e.Location);
                 this.contextMenuStripGrid.Show(Cursor.Position);
@@ -115,13 +113,12 @@ namespace XLeech
 
                 if (Convert.ToBoolean(row.Cells["IsPageUrl"].Value))
                 {
-                    row.Cells[5].Value = "List Post Url";
+                    row.Cells[5].Value = "List Post Link";
                 }
                 else
                 {
                     row.Cells[5].Value = "Category Page Link";
                 }
-
             }
         }
     }
