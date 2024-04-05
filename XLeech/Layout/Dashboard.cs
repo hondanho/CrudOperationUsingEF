@@ -1,8 +1,13 @@
-﻿using Abot2.Poco;
+﻿using Abot2.Core;
+using Abot2.Poco;
+using AbotX2.Core;
+using AbotX2.Crawler;
 using AbotX2.Parallel;
 using AbotX2.Poco;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Net;
+using System.Text;
 using XLeech.Core.Extensions;
 using XLeech.Core.Model;
 using XLeech.Core.Service;
@@ -47,6 +52,7 @@ namespace XLeech
                 MaxPagesToCrawl = 1,
                 MinCrawlDelayPerDomainMilliSeconds = 10000,
                 MaxConcurrentSiteCrawls = 3,
+                IsSendingCookiesEnabled = true
                 //HttpRequestTimeoutInSeconds= 60,
                 //MaxConcurrentThreads = 5,
             };
@@ -107,22 +113,28 @@ namespace XLeech
                     siteConfig.CategoryNextPageURL = categoryNextPageInfo.CategoryNextPageURL;
                 }
 
-                var siteToCrawlProvider = new SiteToCrawlProvider();
+                var siteToCrawlProvider = new AlwaysOnSiteToCrawlProvider();
                 siteToCrawlProvider.AddSitesToCrawl(siteToCrawlUrls);
                 var crawlEngine = new ParallelCrawlerEngine(
                     config,
                     new ParallelImplementationOverride(config,
-                        new ParallelImplementationContainer()
-                        {
-                            SiteToCrawlProvider = siteToCrawlProvider,
-                            WebCrawlerFactory = new WebCrawlerFactory(config) //Same config will be used for every crawler
-                        })
+                            new ParallelImplementationContainer()
+                            {
+                                SiteToCrawlProvider = siteToCrawlProvider,
+                                
+                                WebCrawlerFactory = new WebCrawlerFactory(config) //Same config will be used for every crawler
+                            }
+                        )
                     );
 
                 crawlEngine.CrawlerInstanceCreated += (sender, eventArgs) =>
                 {
                     var crawlId = Guid.NewGuid();
                     eventArgs.Crawler.CrawlBag.CrawlId = crawlId;
+                    var impls = new ImplementationOverride(config, new ImplementationContainer {
+                        PageRequester = new YourCustomPageRequester(config, null)
+                    });
+                    eventArgs = new CrawlerInstanceCreatedArgs(eventArgs.SiteToCrawl, new CrawlerX(config, impls)); 
                     eventArgs.Crawler.PageCrawlCompleted += async (abotSender, abotEventArgs) =>
                     {
                         try
@@ -186,7 +198,6 @@ namespace XLeech
 
                 crawlEngine.StartAsync();
                 _parallelCrawlerEngine.Add(crawlEngine);
-
                 return crawlEngine;
             }
             catch (Exception ex)
@@ -225,7 +236,14 @@ namespace XLeech
         {
             foreach (var parallelCrawlerEngine in _parallelCrawlerEngine)
             {
-                parallelCrawlerEngine.Stop();
+                if (parallelCrawlerEngine.Impls.SiteToCrawlProvider.IsComplete)
+                {
+                    _parallelCrawlerEngine.Remove(parallelCrawlerEngine);
+                }
+                else
+                {
+                    parallelCrawlerEngine.Stop();
+                }
             }
         }
 
@@ -235,7 +253,14 @@ namespace XLeech
         {
             foreach (var parallelCrawlerEngine in _parallelCrawlerEngine)
             {
-                parallelCrawlerEngine.Pause();
+                if (parallelCrawlerEngine.Impls.SiteToCrawlProvider.IsComplete)
+                {
+                    _parallelCrawlerEngine.Remove(parallelCrawlerEngine);
+                }
+                else
+                {
+                    parallelCrawlerEngine.Pause();
+                }
             }
         }
 
@@ -285,5 +310,58 @@ namespace XLeech
         }
 
         #endregion
+    }
+
+    public class YourCustomPageRequester : PageRequester
+    {
+        private readonly CrawlConfiguration _config;
+       public YourCustomPageRequester(CrawlConfiguration config, IWebContentExtractor contentExtractor) : base(config, contentExtractor) {
+            _config = config;
+        }
+        protected virtual HttpClient BuildHttpClient(HttpClientHandler clientHandler)
+        {
+            // authenticated proxy info
+            List<string> proxies = new List<string>
+            {
+                "http://129.151.91.248:80",
+                "http://18.169.189.181:80",
+                // ...
+                "http://212.76.110.242:80"
+            };
+
+            // extract a random proxy from the list
+            Random random = new Random();
+            int index = random.Next(proxies.Count);
+            string proxyURL = proxies[index];
+
+            //WebProxy webProxy = new WebProxy
+            //{
+            //    Address = new Uri(proxyURL),
+            //    // specify the proxy credentials
+            //    Credentials = new NetworkCredential(
+            //        userName: proxyUsername,
+            //        password: proxyPassword
+            //  )
+            //};
+
+
+            //clientHandler.Proxy = new WebProxy(_config.ConfigurationExtensions["MyProxy1"]);
+            clientHandler.Proxy = new WebProxy(proxyURL);
+            HttpClient httpClient = new HttpClient(clientHandler);
+            httpClient.DefaultRequestHeaders.Add("User-Agent", _config.UserAgentString);
+            httpClient.DefaultRequestHeaders.Add("Accept", "*/*");
+            if (_config.HttpRequestTimeoutInSeconds > 0)
+            {
+                httpClient.Timeout = TimeSpan.FromSeconds(_config.HttpRequestTimeoutInSeconds);
+            }
+
+            if (_config.IsAlwaysLogin)
+            {
+                string text = Convert.ToBase64String(Encoding.ASCII.GetBytes(_config.LoginUser + ":" + _config.LoginPassword));
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Basic " + text);
+            }
+
+            return httpClient;
+        }
     }
 }
