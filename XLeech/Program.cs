@@ -44,7 +44,7 @@ namespace XLeech
 
             services.AddHttpClient();
             services.AddScoped<IChatGPTService, ChatGPTService>();
-
+            services.AddSingleton<IConfiguration>(configuration);
             services.AddScoped<Repository<CategoryConfig>>();
             services.AddScoped<Repository<Data.Entity.SiteConfig>>();
             services.AddScoped<Repository<PostConfig>>();

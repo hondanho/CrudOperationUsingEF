@@ -26,77 +26,7 @@ namespace XLeech.Core
                 );
         }
 
-        public CategoryModel GetCategory(IHtmlDocument document, SiteConfig siteConfig)
-        {
-            var categoryModel = new CategoryModel()
-            {
-                Name = siteConfig.Category.CategoryMap,
-                Slug = siteConfig.Category.CategoryMap.GenerateSlug()
-            };
-
-            // description
-            if (!string.IsNullOrEmpty(siteConfig.Category.Description))
-            {
-                categoryModel.Description = document.QuerySelector(siteConfig.Category.Description)?.Text();
-            }
-
-            // feature image
-            if (siteConfig.Category.SaveFeaturedImages && !string.IsNullOrEmpty(siteConfig.Category.FeaturedImageSelector))
-            {
-                var imageEle = document.QuerySelector(siteConfig.Category.FeaturedImageSelector);
-                var featureImage = imageEle.GetAttribute("href") ?? imageEle.GetAttribute("src");
-                categoryModel.FeatureImage = featureImage;
-            }
-
-            return categoryModel;
-        }
-
-        public PostModel GetPost(IHtmlDocument document, SiteConfig siteConfig)
-        {
-            var slug = document.QuerySelector(siteConfig.Post.PostSlugSelector)?.GetAttribute("href")?.GetAbsolutePath();
-            var title = document.QuerySelector(siteConfig.Post.PostTitleSelector)?.Text();
-
-            // remove unnecessary element selectors
-            var eleToRemoveSelectors = siteConfig.Post.UnnecessaryElements?.ToListString();
-            if (eleToRemoveSelectors.Any())
-            {
-                foreach (var eleSelector in eleToRemoveSelectors)
-                {
-                    var nodeToRemoves = document.QuerySelector(siteConfig.Post.PostContentSelector)?.QuerySelectorAll(eleSelector);
-                    if (nodeToRemoves != null && nodeToRemoves.Any())
-                    {
-                        foreach (var node in nodeToRemoves)
-                        {
-                            node.Remove();
-                        }
-                    }
-                }
-            }
-            var content = document.QuerySelector(siteConfig.Post.PostContentSelector)?.InnerHtml;
-
-            if (string.IsNullOrEmpty(slug) || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(content)) return null;
-
-            var postModel = new PostModel()
-            {
-                Title = title,
-                Author = siteConfig.Post.PostAuthor,
-                Format = siteConfig.Post.PostFormat,
-                Status = siteConfig.Post.PostStatus,
-                Type = siteConfig.Post.PostType,
-                Slug = slug,
-                Content = content
-            };
-
-            // feature image
-            if (siteConfig.Post.SaveFeaturedImages)
-            {
-                var imageEle = document.QuerySelector(siteConfig.Post.FeaturedImageSelector);
-                var featureImage = imageEle.GetAttribute("href") ?? imageEle.GetAttribute("src");
-                postModel.FeatureImage = featureImage;
-            }
-
-            return postModel;
-        }
+        
 
         public async Task<CategoryModel> IsExistCategory(CategoryModel categoryModel, SiteConfig siteConfig)
         {

@@ -80,6 +80,8 @@ namespace XLeech
                 this.connectionTimeoutNumeric.Value = (decimal)site.ConnectionTimeout;
                 this.UseProxyCb.Checked = site.UseProxy;
                 this.ProxiesTb.Text = site.Proxies;
+                this.ActiveForPostSpinningCb.Checked = site.ActiveForPostSpinning;
+                this.ActiveForPostTranslationCb.Checked = site.ActiveForPostTranslation;
                 this.RandomizeProxiesCb.Checked = site.RandomizeProxies;
                 this.TimeIntervalNumeric.Value = (decimal)site.TimeInterval;
                 this.NoteTb.Text = site.Notes;
@@ -335,6 +337,8 @@ namespace XLeech
             siteConfig.MaximumPagesCrawlPerPost = (int)this.MaximumPagesCrawlPerPostNumeric.Value;
             siteConfig.HTTPUserAgent = this.HTTPUserAgentTb.Text;
             siteConfig.ConnectionTimeout = (int)this.connectionTimeoutNumeric.Value;
+            siteConfig.ActiveForPostSpinning = this.ActiveForPostSpinningCb.Checked;
+            siteConfig.ActiveForPostTranslation = this.ActiveForPostTranslationCb.Checked;
             siteConfig.UseProxy = this.UseProxyCb.Checked;
             siteConfig.Proxies = this.ProxiesTb.Text;
             siteConfig.RandomizeProxies = this.RandomizeProxiesCb.Checked;

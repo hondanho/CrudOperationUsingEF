@@ -23,7 +23,7 @@ namespace XLeech
         private readonly AppDbContext _dbContext;
         private readonly Repository<SiteConfig> _siteConfigRepository;
         private readonly ICrawlerService _crawlerService;
-        private readonly List<ParallelCrawlerEngine> _parallelCrawlerEngine = new List<ParallelCrawlerEngine>();
+        private ParallelCrawlerEngine _parallelCrawlerEngine;
         private int categoryCrawled = 0;
         private int postSuccess = 0;
         private int postFailed = 0;
@@ -43,6 +43,19 @@ namespace XLeech
             {
                 _crawlerService = Main.AppWindow?.CrawlerService;
             }
+
+            var config = GetSafeConfig();
+            var siteToCrawlProvider = new AlwaysOnSiteToCrawlProvider();
+            this._parallelCrawlerEngine = new ParallelCrawlerEngine(
+                    config,
+                    new ParallelImplementationOverride(config,
+                            new ParallelImplementationContainer()
+                            {
+                                SiteToCrawlProvider = siteToCrawlProvider,
+                                WebCrawlerFactory = new WebCrawlerFactory(config) //Same config will be used for every crawler
+                            }
+                        )
+                    );
         }
 
         private static CrawlConfigurationX GetSafeConfig()
@@ -52,11 +65,7 @@ namespace XLeech
                 MaxPagesToCrawl = 1,
                 MinCrawlDelayPerDomainMilliSeconds = 10000,
                 MaxConcurrentSiteCrawls = 3,
-<<<<<<< HEAD
                 IsSendingCookiesEnabled = true
-=======
-                ConfigurationExtensions= {}
->>>>>>> a7fd29b38b532188644abebf35c27dee4ec731b6
                 //HttpRequestTimeoutInSeconds= 60,
                 //MaxConcurrentThreads = 5,
             };
@@ -83,10 +92,9 @@ namespace XLeech
             }
         }
 
-        private async Task<ParallelCrawlerEngine> ParallelCrawlerEngineUrls(SiteConfig siteConfig)
+        private async Task ParallelCrawlerEngineUrls(SiteConfig siteConfig)
         {
             var siteToCrawlUrls = new List<SiteToCrawl>();
-            var config = GetSafeConfig();
             var categoryPageURLCrawle = _crawlerService.GetCategoryPageURLCrawle(siteConfig);
 
             try
@@ -117,28 +125,16 @@ namespace XLeech
                     siteConfig.CategoryNextPageURL = categoryNextPageInfo.CategoryNextPageURL;
                 }
 
-                var siteToCrawlProvider = new AlwaysOnSiteToCrawlProvider();
-                siteToCrawlProvider.AddSitesToCrawl(siteToCrawlUrls);
-                var crawlEngine = new ParallelCrawlerEngine(
-                    config,
-                    new ParallelImplementationOverride(config,
-                            new ParallelImplementationContainer()
-                            {
-                                SiteToCrawlProvider = siteToCrawlProvider,
-                                
-                                WebCrawlerFactory = new WebCrawlerFactory(config) //Same config will be used for every crawler
-                            }
-                        )
-                    );
+                this._parallelCrawlerEngine.Impls.SiteToCrawlProvider.AddSitesToCrawl(siteToCrawlUrls);
 
-                crawlEngine.CrawlerInstanceCreated += (sender, eventArgs) =>
+                this._parallelCrawlerEngine.CrawlerInstanceCreated += (sender, eventArgs) =>
                 {
                     var crawlId = Guid.NewGuid();
                     eventArgs.Crawler.CrawlBag.CrawlId = crawlId;
-                    var impls = new ImplementationOverride(config, new ImplementationContainer {
-                        PageRequester = new YourCustomPageRequester(config, null)
-                    });
-                    eventArgs = new CrawlerInstanceCreatedArgs(eventArgs.SiteToCrawl, new CrawlerX(config, impls)); 
+                    //var impls = new ImplementationOverride(config, new ImplementationContainer {
+                    //    PageRequester = new YourCustomPageRequester(config, null)
+                    //});
+                    //eventArgs = new CrawlerInstanceCreatedArgs(eventArgs.SiteToCrawl, new CrawlerX(config, impls)); 
                     eventArgs.Crawler.PageCrawlCompleted += async (abotSender, abotEventArgs) =>
                     {
                         try
@@ -160,15 +156,15 @@ namespace XLeech
                     };
                 };
 
-                crawlEngine.SiteCrawlStarting += (sender, args) =>
+                this._parallelCrawlerEngine.SiteCrawlStarting += (sender, args) =>
                 {
                 };
 
-                crawlEngine.SiteCrawlCompleted += (sender, args) =>
+                this._parallelCrawlerEngine.SiteCrawlCompleted += (sender, args) =>
                 {
                 };
 
-                crawlEngine.AllCrawlsCompleted += async (sender, eventArgs) =>
+                this._parallelCrawlerEngine.AllCrawlsCompleted += async (sender, eventArgs) =>
                 {
                     //var parallelCrawlerEngine = _parallelCrawlerEngine.Where(x => x.)
 
@@ -192,16 +188,12 @@ namespace XLeech
                     } 
                 };
 
-                await crawlEngine.StartAsync();
-                _parallelCrawlerEngine.Add(crawlEngine);
-                return crawlEngine;
+                this._parallelCrawlerEngine.StartAsync();
             }
             catch (Exception ex)
             {
                 LogSite(string.Format("{0} Exception {1}", categoryPageURLCrawle, ex.Message));
             }
-
-            return new ParallelCrawlerEngine(config);
         }
 
         private void StartBtn_Click(object sender, EventArgs e)
@@ -230,34 +222,14 @@ namespace XLeech
 
         private void StopBtn_Click(object sender, EventArgs e)
         {
-            foreach (var parallelCrawlerEngine in _parallelCrawlerEngine)
-            {
-                if (parallelCrawlerEngine.Impls.SiteToCrawlProvider.IsComplete)
-                {
-                    _parallelCrawlerEngine.Remove(parallelCrawlerEngine);
-                }
-                else
-                {
-                    parallelCrawlerEngine.Stop();
-                }
-            }
+            this._parallelCrawlerEngine.Stop();
         }
 
         
 
         private void PauseBtn_Click(object sender, EventArgs e)
         {
-            foreach (var parallelCrawlerEngine in _parallelCrawlerEngine)
-            {
-                if (parallelCrawlerEngine.Impls.SiteToCrawlProvider.IsComplete)
-                {
-                    _parallelCrawlerEngine.Remove(parallelCrawlerEngine);
-                }
-                else
-                {
-                    parallelCrawlerEngine.Pause();
-                }
-            }
+            this._parallelCrawlerEngine.Pause();
         }
 
         #region Log
