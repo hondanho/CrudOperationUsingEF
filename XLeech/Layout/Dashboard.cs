@@ -97,8 +97,8 @@ namespace XLeech
             eventArgs.Crawler.CrawlBag.CrawlId = crawlId;
             eventArgs.Crawler.CrawlBag.SiteConfig = eventArgs.SiteToCrawl.SiteBag;
             eventArgs.Crawler.PageCrawlCompleted += PageCrawlCompleted;
-
-            eventArgs.Crawler.CrawlAsync();
+            IEnumerable<string> _urls = new List<string>();
+            eventArgs.Crawler.CrawlContext.Scheduler.Add(_urls.Select(u => new PageToCrawl(new Uri(u))));
         }
 
         private async void PageCrawlCompleted(object abotSender, PageCrawlCompletedArgs abotEventArgs)
