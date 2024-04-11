@@ -51,11 +51,13 @@ namespace XLeech
             services.AddSingleton<ParallelCrawlerEngine>(x => {
                 var config = new CrawlConfigurationX
                 {
-                    MaxPagesToCrawl = 1,
+                    MinSiteToCrawlRequestDelayInSecs = 1000,
+                    SitesToCrawlBatchSizePerRequest = 1000,
                     MinCrawlDelayPerDomainMilliSeconds = 10000,
                     MaxConcurrentSiteCrawls = 1,
+                    MaxPagesToCrawl = 1,
+                    IsIgnoreRobotsDotTextIfRootDisallowedEnabled = true,
                     IsSendingCookiesEnabled = true
-                    
                 };
                 var siteToCrawlProvider = new AlwaysOnSiteToCrawlProvider();
                 var parallelCrawlerEngine = new ParallelCrawlerEngine(
