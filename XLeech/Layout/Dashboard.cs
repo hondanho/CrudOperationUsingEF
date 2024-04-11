@@ -61,10 +61,13 @@ namespace XLeech
 
                 _parallelCrawlerEngine.SiteCrawlStarting += (sender, args) =>
                 {
+
                 };
 
-                _parallelCrawlerEngine.SiteCrawlCompleted += (sender, args) =>
+                _parallelCrawlerEngine.SiteCrawlCompleted += (sender, siteCrawleArgs) =>
                 {
+                    var siteBag = siteCrawleArgs.CrawledSite.SiteToCrawl.SiteBag as SiteConfig;
+
                     //if (postSuccess/5 == 0)
                     //{
                     //    var siteToCrawlUrls = new List<SiteToCrawl> {
@@ -93,8 +96,6 @@ namespace XLeech
 
         private async void CrawlerInstanceCreated(object sender, CrawlerInstanceCreatedArgs eventArgs)
         {
-            var crawlId = Guid.NewGuid();
-            eventArgs.Crawler.CrawlBag.CrawlId = crawlId;
             eventArgs.Crawler.CrawlBag.SiteConfig = eventArgs.SiteToCrawl.SiteBag;
             eventArgs.Crawler.PageCrawlCompleted += PageCrawlCompleted;
             IEnumerable<string> _urls = new List<string>();
@@ -192,10 +193,14 @@ namespace XLeech
                     var categoryPageInfo = await _crawlerService.GetInfoCategoryPage(siteConfig, config);
                     if (categoryPageInfo != null && categoryPageInfo.PostUrls.Any())
                     {
-                        siteToCrawls.AddRange(categoryPageInfo.PostUrls.Select(x => new SiteToCrawl
-                        {
-                            Uri = new Uri(x),
-                            SiteBag = siteConfig
+                        siteToCrawls.AddRange(categoryPageInfo.PostUrls.Select(x => {
+                            var siteToCrawle = new SiteToCrawl
+                            {
+                                Uri = new Uri(x)
+                            };
+                            siteToCrawle.SiteBag.SiteConfig = siteConfig;
+                            siteToCrawle.SiteBag.CategoryNextPageURL = siteConfig;
+                            return siteToCrawle;
                         }));
                     }
                     siteConfig.CategoryNextPageURL = categoryPageInfo?.CategoryNextPageURL;

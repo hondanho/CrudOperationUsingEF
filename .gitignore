@@ -40,7 +40,8 @@ TestResult.xml
 [Dd]ebugPS/
 [Rr]eleasePS/
 dlldata.c
-
+bin/
+obj/
 # DNX
 project.lock.json
 artifacts/
@@ -83,6 +84,10 @@ ipch/
 *.cachefile
 *.VC.db
 *.VC.VC.opendb
+
+*.cache
+XLeech/bin
+XLeech/obj
 
 # Visual Studio profiler
 *.psess
