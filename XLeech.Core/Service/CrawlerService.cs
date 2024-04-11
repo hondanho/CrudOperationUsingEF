@@ -1,8 +1,10 @@
 ﻿using Abot2.Crawler;
 using AbotX2.Crawler;
 using AbotX2.Poco;
+using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 using WordPressPCL.Models;
+using XLeech.Core.Extensions;
 using XLeech.Core.Model;
 using XLeech.Data.Entity;
 
@@ -18,23 +20,23 @@ namespace XLeech.Core.Service
         public async Task<CrawlerResult> PageCrawlCompleted(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
         {
             var crawlerResult = new CrawlerResult();
+            var wordpressProcessor = new WordpressProcessor(siteConfig);
 
             if (siteConfig.IsPageUrl)
             {
-                crawlerResult = await PageCrawlCompletedUrl(abotSender, abotEventArgs, siteConfig);
+                crawlerResult = await PageCrawlCompletedUrl(abotSender, abotEventArgs, siteConfig, wordpressProcessor);
             }
             else
             {
-                crawlerResult = await PageCrawlCompletedCategoryPage(abotSender, abotEventArgs, siteConfig);
+                crawlerResult = await PageCrawlCompletedCategoryPage(abotSender, abotEventArgs, siteConfig, wordpressProcessor);
             }
 
             return await Task.FromResult(crawlerResult);
         }
 
-        public async Task<CrawlerResult> PageCrawlCompletedCategoryPage(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
+        public async Task<CrawlerResult> PageCrawlCompletedCategoryPage(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig, IProccessor proccessor)
         {
             var crawledPage = abotEventArgs.CrawledPage;
-            var wordpressProcessor = new WordpressProcessor(siteConfig);
             var crawlerResult = new CrawlerResult()
             {
                 IsSaveCategory = false,
@@ -42,37 +44,36 @@ namespace XLeech.Core.Service
                 IsSavePost = false
             };
 
-            var categoryModel = wordpressProcessor.GetCategory(crawledPage.AngleSharpHtmlDocument, siteConfig);
-            var existCategory = await wordpressProcessor.IsExistCategory(categoryModel, siteConfig);
+            var categoryModel = GetCategory(crawledPage.AngleSharpHtmlDocument, siteConfig);
+            var existCategory = await proccessor.IsExistCategory(categoryModel, siteConfig);
             var category = new Category()
             {
                 Id = existCategory?.Id ?? 0
             };
             if (existCategory == null)
             {
-                category = await wordpressProcessor.SaveCategory(categoryModel);
+                category = await proccessor.SaveCategory(categoryModel);
                 crawlerResult.IsSaveCategory = true;
             }
 
-            var postModel = wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteConfig);
+            var postModel = GetPost(crawledPage.AngleSharpHtmlDocument, siteConfig);
             if (postModel == null)
             {
                throw new Exception(string.Format("Not found post"));
             }
-            var existPost = await wordpressProcessor.IsExistPost(postModel, siteConfig);
+            var existPost = await proccessor.IsExistPost(postModel, siteConfig);
             if (existPost == null)
             {
-                await wordpressProcessor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
+                await proccessor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
                 crawlerResult.IsSavePost = true;
             }
 
             return await Task.FromResult(crawlerResult);
         }
 
-        public async Task<CrawlerResult> PageCrawlCompletedUrl(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig)
+        public async Task<CrawlerResult> PageCrawlCompletedUrl(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig, IProccessor processor)
         {
             var crawledPage = abotEventArgs.CrawledPage;
-            var wordpressProcessor = new WordpressProcessor(siteConfig);
             var crawlerResult = new CrawlerResult()
             {
                 IsSaveCategory = false,
@@ -80,27 +81,27 @@ namespace XLeech.Core.Service
                 IsError = false,
             };
 
-            var categoryModel = wordpressProcessor.GetCategory(crawledPage.AngleSharpHtmlDocument, siteConfig);
-            var existCategory = await wordpressProcessor.IsExistCategory(categoryModel, siteConfig);
+            var categoryModel = GetCategory(crawledPage.AngleSharpHtmlDocument, siteConfig);
+            var existCategory = await processor.IsExistCategory(categoryModel, siteConfig);
             var category = new Category()
             {
                 Id = existCategory?.Id ?? 0
             };
             if (existCategory == null)
             {
-                category = await wordpressProcessor.SaveCategory(categoryModel);
+                category = await processor.SaveCategory(categoryModel);
                 crawlerResult.IsSaveCategory = true;
             }
 
-            var postModel = wordpressProcessor.GetPost(crawledPage.AngleSharpHtmlDocument, siteConfig);
+            var postModel = GetPost(crawledPage.AngleSharpHtmlDocument, siteConfig);
             if (postModel == null)
             {
                 throw new Exception(string.Format("Not found post"));
             }
-            var existPost = await wordpressProcessor.IsExistPost(postModel, siteConfig);
+            var existPost = await processor.IsExistPost(postModel, siteConfig);
             if (existPost == null)
             {
-                await wordpressProcessor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
+                await processor.SavePost(postModel, new List<int>() { existCategory != null ? existCategory.Id : category.Id });
                 crawlerResult.IsSavePost = true;
             }
 
@@ -158,6 +159,78 @@ namespace XLeech.Core.Service
             }
 
             return config;
+        }
+
+        public CategoryModel GetCategory(IHtmlDocument document, SiteConfig siteConfig)
+        {
+            var categoryModel = new CategoryModel()
+            {
+                Name = siteConfig.Category.CategoryMap,
+                Slug = siteConfig.Category.CategoryMap.GenerateSlug()
+            };
+
+            // description
+            if (!string.IsNullOrEmpty(siteConfig.Category.Description))
+            {
+                categoryModel.Description = document.QuerySelector(siteConfig.Category.Description)?.Text();
+            }
+
+            // feature image
+            if (siteConfig.Category.SaveFeaturedImages && !string.IsNullOrEmpty(siteConfig.Category.FeaturedImageSelector))
+            {
+                var imageEle = document.QuerySelector(siteConfig.Category.FeaturedImageSelector);
+                var featureImage = imageEle.GetAttribute("href") ?? imageEle.GetAttribute("src");
+                categoryModel.FeatureImage = featureImage;
+            }
+
+            return categoryModel;
+        }
+
+        public PostModel GetPost(IHtmlDocument document, SiteConfig siteConfig)
+        {
+            var slug = document.QuerySelector(siteConfig.Post.PostSlugSelector)?.GetAttribute("href")?.GetAbsolutePath();
+            var title = document.QuerySelector(siteConfig.Post.PostTitleSelector)?.Text();
+
+            // remove unnecessary element selectors
+            var eleToRemoveSelectors = siteConfig.Post.UnnecessaryElements?.ToListString();
+            if (eleToRemoveSelectors.Any())
+            {
+                foreach (var eleSelector in eleToRemoveSelectors)
+                {
+                    var nodeToRemoves = document.QuerySelector(siteConfig.Post.PostContentSelector)?.QuerySelectorAll(eleSelector);
+                    if (nodeToRemoves != null && nodeToRemoves.Any())
+                    {
+                        foreach (var node in nodeToRemoves)
+                        {
+                            node.Remove();
+                        }
+                    }
+                }
+            }
+            var content = document.QuerySelector(siteConfig.Post.PostContentSelector)?.InnerHtml;
+
+            if (string.IsNullOrEmpty(slug) || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(content)) return null;
+
+            var postModel = new PostModel()
+            {
+                Title = title,
+                Author = siteConfig.Post.PostAuthor,
+                Format = siteConfig.Post.PostFormat,
+                Status = siteConfig.Post.PostStatus,
+                Type = siteConfig.Post.PostType,
+                Slug = slug,
+                Content = content
+            };
+
+            // feature image
+            if (siteConfig.Post.SaveFeaturedImages)
+            {
+                var imageEle = document.QuerySelector(siteConfig.Post.FeaturedImageSelector);
+                var featureImage = imageEle.GetAttribute("href") ?? imageEle.GetAttribute("src");
+                postModel.FeatureImage = featureImage;
+            }
+
+            return postModel;
         }
     }
 }

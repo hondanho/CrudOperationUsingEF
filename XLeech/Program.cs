@@ -74,6 +74,7 @@ namespace XLeech
                 parallelCrawlerEngine.StartAsync();
                 return parallelCrawlerEngine;
             });
+            services.AddSingleton<IConfiguration>(configuration);
             services.AddScoped<Repository<CategoryConfig>>();
             services.AddScoped<Repository<Data.Entity.SiteConfig>>();
             services.AddScoped<Repository<PostConfig>>();

@@ -1,4 +1,6 @@
 ﻿
+using WordPressPCL.Models;
+
 namespace XLeech.Data.Entity
 {
 
@@ -33,7 +35,8 @@ namespace XLeech.Data.Entity
         public string? WordpressApiUrl { get; set; }
         public string? WordpressUserName { get; set; }
         public string? WordpressApplicationPW { get; set; }
-
+        public bool ActiveForPostTranslation { get; set; }
+        public bool ActiveForPostSpinning { get; set; }
         public CategoryConfig Category { get; set; }
         public PostConfig Post { get; set; }
     }

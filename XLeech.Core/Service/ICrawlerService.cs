@@ -11,9 +11,13 @@ namespace XLeech.Core.Service
     {
         string GetURLCategoryPageCrawle(SiteConfig siteConfig);
         Task<CategoryPageInfo> GetInfoCategoryPage(SiteConfig siteConfig, CrawlConfigurationX crawlConfigurationX);
+        PostModel GetPost(IHtmlDocument document, SiteConfig siteConfig);
+        CategoryModel GetCategory(IHtmlDocument document, SiteConfig siteConfig);
+        string GetCategoryPageURLCrawle(SiteConfig siteConfig);
+        Task<CategoryPageInfo> GetCategoryNextPageInfo(SiteConfig siteConfig, CrawlConfigurationX crawlConfigurationX);
         Task<CrawlerResult> PageCrawlCompleted(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig);
-        Task<CrawlerResult> PageCrawlCompletedCategoryPage(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig);
-        Task<CrawlerResult> PageCrawlCompletedUrl(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig);
+        Task<CrawlerResult> PageCrawlCompletedCategoryPage(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig, IProccessor processor);
+        Task<CrawlerResult> PageCrawlCompletedUrl(object? abotSender, PageCrawlCompletedArgs abotEventArgs, SiteConfig siteConfig, IProccessor processor);
         Task<List<string>> GetPostUrls(IHtmlDocument document, SiteConfig siteConfig);
         string GetNexCategoryPostURL(IHtmlDocument document, SiteConfig siteConfig);
     }
