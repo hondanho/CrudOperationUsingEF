@@ -10,10 +10,10 @@ namespace XLeech.Core.Service
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IConfiguration _configuration;
 
-        public ChatGPTService(IConfiguration configuration, IHttpClientFactory httpClientFactory)
+        public ChatGPTService(IHttpClientFactory httpClientFactory)
         {
             this._httpClientFactory = httpClientFactory;
-            this._configuration = configuration;
+            //this._configuration = configuration;
         }
 
         public async Task<string> GetChatCompletionAsync(string question)
@@ -49,5 +49,4 @@ namespace XLeech.Core.Service
 
         }
     }
-}
 }

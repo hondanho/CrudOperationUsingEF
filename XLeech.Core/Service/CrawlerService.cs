@@ -115,12 +115,13 @@ namespace XLeech.Core.Service
             return Task.FromResult(postUrls.Where(x => !string.IsNullOrEmpty(x)).ToList());
         }
 
-        public async Task<CategoryPageInfo> GetCategoryNextPageInfo(SiteConfig siteConfig, CrawlConfigurationX crawlConfigurationX)
+        public async Task<CategoryPageInfo> GetInfoCategoryPage(SiteConfig siteConfig, CrawlConfigurationX crawlConfigurationX)
         {
             var categoryPageInfo = new CategoryPageInfo();
             crawlConfigurationX = MergeCrawlConfiguration(crawlConfigurationX, siteConfig);
             using (var crawler = new CrawlerX(crawlConfigurationX))
             {
+                string urlCategoryPageCrawle = GetURLCategoryPageCrawle(siteConfig);
                 crawler.PageCrawlCompleted += async (sender, args) =>
                 {
                     var wordpressProcessor = new WordpressProcessor(siteConfig);
@@ -130,13 +131,13 @@ namespace XLeech.Core.Service
                     categoryPageInfo.CategoryNextPageURL = GetNexCategoryPostURL(crawlerPage.AngleSharpHtmlDocument, siteConfig);
                 };
 
-                await crawler.CrawlAsync(new Uri(GetCategoryPageURLCrawle(siteConfig)));
+                await crawler.CrawlAsync(new Uri(urlCategoryPageCrawle));
             }
 
             return categoryPageInfo;
         }
 
-        public string GetCategoryPageURLCrawle(SiteConfig siteConfig)
+        public string GetURLCategoryPageCrawle(SiteConfig siteConfig)
         {
             return siteConfig.CategoryNextPageURL ?? siteConfig.Category.CategoryPostURL;
         }

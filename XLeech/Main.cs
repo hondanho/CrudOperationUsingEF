@@ -1,4 +1,6 @@
-﻿using XLeech.Core.Service;
+﻿using AbotX2.Parallel;
+using XLeech.Core;
+using XLeech.Core.Service;
 using XLeech.Data.Entity;
 using XLeech.Data.EntityFramework;
 using XLeech.Data.Repository;
@@ -15,13 +17,15 @@ namespace XLeech
         public readonly Repository<SiteConfig> SiteConfigRepository;
         public readonly Repository<CategoryConfig> CategoryRepository;
         public readonly Repository<PostConfig> PostRepository;
+        public readonly ParallelCrawlerEngine ParallelCrawlerEngine;
 
         public Main(AppDbContext dbContext,
             Repository<CategoryConfig> categoryRepository,
             Repository<SiteConfig> siteConfigRepository,
             Repository<PostConfig> postRepository,
             ICrawlerService crawlerService,
-            IChatGPTService chatGPTService
+            IChatGPTService chatGPTService,
+            ParallelCrawlerEngine parallelCrawlerEngine
             )
         {
             AppWindow = this;
@@ -32,6 +36,7 @@ namespace XLeech
             this.CategoryRepository = categoryRepository;
             this.SiteConfigRepository = siteConfigRepository;
             this.PostRepository = postRepository;
+            this.ParallelCrawlerEngine = parallelCrawlerEngine;
         }
 
         /// <summary>

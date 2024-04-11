@@ -5,6 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using XLeech.Core.Service;
+using AbotX2.Parallel;
+using XLeech.Core;
+using MathNet.Numerics;
+using AbotX2.Poco;
 
 namespace XLeech
 {
@@ -44,7 +48,32 @@ namespace XLeech
 
             services.AddHttpClient();
             services.AddScoped<IChatGPTService, ChatGPTService>();
-
+            services.AddSingleton<ParallelCrawlerEngine>(x => {
+                var config = new CrawlConfigurationX
+                {
+                    MaxPagesToCrawl = 1,
+                    MinCrawlDelayPerDomainMilliSeconds = 10000,
+                    MaxConcurrentSiteCrawls = 1,
+                    IsSendingCookiesEnabled = true
+                    
+                };
+                var siteToCrawlProvider = new AlwaysOnSiteToCrawlProvider();
+                var parallelCrawlerEngine = new ParallelCrawlerEngine(
+                    config,
+                    new ParallelImplementationOverride(config,
+                            new ParallelImplementationContainer()
+                            {
+                                SiteToCrawlProvider = siteToCrawlProvider,
+                                WebCrawlerFactory = new WebCrawlerFactory(config)
+                            }
+                        )
+                    );
+                parallelCrawlerEngine.Impls.ImplementationBag.CategoryCrawled = 0;
+                parallelCrawlerEngine.Impls.ImplementationBag.PostSuccess = 0;
+                parallelCrawlerEngine.Impls.ImplementationBag.PostFailed = 0;
+                parallelCrawlerEngine.StartAsync();
+                return parallelCrawlerEngine;
+            });
             services.AddScoped<Repository<CategoryConfig>>();
             services.AddScoped<Repository<Data.Entity.SiteConfig>>();
             services.AddScoped<Repository<PostConfig>>();

@@ -42,6 +42,7 @@
             CategoryCrawledLb = new Label();
             LogPostTb = new RichTextBox();
             PauseBtn = new Button();
+            ResumeBtn = new Button();
             SuspendLayout();
             // 
             // LogSiteTb
@@ -124,7 +125,7 @@
             // StopBtn
             // 
             StopBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            StopBtn.Location = new Point(314, 644);
+            StopBtn.Location = new Point(417, 644);
             StopBtn.Margin = new Padding(3, 4, 3, 4);
             StopBtn.Name = "StopBtn";
             StopBtn.Size = new Size(86, 31);
@@ -186,10 +187,23 @@
             PauseBtn.UseVisualStyleBackColor = true;
             PauseBtn.Click += PauseBtn_Click;
             // 
+            // ResumeBtn
+            // 
+            ResumeBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            ResumeBtn.Location = new Point(314, 644);
+            ResumeBtn.Margin = new Padding(3, 4, 3, 4);
+            ResumeBtn.Name = "ResumeBtn";
+            ResumeBtn.Size = new Size(86, 31);
+            ResumeBtn.TabIndex = 16;
+            ResumeBtn.Text = "Resume";
+            ResumeBtn.UseVisualStyleBackColor = true;
+            ResumeBtn.Click += ResumeBtn_Click;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(ResumeBtn);
             Controls.Add(PauseBtn);
             Controls.Add(LogPostTb);
             Controls.Add(CategoryCrawledLb);
@@ -227,5 +241,6 @@
         private Label CategoryCrawledLb;
         private RichTextBox LogPostTb;
         private Button PauseBtn;
+        private Button ResumeBtn;
     }
 }
